@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#09403A"/>
+  <rect x="655" y="38" width="507" height="554" fill="#F7F4EC" transform="rotate(3 908 315)"/>
+  <rect x="815" y="122" width="258" height="330" rx="5" fill="#FFFDF9" transform="rotate(8 944 287)"/>
+  <rect x="748" y="188" width="286" height="360" rx="5" fill="#FFFDF9" transform="rotate(-4 891 368)"/>
+  <text x="82" y="100" fill="#EACB80" font-family="Arial, sans-serif" font-weight="700" font-size="20" letter-spacing="5">MEDELIN / UZHHOROD / 1998</text>
+  <text x="82" y="247" fill="#F7F4EC" font-family="Georgia, serif" font-size="84">Кава, до якої</text>
+  <text x="82" y="337" fill="#EACB80" font-family="Georgia, serif" font-size="84" font-style="italic">хочеться повернутися.</text>
+  <text x="82" y="424" fill="#DCEBE5" font-family="Arial, sans-serif" font-size="24">Еспресо · specialty · фільтр</text>
+  <text x="82" y="520" fill="#F7F4EC" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="2">MEDELIN COFFEE ROASTERS.</text>
+  <text x="851" y="275" fill="#17211A" font-family="Arial, sans-serif" font-weight="800" font-size="30" transform="rotate(-4 851 275)">medelin</text>
+  <text x="851" y="310" fill="#17211A" font-family="Arial, sans-serif" font-weight="800" font-size="28" transform="rotate(-4 851 310)">coffee</text>
+  <text x="851" y="345" fill="#17211A" font-family="Arial, sans-serif" font-weight="800" font-size="28" transform="rotate(-4 851 345)">roasters.</text>
+  <rect x="748" y="514" width="286" height="34" fill="#B7D58A" transform="rotate(-4 891 531)"/>
+  <text x="767" y="538" fill="#17211A" font-family="Arial, sans-serif" font-weight="800" font-size="14" letter-spacing="2" transform="rotate(-4 767 538)">ЩОДЕННИЙ ЕСПРЕСО</text>
+</svg>
