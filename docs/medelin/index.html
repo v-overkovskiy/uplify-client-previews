@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medelin Coffee Roasters | Кава під вашу чашку</title>
+  <meta name="description" content="Кава Medelin для еспресо, specialty та фільтра. Оберіть лінійку, спосіб приготування і помел.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="canonical" href="https://preview.uplify.agency/medelin/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:site_name" content="Medelin Coffee Roasters">
+  <meta property="og:title" content="Medelin | Кава під вашу чашку">
+  <meta property="og:description" content="Три лінійки Medelin, реальні смаки і підбір під спосіб приготування.">
+  <meta property="og:url" content="https://preview.uplify.agency/medelin/">
+  <meta property="og:image" content="https://preview.uplify.agency/medelin/assets/og-medelin-v2.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Medelin Coffee Roasters, кава під вашу чашку">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://preview.uplify.agency/medelin/assets/og-medelin-v2.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23073d37'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='42' font-family='Georgia' fill='%23f4f0e6'%3Em%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/source/hero-ritual-v2.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="real-v2.css?v=1">
+</head>
+<body>
+  <!--
+    THESIS: The store is a coffee counter. Three product lines are the first screen and the navigation itself.
+    OWN-WORLD: Dark teal anchors, warm near-white product surfaces, real white packs, oversized serif copy and restrained line-color signals.
+    STORY: Pick a coffee role, inspect one real product, match it to a brewing method, then continue to the native catalog or PDP.
+    FIRST VIEWPORT: A narrow brand and action rail sits beside three expanding product lanes. There is no conventional hero card.
+    FORM: Three-lane tasting counter, assigned surface structure 3, seed 0d8b96be.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip" href="#content">До основного вмісту</a>
+
+  <div class="concept-strip"><span>MEDELIN COFFEE ROASTERS</span><span>КОНЦЕПТ ГОЛОВНОЇ / HOROSHOP</span></div>
+
+  <header class="counterbar" id="top">
+    <a class="wordmark" href="./" aria-label="Medelin, на головну">
+      <span class="wordmark__m">m</span>
+      <span>medelin<small>coffee roasters.</small></span>
+    </a>
+    <nav class="counterbar__links" aria-label="Основна навігація">
+      <a href="#counter">Лінійки</a>
+      <a href="#coffee-wall">Кава</a>
+      <a href="./#method-lab">Як готуєте</a>
+      <a href="./#story">Про Medelin</a>
+    </nav>
+    <button class="catalog-button" type="button" data-mega aria-expanded="false" aria-controls="mega">Каталог <span aria-hidden="true">↗</span></button>
+    <a class="cart" href="#" data-notice="Кошик працюватиме через штатний модуль Horoshop."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h2.2l1.5 10h10.4l2-7.2H6.2"></path><circle cx="10" cy="19" r="1.2"></circle><circle cx="17" cy="19" r="1.2"></circle></svg><span>0</span></a>
+    <button class="menu-button" type="button" data-mobile-menu aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span><b class="sr-only">Меню</b></button>
+  </header>
+
+  <section class="mega" id="mega" hidden>
+    <div class="mega__intro"><h2>Відкрийте каталог з того, що вже знаєте.</h2><p>Лінійка, спосіб приготування або конкретна кава.</p><a href="?page=listing">Уся кава <span>↗</span></a></div>
+    <div class="mega__routes">
+      <a class="mega-route mega-route--green" href="?page=listing&line=green"><span>Щоденний еспресо</span><small>шоколад, карамель, горіх</small></a>
+      <a class="mega-route mega-route--yellow" href="?page=listing&line=specialty"><span>Specialty 85-87</span><small>фрукти, квіти, цитрус</small></a>
+      <a class="mega-route mega-route--orange" href="?page=listing&line=filter"><span>Фільтр specialty</span><small>легкість, аромат, прозорість</small></a>
+    </div>
+    <form class="mega-search" data-search-form><label for="mega-q">Знайти знайому пачку</label><div><input id="mega-q" name="q" type="search" placeholder="Назва або країна"><button type="submit" aria-label="Пошук">↗</button></div></form>
+  </section>
+
+  <nav class="mobile-nav" id="mobile-nav" hidden>
+    <a href="?page=listing">Каталог</a><a href="./#counter">Лінійки</a><a href="./#method-lab">Як обрати</a><a href="./#story">Про Medelin</a>
+  </nav>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <main id="content">
+    <div id="home-view">
+      <section class="counter" id="counter" data-block-id="BLK-COUNTER">
+        <div class="counter__brief">
+          <div class="counter__brandline">УЖГОРОД · З 1998 РОКУ</div>
+          <h1>Якою буде ваша<br>наступна чашка?</h1>
+          <p>Не потрібно вивчати весь каталог. Почніть зі смаку, який хочеться пити сьогодні.</p>
+          <a class="round-link" href="?page=listing">Відкрити всю каву <span>↗</span></a>
+          <div class="counter__facts"><span><b>3</b> лінійки</span><span><b>UA</b> обсмаження</span></div>
+        </div>
+
+        <div class="lanes" role="group" aria-label="Три лінійки кави Medelin">
+          <button class="lane lane--green is-active" type="button" data-lane="green" aria-pressed="true">
+            <span class="lane__index">01</span><span class="lane__role">Щодня</span>
+            <img src="assets/source/italiano.jpg" alt="Espresso Italiano, 250 г" width="900" height="900">
+            <span class="lane__name">Еспресо</span><span class="lane__taste">шоколад · карамель · гранат</span>
+          </button>
+          <button class="lane lane--yellow" type="button" data-lane="specialty" aria-pressed="false">
+            <span class="lane__index">02</span><span class="lane__role">Відкрити нове</span>
+            <img src="assets/source/nicaragua.jpg" alt="Nicaragua SHG, 250 г" width="900" height="900">
+            <span class="lane__name">Specialty</span><span class="lane__taste">квіти · фрукти · карамель</span>
+          </button>
+          <button class="lane lane--orange" type="button" data-lane="filter" aria-pressed="false">
+            <span class="lane__index">03</span><span class="lane__role">Пити повільно</span>
+            <img src="assets/source/ethiopia.jpg" alt="Ethiopia Sidamo Gr1, 250 г" width="900" height="900">
+            <span class="lane__name">Фільтр</span><span class="lane__taste">фрукти · спеції · шовковий фініш</span>
+          </button>
+        </div>
+
+        <aside class="lane-ticket lane-ticket--green" aria-live="polite">
+          <span id="lane-ticket-label">Зелена лінійка</span>
+          <strong id="lane-ticket-title">Знайомий еспресо без різкої кислотності.</strong>
+          <p id="lane-ticket-copy">Для автомата, рожка і ранку, коли не хочеться експериментувати.</p>
+          <a id="lane-ticket-link" href="?page=pdp&sku=italiano">Espresso Italiano, 223 грн <span>↗</span></a>
+        </aside>
+      </section>
+
+      <section class="taste-marquee" aria-label="Смакові орієнтири"><div><span>ШОКОЛАД</span><i></i><span>КАРАМЕЛЬ</span><i></i><span>ФРУКТИ</span><i></i><span>ЖАСМИН</span><i></i><span>ЦИТРУС</span><i></i><span>ГОРІХ</span></div></section>
+
+      <section class="coffee-wall" id="coffee-wall" data-block-id="BLK-WALL">
+        <header class="coffee-wall__head"><h2>Чотири пачки.<br>Чотири різні ранки.</h2><p>Ці товари є в каталозі Medelin. Оберіть смак, а помел уточніть у картці.</p></header>
+        <div class="wall-grid">
+          <a class="wall-product wall-product--hero" href="?page=pdp&sku=italiano"><span class="wall-product__tag">Для еспресо</span><img src="assets/source/italiano.jpg" alt="Espresso Italiano" loading="lazy"><div><h3>Espresso Italiano</h3><p>Темний шоколад, карамель, гранат</p><b>223 грн</b></div></a>
+          <a class="wall-product wall-product--yellow" href="?page=pdp&sku=nicaragua"><span class="wall-product__tag">Specialty</span><img src="assets/source/nicaragua.jpg" alt="Nicaragua SHG" loading="lazy"><div><h3>Nicaragua SHG</h3><p>Квіти, карамель, винний відтінок</p><b>301 грн</b></div></a>
+          <a class="wall-product wall-product--orange" href="?page=pdp&sku=ethiopia"><span class="wall-product__tag">Для фільтра</span><img src="assets/source/ethiopia.jpg" alt="Ethiopia Sidamo Gr1" loading="lazy"><div><h3>Ethiopia Sidamo Gr1</h3><p>Шоколад, спеції, фрукти</p><b>322 грн</b></div></a>
+          <a class="wall-product wall-product--dark wall-product--green" href="?page=pdp&sku=malabar"><span class="wall-product__tag">Для еспресо · низька кислотність</span><img src="assets/source/malabar.jpg" alt="India Monsooned Malabar" loading="lazy"><div><h3>India Monsooned Malabar</h3><p>Карамель і спеції</p><b>від 306 грн</b></div></a>
+        </div>
+      </section>
+
+      <section class="method-lab" id="method-lab" data-block-id="BLK-METHOD">
+        <div class="method-lab__question"><h2>Як ви готуєте каву?</h2><p>Від цього залежить смак у чашці і потрібний помел.</p><div class="method-switch" role="group" aria-label="Спосіб приготування"><button class="is-active" data-method="espresso" type="button">Еспресо</button><button data-method="filter" type="button">Фільтр</button><button data-method="turka" type="button">Турка</button></div></div>
+        <div class="method-lab__answer">
+          <div><h3 id="method-title">Щільна чашка з кремою</h3><p id="method-copy">Шукайте шоколад, карамель і горіх. Зелена лінійка добре працює в автоматі та рожковій кавоварці.</p><a id="method-link" href="?page=listing&line=green">Кава для еспресо <span>↗</span></a></div>
+          <figure><img id="method-image" src="assets/source/italiano.jpg" alt="Espresso Italiano" loading="lazy"></figure>
+        </div>
+      </section>
+
+      <section class="story" id="story" data-block-id="BLK-STORY">
+        <div class="story__number">1998</div>
+        <div class="story__photo"><img src="assets/source/hero-ritual-v2.png" alt="Кава, зерно і фільтр на темно-зеленому столі" loading="lazy"><span>УЖГОРОД</span></div>
+        <div class="story__copy"><h2>Смак змінювався разом із людьми, які поверталися.</h2><p>Medelin працює з кавою з 1998 року. Перший заклад в Ужгороді відкрився у 2001 році. Сьогодні каву обсмажують в Україні та допомагають підібрати помел під ваш спосіб приготування.</p><a href="https://medelin.com/ua/" target="_blank" rel="noopener">Історія Medelin <span>↗</span></a></div>
+      </section>
+
+      <section class="return-dock" data-block-id="BLK-RETURN"><p>Вже знаєте свою пачку?</p><h2>Знайдіть її за назвою.</h2><form data-search-form><label class="sr-only" for="return-q">Назва кави</label><input id="return-q" type="search" placeholder="Наприклад, Italiano"><button type="submit">Знайти <span>↗</span></button></form><a href="?page=listing">Або відкрити весь каталог</a></section>
+    </div>
+
+    <section class="listing-view" id="listing-view" hidden data-block-id="BLK-LISTING">
+      <header class="listing-hero"><h1>Уся кава Medelin</h1><p>Спочатку оберіть роль. Потім конкретну пачку.</p><div class="listing-tabs"><a href="?page=listing" class="is-active">Уся</a><a href="?page=listing&line=green">Еспресо</a><a href="?page=listing&line=specialty">Specialty</a><a href="?page=listing&line=filter">Фільтр</a></div></header>
+      <div class="listing-grid">
+        <a class="listing-item listing-item--green" href="?page=pdp&sku=italiano"><img src="assets/source/italiano.jpg" alt="Espresso Italiano"><div><span>Еспресо</span><h2>Espresso Italiano</h2><p>Шоколад, карамель, гранат</p><b>223 грн</b></div></a>
+        <a class="listing-item listing-item--yellow" href="?page=pdp&sku=nicaragua"><img src="assets/source/nicaragua.jpg" alt="Nicaragua SHG"><div><span>Specialty</span><h2>Nicaragua SHG</h2><p>Квіти, карамель, винний відтінок</p><b>301 грн</b></div></a>
+        <a class="listing-item listing-item--orange" href="?page=pdp&sku=ethiopia"><img src="assets/source/ethiopia.jpg" alt="Ethiopia Sidamo Gr1"><div><span>Фільтр</span><h2>Ethiopia Sidamo Gr1</h2><p>Шоколад, спеції, фрукти</p><b>322 грн</b></div></a>
+        <a class="listing-item listing-item--green" href="?page=pdp&sku=malabar"><img src="assets/source/malabar.jpg" alt="India Monsooned Malabar"><div><span>Еспресо · низька кислотність</span><h2>India Monsooned Malabar</h2><p>Карамель і спеції</p><b>від 306 грн</b></div></a>
+      </div>
+    </section>
+
+    <section class="pdp-view" id="pdp-view" hidden data-block-id="BLK-PDP">
+      <a class="pdp-back" href="?page=listing">Назад до каталогу</a>
+      <div class="pdp-layout">
+        <div class="pdp-pack pdp-pack--green"><span id="pdp-line">Еспресо</span><img id="pdp-image" src="assets/source/italiano.jpg" alt="Espresso Italiano"></div>
+        <div class="pdp-story"><h1 id="pdp-title">Espresso Italiano</h1><p id="pdp-taste">Темний шоколад, карамель, гранат.</p><div class="pdp-proof"><span>250 г</span><span>В наявності</span><span>Обсмаження в Україні</span></div></div>
+        <aside class="pdp-buy"><strong id="pdp-price">223 грн</strong><label>Помел</label><div class="pdp-options"><button class="is-active" type="button">Зерно</button><button type="button">Еспресо</button><button type="button">Фільтр</button></div><button class="pdp-cart" type="button" data-notice="У робочому магазині товар буде додано через штатний кошик Horoshop.">Додати до кошика</button><small>Помел підготують перед відправленням.</small></aside>
+      </div>
+      <section class="pdp-related" aria-labelledby="pdp-related-title">
+        <div class="pdp-related__head"><h2 id="pdp-related-title">Інші пачки цієї лінійки</h2><a href="?page=listing&line=green">Уся лінійка <span>↗</span></a></div>
+        <div class="pdp-related__grid">
+          <a href="?page=pdp&sku=italiano"><img src="assets/source/italiano.jpg" alt="Espresso Italiano"><span>Еспресо</span><strong>Espresso Italiano</strong><b>223 грн</b></a>
+          <a href="?page=pdp&sku=malabar"><img src="assets/source/malabar.jpg" alt="India Monsooned Malabar"><span>Еспресо</span><strong>India Monsooned Malabar</strong><b>від 306 грн</b></a>
+          <a href="?page=pdp&sku=nicaragua"><img src="assets/source/nicaragua.jpg" alt="Nicaragua SHG"><span>Specialty</span><strong>Nicaragua SHG</strong><b>301 грн</b></a>
+          <a href="?page=pdp&sku=ethiopia"><img src="assets/source/ethiopia.jpg" alt="Ethiopia Sidamo Gr1"><span>Фільтр</span><strong>Ethiopia Sidamo Gr1</strong><b>322 грн</b></a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__lead">
+      <a class="wordmark wordmark--footer" href="./"><span class="wordmark__m">m</span><span>medelin<small>coffee roasters.</small></span></a>
+      <h2>Кава, до якої<br>хочеться повернутися.</h2>
+      <a class="footer__catalog" href="?page=listing">Відкрити всю каву <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer__routes">
+      <nav aria-label="Кавові лінійки">
+        <strong>Кава</strong>
+        <a href="?page=listing">Уся кава</a>
+        <a href="?page=listing&line=green">Щоденний еспресо</a>
+        <a href="?page=listing&line=specialty">Specialty 85–87</a>
+        <a href="?page=listing&line=filter">Фільтр specialty</a>
+      </nav>
+      <nav aria-label="Допомога з вибором">
+        <strong>Підказки</strong>
+        <a href="./#method-lab">За способом приготування</a>
+        <a href="./#story">Історія Medelin</a>
+        <a href="https://medelin.com/ua/" target="_blank" rel="noopener">Чинний магазин Medelin</a>
+      </nav>
+      <div class="footer__contact">
+        <strong>Зв’язок</strong>
+        <span>Потрібна порада щодо смаку чи помелу?</span>
+        <a href="tel:+380957772355">095 777 23 55</a>
+        <small>Ужгород · доставка по Україні</small>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>Medelin Coffee Roasters · з кавою з 1998 року</span>
+      <a href="./">На початок <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+  <nav class="mobile-dock" aria-label="Мобільна навігація"><a href="./">Головна</a><a href="?page=listing" class="mobile-dock__catalog">Каталог</a><a href="./#method-lab">Підібрати</a></nav>
+
+  <script src="real-v2.js?v=1" defer></script>
+</body>
+</html>
