@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Каталог - JOJO">
   <meta name="twitter:description" content="Каталог товарів у приватному концепті інтернет-магазину JOJO.">
   <meta name="twitter:image" content="https://preview.uplify.agency/jojo/og.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260826-8"><script src="assets/site.js?v=20260826-5" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=20260826-9"><script src="assets/site.js?v=20260826-6" defer></script>
 </head>
 <body data-page="catalog">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -27,11 +27,20 @@
   <div class="service-bar"><span>4 магазини в Києві</span><span>Відправка щодня</span><span>Обмін і повернення</span></div>
   <header class="site-header" data-block-id="BLK-GLOBAL-NAV">
     <button class="icon-button menu-toggle" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button>
-    <nav class="desktop-nav" aria-label="Основна навігація"><a href="catalog.html?filter=new">Новинки</a><a href="catalog.html?filter=headwear">Головні убори</a><a href="catalog.html?filter=bags">Сумки</a></nav>
+    <nav class="desktop-nav" aria-label="Основна навігація"><button class="mega-menu-toggle" type="button" aria-controls="catalog-mega-menu" aria-expanded="false">Каталог<span class="nav-chevron" aria-hidden="true"></span></button><a href="catalog.html?filter=new">Новинки</a><a href="catalog.html?filter=headwear">Головні убори</a><a href="catalog.html?filter=bags">Сумки</a></nav>
     <a class="wordmark" href="index.html" aria-label="JOJO, головна">jojo</a>
     <nav class="header-actions" aria-label="Дії магазину"><a class="text-action" href="stores.html">Магазини</a><button class="icon-button search-toggle" type="button" aria-label="Відкрити пошук" aria-controls="search-panel" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></button><a class="cart-link" href="cart.html"><span>Кошик</span><b class="cart-count">1</b></a></nav>
   </header>
-  <div class="mobile-menu" id="mobile-menu" hidden><nav><a href="catalog.html?filter=new"><span>01</span>Новинки</a><a href="catalog.html?filter=headwear"><span>02</span>Головні убори</a><a href="catalog.html?filter=bags"><span>03</span>Сумки</a><a href="catalog.html?filter=accessories"><span>04</span>Аксесуари</a><a href="stores.html"><span>05</span>Магазини</a></nav></div>
+  <section class="catalog-mega-menu" id="catalog-mega-menu" aria-labelledby="catalog-mega-title" hidden>
+    <div class="mega-menu-head"><h2 id="catalog-mega-title">Що ви шукаєте сьогодні?</h2><p>Почніть з настрою, а далі звузьте вибір у каталозі</p></div>
+    <nav class="intent-grid" aria-label="Вибір за потребою">
+      <a class="intent-card intent-new" href="catalog.html?filter=new"><h3>Освіжити образ на осінь</h3><p>Нові фактури й теплі акценти для щоденних образів</p><span>Дивитися новинки</span></a>
+      <a class="intent-card intent-headwear" href="catalog.html?filter=headwear"><h3>Зробити образ виразнішим</h3><p>Фетрові форми, які задають характер</p><span>Обрати головний убір</span></a>
+      <a class="intent-card intent-evening" href="catalog.html?filter=bags"><h3>Вразити всіх увечері</h3><p>Виразна сумка, яка тримає весь образ</p><span>Дивитися сумки</span></a>
+      <a class="intent-card intent-everyday" href="catalog.html?filter=accessories"><h3>Знайти річ на щодень</h3><p>М'які аксесуари, які легко вписати у звичний гардероб</p><span>Обрати аксесуар</span></a>
+    </nav>
+  </section>
+  <div class="mobile-menu" id="mobile-menu" hidden><nav><a href="catalog.html?filter=new"><span>01</span>Новинки</a><a href="catalog.html?filter=headwear"><span>02</span>Головні убори</a><a href="catalog.html?filter=bags"><span>03</span>Сумки</a><a href="catalog.html?filter=accessories"><span>04</span>Аксесуари</a><a href="stores.html"><span>05</span>Магазини</a></nav><div class="mobile-intent"><h2>Що ви шукаєте?</h2><a href="catalog.html?filter=new">Освіжити образ на осінь</a><a href="catalog.html?filter=headwear">Зробити образ виразнішим</a><a href="catalog.html?filter=bags">Вразити всіх увечері</a><a href="catalog.html?filter=accessories">Знайти річ на щодень</a></div></div>
   <div class="search-panel" id="search-panel" hidden><form action="catalog.html" role="search"><label for="search-input">Що шукаєте?</label><div><input id="search-input" name="q" type="search" placeholder="Берет, сумка, аксесуари"><button type="submit">Знайти</button></div></form></div>
 
   <main id="main">
