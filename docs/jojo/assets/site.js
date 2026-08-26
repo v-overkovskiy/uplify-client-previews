@@ -22,6 +22,7 @@
     if (event.key !== 'Escape') return;
     if (mobileMenu && !mobileMenu.hidden) setPanel(menuButton, mobileMenu, 'menu-open', false);
     if (searchPanel && !searchPanel.hidden) setPanel(searchButton, searchPanel, 'search-open', false);
+    if (filterRail?.classList.contains('is-open')) setFilterDrawer(false);
   });
 
   document.querySelectorAll('.filter-group > button').forEach((button) => {
@@ -35,19 +36,62 @@
   });
 
   const filterRail = document.querySelector('#filter-rail');
-  document.querySelector('.mobile-filter-button')?.addEventListener('click', () => {
-    filterRail?.classList.add('is-open');
-    filterRail?.querySelector('input,button')?.focus();
-  });
-  document.querySelector('.filter-close')?.addEventListener('click', () => filterRail?.classList.remove('is-open'));
+  const filterButton = document.querySelector('.mobile-filter-button');
+  const filterClose = document.querySelector('.filter-close');
+  const setFilterDrawer = (open) => {
+    if (!filterRail || !filterButton) return;
+    filterRail.classList.toggle('is-open', open);
+    filterButton.setAttribute('aria-expanded', String(open));
+    body.classList.toggle('filter-open', open);
+    if (open) filterClose?.focus();
+    else filterButton.focus();
+  };
+  filterButton?.addEventListener('click', () => setFilterDrawer(true));
+  filterClose?.addEventListener('click', () => setFilterDrawer(false));
 
   const products = [...document.querySelectorAll('#catalog-grid .product-card')];
   const categoryInputs = [...document.querySelectorAll('input[name="category"]')];
+  const colorInputs = [...document.querySelectorAll('input[name="color"]')];
+  const priceInputs = [...document.querySelectorAll('input[name="price"]')];
+  const sortSelect = document.querySelector('select[aria-label="Сортування"]');
+  const listingBanner = document.querySelector('.listing-banner');
+  products.forEach((product, index) => { product.dataset.originalOrder = String(index); });
+
+  const matchesPrice = (price, range) => {
+    if (!price) return false;
+    if (range === 'under1200') return price < 1200;
+    if (range === '1200-1600') return price >= 1200 && price <= 1600;
+    if (range === 'over1600') return price > 1600;
+    return true;
+  };
+
+  const applySort = () => {
+    const mode = sortSelect?.value || 'featured';
+    const sorted = [...products].sort((a, b) => {
+      const originalDelta = Number(a.dataset.originalOrder) - Number(b.dataset.originalOrder);
+      if (mode === 'featured' || mode === 'newest') return originalDelta;
+      const aPrice = Number(a.dataset.price) || Number.POSITIVE_INFINITY;
+      const bPrice = Number(b.dataset.price) || Number.POSITIVE_INFINITY;
+      if (mode === 'price-asc') return aPrice - bPrice || originalDelta;
+      const safeA = Number.isFinite(aPrice) ? aPrice : Number.NEGATIVE_INFINITY;
+      const safeB = Number.isFinite(bPrice) ? bPrice : Number.NEGATIVE_INFINITY;
+      return safeB - safeA || originalDelta;
+    });
+    sorted.forEach((product, index) => { product.style.order = String(index < 4 ? index + 1 : index + 2); });
+    if (listingBanner) listingBanner.style.order = '5';
+  };
+
   const applyFilters = () => {
     const active = document.querySelector('input[name="category"]:checked')?.value || 'all';
+    const activeColors = colorInputs.filter((input) => input.checked).map((input) => input.value);
+    const activePrices = priceInputs.filter((input) => input.checked).map((input) => input.value);
     let count = 0;
     products.forEach((product) => {
-      const show = active === 'all' || product.dataset.category === active;
+      const price = Number(product.dataset.price);
+      const categoryMatch = active === 'all' || product.dataset.category === active;
+      const colorMatch = !activeColors.length || activeColors.includes(product.dataset.color);
+      const priceMatch = !activePrices.length || activePrices.some((range) => matchesPrice(price, range));
+      const show = categoryMatch && colorMatch && priceMatch;
       product.hidden = !show;
       if (show) count += 1;
     });
@@ -56,8 +100,16 @@
     const result = document.querySelector('#result-count');
     if (toolbar) toolbar.textContent = label;
     if (result) result.textContent = label;
+    applySort();
   };
-  categoryInputs.forEach((input) => input.addEventListener('change', applyFilters));
+  [...categoryInputs, ...colorInputs, ...priceInputs].forEach((input) => input.addEventListener('change', applyFilters));
+  sortSelect?.addEventListener('change', applySort);
+  document.querySelector('.filter-reset')?.addEventListener('click', () => {
+    const allCategories = document.querySelector('input[name="category"][value="all"]');
+    if (allCategories) allCategories.checked = true;
+    [...colorInputs, ...priceInputs].forEach((input) => { input.checked = false; });
+    applyFilters();
+  });
 
   if (body.dataset.page === 'catalog') {
     const params = new URLSearchParams(location.search);
