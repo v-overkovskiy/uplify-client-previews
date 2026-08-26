@@ -147,7 +147,7 @@ button { border: 0; background: transparent; }
 .instagram-grid img { aspect-ratio: 1; object-fit: cover; }
 
 .site-footer { padding: 0 var(--gutter) 24px; background: var(--ink); color: #fff; }
-.footer-wordmark { overflow: hidden; font-weight: 800; font-size: clamp(180px, 31vw, 520px); line-height: .72; letter-spacing: -.12em; transform: translateX(-.04em); }
+.footer-wordmark { padding: clamp(18px, 2.4vw, 36px) 0 10px; font-weight: 800; font-size: clamp(120px, 24vw, 380px); line-height: .88; letter-spacing: -.04em; }
 .footer-grid { padding: 58px 0; display: grid; grid-template-columns: repeat(3, 1fr) 1.5fr; gap: 40px; border-top: 1px solid rgba(255,255,255,.24); }
 .footer-grid > div:not(.footer-note) { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .footer-label { margin: 0 0 13px; color: rgba(255,255,255,.5); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
@@ -332,7 +332,7 @@ button { border: 0; background: transparent; }
   .store-copy h2 { font-size: 22vw; }
   .store-copy li { font-size: 12px; }
   .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-  .footer-wordmark { font-size: 45vw; padding-top: 45px; }
+  .footer-wordmark { padding: 38px 0 14px; font-size: 32vw; line-height: .9; }
   .footer-grid { grid-template-columns: 1fr 1fr; padding: 44px 0; gap: 48px 20px; }
   .footer-note { grid-column: span 2; }
 
