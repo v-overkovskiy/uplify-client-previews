@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Каталог - JOJO">
   <meta name="twitter:description" content="Каталог товарів у приватному концепті інтернет-магазину JOJO.">
   <meta name="twitter:image" content="https://preview.uplify.agency/jojo/og.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260826-2"><script src="assets/site.js?v=20260826-2" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=20260826-3"><script src="assets/site.js?v=20260826-3" defer></script>
 </head>
 <body data-page="catalog">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -41,13 +41,14 @@
     </section>
     <section class="catalog-layout" data-block-id="BLK-LISTING-GRID">
       <aside class="filter-rail" id="filter-rail" aria-label="Фільтри каталогу">
-        <button class="icon-button filter-close" type="button" aria-label="Закрити фільтри" hidden>×</button>
+        <button class="icon-button filter-close" type="button" aria-label="Закрити фільтри">×</button>
         <div class="filter-group"><button type="button" aria-expanded="true">Категорія <span>−</span></button><div class="filter-options"><label><input type="radio" name="category" value="all" checked> Усе</label><label><input type="radio" name="category" value="headwear"> Головні убори</label><label><input type="radio" name="category" value="bags"> Сумки</label><label><input type="radio" name="category" value="accessories"> Аксесуари</label></div></div>
         <div class="filter-group"><button type="button" aria-expanded="true">Колір <span>−</span></button><div class="filter-options"><label><input type="checkbox" name="color" value="black"> Чорний</label><label><input type="checkbox" name="color" value="grey"> Сірий</label><label><input type="checkbox" name="color" value="brown"> Коричневий</label><label><input type="checkbox" name="color" value="beige"> Бежевий</label></div></div>
         <div class="filter-group"><button type="button" aria-expanded="false">Ціна <span>+</span></button><div class="filter-options" hidden><label><input type="checkbox" name="price" value="under1200"> До 1 200 грн</label><label><input type="checkbox" name="price" value="1200-1600"> 1 200-1 600 грн</label><label><input type="checkbox" name="price" value="over1600"> Від 1 600 грн</label></div></div>
+        <button class="filter-reset" type="button">Скинути фільтри</button>
       </aside>
       <div class="catalog-main">
-        <div class="catalog-toolbar"><button class="mobile-filter-button" type="button" aria-controls="filter-rail">Фільтри</button><span id="toolbar-count">7 товарів</span><select aria-label="Сортування"><option>Спочатку рекомендовані</option><option>Спочатку нові</option><option>Від дешевих</option><option>Від дорогих</option></select></div>
+        <div class="catalog-toolbar"><button class="mobile-filter-button" type="button" aria-controls="filter-rail" aria-expanded="false">Фільтри</button><span id="toolbar-count">7 товарів</span><select aria-label="Сортування"><option value="featured">Спочатку рекомендовані</option><option value="newest">Спочатку нові</option><option value="price-asc">Від дешевих</option><option value="price-desc">Від дорогих</option></select></div>
         <div class="product-grid" id="catalog-grid">
           <article class="product-card" data-category="headwear" data-color="grey" data-price="1190"><a class="product-image" href="product.html"><img src="assets/images/b86436696f903e6f.jpg" alt="Сірий вовняний берет"><span class="product-badge">Вовна 60%</span></a><div class="product-meta"><div><a href="product.html">Сірий вовняний берет</a><small>Розмір 56-57</small></div><strong>1 190 грн</strong></div></article>
           <article class="product-card" data-category="bags" data-color="brown" data-price="1590"><a class="product-image" href="catalog.html?filter=bags"><img src="assets/images/ba15f177d4b4f2d8.jpg" alt="Коричнева сумка з екошкіри"><span class="product-badge">4 кольори</span></a><div class="product-meta"><div><a href="catalog.html?filter=bags">Сумка з екошкіри</a><small>27,5 × 15 × 10 см</small></div><strong>1 590 грн</strong></div></article>
