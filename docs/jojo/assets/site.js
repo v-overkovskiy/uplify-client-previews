@@ -4,6 +4,8 @@
   const mobileMenu = document.querySelector('#mobile-menu');
   const searchButton = document.querySelector('.search-toggle');
   const searchPanel = document.querySelector('#search-panel');
+  const catalogMenuButton = document.querySelector('.mega-menu-toggle');
+  const catalogMegaMenu = document.querySelector('#catalog-mega-menu');
 
   const setPanel = (button, panel, className, open) => {
     if (!button || !panel) return;
@@ -18,10 +20,20 @@
 
   menuButton?.addEventListener('click', () => setPanel(menuButton, mobileMenu, 'menu-open', mobileMenu.hidden));
   searchButton?.addEventListener('click', () => setPanel(searchButton, searchPanel, 'search-open', searchPanel.hidden));
+  catalogMenuButton?.addEventListener('click', () => {
+    if (!catalogMegaMenu) return;
+    setPanel(catalogMenuButton, catalogMegaMenu, 'catalog-menu-open', catalogMegaMenu.hidden);
+  });
+  document.addEventListener('click', (event) => {
+    if (!catalogMegaMenu || catalogMegaMenu.hidden) return;
+    if (catalogMenuButton?.contains(event.target) || catalogMegaMenu.contains(event.target)) return;
+    setPanel(catalogMenuButton, catalogMegaMenu, 'catalog-menu-open', false);
+  });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (mobileMenu && !mobileMenu.hidden) setPanel(menuButton, mobileMenu, 'menu-open', false);
     if (searchPanel && !searchPanel.hidden) setPanel(searchButton, searchPanel, 'search-open', false);
+    if (catalogMegaMenu && !catalogMegaMenu.hidden) setPanel(catalogMenuButton, catalogMegaMenu, 'catalog-menu-open', false);
     if (filterRail?.classList.contains('is-open')) setFilterDrawer(false);
   });
 
