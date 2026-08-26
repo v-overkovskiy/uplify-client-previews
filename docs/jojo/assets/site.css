@@ -253,7 +253,9 @@ button { border: 0; background: transparent; }
   .desktop-nav, .text-action { display: none; }
   .menu-toggle { display: inline-grid; }
   .hero { grid-template-columns: 1fr 1fr; }
+  .hero .button-row { align-items: flex-start; flex-direction: column; gap: 14px; }
   .hero h1 { font-size: 7.5vw; }
+  .section-heading-row > .text-link { display: none; }
   .product-grid-four { grid-template-columns: repeat(2, 1fr); row-gap: 38px; }
   .edit-grid { grid-template-columns: 1fr 1fr; }
   .edit-card:last-child { grid-column: span 2; min-height: 420px; }
