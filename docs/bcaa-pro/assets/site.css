@@ -212,8 +212,10 @@ img {
 }
 
 .brand img {
-  width: 108px;
-  height: auto;
+  width: auto;
+  height: 44px;
+  max-width: calc(100% - 16px);
+  object-fit: contain;
 }
 
 .header__nav {
@@ -1816,7 +1818,8 @@ img {
   }
 
   .brand img {
-    width: 92px;
+    width: auto;
+    height: 38px;
   }
 
   .menu-trigger {
