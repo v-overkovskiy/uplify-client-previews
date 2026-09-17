@@ -484,7 +484,7 @@ img {
 
 .hero {
   position: relative;
-  min-height: max(700px, calc(100svh - 96px));
+  min-height: min(760px, calc(100svh - 96px));
   overflow: hidden;
   color: var(--white);
   background: var(--graphite);
@@ -518,13 +518,13 @@ img {
 .hero__inner {
   position: relative;
   z-index: 1;
-  min-height: max(700px, calc(100svh - 96px));
+  min-height: min(760px, calc(100svh - 96px));
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(480px, 1.05fr);
   align-items: center;
   gap: clamp(28px, 5vw, 90px);
-  padding-top: 40px;
-  padding-bottom: 148px;
+  padding-top: 52px;
+  padding-bottom: 52px;
 }
 
 .hero__copy {
@@ -682,24 +682,26 @@ img {
   line-height: 1;
 }
 
-.hero-routes {
-  position: absolute;
-  z-index: 4;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-top: 1px solid var(--line-dark);
-  background: rgba(10, 11, 11, 0.92);
-}
-
-.hero-routes__grid {
+.goal-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  background: var(--graphite);
+  border: 1px solid var(--line-light);
+  border-radius: 14px;
+}
+
+.goal-section {
+  background: var(--paper);
+}
+
+.goal-section__head {
+  margin-bottom: clamp(28px, 4vw, 48px);
 }
 
 .goal-cell {
   position: relative;
-  min-height: 118px;
+  min-height: 150px;
   display: grid;
   grid-template-columns: auto 1fr;
   align-content: center;
@@ -737,7 +739,7 @@ img {
 .goal-cell strong {
   display: block;
   font-family: var(--display);
-  font-size: clamp(25px, 2vw, 34px);
+  font-size: clamp(27px, 2.25vw, 38px);
   line-height: 0.95;
   text-transform: uppercase;
 }
@@ -750,7 +752,7 @@ img {
   display: block;
   margin-top: 8px;
   color: #aeb4ab;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
   text-wrap: pretty;
 }
@@ -827,6 +829,22 @@ img {
   min-height: 470px;
   border-top: 1px solid var(--line-light);
   border-bottom: 1px solid var(--line-light);
+}
+
+.merch-labels {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(380px, 0.88fr);
+  gap: 0;
+  margin-bottom: 12px;
+  color: #4e554c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.merch-labels span:last-child {
+  padding-left: 22px;
 }
 
 .hit-feature {
@@ -1229,6 +1247,163 @@ img {
 
 .catalog-map a:hover span {
   color: var(--ink);
+}
+
+.faq-list {
+  border-top: 1px solid var(--line-light);
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.faq-list summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 94px;
+  padding: 20px 62px 20px 0;
+  list-style: none;
+  font-family: var(--display);
+  font-size: clamp(27px, 2.6vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::before,
+.faq-list summary::after {
+  position: absolute;
+  right: 8px;
+  width: 22px;
+  height: 2px;
+  content: "";
+  background: currentColor;
+  transition: transform 220ms var(--ease);
+}
+
+.faq-list summary::after {
+  transform: rotate(90deg);
+}
+
+.faq-list details[open] summary::after {
+  transform: rotate(0deg);
+}
+
+.faq-list details[open] summary {
+  color: var(--lime-dark);
+}
+
+.faq-list p {
+  max-width: 72ch;
+  margin: -4px 0 0;
+  padding: 0 62px 28px 0;
+  color: #4b514a;
+  font-size: 16px;
+}
+
+.faq-list p a {
+  font-weight: 700;
+}
+
+.reviews-about {
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.reviews-about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  gap: 1px;
+  padding-block: 0;
+  background: var(--graphite);
+  border: 1px solid var(--line-dark);
+}
+
+.reviews-panel,
+.about-panel {
+  min-width: 0;
+  padding: clamp(34px, 5vw, 74px);
+  background: var(--graphite);
+}
+
+.reviews-panel .section-title,
+.about-panel .section-title {
+  font-size: clamp(52px, 5.2vw, 80px);
+}
+
+.review-signal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 24px;
+  margin: 44px 0 30px;
+  padding: 22px 0;
+  color: var(--white);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  text-decoration: none;
+}
+
+.review-signal > strong {
+  color: var(--lime);
+  font-family: var(--display);
+  font-size: clamp(74px, 7vw, 116px);
+  line-height: 0.8;
+}
+
+.review-signal > span {
+  font-weight: 700;
+}
+
+.review-signal small {
+  display: block;
+  margin-top: 7px;
+  color: #aeb4ab;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.about-panel {
+  color: var(--ink);
+  background: var(--lime);
+}
+
+.about-panel > p {
+  max-width: 64ch;
+  margin: 28px 0 42px;
+  color: #263000;
+  font-size: clamp(17px, 1.5vw, 21px);
+}
+
+.about-links {
+  border-top: 1px solid rgba(10, 11, 11, 0.3);
+}
+
+.about-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(10, 11, 11, 0.3);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.about-links a:hover {
+  padding-left: 8px;
+}
+
+.about-links span {
+  font-family: var(--display);
+  font-size: 22px;
 }
 
 .closing {
@@ -1841,11 +2016,7 @@ img {
     min-height: 440px;
   }
 
-  .hero-routes {
-    position: relative;
-  }
-
-  .hero-routes__grid {
+  .goal-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1870,6 +2041,10 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .merch-labels {
+    display: none;
+  }
+
   .hit-feature {
     border-right: 0;
     border-bottom: 1px solid var(--line-light);
@@ -1883,6 +2058,10 @@ img {
 
   .catalog-map {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews-about__grid {
+    grid-template-columns: 1fr;
   }
 
   .catalog-layout {
@@ -2017,7 +2196,7 @@ img {
     font-size: 23px;
   }
 
-  .hero-routes__grid {
+  .goal-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2025,6 +2204,10 @@ img {
     min-height: 105px;
     border-right: 0;
     border-bottom: 1px solid var(--line-dark);
+  }
+
+  .goal-section .section-head {
+    margin-bottom: 28px;
   }
 
   .goal-cell:nth-child(-n + 2) {
@@ -2131,6 +2314,26 @@ img {
 
   .catalog-map a {
     min-height: 78px;
+  }
+
+  .faq-list summary {
+    min-height: 84px;
+    padding-right: 48px;
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .faq-list p {
+    padding-right: 0;
+  }
+
+  .reviews-panel,
+  .about-panel {
+    padding: 48px 24px;
+  }
+
+  .reviews-panel .button {
+    width: 100%;
   }
 
   .closing__inner {
