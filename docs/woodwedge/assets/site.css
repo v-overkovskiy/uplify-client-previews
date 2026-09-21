@@ -452,7 +452,8 @@ h2 { font-size: clamp(2.5rem, 4.4vw, 5rem); line-height: 1; }
 }
 
 @media (max-width: 620px) {
-  :root { --gutter: 18px; }
+  :root { --gutter: 18px; --mobile-section-space: 54px; }
+  .eyebrow { margin-bottom: 12px; }
   .topline { min-height: 31px; }
   .topline__inner { font-size: .72rem; }
   .topline__inner > span:first-child { max-width: 24ch; line-height: 1.25; }
@@ -471,65 +472,102 @@ h2 { font-size: clamp(2.5rem, 4.4vw, 5rem); line-height: 1; }
   .mega-menu { grid-template-columns: 1fr; padding-block: 28px 44px; }
   .mega-menu__intro, .mega-menu__column, .menu-feature { grid-column: auto; }
   .mega-menu__intro h2 { font-size: 2.75rem; }
-  .hero__copy { min-height: 590px; padding-top: 56px; padding-bottom: 44px; }
+  .hero__copy { min-height: 510px; padding-top: 38px; padding-bottom: 34px; }
   .hero h1 { font-size: clamp(2.8rem, 13.4vw, 4.2rem); }
-  .hero__lead { font-size: 1.05rem; }
-  .hero__actions { align-items: start; flex-direction: column; gap: 22px; }
-  .hero__facts { margin-top: 44px; }
-  .hero__facts span { font-size: .72rem; }
-  .hero__product { min-height: 580px; }
+  .hero h1 { margin-bottom: 22px; }
+  .hero__lead { margin-bottom: 24px; font-size: 1.05rem; line-height: 1.55; }
+  .hero__actions { align-items: start; flex-direction: column; gap: 16px; }
+  .hero__facts { margin-top: 28px; }
+  .hero__facts span { min-height: 58px; padding-top: 10px; font-size: .72rem; }
+  .hero__product { min-height: 500px; }
   .hero__product-image { inset: 0; }
   .hero__product-image img { width: 100%; height: 100%; }
   .hero__vertical { display: none; }
   .hero__product-meta { left: 18px; right: 18px; bottom: 18px; }
   .hero__counter { left: 18px; }
-  .space-section { min-height: 720px; padding-top: 58px; }
+  .space-section { min-height: 0; padding: 38px 0 26px; }
+  .space-section__head { gap: 12px; }
+  .space-section__head .eyebrow { margin-bottom: 0; }
   .space-section__head h2 { font-size: 2.75rem; }
-  .space-carousel { height: 500px; }
-  .space-card, .space-card[data-position="0"] { width: calc(100vw - 72px); height: 430px; }
+  .space-section__head > p:last-child { margin: 0; line-height: 1.5; }
+  .space-carousel { height: 430px; margin-top: 16px; }
+  .space-card, .space-card[data-position="0"] { width: calc(100vw - 72px); height: 370px; }
+  .space-card[data-position="0"] { --y: -20px; }
+  .space-card > div { inset: auto 22px 22px; }
+  .space-card > div span { margin-top: 14px; }
   .space-card[data-position="-1"], .space-card[data-position="1"], .space-card[data-position="-2"], .space-card[data-position="2"] { --opacity: 0; pointer-events: none; }
   .carousel-arrow { top: auto; bottom: 5px; }
   .carousel-arrow--prev { left: var(--gutter); }
   .carousel-arrow--next { right: var(--gutter); }
   .space-carousel__dots { bottom: 26px; }
-  .collection-section { padding-block: 74px; }
-  .section-head { margin-bottom: 38px; }
+  .collection-section { padding-block: var(--mobile-section-space); }
+  .section-head { gap: 22px; margin-bottom: 28px; }
+  .section-head__aside { padding-bottom: 0; }
+  .section-head__aside p { margin-bottom: 18px; line-height: 1.55; }
   .section-head h2 { font-size: 2.65rem; }
   .product-grid--featured { display: flex; overflow-x: auto; gap: 14px; margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); scroll-snap-type: x mandatory; }
   .product-grid--featured .product-card { display: block !important; flex: 0 0 86%; scroll-snap-align: start; }
-  .product-image, .product-card:not(.product-card--large) .product-image { height: 440px; }
+  .product-image, .product-card:not(.product-card--large) .product-image { height: 380px; }
   .product-info { flex-direction: column; gap: 12px; }
-  .material-story__image { min-height: 430px; }
-  .detail-gallery__visual { min-height: 500px; }
-  .material-story__copy { padding: 48px var(--gutter); }
-  .detail-gallery__copy { padding: 58px var(--gutter); }
+  .material-story__image { min-height: 360px; }
+  .detail-gallery__visual { min-height: 400px; }
+  .material-story__copy { padding: 40px var(--gutter); }
+  .detail-gallery__copy { padding: 44px var(--gutter); }
   .material-story__copy h2, .detail-gallery__copy h2 { font-size: 2.72rem; }
-  .material-story__numbers { margin-top: 32px; }
-  .material-story__numbers span { min-height: 104px; padding: 16px 10px; font-size: .82rem; }
+  .material-story__copy h2, .detail-gallery__copy h2 { margin-bottom: 18px; }
+  .material-story__copy > p:not(.eyebrow), .detail-gallery__copy > p:not(.eyebrow) { margin-bottom: 22px; line-height: 1.55; }
+  .material-story__numbers { margin-top: 24px; }
+  .material-story__numbers span { min-height: 88px; padding: 13px 10px; font-size: .82rem; }
+  .material-story__numbers b { margin-bottom: 6px; }
   .material-story__numbers span + span { padding-left: 10px; }
-  .workshop-grid { gap: 34px; }
+  .workshop-section { padding-block: var(--mobile-section-space); }
+  .workshop-grid { gap: 24px; }
   .workshop-heading h2 { font-size: 2.75rem; }
-  .workshop-visual { min-height: 310px; }
+  .workshop-copy { padding-bottom: 0; }
+  .workshop-copy p { margin-bottom: 20px; line-height: 1.55; }
+  .workshop-visual { min-height: 270px; }
   .workshop-mark { width: 96px; height: 96px; right: 18px; bottom: 18px; }
-  .process-list { grid-template-columns: 1fr; }
-  .process-list li { min-height: 160px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .process-list li:last-child { border-bottom: 0; }
-  .b2b-grid { gap: 34px; }
+  .process-list { grid-template-columns: repeat(2, 1fr); }
+  .process-list li { min-height: 150px; padding: 20px 16px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .process-list li:nth-child(2n) { border-right: 0; }
+  .process-list li:nth-last-child(-n+2) { border-bottom: 0; }
+  .process-list span { margin-bottom: 18px; }
+  .process-list p { line-height: 1.45; }
+  .detail-gallery__tabs { margin-bottom: 24px; }
+  .detail-gallery__tabs button { min-height: 52px; }
+  .b2b-section { padding-block: 48px; }
+  .b2b-grid { gap: 24px; }
   .b2b-grid h2 { font-size: 2.75rem; }
-  .b2b-services { grid-template-columns: 1fr; }
-  .b2b-services a { min-height: 112px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
-  .b2b-services a:last-child { border-bottom: 0; }
+  .b2b-copy p { margin-bottom: 22px; line-height: 1.55; }
+  .b2b-services { grid-template-columns: repeat(2, 1fr); }
+  .b2b-services a { min-height: 108px; padding: 16px; border-right: 1px solid rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.35); }
+  .b2b-services a:nth-child(2n) { border-right: 0; }
+  .b2b-services a:nth-last-child(-n+2) { border-bottom: 0; }
+  .footer { padding-top: 52px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { gap: 30px 24px; padding-bottom: 42px; }
   .footer-brand, .footer-contact { grid-column: 1 / -1; }
   .footer-bottom { grid-template-columns: 1fr auto; row-gap: 8px; }
   .footer-bottom span:nth-child(2) { display: none; }
   .catalog-grid { grid-template-columns: 1fr; }
-  .catalog-grid .product-image { height: 460px; }
+  .page-hero { padding: 46px 0 54px; }
+  .catalog-layout { padding-block: 44px 70px; }
+  .catalog-grid .product-image { height: 400px; }
   .filter-panel { grid-template-columns: 1fr; }
-  .pdp-gallery { min-height: 500px; }
+  .pdp { gap: 40px; padding: 30px 0 70px; }
+  .pdp-gallery { min-height: 420px; }
+  .cooperation-intro { gap: 30px; padding-block: 55px; }
+  .section { padding-block: 60px; }
   .formats { grid-template-columns: 1fr; }
-  .format { border-right: 0; border-bottom: 1px solid var(--line); }
+  .format { min-height: 200px; padding: 24px 22px; border-right: 0; border-bottom: 1px solid var(--line); }
   .format:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 370px) {
+  .process-list, .b2b-services { grid-template-columns: 1fr; }
+  .process-list li, .b2b-services a { border-right: 0; }
+  .process-list li:nth-last-child(-n+2), .b2b-services a:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .process-list li:last-child, .b2b-services a:last-child { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
