@@ -22,19 +22,27 @@
   <meta name="twitter:description" content="Обладнання для дилерів і корпоративних покупців. Каталог за системами та цінова категорія після входу.">
   <meta name="twitter:image" content="https://preview.uplify.agency/invera/assets/media/og-invera.png">
   <meta name="twitter:image:alt" content="INVERA HOLDING — кліматичне обладнання">
-  <link rel="stylesheet" href="styles.css?v=20260923-2">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260923-3">
+  <script src="app.js?v=20260923-3" defer></script>
 </head>
 <body data-page="b2b">
   <a class="skip-link" href="#main">До основного вмісту</a>
   <header class="site-header site-header--compact" data-header>
     <div class="header-main shell">
       <a class="brand" href="index.html" aria-label="INVERA HOLDING, головна"><img src="assets/media/invera-logo.png" alt="INVERA HOLDING" width="130" height="57"></a>
-      <a class="catalog-trigger" href="catalog.html"><span class="catalog-trigger__icon" aria-hidden="true"><i></i><i></i><i></i></span>Каталог</a>
+      <a class="catalog-trigger" href="catalog.html" data-menu-open aria-expanded="false" aria-controls="mega-menu" aria-haspopup="true"><span class="catalog-trigger__icon" aria-hidden="true"><i></i><i></i><i></i></span>Каталог</a>
       <a class="header-business" href="b2b.html" aria-label="Для бізнесу" aria-current="page"><span class="header-business__full">Для бізнесу</span><span class="header-business__short" aria-hidden="true">B2B</span></a>
       <nav class="primary-nav" aria-label="Основна навігація"><a href="index.html#goal">Підібрати рішення</a><a href="index.html#products">Новинки та хіти</a><a href="b2b.html" aria-current="page">Для бізнесу</a><a href="index.html#about">Про INVERA</a></nav>
-      <div class="header-actions"><a class="icon-button" href="catalog.html?q=" aria-label="Пошук"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg></a><button class="icon-button" type="button" data-prototype-action="Вхід для корпоративних клієнтів у цьому концепті не підключений." aria-label="Особистий кабінет"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 21c.8-4.2 3.3-6.4 7.5-6.4s6.7 2.2 7.5 6.4"></path></svg></button></div>
+      <div class="header-actions"><a class="icon-button" href="catalog.html#catalog-search" aria-label="Пошук у каталозі"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg></a><button class="icon-button" type="button" data-prototype-action="Вхід для корпоративних клієнтів у цьому концепті не підключений." aria-label="Особистий кабінет"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 21c.8-4.2 3.3-6.4 7.5-6.4s6.7 2.2 7.5 6.4"></path></svg></button></div>
     </div>
+    <div class="mega-backdrop" data-menu-backdrop hidden></div>
+    <section class="mega-menu" id="mega-menu" data-mega-menu aria-label="Навігація каталогом" aria-hidden="true"><div class="shell mega-menu__inner">
+      <div class="mega-menu__intro"><h2>З чого почати?</h2><p>Оберіть задачу або перейдіть до потрібної системи.</p><a href="catalog.html">Увесь каталог <span aria-hidden="true">→</span></a></div>
+      <div class="mega-menu__routes"><h3>За ціллю</h3><nav aria-label="Вибір цілі"><a href="catalog.html?goal=heat">Зігріти дім <span aria-hidden="true">→</span></a><a href="catalog.html?goal=cool">Охолодити простір <span aria-hidden="true">→</span></a><a href="catalog.html?goal=air">Додати свіже повітря <span aria-hidden="true">→</span></a><a href="catalog.html?goal=save">Керувати споживанням <span aria-hidden="true">→</span></a><a href="b2b.html">Оснастити бізнес <span aria-hidden="true">→</span></a></nav></div>
+      <div class="mega-menu__routes"><h3>За системою</h3><nav aria-label="Вибір системи"><a href="catalog.html?category=heating">Опалення <span aria-hidden="true">→</span></a><a href="catalog.html?category=climate">Клімат і повітря <span aria-hidden="true">→</span></a><a href="catalog.html?category=automation">Вода й автоматика <span aria-hidden="true">→</span></a><a href="catalog.html?category=installation">Монтаж <span aria-hidden="true">→</span></a></nav></div>
+      <aside class="mega-menu__spot"><span>Швидкий пошук</span><strong>Уже знаєте назву моделі?</strong><a class="button button--light" href="catalog.html#catalog-search">Шукати в каталозі</a></aside>
+      <button class="mega-menu__close" type="button" data-menu-close aria-label="Закрити меню">×</button>
+    </div></section>
   </header>
 
   <main id="main">

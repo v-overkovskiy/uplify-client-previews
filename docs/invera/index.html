@@ -22,8 +22,8 @@
   <meta name="twitter:description" content="Демонстраційний концепт B2C-магазину обладнання для опалення, охолодження та вентиляції.">
   <meta name="twitter:image" content="https://preview.uplify.agency/invera/assets/media/og-invera.png">
   <meta name="twitter:image:alt" content="INVERA HOLDING — концепт B2C-магазину кліматичного обладнання">
-  <link rel="stylesheet" href="styles.css?v=20260923-2">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260923-3">
+  <script src="app.js?v=20260923-3" defer></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -33,10 +33,10 @@
       <a class="brand" href="index.html" aria-label="INVERA HOLDING, головна">
         <img src="assets/media/invera-logo.png" alt="INVERA HOLDING" width="130" height="57">
       </a>
-      <button class="catalog-trigger" type="button" data-menu-open aria-expanded="false" aria-controls="mega-menu">
+      <a class="catalog-trigger" href="catalog.html" data-menu-open aria-expanded="false" aria-controls="mega-menu" aria-haspopup="true">
         <span class="catalog-trigger__icon" aria-hidden="true"><i></i><i></i><i></i></span>
         Каталог
-      </button>
+      </a>
       <a class="header-business" href="b2b.html" aria-label="Для бізнесу"><span class="header-business__full">Для бізнесу</span><span class="header-business__short" aria-hidden="true">B2B</span></a>
       <nav class="primary-nav" aria-label="Основна навігація">
         <a href="#goal">Підібрати рішення</a>
@@ -59,52 +59,38 @@
     </div>
 
     <div class="mega-backdrop" data-menu-backdrop hidden></div>
-    <section class="mega-menu" id="mega-menu" data-mega-menu aria-label="Каталог товарів" aria-hidden="true">
+    <section class="mega-menu" id="mega-menu" data-mega-menu aria-label="Навігація каталогом" aria-hidden="true">
       <div class="shell mega-menu__inner">
-        <div class="mega-menu__rail">
-          <p class="mega-menu__eyebrow">Каталог за системами</p>
-          <h2>Усе для керування кліматом будівлі</h2>
-          <a class="text-link" href="catalog.html">Переглянути весь каталог <span>→</span></a>
-          <button class="mega-menu__close" type="button" data-menu-close aria-label="Закрити меню">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"></path></svg>
-          </button>
+        <div class="mega-menu__intro">
+          <h2>З чого почати?</h2>
+          <p>Оберіть задачу або перейдіть до потрібної системи.</p>
+          <a href="catalog.html">Увесь каталог <span aria-hidden="true">→</span></a>
         </div>
-        <div class="mega-columns">
-          <div>
-            <h3>Опалення</h3>
-            <a href="catalog.html?category=radiators">Радіатори</a>
-            <a href="catalog.html?category=heat-pumps">Теплові насоси</a>
-            <a href="catalog.html?category=boilers">Котли</a>
-            <a href="catalog.html?category=floor">Тепла підлога</a>
-            <a href="catalog.html?category=fireplaces">Каміни та печі</a>
-          </div>
-          <div>
-            <h3>Клімат і повітря</h3>
-            <a href="catalog.html?category=ac">Кондиціонери</a>
-            <a href="catalog.html?category=ventilation">Вентиляція</a>
-            <a href="catalog.html?category=recuperation">Рекуперація</a>
-            <a href="catalog.html?category=heaters">Обігрівачі</a>
-          </div>
-          <div>
-            <h3>Вода й автоматика</h3>
-            <a href="catalog.html?category=water-heaters">Водонагрівачі</a>
-            <a href="catalog.html?category=pumps">Насоси</a>
-            <a href="catalog.html?category=thermostats">Термостати</a>
-            <a href="catalog.html?category=smart-home">Smart Home</a>
-          </div>
-          <div>
-            <h3>Монтаж</h3>
-            <a href="catalog.html?category=pipes">Труби</a>
-            <a href="catalog.html?category=fittings">Фітинги</a>
-            <a href="catalog.html?category=valves">Арматура</a>
-            <a href="catalog.html?category=tools">Інструменти</a>
-          </div>
+        <div class="mega-menu__routes">
+          <h3>За ціллю</h3>
+          <nav aria-label="Вибір цілі">
+            <a href="catalog.html?goal=heat">Зігріти дім <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?goal=cool">Охолодити простір <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?goal=air">Додати свіже повітря <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?goal=save">Керувати споживанням <span aria-hidden="true">→</span></a>
+            <a href="b2b.html">Оснастити бізнес <span aria-hidden="true">→</span></a>
+          </nav>
         </div>
-        <aside class="mega-support">
-          <span>Не знаєте, з чого почати?</span>
-          <strong>Оберіть задачу — покажемо короткий маршрут по каталогу.</strong>
-          <a class="button button--small button--light" href="#goal" data-menu-close>Підібрати напрям</a>
+        <div class="mega-menu__routes">
+          <h3>За системою</h3>
+          <nav aria-label="Вибір системи">
+            <a href="catalog.html?category=heating">Опалення <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?category=climate">Клімат і повітря <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?category=automation">Вода й автоматика <span aria-hidden="true">→</span></a>
+            <a href="catalog.html?category=installation">Монтаж <span aria-hidden="true">→</span></a>
+          </nav>
+        </div>
+        <aside class="mega-menu__spot">
+          <span>Швидкий пошук</span>
+          <strong>Уже знаєте назву моделі?</strong>
+          <a class="button button--light" href="catalog.html#catalog-search">Шукати в каталозі</a>
         </aside>
+        <button class="mega-menu__close" type="button" data-menu-close aria-label="Закрити меню">×</button>
       </div>
     </section>
   </header>
