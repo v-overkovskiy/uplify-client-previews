@@ -342,3 +342,11 @@ section[id] { scroll-margin-top: 104px; }
   .catalog-listing-head { display: block; }
   .catalog-listing-head > a { display: inline-block; margin-top: 12px; }
 }
+
+/* Homepage category directory: quiet links and a stable, uncropped product image. */
+.category-index nav a { min-height: 44px; justify-content: flex-start; }
+.category-index nav a:hover,
+.category-index nav a:focus-visible { color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.category-index nav a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.category-feature__media { position: relative; display: block; aspect-ratio: 8 / 5; height: auto; flex: none; overflow: hidden; }
+.category-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; margin: 0; padding: 14px; object-fit: contain; mix-blend-mode: normal; filter: none; }
