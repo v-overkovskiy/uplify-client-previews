@@ -38,15 +38,18 @@ function setMenu(open){
   if(!menu)return;
   menu.classList.toggle('is-open',open);
   menu.setAttribute('aria-hidden',String(!open));
+  menu.inert=!open;
   menuOpen?.setAttribute('aria-expanded',String(open));
   if(menuBackdrop)menuBackdrop.hidden=!open;
   body.classList.toggle('menu-open',open);
   if(open){lastMenuFocus=document.activeElement;setTimeout(()=>$('a,button',menu)?.focus(),20)}
   else if(lastMenuFocus instanceof HTMLElement)lastMenuFocus.focus();
 }
-menuOpen?.addEventListener('click',()=>setMenu(!menu.classList.contains('is-open')));
+if(menu)menu.inert=true;
+menuOpen?.addEventListener('click',event=>{event.preventDefault();setMenu(!menu.classList.contains('is-open'))});
 $$('[data-menu-close]').forEach(control=>control.addEventListener('click',()=>setMenu(false)));
 menuBackdrop?.addEventListener('click',()=>setMenu(false));
+menu?.addEventListener('click',event=>{if(event.target.closest('a[href]'))setMenu(false)});
 
 const searchPanel=$('[data-search-panel]');
 const searchOpen=$('[data-search-open]');
@@ -99,7 +102,7 @@ const goals={
   cool:{number:'02',title:'Комфортне охолодження',copy:'Визначте площу, кількість кімнат і сценарій використання. Далі порівняйте тип системи, продуктивність, енергоефективність і рівень шуму.',links:[['Кондиціонери','ac'],['Мультиспліт','multi-split'],['Автоматика','automation']],cta:'ac'},
   air:{number:'03',title:'Свіже повітря без втрат тепла',copy:'Почніть з об’єму повітрообміну й планування каналів. Для рекуперації важливі параметри будівлі та сумісність усіх компонентів.',links:[['Вентиляція','ventilation'],['Рекуперація','recuperation'],['Повітроводи','ducts']],cta:'ventilation'},
   save:{number:'04',title:'Керування споживанням',copy:'Оцініть джерело тепла, автоматику й режими роботи як одну систему. Енергоефективність залежить від обладнання, будівлі та налаштувань.',links:[['Теплові насоси','heat-pumps'],['Термостати','thermostats'],['Smart Home','smart-home']],cta:'efficiency'},
-  business:{number:'05',title:'Рішення для комерційного об’єкта',copy:'Сформуйте вимоги до площі, навантаження й режиму роботи. Корпоративний клієнт після авторизації бачитиме призначену йому цінову категорію.',links:[['Промисловий клімат','commercial'],['Автоматика','automation'],['Монтажні компоненти','fittings']],cta:'commercial'}
+  business:{number:'05',title:'Рішення для комерційного об’єкта',copy:'Сформуйте вимоги до площі, навантаження й режиму роботи. Корпоративний клієнт після авторизації бачитиме призначену йому цінову категорію.',links:[['Промисловий клімат','commercial'],['Автоматика','automation'],['Монтажні компоненти','fittings']],cta:'b2b'}
 };
 $$('[data-goal]').forEach(button=>button.addEventListener('click',()=>{
   const goal=goals[button.dataset.goal];
@@ -108,7 +111,7 @@ $$('[data-goal]').forEach(button=>button.addEventListener('click',()=>{
   $('[data-goal-title]').textContent=goal.title;
   $('[data-goal-copy]').textContent=goal.copy;
   $('[data-goal-links]').innerHTML=goal.links.map(([label,slug])=>`<a href="catalog.html?category=${slug}">${label}</a>`).join('');
-  $('[data-goal-cta]').href=`catalog.html?category=${goal.cta}`;
+  $('[data-goal-cta]').href=goal.cta==='b2b'?'b2b.html':`catalog.html?category=${goal.cta}`;
   if(window.matchMedia('(max-width: 760px)').matches){$('[data-goal-result]').scrollIntoView({behavior:'smooth',block:'center'})}
 }));
 
@@ -118,20 +121,6 @@ $$('[data-product-tab]').forEach(button=>button.addEventListener('click',()=>{
   $$('[data-product-kind]').forEach(card=>{card.hidden=kind!=='all'&&card.dataset.productKind!==kind});
 }));
 
-function applyCatalogFilter(filter,query=''){
-  $$('[data-catalog-filter]').forEach(item=>item.classList.toggle('is-active',item.dataset.catalogFilter===filter));
-  let visible=0;
-  $$('[data-category]').forEach(card=>{
-    const categoryMatch=filter==='all'||card.dataset.category===filter;
-    const queryMatch=!query||card.textContent.toLocaleLowerCase('uk').includes(query.toLocaleLowerCase('uk'));
-    const show=categoryMatch&&queryMatch;
-    card.hidden=!show;
-    if(show)visible++;
-  });
-  const label=$('[data-result-count]');if(label)label.textContent=`${visible} ${visible===1?'товар':'товари'}`;
-}
-$$('[data-catalog-filter]').forEach(button=>button.addEventListener('click',()=>applyCatalogFilter(button.dataset.catalogFilter)));
-
 if(body.dataset.page==='catalog'){
   $$('.product-grid--listing .product-card').forEach(card=>{
     const link=card.querySelector('.product-card__footer a');
@@ -140,12 +129,35 @@ if(body.dataset.page==='catalog'){
   });
   const params=new URLSearchParams(location.search);
   const requested=params.get('category');
+  const requestedGoal=params.get('goal');
   const query=params.get('q')?.trim()||'';
-  const heating=new Set(['heating','radiators','heat-pumps','boilers','floor','fireplaces']);
-  const climate=new Set(['climate','ac']);
-  const filter=heating.has(requested)?'heating':climate.has(requested)?'climate':requested==='automation'?'automation':requested?'none':'all';
-  applyCatalogFilter(filter,query);
-  if(query){const heading=$('.catalog-heading h1');if(heading)heading.textContent=`Пошук: ${query}`}
+  const categoryLabels={heating:'Опалення',radiators:'Радіатори','heat-pumps':'Теплові насоси',boilers:'Котли',floor:'Тепла підлога',fireplaces:'Каміни та печі',climate:'Клімат і повітря',ac:'Кондиціонери',ventilation:'Вентиляція',recuperation:'Рекуперація',heaters:'Обігрівачі',automation:'Вода й автоматика','water-heaters':'Водонагрівачі',pumps:'Насоси',thermostats:'Термостати','smart-home':'Smart Home',installation:'Монтаж',pipes:'Труби',fittings:'Фітинги',valves:'Арматура',tools:'Інструменти',ducts:'Повітроводи','multi-split':'Мультиспліт',efficiency:'Енергоефективність',commercial:'Комерційні об’єкти'};
+  const goalLabels={heat:'Зігріти дім',cool:'Охолодити простір',air:'Додати свіже повітря',save:'Керувати споживанням'};
+  const categoryGroups={heating:'heating',radiators:'heating','heat-pumps':'heating',boilers:'heating',floor:'heating',fireplaces:'heating',climate:'climate',ac:'climate',ventilation:'climate',recuperation:'climate',heaters:'climate',automation:'automation','water-heaters':'automation',pumps:'automation',thermostats:'automation','smart-home':'automation',installation:'installation',pipes:'installation',fittings:'installation',valves:'installation',tools:'installation',ducts:'installation','multi-split':'climate',efficiency:'automation',commercial:'all'};
+  const goal=Object.hasOwn(goalLabels,requestedGoal)?requestedGoal:null;
+  const category=Object.hasOwn(categoryLabels,requested)?requested:null;
+  const broadCategory=category?categoryGroups[category]:null;
+  const title=$('[data-catalog-title]');
+  const lead=$('[data-catalog-lead]');
+  if(title)title.textContent=query?`Пошук: ${query}`:goal?goalLabels[goal]:category?categoryLabels[category]:'Знайдіть обладнання за задачею';
+  if(lead)lead.textContent=query?'Результати пошуку серед товарів, показаних у прев’ю.':goal?'Перегляньте товари за обраною ціллю або уточніть напрям у каталозі.':category?'Перегляньте товари цього напряму або оберіть іншу систему.':'Оберіть ціль або систему. Якщо знаєте модель, скористайтеся пошуком.';
+  const searchInput=$('#catalog-search');if(searchInput)searchInput.value=query;
+  $$('[data-catalog-filter]').forEach(item=>{const active=!goal&&!query&&item.dataset.catalogFilter===(broadCategory||'all');item.classList.toggle('is-active',active);if(active)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current')});
+  $$('[data-goal-route]').forEach(item=>{if(item.dataset.goalRoute===goal)item.setAttribute('aria-current','page')});
+  $$('[data-category-route]').forEach(item=>{if(item.dataset.categoryRoute===category)item.setAttribute('aria-current','page')});
+  let visible=0;
+  $$('[data-catalog-grid] .product-card').forEach(card=>{
+    const categoryMatch=!category||(category===broadCategory?card.dataset.category===category:card.dataset.subcategory===category);
+    const goalMatch=!goal||card.dataset.goals.split(' ').includes(goal);
+    const queryMatch=!query||card.textContent.toLocaleLowerCase('uk').includes(query.toLocaleLowerCase('uk'));
+    card.hidden=!(categoryMatch&&goalMatch&&queryMatch);
+    if(!card.hidden)visible++;
+  });
+  const form=visible%10,teens=visible%100;
+  const noun=teens>=11&&teens<=14?'товарів':form===1?'товар':form>=2&&form<=4?'товари':'товарів';
+  const resultCount=$('[data-result-count]');if(resultCount)resultCount.textContent=`${visible} ${noun}`;
+  const empty=$('[data-catalog-empty]');if(empty)empty.hidden=visible!==0;
+  const grid=$('[data-catalog-grid]');if(grid)grid.hidden=visible===0;
 }
 
 const pdpProducts={
@@ -169,4 +181,4 @@ if(body.dataset.page==='product'){
   const details=$('.pdp-details dl');if(details)details.innerHTML=product.specs.map(([label,value])=>`<div><dt>${label}</dt><dd>${value}</dd></div>`).join('');
 }
 
-if(location.hash){setTimeout(()=>document.querySelector(location.hash)?.scrollIntoView(),80)}
+if(location.hash){setTimeout(()=>{const target=document.querySelector(location.hash);target?.scrollIntoView();if(target?.id==='catalog-search')target.focus({preventScroll:true})},80)}
