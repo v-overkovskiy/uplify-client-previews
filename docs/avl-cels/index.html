@@ -46,6 +46,7 @@
       scroll-behavior: smooth;
     }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     body { margin: 0; min-width: 320px; background: var(--paper); }
     body.menu-open, body.cart-open { overflow: hidden; }
     a { color: inherit; }
@@ -88,7 +89,7 @@
     .main-nav a:hover { color: var(--teal); }
     .wholesale-nav { margin-left: auto; color: var(--teal) !important; }
     .mobile-toggle { display: none; }
-    .mega-menu { position: absolute; inset: 100% 0 auto; z-index: 55; padding: 0 var(--gutter); border-bottom: 1px solid var(--line); background: var(--surface); box-shadow: 0 24px 36px rgba(16,42,54,.13); }
+    .mega-menu { position: absolute; inset: 100% 0 auto; z-index: 55; padding: 0 var(--gutter); border-bottom: 1px solid var(--line); background: var(--surface); box-shadow: 0 24px 36px rgba(0,0,0,.12); }
     .mega-inner { width: min(100%, var(--measure)); margin: auto; padding: 1.6rem 0 1.8rem; }
     .mega-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
     .mega-heading strong { font-size: 1.45rem; font-weight: 500; }
@@ -111,6 +112,7 @@
     h1 { max-width: 14ch; margin-bottom: 1.1rem; font-size: clamp(2.8rem, 4.25vw, 4.45rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.06; }
     .hero-copy > p:not(.eyebrow) { max-width: 33rem; margin-bottom: 1.6rem; color: #405c60; font-size: clamp(1rem, 1.22vw, 1.12rem); line-height: 1.68; }
     .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
+    .hero-preview-link { flex-basis: 100%; margin-top: .15rem; align-self: flex-start; }
     .button { min-height: 3.1rem; display: inline-flex; align-items: center; justify-content: center; gap: .75rem; padding: .8rem 1.08rem; border: 1px solid var(--ink); border-radius: .34rem; background: var(--ink); color: #fff; font-size: .86rem; font-weight: 740; text-decoration: none; transition: background .18s ease, transform .18s ease; }
     .button:hover { transform: translateY(-1px); background: var(--ink-2); }
     .button .arrow { color: var(--lime); font-size: 1.1rem; }
@@ -165,7 +167,7 @@
     .catalog-topline span { color: var(--muted); font-size: .81rem; }
     .product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
     .product-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: .48rem; background: #fff; transition: box-shadow .2s ease, transform .2s ease; }
-    .product-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(16,42,54,.09); }
+    .product-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.08); }
     .product-photo { aspect-ratio: 1 / .89; position: relative; display: grid; place-items: center; overflow: hidden; background: #f0f5f3; }
     .product-photo img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
     .product-tag { position: absolute; top: .65rem; left: .65rem; padding: .34rem .48rem; border-radius: .2rem; background: var(--teal-soft); color: #15534f; font-size: .66rem; font-weight: 780; }
@@ -293,7 +295,7 @@
       .icon-button .cart-label { display: none; }
       .nav-row { display: none; }
       .mobile-toggle { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border: 1px solid var(--line); border-radius: .35rem; background: #fff; cursor: pointer; }
-      .mobile-panel { max-height: calc(100dvh - 7.5rem); position: absolute; inset: 100% 0 auto; z-index: 60; display: block; overflow: auto; padding: .75rem var(--gutter) 1.25rem; border-top: 1px solid var(--line); background: #fff; box-shadow: 0 20px 35px rgba(16,42,54,.15); }
+      .mobile-panel { max-height: calc(100dvh - 7.5rem); position: absolute; inset: 100% 0 auto; z-index: 60; display: block; overflow: auto; padding: .75rem var(--gutter) 1.25rem; border-top: 1px solid var(--line); background: #fff; box-shadow: 0 20px 35px rgba(0,0,0,.12); }
       .mobile-panel[hidden] { display: none; }
       .mobile-main-links { display: flex; flex-direction: column; gap: .1rem; padding-bottom: .7rem; }
       .mobile-main-links > a { padding: .75rem .15rem; border-bottom: 1px solid #edf1ef; color: var(--ink); font-size: .92rem; font-weight: 700; text-decoration: none; }
@@ -490,8 +492,9 @@
             <h1>Медичні товари для клінік, аптек і дому</h1>
             <p>Перев’язувальні матеріали, витратні вироби, тактична медицина й засоби гігієни для клінік, аптек, фахівців і дому.</p>
             <div class="hero-actions">
-              <a class="button" href="#catalog">Перейти до каталогу <span class="arrow" aria-hidden="true">↘</span></a>
+              <a class="button" href="https://avl.kiev.ua/" target="_blank" rel="noopener noreferrer">Відкрити каталог на Prom <span class="arrow" aria-hidden="true">↗</span></a>
               <a class="button button-secondary" href="#buyers">Потрібен великий обсяг?</a>
+              <a class="text-link hero-preview-link" href="#catalog">Переглянути добірку на цій сторінці <span aria-hidden="true">↓</span></a>
             </div>
             <div class="hero-footnote"><span>Замовлення онлайн</span><span>Оптовий запит окремо</span><span>Київ · доставка Україною</span></div>
           </div>
@@ -734,6 +737,19 @@
       });
       document.addEventListener("click", function (event) {
         if (!event.target.closest(".site-header")) closeMenus();
+      });
+      function handleLocalNavigation(event) {
+        var link = event.target.closest('a[href^="#"]');
+        if (!link) return;
+        closeMenus();
+        var destination = document.getElementById(link.hash.slice(1));
+        if (destination) {
+          destination.setAttribute("tabindex", "-1");
+          window.requestAnimationFrame(function () { destination.focus({ preventScroll: true }); });
+        }
+      }
+      [mobilePanel, menu, document.querySelector(".main-nav")].forEach(function (navigation) {
+        navigation.addEventListener("click", handleLocalNavigation);
       });
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
