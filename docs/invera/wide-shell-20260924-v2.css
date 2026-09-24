@@ -1,0 +1,38 @@
+:root {
+  --pad: clamp(22px, 4vw, 96px);
+}
+
+html,
+body,
+main,
+.hero,
+.numbered-section,
+.proof-section,
+.service-section,
+.consultation,
+.site-footer,
+.listing-main,
+.product-main {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.trust-strip {
+  left: 0;
+  right: 0;
+}
+
+.listing-route-callout,
+.system-context {
+  width: calc(100% + (var(--pad) * 2));
+  max-width: none;
+  margin-left: calc(var(--pad) * -1);
+  margin-right: calc(var(--pad) * -1);
+}
+
+.listing-route-callout {
+  padding-left: calc(var(--pad) + 32px);
+  padding-right: calc(var(--pad) + 32px);
+}
