@@ -1,0 +1,20 @@
+:root {
+  --pad: clamp(22px, 4vw, 96px);
+}
+
+html,
+body,
+main,
+.hero,
+.numbered-section,
+.proof-section,
+.service-section,
+.consultation,
+.site-footer,
+.listing-main,
+.product-main {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
