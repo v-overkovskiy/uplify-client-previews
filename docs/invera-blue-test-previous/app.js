@@ -169,7 +169,7 @@ const pdpProducts={
 if(body.dataset.page==='product'){
   const key=new URLSearchParams(location.search).get('product')||'radiator';
   const product=pdpProducts[key]||pdpProducts.radiator;
-  document.title=`${product.short} — INVERA HOLDING`;
+  document.title=`${product.short} — попередня синя тестова версія INVERA`;
   const title=$('.pdp-info h1');if(title)title.textContent=product.title;
   const category=$('.pdp-info__category');if(category)category.textContent=product.category;
   const image=$('[data-pdp-image]');if(image){image.src=product.image;image.alt=product.alt}
