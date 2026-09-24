@@ -1,0 +1,91 @@
+/* Readability pass: retain technical microtype only for decorative calibration marks. */
+.utility-bar,
+.trust-strip,
+.mega-label,
+.specimen-head,
+.breadcrumbs,
+.products-toolbar {
+  font-size: 11px;
+}
+
+.eyebrow {
+  font-size: 12px;
+}
+
+.button {
+  font-size: 14px;
+}
+
+.catalog-trigger {
+  font-size: 14px;
+}
+
+.catalog-trigger b,
+.header-contact small,
+.search kbd,
+.primary-nav sup,
+.aperture-tag,
+.status-card small,
+.route-tabs span,
+.route-output li span,
+.service-copy li > span,
+.product-type,
+.pdp-status small,
+.pdp-price small,
+.context-flow article span,
+.pdp-counter,
+.config-drawer label span {
+  font-size: 10px;
+}
+
+.header-contact strong {
+  font-size: 15px;
+}
+
+.primary-nav,
+.mega-column small,
+.route-output li,
+.service-copy li small,
+.proof-specimen > small,
+.filters label,
+.product-info dl,
+.compare,
+.buy-path-note,
+.spec-table > small,
+.pdp-documents > a small {
+  font-size: 12px;
+}
+
+.consultation-form label span {
+  font-size: 11px;
+}
+
+.consultation-form > small {
+  font-size: 11px;
+}
+
+.consultation-form button.button-green {
+  font-size: 14px;
+}
+
+.site-footer p,
+.site-footer div > a:not(.brand):not(.footer-wordmark) {
+  font-size: 13px;
+}
+
+.site-footer div > span,
+.footer-meta b,
+.footer-meta small {
+  font-size: 12px;
+}
+
+.footer-wordmark small {
+  font-size: 8px;
+}
+
+@media (max-width: 760px) {
+  .mobile-back,
+  .mobile-menu-head {
+    font-size: 11px;
+  }
+}
