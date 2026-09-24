@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#102a36">
-  <meta name="description" content="Бандажі, перев’язувальні матеріали, медичні витратні товари й засоби гігієни. Замовляйте в АВЛ ЦЕЛЬС на Prom або запросіть гуртову пропозицію.">
+  <meta name="description" content="Медичні товари для клінік, аптек і дому. Обирайте бандажі, перев’язувальні матеріали та засоби догляду й оформлюйте замовлення онлайн.">
   <title>АВЛ ЦЕЛЬС | медичні товари для клінік, аптек і дому</title>
   <link rel="canonical" href="https://preview.uplify.agency/avl-cels/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://preview.uplify.agency/avl-cels/">
   <meta property="og:title" content="АВЛ ЦЕЛЬС | медичні товари для клінік, аптек і дому">
-  <meta property="og:description" content="Бандажі, медичні витратні товари, тактична медицина й засоби гігієни. Замовляйте на Prom або запросіть пропозицію для закладу.">
+  <meta property="og:description" content="Медичні товари для клінік, аптек і дому. Обирайте бандажі, перев’язувальні матеріали та засоби догляду й оформлюйте замовлення онлайн.">
   <meta property="og:image" content="https://preview.uplify.agency/avl-cels/assets/og-avl-cels.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Медичні матеріали та засоби першої допомоги для професійної практики">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="АВЛ ЦЕЛЬС | медичні товари для клінік, аптек і дому">
-  <meta name="twitter:description" content="Бандажі, медичні витратні товари, тактична медицина й засоби гігієни. Замовляйте на Prom або запросіть пропозицію для закладу.">
+  <meta name="twitter:description" content="Медичні товари для клінік, аптек і дому. Обирайте бандажі, перев’язувальні матеріали та засоби догляду й оформлюйте замовлення онлайн.">
   <meta name="twitter:image" content="https://preview.uplify.agency/avl-cels/assets/og-avl-cels.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%23102a36'/%3E%3Cpath d='M24 9v30M9 24h30' stroke='%23d8ef68' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
@@ -47,7 +47,7 @@
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
-    body { margin: 0; min-width: 320px; background: var(--paper); }
+    body { margin: 0; min-width: 0; background: var(--paper); }
     body.menu-open, body.cart-open { overflow: hidden; }
     a { color: inherit; }
     button, input { font: inherit; }
@@ -102,7 +102,8 @@
     .mobile-panel { display: none; }
 
     .hero { padding: clamp(1.15rem, 2.8vw, 2.5rem) 0 0; }
-    .hero-panel { min-height: min(40rem, calc(100vh - 10rem)); display: grid; grid-template-columns: minmax(26rem, .9fr) 1.1fr; overflow: hidden; border-radius: .9rem; background: #e5efec; }
+    .hero > .wrap { width: 100%; }
+    .hero-panel { min-height: min(40rem, calc(100vh - 10rem)); display: grid; grid-template-columns: minmax(26rem, .9fr) 1.1fr; overflow: hidden; border-radius: 0; background: #e5efec; }
     .hero-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem, 5.3vw, 5.4rem); }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 14ch; margin-bottom: 1.1rem; font-size: clamp(2.8rem, 4.25vw, 4.45rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.06; }
@@ -247,15 +248,29 @@
     .cart-line { display: grid; grid-template-columns: 1fr auto; gap: .3rem .7rem; padding: .8rem 0; border-bottom: 1px solid #edf1ef; }
     .cart-line strong { font-size: .85rem; line-height: 1.4; }
     .cart-line span { color: var(--muted); font-size: .8rem; }
+    .cart-line-controls { display: flex; align-items: center; gap: .4rem; grid-column: 1 / -1; }
+    .cart-line-controls span { min-width: 6rem; text-align: center; }
+    .cart-quantity-button { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border: 1px solid var(--line); border-radius: .3rem; background: #fff; color: var(--ink); font-size: 1.1rem; cursor: pointer; }
+    .cart-quantity-button:hover { background: var(--teal-soft); }
     .cart-total { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .8rem; font-size: .95rem; font-weight: 800; }
     .cart-hint { margin: 0 0 1rem; color: #66797b; font-size: .77rem; line-height: 1.5; }
     .cart-drawer .button { width: 100%; }
-    .demo-dialog { width: 100%; height: 100%; position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 1rem; border: 0; background: rgba(7,23,29,.58); backdrop-filter: blur(4px); }
-    .demo-dialog[hidden] { display: none; }
+    .checkout-dialog { width: 100%; height: 100%; position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 1rem; border: 0; background: rgba(7,23,29,.58); backdrop-filter: blur(4px); }
+    .checkout-dialog[hidden] { display: none; }
     .dialog-content { width: min(34rem, 100%); padding: clamp(1.35rem, 4vw, 2.2rem); border-radius: .55rem; background: #fff; color: var(--ink); box-shadow: 0 24px 80px rgba(6,21,28,.32); }
     .dialog-content h2 { margin-bottom: .8rem; font-size: 2rem; }
     .dialog-content p { color: var(--muted); font-size: .93rem; line-height: 1.65; }
     .dialog-content .button { margin-top: .3rem; }
+    .checkout-summary { padding: .75rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .checkout-summary-head { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; margin-bottom: .35rem; font-size: .84rem; }
+    .checkout-summary-head span, .checkout-line span { color: var(--muted); font-size: .77rem; }
+    .checkout-items { max-height: 10rem; overflow: auto; }
+    .checkout-line { display: grid; grid-template-columns: 1fr auto; gap: .5rem; padding: .38rem 0; font-size: .79rem; line-height: 1.4; }
+    .checkout-steps { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: .9rem 0; }
+    .checkout-steps div { padding: .7rem; background: #f4f7f5; }
+    .checkout-steps strong { display: block; margin-bottom: .25rem; font-size: .76rem; }
+    .checkout-steps p { margin: 0; font-size: .73rem; line-height: 1.5; }
+    .checkout-note { margin-bottom: .75rem; padding: .7rem .8rem; border: 1px solid var(--line); background: #f7f9f8; font-size: .77rem !important; }
     .toast { position: fixed; z-index: 100; right: 1rem; bottom: 1rem; max-width: min(24rem, calc(100% - 2rem)); padding: .85rem 1rem; border-radius: .35rem; background: var(--ink); color: white; box-shadow: 0 8px 30px rgba(10,30,36,.25); font-size: .84rem; }
     .toast[hidden] { display: none; }
     .store-note { margin-top: 1.4rem; padding: .8rem 0 0; border-top: 1px solid rgba(255,255,255,.12); color: #9eb4b2; font-size: .72rem; line-height: 1.5; }
@@ -297,13 +312,14 @@
       .icon-button .cart-label { display: none; }
       .mega-menu { display: none !important; }
       .hero { padding-top: .75rem; }
-      .hero-panel { min-height: auto; display: flex; flex-direction: column; border-radius: .62rem; }
+      .hero-panel { min-height: auto; display: flex; flex-direction: column; }
       .hero-copy { padding: 1.8rem 1.35rem 1.4rem; }
       h1 { max-width: 13ch; margin-bottom: .9rem; font-size: clamp(2.4rem, 9.7vw, 3.35rem); line-height: 1.08; }
       .hero-copy > p { margin-bottom: 1.15rem; font-size: .98rem; line-height: 1.6; }
       .hero-actions { width: 100%; flex-direction: column; align-items: stretch; }
       .hero-actions .button { width: 100%; }
       .hero-footnote { gap: .5rem .9rem; margin-top: 1.15rem; font-size: .72rem; }
+      .checkout-steps { grid-template-columns: 1fr; }
       .hero-media { min-height: 16rem; aspect-ratio: 1.25; }
       .hero-label { right: .65rem; bottom: .65rem; padding: .55rem .7rem; font-size: .62rem; }
       .service-strip { grid-template-columns: 1fr; }
@@ -477,11 +493,11 @@
             <h1>Медичні товари для клінік, аптек і дому</h1>
             <p>Бандажі, перев’язувальні матеріали, медичні витратні товари й засоби гігієни. Замовляйте для дому або надішліть список для закупівлі у ваш заклад.</p>
             <div class="hero-actions">
-              <a class="button" href="https://avl.kiev.ua/" target="_blank" rel="noopener noreferrer">Замовити на Prom <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="button" href="#catalog">Обрати товари <span class="arrow" aria-hidden="true">↘</span></a>
               <a class="button button-secondary" href="#buyers">Запросити гуртову пропозицію</a>
               <a class="text-link hero-category-link" href="#catalog">Переглянути популярні товари <span aria-hidden="true">↓</span></a>
             </div>
-            <div class="hero-footnote"><span>Роздрібні замовлення на Prom</span><span>Закупівлі для закладів</span><span>Доставка по Україні</span></div>
+            <div class="hero-footnote"><span>Замовлення онлайн</span><span>Для дому й закладів</span><span>Доставка по Україні</span></div>
           </div>
           <div class="hero-media">
             <img src="assets/hero-clinical.png" alt="Перев’язувальні матеріали, рукавички та медичний текстиль на робочій поверхні">
@@ -489,8 +505,8 @@
           </div>
         </div>
         <div class="service-strip" aria-label="Як працює магазин">
-          <div class="service-item"><span><strong>Роздрібні замовлення</strong>Оформлюйте покупки в магазині на Prom</span></div>
-          <div class="service-item"><span><strong>Гуртові закупівлі</strong>Надішліть список товарів і кількість</span></div>
+          <div class="service-item"><span><strong>Замовлення онлайн</strong>Додавайте товари до кошика на сайті</span></div>
+          <div class="service-item"><span><strong>Для закладів</strong>Надішліть список товарів і кількість</span></div>
           <div class="service-item"><span><strong>Наявність до оплати</strong>Менеджер підтвердить товар перед оплатою</span></div>
         </div>
       </div>
@@ -533,20 +549,20 @@
             <div class="catalog-topline"><h3 id="catalog-title">Популярні товари</h3><span>наявність підтверджує менеджер перед оплатою</span></div>
             <div class="product-grid" id="product-grid">
               <article class="product-card" data-tags="bandage tactical" data-search="ізраїльський бандаж перев'язувальний стерильний білосніжка 10 18 4 дюйма 7438">
-                <div class="product-photo"><span class="product-tag">Тактична медицина</span><img src="https://images.prom.ua/6922765115_izrailskij-bandazh-perevyazochnyj.jpg" alt="Індивідуальний перев’язувальний пакет 10 × 18 см" loading="lazy"></div>
+                <div class="product-photo"><span class="product-tag">Тактична медицина</span><img src="assets/product-bandage-10.jpg" alt="Індивідуальний перев’язувальний пакет 10 × 18 см" loading="lazy"></div>
                 <div class="product-copy"><span class="product-code">КОД 7438 · 10 × 18 см</span><h3 class="product-title">Стерильний бандаж «Білосніжка»</h3><p class="product-meta">Наявність уточнюйте перед оплатою</p><div class="product-purchase"><span class="price">175 ₴</span><button class="add-button" type="button" data-add="bandage-10" data-title="Бандаж «Білосніжка» 10 × 18 см" data-price="175">Додати до кошика&nbsp; +</button></div></div>
               </article>
               <article class="product-card" data-tags="bandage tactical" data-search="ізраїльський бандаж перев'язувальний стерильний білосніжка 15 18 6 дюймів 7491">
-                <div class="product-photo"><span class="product-tag">Тактична медицина</span><img src="https://images.prom.ua/6922823137_izrailskij-bandazh-perevyazochnyj.jpg" alt="Індивідуальний перев’язувальний пакет 15 × 18 см" loading="lazy"></div>
+                <div class="product-photo"><span class="product-tag">Тактична медицина</span><img src="assets/product-bandage-15.jpg" alt="Індивідуальний перев’язувальний пакет 15 × 18 см" loading="lazy"></div>
                 <div class="product-copy"><span class="product-code">КОД 7491 · 15 × 18 см</span><h3 class="product-title">Стерильний бандаж «Білосніжка»</h3><p class="product-meta">Наявність уточнюйте перед оплатою</p><div class="product-purchase"><span class="price">195 ₴</span><button class="add-button" type="button" data-add="bandage-15" data-title="Бандаж «Білосніжка» 15 × 18 см" data-price="195">Додати до кошика&nbsp; +</button></div></div>
               </article>
               <article class="product-card" data-tags="tactical gel" data-search="опікун гелева салфетка пов'язка 10 10 7550">
-                <div class="product-photo"><span class="product-tag">Гелевий засіб</span><img src="https://images.prom.ua/6806186028_opikun-salfetka-gelevaya.jpg" alt="Гелева пов’язка «Опікун», 10 × 10 см" loading="lazy"></div>
+                <div class="product-photo"><span class="product-tag">Гелевий засіб</span><img src="assets/product-opikun-gel.jpg" alt="Гелева пов’язка «Опікун», 10 × 10 см" loading="lazy"></div>
                 <div class="product-copy"><span class="product-code">КОД 7550 · 10 × 10 см · 1 шт.</span><h3 class="product-title">Гелева пов’язка «Опікун»</h3><p class="product-meta">Наявність уточнюйте перед оплатою</p><div class="product-purchase"><span class="price">54 ₴</span><button class="add-button" type="button" data-add="opikun" data-title="Гелева пов’язка «Опікун» 10 × 10 см" data-price="54">Додати до кошика&nbsp; +</button></div></div>
               </article>
             </div>
-            <div class="empty-results" id="empty-results" hidden>За вашим запитом товарів не знайдено. Перегляньте повний каталог на Prom. <a href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Відкрити магазин&nbsp; ↗</a></div>
-            <p class="snapshot-note">Мінімальне замовлення на Prom становить 300 ₴. Менеджер підтвердить наявність перед оплатою.</p>
+            <div class="empty-results" id="empty-results" hidden>За вашим запитом товарів не знайдено. Перевірте назву або код чи оберіть категорію в каталозі.</div>
+            <p class="snapshot-note">Додавайте товари до кошика, щоб переглянути список і суму замовлення.</p>
           </div>
         </div>
       </div>
@@ -590,7 +606,7 @@
             <button class="directory-item" type="button" data-filter="not-featured">Побутова хімія й одноразовий одяг <small>10</small></button>
           </div></section>
         </div>
-        <p class="directory-note">Актуальні ціни й повний перелік товарів дивіться в магазині АВЛ ЦЕЛЬС на <a href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Prom&nbsp; ↗</a>.</p>
+        <p class="directory-note">Не знайшли потрібну позицію? <a href="tel:+380981988913">Зателефонуйте менеджеру, він допоможе з вибором.</a></p>
       </div>
     </section>
 
@@ -598,10 +614,10 @@
       <div class="wrap">
         <div class="buyer-intro">
           <div><h2>Замовляйте для дому чи свого закладу</h2></div>
-          <p>Оформлюйте роздрібні покупки на Prom або надішліть менеджеру список для розрахунку закупівлі.</p>
+          <p>Знайдіть потрібні товари в каталозі або надішліть менеджеру список для гуртової закупівлі.</p>
         </div>
         <div class="buyer-grid">
-          <article class="buyer-card"><span class="buyer-type">РОЗДРІБНІ ЗАМОВЛЕННЯ</span><h3>Замовлення для дому та фахівців</h3><p>Відкрийте магазин АВЛ ЦЕЛЬС на Prom, додайте потрібні товари й оформіть замовлення. Менеджер підтвердить наявність до оплати.</p><a class="button button-secondary" href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Відкрити магазин <span class="arrow" aria-hidden="true">↗</span></a></article>
+          <article class="buyer-card"><span class="buyer-type">РОЗДРІБНІ ЗАМОВЛЕННЯ</span><h3>Покупки для дому та роботи</h3><p>Оберіть товари в каталозі, додайте їх до кошика та перегляньте суму замовлення. Наявність менеджер підтвердить до оплати.</p><a class="button button-secondary" href="#catalog">Перейти до каталогу <span class="arrow" aria-hidden="true">↘</span></a></article>
           <article class="buyer-card"><span class="buyer-type">ГУРТОВІ ЗАКУПІВЛІ</span><h3>Закуповуєте для клініки, аптеки чи іншого закладу?</h3><p>Надішліть список товарів і потрібну кількість. Менеджер уточнить наявність та підготує пропозицію.</p><a class="button" href="mailto:avl.kiev.ua@gmail.com?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%82%20%D0%BD%D0%B0%20%D0%B3%D1%83%D1%80%D1%82%D0%BE%D0%B2%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F&body=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%0D%0A%0D%0A%D0%9F%D1%96%D0%B4%D0%B1%D0%B8%D1%80%D0%B0%D1%8E%20%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D1%96%D0%B2%D0%BB%D1%8E%20%D0%B4%D0%BB%D1%8F%3A%20%0D%0A%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%96%D0%B2%3A%20%0D%0A%D0%9A%D1%96%D0%BB%D1%8C%D0%BA%D1%96%D1%81%D1%82%D1%8C%3A%20">Запросити гуртову пропозицію <span class="arrow" aria-hidden="true">↗</span></a></article>
         </div>
       </div>
@@ -625,8 +641,8 @@
           <p class="section-intro" style="margin-top:1rem">Доставляємо Новою поштою по Україні. Самовивіз у Києві узгодьте з менеджером.</p>
         </div>
         <div class="faq-list">
-          <details open><summary>Де оформити замовлення?</summary><p>Відкрийте магазин АВЛ ЦЕЛЬС на Prom, оберіть товари й оформіть покупку онлайн. <a href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Перейти до магазину&nbsp; ↗</a></p></details>
-          <details><summary>Коли можна оплатити замовлення?</summary><p>Спершу менеджер підтвердить наявність товару. Після цього оплатіть замовлення на Prom.</p></details>
+          <details open><summary>Як оформити замовлення?</summary><p>Додайте потрібні товари до кошика та перейдіть до оформлення на сайті. Менеджер підтвердить наявність до оплати.</p></details>
+          <details><summary>Коли можна оплатити замовлення?</summary><p>Менеджер спершу підтвердить наявність товару, після чого можна буде перейти до оплати.</p></details>
           <details><summary>Як доставляють товари?</summary><p>Нова пошта доставляє по Україні. Самовивіз у Києві можливий за попередньою домовленістю.</p></details>
           <details><summary>Як замовити велику партію?</summary><p>Надішліть список товарів і кількість на avl.kiev.ua@gmail.com або зателефонуйте менеджеру. Він уточнить наявність і підготує пропозицію.</p></details>
         </div>
@@ -644,12 +660,12 @@
   <footer class="footer">
     <div class="wrap">
       <div class="footer-main">
-        <div><a class="brand" href="#top" aria-label="АВЛ ЦЕЛЬС, на головну"><img class="brand-logo" src="assets/avl-cels-logo-lockup.webp" alt="АВЛ ЦЕЛЬС" width="1392" height="320"></a><p>Роздрібні замовлення оформлюйте на Prom. Для гуртової закупівлі надішліть список товарів менеджеру.</p></div>
-        <div><h3>Покупцям</h3><div class="footer-links"><a href="#delivery">Доставка й оплата</a><a href="#delivery">Наявність товару</a><a href="#buyers">Гуртові закупівлі</a><a href="#about">Контакти</a></div></div>
-        <div><h3>Зв’язок</h3><div class="footer-links"><a href="tel:+380981988913">+380 98 198 89 13</a><a href="mailto:avl.kiev.ua@gmail.com">avl.kiev.ua@gmail.com</a><a href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Магазин АВЛ ЦЕЛЬС на Prom&nbsp; ↗</a></div></div>
+        <div><a class="brand" href="#top" aria-label="АВЛ ЦЕЛЬС, на головну"><img class="brand-logo" src="assets/avl-cels-logo-lockup.webp" alt="АВЛ ЦЕЛЬС" width="1392" height="320"></a><p>Оберіть товари в каталозі або зверніться до менеджера щодо гуртової закупівлі.</p></div>
+        <div><h3>Покупцям</h3><div class="footer-links"><a href="#catalog">Каталог товарів</a><a href="#delivery">Доставка й оплата</a><a href="#buyers">Гуртові закупівлі</a><a href="#about">Контакти</a></div></div>
+        <div><h3>Зв’язок</h3><div class="footer-links"><a href="tel:+380981988913">+380 98 198 89 13</a><a href="mailto:avl.kiev.ua@gmail.com">avl.kiev.ua@gmail.com</a></div></div>
       </div>
-      <div class="footer-bottom"><span>© АВЛ ЦЕЛЬС · медичні товари</span><span><a href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Перейти до магазину на Prom&nbsp; ↗</a></span></div>
-      <p class="store-note">Мінімальне замовлення на Prom становить 300 ₴. Наявність товару менеджер підтверджує до оплати.</p>
+      <div class="footer-bottom"><span>© АВЛ ЦЕЛЬС · медичні товари</span><span><a href="#catalog">Переглянути каталог ↑</a></span></div>
+      <p class="store-note">Менеджер підтвердить наявність товарів до оплати.</p>
     </div>
   </footer>
 
@@ -657,9 +673,24 @@
   <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-heading" aria-modal="true" role="dialog" hidden>
     <div class="cart-head"><h2 id="cart-heading">Ваш кошик</h2><button class="close-button" id="cart-close" type="button" aria-label="Закрити кошик">×</button></div>
     <div class="cart-content" id="cart-content"><p class="cart-empty">Кошик порожній.<br>Додайте товар, щоб переглянути список.</p></div>
-    <div><div class="cart-total"><span>Разом</span><span id="cart-total">0 ₴</span></div><p class="cart-hint" id="cart-hint">Кошик на цій сторінці не передається магазину й не резервує товари. Щоб оформити замовлення, перейдіть на Prom.</p><button class="button" id="checkout-demo" type="button">Перейти до Prom <span class="arrow">↗</span></button></div>
+    <div><div class="cart-total"><span>Разом</span><span id="cart-total">0 ₴</span></div><p class="cart-hint" id="cart-hint">Менеджер підтвердить наявність товарів до оплати.</p><button class="button" id="checkout-open" type="button">Перейти до оформлення <span class="arrow">↘</span></button></div>
   </aside>
-  <div class="demo-dialog" id="demo-dialog" role="alertdialog" aria-modal="true" aria-labelledby="demo-dialog-heading" hidden><div class="dialog-content"><h2 id="demo-dialog-heading">Оформіть замовлення на Prom</h2><p>Кошик на цій сторінці не передається продавцю й не резервує товари. Перейдіть до магазину АВЛ ЦЕЛЬС на Prom, щоб перевірити наявність і купити потрібні позиції.</p><a class="button" href="https://avl.kiev.ua/" target="_blank" rel="noreferrer">Відкрити магазин <span class="arrow" aria-hidden="true">↗</span></a><button class="button button-secondary" id="dialog-close" type="button">Повернутися до кошика</button></div></div>
+  <div class="checkout-dialog" id="checkout-dialog" role="dialog" aria-modal="true" aria-labelledby="checkout-heading" aria-describedby="checkout-notice" hidden>
+    <div class="dialog-content">
+      <h2 id="checkout-heading">Оформлення замовлення</h2>
+      <div class="checkout-summary">
+        <div class="checkout-summary-head"><strong>Ваш кошик</strong><span id="checkout-count">Позицій: 0</span></div>
+        <div class="checkout-items" id="checkout-items"></div>
+        <div class="cart-total"><span>Разом</span><span id="checkout-total">0 ₴</span></div>
+      </div>
+      <div class="checkout-steps">
+        <div><strong>Доставка</strong><p>Нова пошта по Україні. Самовивіз у Києві за домовленістю.</p></div>
+        <div><strong>Оплата</strong><p>Менеджер підтвердить наявність товарів до оплати.</p></div>
+      </div>
+      <p class="checkout-note" id="checkout-notice">Замовлення з цього перегляду не надсилається.</p>
+      <button class="button button-secondary" id="dialog-close" type="button">Повернутися до кошика</button>
+    </div>
+  </div>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script>
@@ -676,7 +707,10 @@
       var cartTotal = document.getElementById("cart-total");
       var cartCount = document.getElementById("cart-count");
       var cartHint = document.getElementById("cart-hint");
-      var dialog = document.getElementById("demo-dialog");
+      var dialog = document.getElementById("checkout-dialog");
+      var checkoutItems = document.getElementById("checkout-items");
+      var checkoutCount = document.getElementById("checkout-count");
+      var checkoutTotal = document.getElementById("checkout-total");
       var toast = document.getElementById("toast");
       var search = document.getElementById("site-search");
       var products = Array.prototype.slice.call(document.querySelectorAll(".product-card"));
@@ -700,6 +734,25 @@
         window.clearTimeout(toastTimer);
         toastTimer = window.setTimeout(function () { toast.hidden = true; }, 2600);
       }
+      function containFocus(event, container) {
+        if (event.key !== "Tab") return;
+        var focusable = Array.prototype.slice.call(container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+        if (!focusable.length) {
+          event.preventDefault();
+          return;
+        }
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      cartDrawer.addEventListener("keydown", function (event) { containFocus(event, cartDrawer); });
+      dialog.addEventListener("keydown", function (event) { containFocus(event, dialog); });
       menuButton.addEventListener("click", function () {
         var willOpen = menu.hidden;
         closeMenus();
@@ -737,8 +790,8 @@
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
           closeMenus();
-          if (!cartDrawer.hidden) closeCart();
-          if (!dialog.hidden) closeDemoDialog();
+          if (!dialog.hidden) closeCheckoutDialog();
+          else if (!cartDrawer.hidden) closeCart();
         }
       });
 
@@ -769,7 +822,7 @@
         });
         document.getElementById("empty-results").hidden = visible !== 0;
         if (visible) document.getElementById("search-status").textContent = "Товарів у добірці: " + visible;
-        else if (query && matchingCategories) document.getElementById("search-status").textContent = "Категорій за запитом: " + matchingCategories + ". Повний асортимент є в магазині АВЛ ЦЕЛЬС на Prom.";
+        else if (query && matchingCategories) document.getElementById("search-status").textContent = "Категорій за запитом: " + matchingCategories + ". Перегляньте відповідні розділи каталогу.";
         else document.getElementById("search-status").textContent = "Товарів за цим запитом не знайдено. Спробуйте іншу назву чи код.";
         if (scrollToProducts) document.getElementById("catalog").scrollIntoView({ behavior: "smooth", block: "start" });
       }
@@ -792,6 +845,7 @@
         var total = 0;
         var count = 0;
         cartContent.replaceChildren();
+        checkoutItems.replaceChildren();
         Object.keys(cart).forEach(function (id) {
           var item = cart[id];
           if (item.quantity < 1) return;
@@ -805,7 +859,38 @@
           price.textContent = (item.price * item.quantity).toLocaleString("uk-UA") + " ₴";
           row.appendChild(title);
           row.appendChild(price);
+          var controls = document.createElement("div");
+          controls.className = "cart-line-controls";
+          var decrease = document.createElement("button");
+          decrease.type = "button";
+          decrease.className = "cart-quantity-button";
+          decrease.setAttribute("data-cart-action", "decrease");
+          decrease.setAttribute("data-cart-id", id);
+          decrease.setAttribute("aria-label", "Зменшити кількість: " + item.title);
+          decrease.textContent = "−";
+          var quantity = document.createElement("span");
+          quantity.textContent = "Кількість: " + item.quantity;
+          var increase = document.createElement("button");
+          increase.type = "button";
+          increase.className = "cart-quantity-button";
+          increase.setAttribute("data-cart-action", "increase");
+          increase.setAttribute("data-cart-id", id);
+          increase.setAttribute("aria-label", "Збільшити кількість: " + item.title);
+          increase.textContent = "+";
+          controls.appendChild(decrease);
+          controls.appendChild(quantity);
+          controls.appendChild(increase);
+          row.appendChild(controls);
           cartContent.appendChild(row);
+          var checkoutRow = document.createElement("div");
+          checkoutRow.className = "checkout-line";
+          var checkoutTitle = document.createElement("strong");
+          checkoutTitle.textContent = item.title + " × " + item.quantity;
+          var checkoutPrice = document.createElement("span");
+          checkoutPrice.textContent = (item.price * item.quantity).toLocaleString("uk-UA") + " ₴";
+          checkoutRow.appendChild(checkoutTitle);
+          checkoutRow.appendChild(checkoutPrice);
+          checkoutItems.appendChild(checkoutRow);
         });
         if (!count) {
           var empty = document.createElement("p");
@@ -815,7 +900,9 @@
         }
         cartCount.textContent = String(count);
         cartTotal.textContent = total.toLocaleString("uk-UA") + " ₴";
-        cartHint.textContent = total >= 300 ? "Мінімальну суму замовлення виконано. Менеджер підтвердить наявність перед оплатою." : "Мінімальна сума замовлення на Prom — 300 ₴. До неї залишилося " + (300 - total).toLocaleString("uk-UA") + " ₴.";
+        checkoutCount.textContent = "Позицій: " + count;
+        checkoutTotal.textContent = total.toLocaleString("uk-UA") + " ₴";
+        cartHint.textContent = "Менеджер підтвердить наявність товарів до оплати.";
       }
       function openCart() {
         closeMenus();
@@ -833,6 +920,16 @@
       cartOpen.addEventListener("click", openCart);
       cartClose.addEventListener("click", closeCart);
       scrim.addEventListener("click", closeCart);
+      cartContent.addEventListener("click", function (event) {
+        var button = event.target.closest("[data-cart-action]");
+        if (!button) return;
+        var id = button.getAttribute("data-cart-id");
+        var item = cart[id];
+        if (!item) return;
+        item.quantity += button.getAttribute("data-cart-action") === "increase" ? 1 : -1;
+        if (item.quantity < 1) delete cart[id];
+        updateCart();
+      });
       document.querySelectorAll("[data-add]").forEach(function (button) {
         button.addEventListener("click", function () {
           var id = button.getAttribute("data-add");
@@ -844,20 +941,22 @@
           showToast("Додано до кошика");
         });
       });
-      document.getElementById("checkout-demo").addEventListener("click", function () {
+      document.getElementById("checkout-open").addEventListener("click", function () {
         if (!Object.keys(cart).length) {
           showToast("Спочатку додайте позицію до кошика");
           return;
         }
+        cartDrawer.setAttribute("inert", "");
         dialog.hidden = false;
         document.getElementById("dialog-close").focus();
       });
-      function closeDemoDialog() {
+      function closeCheckoutDialog() {
         dialog.hidden = true;
-        document.getElementById("checkout-demo").focus();
+        cartDrawer.removeAttribute("inert");
+        document.getElementById("checkout-open").focus();
       }
-      document.getElementById("dialog-close").addEventListener("click", closeDemoDialog);
-      dialog.addEventListener("click", function (event) { if (event.target === dialog) closeDemoDialog(); });
+      document.getElementById("dialog-close").addEventListener("click", closeCheckoutDialog);
+      dialog.addEventListener("click", function (event) { if (event.target === dialog) closeCheckoutDialog(); });
       updateCart();
     }());
   </script>
