@@ -350,3 +350,6 @@ section[id] { scroll-margin-top: 104px; }
 .category-index nav a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .category-feature__media { position: relative; display: block; aspect-ratio: 8 / 5; height: auto; flex: none; overflow: hidden; }
 .category-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; margin: 0; padding: 14px; object-fit: contain; mix-blend-mode: normal; filter: none; }
+
+/* Familiar category grid icon, aligned with the header's outline icons. */
+.catalog-trigger svg.catalog-trigger__icon { display: block; width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
