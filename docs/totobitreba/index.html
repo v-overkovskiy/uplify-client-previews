@@ -33,13 +33,14 @@
   --red:#D4262E; --red-dark:#A90415; --red-tint:#FBE4E2;
   --sticker:#FFD43B; --ok:#2F7D4F;
   --r-card:20px; --r-btn:14px;
-  --gutter:clamp(16px,4vw,56px);
+  --gutter:clamp(16px,4vw,72px);
+  --maxw:110rem;
   --ease:cubic-bezier(.2,.9,.25,1);
   --shadow-card:0 1px 2px rgba(60,40,20,.06),0 10px 24px -14px rgba(60,40,20,.28);
   --shadow-lift:0 2px 4px rgba(60,40,20,.08),0 22px 36px -18px rgba(60,40,20,.38);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:104px}
+html{-webkit-text-size-adjust:100%;font-size:16px;scroll-padding-top:104px}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 'Onest',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
@@ -47,12 +48,15 @@ button,input{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:2000}
 .skip:focus{top:12px}
-.wrap{max-width:1360px;margin-inline:auto;padding-inline:var(--gutter)}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 
+/* wide screens: the whole rem scale grows with the viewport (16px up to 1600, 22px cap) */
+@media (min-width:1600px){html{font-size:calc(16px + (100vw - 1600px)*.0069)}}
+@media (min-width:2470px){html{font-size:22px}}
 /* typography */
 h1,h2,h3{font-family:'Rubik','Onest',sans-serif;margin:0;color:var(--ink);text-wrap:balance}
-h1{font-weight:700;font-size:clamp(2.25rem,4vw,3.5rem);line-height:1.04;letter-spacing:-.022em}
-h2{font-weight:700;font-size:clamp(1.75rem,2.8vw,2.375rem);line-height:1.1;letter-spacing:-.018em}
+h1{font-weight:700;font-size:clamp(2.25rem,4vw,4.25rem);line-height:1.04;letter-spacing:-.022em}
+h2{font-weight:700;font-size:clamp(1.75rem,2.8vw,2.75rem);line-height:1.1;letter-spacing:-.018em}
 h3{font-weight:600;font-size:1.1875rem;line-height:1.25;letter-spacing:-.01em}
 .sec-head p,.about p,.rev-big p,.how p,.sit p{text-wrap:pretty}
 .lead{font-size:1.1875rem;line-height:1.55;color:var(--ink-soft);max-width:34em}
@@ -168,7 +172,7 @@ h3{font-weight:600;font-size:1.1875rem;line-height:1.25;letter-spacing:-.01em}
 .fact span{font-size:.9375rem;color:var(--ink-soft)}
 
 /* hero wall (pegboard collage of real catalog photos) */
-.wall{position:relative;aspect-ratio:1/1.02;border-radius:32px;background:
+.wall{position:relative;aspect-ratio:1/1.02;width:100%;max-width:47.5rem;margin-left:auto;border-radius:32px;background:
   radial-gradient(circle at 14px 14px,var(--kraft-dot) 2.6px,transparent 3.2px) 0 0/28px 28px,var(--kraft);
   box-shadow:inset 0 0 0 1px rgba(96,66,30,.12)}
 .tile{position:absolute;width:43%;background:#fff;border-radius:18px;padding:8px 8px 12px;box-shadow:var(--shadow-card);transition:translate .5s var(--ease),box-shadow .5s var(--ease),rotate .5s var(--ease)}
