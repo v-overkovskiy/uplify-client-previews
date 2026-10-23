@@ -32,7 +32,7 @@
 <a class="skip" href="#main">До основного вмісту</a>
 <div class="notice" role="note">
   <div class="wrap">
-    <p>Концепт головної сторінки FreeBuy.in.ua. Це демонстрація: замовлення тут не оформлюються.</p>
+    <p>Демонстрація концепту: замовлення не оформлюються.</p>
     <a href="https://freebuy.in.ua/ua/" target="_blank" rel="noopener">Поточний сайт</a>
   </div>
 </div>
@@ -44,7 +44,7 @@
     </a>
     <form class="search" role="search" action="../../catalog/all/" method="get">
       <label class="sr" for="s-q">Пошук по каталогу</label>
-      <input class="field" id="s-q" type="search" name="q" placeholder="Назва, артикул або параметр" autocomplete="off">
+      <input class="field" id="s-q" type="search" name="q" placeholder="Назва або артикул" autocomplete="off">
       <button type="submit" aria-label="Знайти"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2"/></svg></button>
       <div class="suggest" hidden></div>
     </form>
@@ -62,7 +62,7 @@
       <div class="nav-links"><a href="../../catalog/tools/">Прилади</a><a href="../../catalog/repair/">Ремонт</a><a href="../../catalog/components/">Компоненти</a><a href="../../catalog/arduino/">Arduino</a><a href="../../catalog/power/">Акумулятори</a><a href="../../catalog/magnets/">Магніти</a><a href="../../#terms">Умови</a></div>
     </div>
   </nav>
-  <aside class="cart-panel" id="cart-panel" aria-label="Кошик">
+  <aside class="cart-panel" id="cart-panel" role="dialog" aria-label="Кошик">
     <div class="cart-head"><h2>Кошик</h2><button class="icon-btn" type="button" data-cart-close aria-label="Закрити кошик"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2"/></svg></button></div>
     <div class="cart-body"><p class="cart-empty">Кошик порожній. Додайте позицію з каталогу.</p></div>
     <p class="cart-note">Демонстраційний кошик: замовлення тут не створюються.</p>
@@ -76,10 +76,12 @@
 <main id="main">
 <nav class="crumbs wrap" aria-label="Шлях"><a href="../../">Головна</a><span aria-hidden="true">/</span><a href="../../catalog/arduino/">Arduino</a><span aria-hidden="true">/</span><span>Плата Arduino Nano v3.0 ATmega328, Type-C</span></nav>
 <div class="wrap pdp" style="padding-top:8px">
-  <div class="pdp-plate"><span class="art">№ <b>1130-57</b></span><img src="../../assets/img/products/7328940074.webp" alt="Плата Arduino Nano v3.0 ATmega328, Type-C" width="480" height="480"></div>
-  <div>
+  <div class="pdp-head">
     <h1>Плата Arduino Nano v3.0 ATmega328, Type-C</h1>
     <p style="margin-top:12px;display:flex;gap:12px 20px;flex-wrap:wrap;align-items:center"><span class="stock">Готово до відправки</span><span class="art">№ <b>1130-57</b></span></p>
+  </div>
+  <div class="pdp-plate"><span class="art">№ <b>1130-57</b></span><img src="../../assets/img/products/7328940074.webp" alt="Плата Arduino Nano v3.0 ATmega328, Type-C" width="480" height="480"></div>
+  <div class="pdp-rest">
     <div class="buybox">
       <div class="bb-step on"><span class="readout readout--xl">176<small class="cur">₴</small></span></div>
       <div class="bb-step"><div class="qty"><button type="button" data-qty-step="-1" aria-label="Менше">−</button><input type="number" value="1" min="1" max="99" inputmode="numeric" data-qty-input aria-label="Кількість"><button type="button" data-qty-step="1" aria-label="Більше">+</button></div><a class="btn" href="../../product/2033272811/" data-add="2033272811" data-use-qty data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
@@ -93,7 +95,7 @@
   </div>
 </div>
 <section class="wrap related" aria-labelledby="h-rel"><h2 id="h-rel">Ще з каталогу</h2><div class="rel-grid"><a class="rel-card" href="../../product/688915643/"><span class="plate"><img src="../../assets/img/products/7063271044.webp" alt="" width="160" height="160"></span><span class="row-name">Arduino Mega 2560 ATmega2560 R3, Type-C</span><span class="readout">698<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/2226658990/"><span class="plate"><img src="../../assets/img/products/1533328006.webp" alt="" width="160" height="160"></span><span class="row-name">Плата Wemos D1 mini WiFi на базі ESP8266, Type-C</span><span class="readout">128<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/515793513/"><span class="plate"><img src="../../assets/img/products/7654798297.webp" alt="" width="160" height="160"></span><span class="row-name">Модуль дисплея з чотирьох семисегментних індикаторів TM1637</span><span class="readout">60<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/361268551/"><span class="plate"><img src="../../assets/img/products/7319444499.webp" alt="" width="160" height="160"></span><span class="row-name">Вольтметр цифровий AC 60-500 В із засувками V3.0, червоний</span><span class="readout">82<small class="cur">₴</small></span></a></div></section>
-<div class="buybar"><span class="readout">176<small class="cur">₴</small></span><a class="btn" href="../../product/2033272811/" data-add="2033272811" data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
+<div class="buybar"><div><span class="readout">176<small class="cur">₴</small></span><span class="bar-note">Повернення 30 днів</span></div><a class="btn" href="../../product/2033272811/" data-add="2033272811" data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
 </main>
 <footer class="ftr">
   <div class="wrap">
