@@ -32,7 +32,7 @@
 <a class="skip" href="#main">До основного вмісту</a>
 <div class="notice" role="note">
   <div class="wrap">
-    <p>Концепт головної сторінки FreeBuy.in.ua. Це демонстрація: замовлення тут не оформлюються.</p>
+    <p>Демонстрація концепту: замовлення не оформлюються.</p>
     <a href="https://freebuy.in.ua/ua/" target="_blank" rel="noopener">Поточний сайт</a>
   </div>
 </div>
@@ -44,7 +44,7 @@
     </a>
     <form class="search" role="search" action="../../catalog/all/" method="get">
       <label class="sr" for="s-q">Пошук по каталогу</label>
-      <input class="field" id="s-q" type="search" name="q" placeholder="Назва, артикул або параметр" autocomplete="off">
+      <input class="field" id="s-q" type="search" name="q" placeholder="Назва або артикул" autocomplete="off">
       <button type="submit" aria-label="Знайти"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2"/></svg></button>
       <div class="suggest" hidden></div>
     </form>
@@ -62,7 +62,7 @@
       <div class="nav-links"><a href="../../catalog/tools/">Прилади</a><a href="../../catalog/repair/">Ремонт</a><a href="../../catalog/components/">Компоненти</a><a href="../../catalog/arduino/">Arduino</a><a href="../../catalog/power/">Акумулятори</a><a href="../../catalog/magnets/">Магніти</a><a href="../../#terms">Умови</a></div>
     </div>
   </nav>
-  <aside class="cart-panel" id="cart-panel" aria-label="Кошик">
+  <aside class="cart-panel" id="cart-panel" role="dialog" aria-label="Кошик">
     <div class="cart-head"><h2>Кошик</h2><button class="icon-btn" type="button" data-cart-close aria-label="Закрити кошик"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2"/></svg></button></div>
     <div class="cart-body"><p class="cart-empty">Кошик порожній. Додайте позицію з каталогу.</p></div>
     <p class="cart-note">Демонстраційний кошик: замовлення тут не створюються.</p>
@@ -76,10 +76,12 @@
 <main id="main">
 <nav class="crumbs wrap" aria-label="Шлях"><a href="../../">Головна</a><span aria-hidden="true">/</span><a href="../../catalog/tools/">Інструмент і електротехнічні вироби</a><span aria-hidden="true">/</span><span>Тестові щупи для мультиметра CAT III, 1000 В, 20 А</span></nav>
 <div class="wrap pdp" style="padding-top:8px">
-  <div class="pdp-plate"><span class="art">№ <b>Б31-1</b></span><span class="badge">Топ продаж</span><img src="../../assets/img/products/7330654043.webp" alt="Тестові щупи для мультиметра CAT III, 1000 В, 20 А" width="480" height="480"></div>
-  <div>
-    <h1>Тестові щупи для мультиметра CAT III, 1000 В, 20 А</h1>
+  <div class="pdp-head">
+    <h1>Тестові щупи для мультиметра CAT III, 1000 В, 20 А</h1>
     <p style="margin-top:12px;display:flex;gap:12px 20px;flex-wrap:wrap;align-items:center"><span class="stock">Готово до відправки</span><span class="art">№ <b>Б31-1</b></span></p>
+  </div>
+  <div class="pdp-plate"><span class="art">№ <b>Б31-1</b></span><span class="badge">Топ продаж</span><img src="../../assets/img/products/7330654043.webp" alt="Тестові щупи для мультиметра CAT III, 1000 В, 20 А" width="480" height="480"></div>
+  <div class="pdp-rest">
     <div class="buybox">
       <div class="bb-step on"><span class="readout readout--xl">97<small class="cur">₴</small></span></div>
       <div class="bb-step"><div class="qty"><button type="button" data-qty-step="-1" aria-label="Менше">−</button><input type="number" value="1" min="1" max="99" inputmode="numeric" data-qty-input aria-label="Кількість"><button type="button" data-qty-step="1" aria-label="Більше">+</button></div><a class="btn" href="../../product/581834479/" data-add="581834479" data-use-qty data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
@@ -89,11 +91,11 @@
         <div><dt>Гарантія</dt><dd>Гарантія на заводський брак на весь асортимент</dd></div>
       </dl>
     </div>
-    <section class="specs" aria-labelledby="h-specs"><h2 id="h-specs">Параметри</h2><dl class="spec-table"><div><dt>Тип</dt><dd>щупи для мультиметра</dd></div><div><dt>Категорія</dt><dd>CAT III</dd></div><div><dt>Напруга</dt><dd>до 1000 В</dd></div><div><dt>Струм</dt><dd>до 20 А</dd></div><div><dt>Артикул</dt><dd class="mono">Б31-1</dd></div><div><dt>Група</dt><dd>Інструмент і електротехнічні вироби</dd></div><div><dt>Підгрупа</dt><dd>Мультиметри і комплектуючі</dd></div></dl></section>
+    <section class="specs" aria-labelledby="h-specs"><h2 id="h-specs">Параметри</h2><dl class="spec-table"><div><dt>Тип</dt><dd>щупи для мультиметра</dd></div><div><dt>Категорія</dt><dd>CAT III</dd></div><div><dt>Напруга</dt><dd>до 1000 В</dd></div><div><dt>Струм</dt><dd>до 20 А</dd></div><div><dt>Артикул</dt><dd class="mono">Б31-1</dd></div><div><dt>Група</dt><dd>Інструмент і електротехнічні вироби</dd></div><div><dt>Підгрупа</dt><dd>Мультиметри і комплектуючі</dd></div></dl></section>
   </div>
 </div>
 <section class="wrap related" aria-labelledby="h-rel"><h2 id="h-rel">Ще з каталогу</h2><div class="rel-grid"><a class="rel-card" href="../../product/361268551/"><span class="plate"><img src="../../assets/img/products/7319444499.webp" alt="" width="160" height="160"></span><span class="row-name">Вольтметр цифровий AC 60-500 В із засувками V3.0, червоний</span><span class="readout">82<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/631020869/"><span class="plate"><img src="../../assets/img/products/7401722026.webp" alt="" width="160" height="160"></span><span class="row-name">USB тестер амперметр вольтметр, тестер зарядок тип 2</span><span class="readout">139<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/549880792/"><span class="plate"><img src="../../assets/img/products/7257327417.webp" alt="" width="160" height="160"></span><span class="row-name">Терморегулятор XH-W3001 220 В</span><span class="readout">125<small class="cur">₴</small></span></a><a class="rel-card" href="../../product/373704535/"><span class="plate"><img src="../../assets/img/products/7309589869.webp" alt="" width="160" height="160"></span><span class="row-name">Терморегулятор W1209 термостат + виносний датчик</span><span class="readout">88<small class="cur">₴</small></span></a></div></section>
-<div class="buybar"><span class="readout">97<small class="cur">₴</small></span><a class="btn" href="../../product/581834479/" data-add="581834479" data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
+<div class="buybar"><div><span class="readout">97<small class="cur">₴</small></span><span class="bar-note">Повернення 30 днів</span></div><a class="btn" href="../../product/581834479/" data-add="581834479" data-prototype-action="true" aria-describedby="proto-note">Купити</a></div>
 </main>
 <footer class="ftr">
   <div class="wrap">
