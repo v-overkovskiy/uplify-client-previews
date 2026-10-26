@@ -129,7 +129,8 @@ select.field{appearance:none;background:linear-gradient(45deg,transparent 50%,va
 .row-name{font-weight:600;font-size:16px;line-height:1.35;display:block;text-decoration:none}
 .row-name:hover{text-decoration:underline;text-underline-offset:3px}
 .row-main .row-name{display:flex;align-items:center;min-height:44px}
-.row-meta{font:500 14px/1.4 var(--mono);color:var(--ink2);margin-top:4px;display:block}
+.row-meta{font:400 15px/1.45 var(--sans);color:var(--ink2);margin-top:2px;display:block}
+.m-art{font:500 14px/1 var(--mono);color:var(--ink);letter-spacing:.01em}
 .row-side{display:grid;gap:6px;justify-items:end;text-align:right}
 .readout{display:inline-flex;align-items:baseline;gap:4px;font:500 22px/1 var(--mono);padding:6px 10px;border:1px solid var(--ink);background:#fff;letter-spacing:-.02em;white-space:nowrap}
 .readout small{font:500 14px/1 var(--mono);color:var(--ink2);letter-spacing:0}
@@ -192,7 +193,7 @@ select.field{appearance:none;background:linear-gradient(45deg,transparent 50%,va
 .tab:focus-visible{outline-offset:-3px}
 .panel{background:#fff;border:1px solid var(--ink);border-top:0}
 .panel[hidden]{display:none}
-.panel .row{grid-template-columns:88px minmax(0,1fr) 92px 190px 132px 120px;padding-block:16px}
+.panel .row{grid-template-columns:88px minmax(0,1fr) 190px 132px 120px;padding-block:16px}
 .panel .plate{width:88px}
 .panel-foot{display:flex;justify-content:flex-end;align-items:center;gap:12px;padding:12px 16px 12px 44px;border-top:1px solid var(--ink);background:var(--paper);position:relative}
 .panel-foot a{font-weight:600;min-height:44px;display:inline-flex;align-items:center}
