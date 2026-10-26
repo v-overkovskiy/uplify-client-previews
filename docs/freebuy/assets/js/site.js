@@ -106,6 +106,21 @@
     doc.addEventListener("click", function (e) { if (!f.contains(e.target)) { box.hidden = true; } });
   });
 
+  /* ---- Catalog mega menu: panel follows hover or focus ---- */
+  var mega = $(".mega");
+  if (mega) {
+    var items = $$(".mm-item", mega), panelsM = $$(".mm-panel", mega);
+    var showMega = function (slug) {
+      items.forEach(function (i) { i.classList.toggle("on", i.getAttribute("data-mm") === slug); });
+      panelsM.forEach(function (p) { p.hidden = p.getAttribute("data-mm-panel") !== slug; });
+    };
+    items.forEach(function (i) {
+      i.addEventListener("mouseenter", function () { showMega(i.getAttribute("data-mm")); });
+      i.addEventListener("focus", function () { showMega(i.getAttribute("data-mm")); });
+    });
+    doc.addEventListener("click", function (e) { var d = $(".catalog-menu[open]"); if (d && !d.contains(e.target)) d.removeAttribute("open"); });
+  }
+
   /* ---- Hero finder ---- */
   var finder = $("#finder");
   if (finder) finder.addEventListener("submit", function (e) {
@@ -141,9 +156,12 @@
     var rows = $$("[data-row]", lst), qs = new URLSearchParams(location.search), q = (qs.get("q") || "").toLowerCase();
     var fAvail = $("#f-avail"), fMin = $("#f-min"), fMax = $("#f-max"), fSort = $("#f-sort"), fSubs = $$("[name=sub]"), count = $("[data-count]"), empty = $("[data-empty]");
     var order = rows.slice();
+    var subq = qs.get("sub") || "", subNote = $("[data-subnote]");
+    if (subq && subNote) { subNote.hidden = false; $("[data-subname]", subNote).textContent = subq; }
     var apply = function () {
       var avail = fAvail && fAvail.checked, mn = fMin && fMin.value ? parseFloat(fMin.value) : 0, mx = fMax && fMax.value ? parseFloat(fMax.value) : Infinity;
       var sub = ""; fSubs.forEach(function (r) { if (r.checked) sub = r.value; });
+      if (!sub && subq) sub = subq;
       var list = order.slice();
       var s = fSort ? fSort.value : "";
       if (s === "asc") list.sort(function (a, b) { return +a.dataset.price - +b.dataset.price; });
