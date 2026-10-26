@@ -223,7 +223,7 @@ select.field{appearance:none;background:linear-gradient(45deg,transparent 50%,va
 .mm-body{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}
 .mm-subs{columns:2;column-gap:28px}
 .mm-subs li{break-inside:avoid}
-.mm-subs a{display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule);text-decoration:none;font-size:16px;line-height:1.3}
+.mm-subs a{overflow-wrap:anywhere;display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule);text-decoration:none;font-size:16px;line-height:1.3}
 .mm-subs a:hover{color:var(--signal-ink);text-decoration:underline;text-underline-offset:3px}
 .mm-none{color:var(--ink2);padding-block:10px}
 .mm-sample{display:grid;gap:12px;border:1px solid var(--ink);padding:14px;text-decoration:none;background:#fff;align-content:start}
@@ -242,13 +242,13 @@ select.field{appearance:none;background:linear-gradient(45deg,transparent 50%,va
 
 /* Catalog hierarchy */
 .cat-feature{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
-.tile{grid-column:span 2;background:#fff;border:1px solid var(--ink);display:flex;flex-direction:column}
+.tile{min-width:0;grid-column:span 2;background:#fff;border:1px solid var(--ink);display:flex;flex-direction:column}
 .tile--big{grid-column:span 3}
 .tile-main{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:20px 20px 16px;text-decoration:none;align-items:center}
 .tile .plate{width:96px}
 .tile--big .tile-main{grid-template-columns:120px minmax(0,1fr)}
 .tile--big .plate{width:120px}
-.tile-name{font:600 19px/1.25 var(--sans);display:block;margin-bottom:8px}
+.tile-name{font:600 19px/1.25 var(--sans);display:block;margin-bottom:8px;overflow-wrap:anywhere}
 .tile--big .tile-name{font-size:24px}
 .tile-count{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font:500 28px/1 var(--mono);letter-spacing:-.03em}
 .tile-text{min-width:0}
@@ -259,12 +259,12 @@ select.field{appearance:none;background:linear-gradient(45deg,transparent 50%,va
 .bar i{position:absolute;left:0;top:6px;height:2px;background:var(--signal)}
 .bar i::after{content:"";position:absolute;right:-7px;top:-6px;width:14px;height:14px;border:2px solid var(--signal);background:#fff;border-radius:50%}
 .tile-subs{padding:4px 20px 12px;margin-top:auto}
-.tile-subs a{display:flex;align-items:center;min-height:44px;border-top:1px solid var(--rule);font-size:16px;line-height:1.3;text-decoration:none}
+.tile-subs a{overflow-wrap:anywhere;display:flex;align-items:center;min-height:44px;border-top:1px solid var(--rule);font-size:16px;line-height:1.3;text-decoration:none}
 .tile-subs a:hover{color:var(--signal-ink);text-decoration:underline;text-underline-offset:3px}
 .cat-sub{font:600 22px/1.2 var(--sans);margin:48px 0 16px}
 .cat-rest{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px}
 .cl h3{font:600 18px/1.3 var(--sans);padding-bottom:10px;border-bottom:2px solid var(--ink)}
-.cl-row{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding-left:30px;position:relative;border-bottom:1px solid var(--rule);text-decoration:none;font-size:16px;line-height:1.3}
+.cl-row{overflow-wrap:anywhere;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding-left:30px;position:relative;border-bottom:1px solid var(--rule);text-decoration:none;font-size:16px;line-height:1.3}
 .cl-row::before{content:"";position:absolute;left:0;top:50%;width:14px;height:14px;margin-top:-7px;border:2px solid var(--signal);background:#fff;border-radius:50%}
 .cl-row:hover::before{background:var(--signal)}
 .cl-row:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
