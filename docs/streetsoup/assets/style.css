@@ -947,3 +947,43 @@ h2{font-size:clamp(32px,4vw,52px)}
 .fmt--best .fmt__img{border-color:rgba(27,25,21,.25)}
 .sit__more{white-space:nowrap}
 @media (max-width:640px){.strip__badge{font-size:12px;padding:2px 10px}.strip__in{flex-wrap:wrap;gap:6px 12px}}
+
+/* ---- компактний hero: перший екран без прокрутки ---- */
+@media (min-width:981px){
+  .hero__in{padding-block:clamp(16px,2.6vh,28px) clamp(16px,2.4vh,26px);gap:clamp(24px,3vw,48px)}
+  .hero h1{font-size:clamp(40px,min(4.4vw,8.4vh),64px);margin:8px 0 12px}
+  .hero__sub{font-size:18px;line-height:1.45;max-width:52ch}
+  .tags{margin-top:18px;gap:10px}
+  .tag{padding:9px 14px 9px 38px;row-gap:0}
+  .tag::before{top:16px;left:14px}
+  .tag__name{font-size:22px}
+  .tag__sub{font-size:13.5px;line-height:1.3}
+  .hero__facts{margin-top:12px;font-size:14px;gap:2px 16px}
+  .hero__facts b{font-size:19px}
+  .sit__media{height:clamp(220px,30vh,340px)}
+  .sit__media img{height:calc(100% + 8px - 12px);bottom:12px}
+  .readout{padding:8px 14px;gap:2px 14px}
+  .sit__alts{padding-top:8px}
+  .sit__alts-h{margin-bottom:2px}
+  .sit__alts li{padding:3px 0;font-size:15px}
+  .sit__body{padding:18px clamp(20px,2.2vw,30px) 20px;gap:clamp(20px,2.4vw,32px)}
+  .sit__info,.sit__buy{gap:10px}
+  .sit__title{font-size:clamp(26px,2.4vw,34px)}
+  .sit__inc{font-size:16px;gap:5px}
+  .sit__note{font-size:14px;line-height:1.4;padding:8px 12px}
+}
+@media (min-width:761px) and (max-width:980px){
+  .hero__in{padding-block:24px 32px;gap:20px}
+  .hero h1{font-size:clamp(40px,6vw,56px);margin:8px 0 10px}
+  .hero h1 br{display:none}
+  .hero h1 span{margin-left:.22em}
+  .hero__panel{margin-top:30px}
+  .hero__sub{font-size:18px;max-width:none}
+  .tags{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px;gap:10px}
+  .tag{padding:11px 14px 11px 38px}
+  .tag::before{top:19px;left:14px}
+  .tag__name{font-size:21px}
+  .tag__sub{font-size:14px}
+  .hero__facts{margin-top:14px}
+  .sit__media{height:clamp(240px,32vw,300px)}
+}
