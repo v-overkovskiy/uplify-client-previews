@@ -987,3 +987,15 @@ h2{font-size:clamp(32px,4vw,52px)}
   .hero__facts{margin-top:14px}
   .sit__media{height:clamp(240px,32vw,300px)}
 }
+
+/* hero заповнює перший екран на високих вікнах */
+@media (min-width:981px){
+  .hero{min-height:calc(100vh - var(--head-h,96px));min-height:calc(100svh - var(--head-h,96px));display:grid;align-items:center}
+}
+@media (min-width:981px) and (min-height:880px){
+  .sit__media{height:clamp(300px,36vh,430px)}
+  .hero h1{font-size:clamp(44px,min(4.8vw,8.4vh),72px)}
+  .tag{padding-block:12px}
+  .tag::before{top:20px}
+  .hero__facts{margin-top:20px}
+}

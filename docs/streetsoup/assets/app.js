@@ -273,5 +273,8 @@
     var onScroll = function () { head.classList.toggle('is-scrolled', window.scrollY > 8); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+    var setH = function () { document.documentElement.style.setProperty('--head-h', head.offsetHeight + 'px'); };
+    setH();
+    window.addEventListener('resize', setH);
   }
 })();
