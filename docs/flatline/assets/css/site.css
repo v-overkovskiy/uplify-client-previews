@@ -132,6 +132,8 @@ button,input,select{font:inherit;color:inherit}
 .dev--kz{animation-delay:-2.3s}.dev--dac{animation-delay:-4.6s}
 .dev::after{content:"";position:absolute;left:6%;right:6%;bottom:-16px;height:22px;background:radial-gradient(ellipse at center,rgba(42,43,44,.38),rgba(42,43,44,0) 70%);filter:blur(5px);pointer-events:none}
 .slide__devices .dev img{position:relative;z-index:1;display:block;width:auto;max-width:none;aspect-ratio:auto;object-fit:fill;mix-blend-mode:normal;filter:drop-shadow(0 16px 18px rgba(42,43,44,.22));transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px)) scale(var(--sc,1));transition:transform .22s ease-out,filter .3s}
+.slide__devices--one{justify-content:center;padding-bottom:26px}
+.slide__devices .dev--one img{height:64cqw;max-height:440px}
 .slide__devices .dev--main img{height:50cqw}.slide__devices .dev--kz img{height:38cqw}.slide__devices .dev--dac img{height:42cqw}
 @media (min-width:1101px){.slide__devices .dev--main img{height:44cqw}.slide__devices .dev--kz img{height:34cqw}.slide__devices .dev--dac img{height:37cqw}}
 .slide__devices .dev:hover img{--lift:-8px;--sc:1.05;filter:drop-shadow(0 26px 24px rgba(42,43,44,.3))}
