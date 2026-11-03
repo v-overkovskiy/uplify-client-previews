@@ -412,3 +412,9 @@ h2.title{font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.1;letter-spacing:-.02
   .finder-go{margin-top:12px}
   .lead{font-size:1rem;margin-top:12px}
 }
+
+/* category tiles: section band, thin border and coloured counters (contrast pass) */
+.needs-sec{background:#EFE2CA;border-block:1px solid #E0CFB2}
+.need{border:1px solid #DCCBAE;box-shadow:0 10px 22px -18px rgba(60,35,10,.5)}
+.need.dogs{--t2:#D2E0B8}.need.cats{--t2:#F4C9AE}.need.pup{--t2:#BFD8EC}.need.kit{--t2:#F2C6D4}.need.vet{--t2:#EBD3A8}.need.wet{--t2:#E2D4BC}.need.monge{--t2:#EDE4D2}
+.need .cnt{display:inline-block;background:var(--t2);color:var(--ink);padding:3px 11px;border-radius:999px;margin-bottom:8px}
