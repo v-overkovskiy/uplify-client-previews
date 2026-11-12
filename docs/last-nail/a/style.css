@@ -265,6 +265,7 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 
 @media (max-width: 900px) {
   :root { --shell: min(100% - 2rem, 760px); --header-h: 4.5rem; }
+  .concept-badge { display: none; }
   .header-phone { display: none; }
   .hero { padding-bottom: 2rem; }
   .hero-image { object-position: 58% center; }
