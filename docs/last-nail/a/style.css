@@ -112,6 +112,7 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 .service-card:hover .service-media > img { transform: scale(1.025); }
 .service-media-demolition img { object-position: center; }
 .service-tag { position: absolute; z-index: 2; top: 1rem; left: 1rem; padding: .55rem .7rem; color: var(--yellow-ink); background: var(--yellow); font-size: .65rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.service-caption { position: absolute; z-index: 2; right: 1rem; bottom: 1rem; left: 1rem; color: var(--bone); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .service-body { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1.5rem; }
 .service-index { color: var(--yellow); font-family: var(--display); font-size: 1.35rem; font-weight: 800; }
 .service-body h3 { font-size: clamp(2.8rem, 4.5vw, 4.8rem); }
@@ -187,13 +188,19 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 .lightbox-next { right: .75rem; }
 
 .video-section { border-top: 1px solid var(--line); background: #10100f; }
+.video-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
 .video-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(17rem, 30rem); gap: .8rem; margin-top: 2.5rem; padding-bottom: 1rem; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: inline mandatory; scrollbar-color: var(--yellow) #222; }
-.video-card { min-height: 20rem; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 3px; background: var(--panel); scroll-snap-align: start; }
-.video-card-real { grid-auto-rows: 1fr auto; }
-.video-card video { width: 100%; aspect-ratio: 16/9; background: #000; }
-.video-card-real div { display: grid; padding: 1rem; }
+.video-card { min-height: 20rem; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 3px; background: var(--panel); scroll-snap-align: start; }
+.video-card[hidden] { display: none; }
+.video-media { position: relative; aspect-ratio: 9/16; overflow: hidden; background: #000; }
+.video-media img, .video-media video { width: 100%; height: 100%; object-fit: cover; }
+.video-media video { object-fit: contain; }
+.video-play { position: absolute; inset: 0; width: 100%; border: 0; color: var(--bone); background: linear-gradient(0deg, rgba(0,0,0,.48), transparent 45%); cursor: pointer; }
+.video-play span { display: grid; width: 3.5rem; height: 3.5rem; margin: auto; place-items: center; padding-left: .18rem; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; background: rgba(10,10,10,.62); backdrop-filter: blur(10px); transition: transform 100ms ease-out; }
+.video-play:active span { transform: scale(.97); }
+.video-card-copy { display: grid; gap: .65rem; padding: 1rem; }
+.video-chip { width: max-content; padding: .35rem .5rem; color: var(--yellow-ink); background: var(--yellow); font-size: .6rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .video-card strong { font-family: var(--display); font-size: 1.65rem; line-height: 1; letter-spacing: -.02em; text-transform: uppercase; }
-.video-card small { margin-top: .4rem; color: var(--muted); font-size: .72rem; }
 .video-card.placeholder { justify-content: flex-end; padding: 1.25rem; border-style: dashed; background: repeating-linear-gradient(135deg, #151513 0 10px, #11110f 10px 20px); }
 .video-card.placeholder span { margin-bottom: auto; color: var(--yellow); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 
