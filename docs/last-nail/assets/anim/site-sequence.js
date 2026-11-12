@@ -49,8 +49,6 @@
     let queuedCaptionIndex = 0;
     let captionExiting = false;
     let captionTimer = 0;
-    let sectionTop = 0;
-    let travel = 1;
     let target = 0;
     let value = 0;
     let velocity = 0;
@@ -216,15 +214,14 @@
       setCaption(index);
     };
 
-    const measure = () => {
-      const rect = section.getBoundingClientRect();
-      sectionTop = window.scrollY + rect.top;
-      travel = Math.max(1, section.offsetHeight - window.innerHeight);
-    };
-
     const updateTarget = () => {
       if (motionQuery.matches) return;
-      target = clamp((window.scrollY - sectionTop) / travel);
+      const rect = section.getBoundingClientRect();
+      const travel = Math.max(1, section.offsetHeight - window.innerHeight);
+      target = clamp(-rect.top / travel);
+      /* Do not depend on IntersectionObserver alone: derive visibility from the live rect too
+         (observers can be delayed or suspended, e.g. in background or embedded views). */
+      if (rect.bottom > -window.innerHeight * .1 && rect.top < window.innerHeight * 1.1) visible = true;
       if (visible) start();
     };
 
@@ -254,7 +251,9 @@
 
     chips.forEach((chip, index) => {
       chip.addEventListener("click", () => {
-        const top = sectionTop + travel * actStops[index];
+        const rect = section.getBoundingClientRect();
+        const travel = Math.max(1, section.offsetHeight - window.innerHeight);
+        const top = window.scrollY + rect.top + travel * actStops[index];
         window.scrollTo({ top, behavior: motionQuery.matches ? "auto" : "smooth" });
       });
     });
@@ -291,30 +290,24 @@
           caption.setAttribute("aria-hidden", String(!active));
         });
         captionIndex = actIndex(value);
-        measure();
         updateTarget();
       }
     };
 
-    measure();
     if (motionQuery.matches) {
       value = 1;
       target = 1;
       stage(1);
     } else {
-      target = clamp((window.scrollY - sectionTop) / travel);
+      updateTarget();
       value = target;
       stage(value);
     }
     window.addEventListener("scroll", updateTarget, { passive: true });
-    window.addEventListener("resize", () => {
-      measure();
-      updateTarget();
-    }, { passive: true });
-    window.addEventListener("load", () => {
-      measure();
-      updateTarget();
-    }, { once: true });
+    window.addEventListener("resize", updateTarget, { passive: true });
+    window.visualViewport?.addEventListener("resize", updateTarget, { passive: true });
+    window.addEventListener("load", updateTarget, { once: true });
+    document.fonts?.ready?.then(updateTarget);
     motionQuery.addEventListener?.("change", onMotionChange);
   });
 })();

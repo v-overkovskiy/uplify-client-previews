@@ -1,0 +1,49 @@
+{
+  "fps": 24,
+  "duration": 33.416667,
+  "dissolve_seconds": 0.416667,
+  "chapters": [
+    {
+      "id": "break-out",
+      "label": "BREAK OUT",
+      "caption": "Break out: a concrete floor is broken up.",
+      "start": 0.0,
+      "end": 5.291667
+    },
+    {
+      "id": "clear",
+      "label": "CLEAR",
+      "caption": "Clear: broken concrete is carted off the site.",
+      "start": 5.291667,
+      "end": 8.875
+    },
+    {
+      "id": "drain",
+      "label": "DRAIN",
+      "caption": "Drain: drainage pipe laid beside a window well.",
+      "start": 8.875,
+      "end": 15.458333
+    },
+    {
+      "id": "sump-pit",
+      "label": "SUMP PIT",
+      "caption": "Sump pit: where collected water goes.",
+      "start": 15.458333,
+      "end": 20.041667
+    },
+    {
+      "id": "wrap",
+      "label": "WRAP",
+      "caption": "Wrap: dimpled membrane lines the basement wall.",
+      "start": 20.041667,
+      "end": 24.625
+    },
+    {
+      "id": "finish",
+      "label": "FINISH",
+      "caption": "Finish: sump lid and membrane, ready for the next trade.",
+      "start": 24.625,
+      "end": 33.416667
+    }
+  ]
+}
