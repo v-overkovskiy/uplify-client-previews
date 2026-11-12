@@ -126,33 +126,6 @@
   window.addEventListener("resize", updateScrubTarget, { passive: true });
   if (!reducedMotion.matches && scrubSection) requestAnimationFrame(animateScrub);
 
-  const explainerTabs = [...document.querySelectorAll("[data-explainer-tab]")];
-  const explainerPanels = [...document.querySelectorAll("[data-explainer-panel]")];
-  const activateExplainer = (name, focus = false) => {
-    explainerTabs.forEach((tab) => {
-      const active = tab.dataset.explainerTab === name;
-      tab.classList.toggle("is-active", active);
-      tab.setAttribute("aria-selected", String(active));
-      tab.tabIndex = active ? 0 : -1;
-      if (active && focus) tab.focus();
-    });
-    explainerPanels.forEach((panel) => {
-      const active = panel.dataset.explainerPanel === name;
-      panel.classList.toggle("is-active", active);
-      panel.hidden = !active;
-    });
-  };
-  explainerTabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateExplainer(tab.dataset.explainerTab));
-    tab.addEventListener("keydown", (event) => {
-      if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-      event.preventDefault();
-      const direction = event.key === "ArrowRight" ? 1 : -1;
-      const next = (index + direction + explainerTabs.length) % explainerTabs.length;
-      activateExplainer(explainerTabs[next].dataset.explainerTab, true);
-    });
-  });
-
   const processSection = document.querySelector("[data-process]");
   const processSteps = [...(processSection?.querySelectorAll("[data-process-step]") || [])];
   const processFrames = [...(processSection?.querySelectorAll("[data-process-frame]") || [])];
@@ -175,9 +148,82 @@
   window.addEventListener("scroll", updateProcess, { passive: true });
   window.addEventListener("resize", updateProcess, { passive: true });
 
+  const createRowCollapser = ({ container, items, toggle, matches, countItems, noun }) => {
+    let expanded = false;
+    let currentFilter = "all";
+    let resizeFrame = 0;
+    let measuredWidth = 0;
+
+    const matchingItems = () => items.filter((item) => matches(item, currentFilter));
+    const update = () => {
+      const matching = matchingItems();
+      items.forEach((item) => { item.hidden = !matching.includes(item); });
+
+      const rowTops = [];
+      matching.forEach((item) => {
+        if (!rowTops.some((top) => Math.abs(top - item.offsetTop) < 2)) rowTops.push(item.offsetTop);
+      });
+      const hasMore = rowTops.length > 3;
+      if (!hasMore) expanded = false;
+      if (!expanded && hasMore) {
+        const lastVisibleTop = rowTops[2];
+        matching.forEach((item) => { item.hidden = item.offsetTop > lastVisibleTop + 1; });
+      }
+
+      const count = (countItems || matchingItems)().filter((item) => matches(item, currentFilter)).length;
+      toggle.hidden = !hasMore;
+      toggle.setAttribute("aria-expanded", String(expanded));
+      toggle.textContent = expanded ? "Show fewer" : `Show all ${count} ${noun}`;
+    };
+
+    const setFilter = (filter) => {
+      currentFilter = filter;
+      expanded = false;
+      update();
+    };
+
+    toggle.addEventListener("click", () => {
+      const oldTop = toggle.getBoundingClientRect().top;
+      const collapsing = expanded;
+      expanded = !expanded;
+      update();
+      if (collapsing) {
+        requestAnimationFrame(() => {
+          const shift = toggle.getBoundingClientRect().top - oldTop;
+          window.scrollBy({ top: shift, behavior: "auto" });
+        });
+      }
+    });
+
+    if ("ResizeObserver" in window) {
+      new ResizeObserver((entries) => {
+        const width = entries[0]?.contentRect.width || 0;
+        if (Math.abs(width - measuredWidth) < 1) return;
+        measuredWidth = width;
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(update);
+      }).observe(container);
+    } else {
+      window.addEventListener("resize", () => {
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(update);
+      }, { passive: true });
+    }
+
+    update();
+    return { setFilter, matchingItems };
+  };
+
   const filterButtons = [...document.querySelectorAll("[data-gallery-filter]")];
   const galleryItems = [...document.querySelectorAll(".gallery-item")];
-  let visibleGalleryItems = [...galleryItems];
+  const galleryCollapser = createRowCollapser({
+    container: document.querySelector("[data-gallery]"),
+    items: galleryItems,
+    toggle: document.querySelector("[data-gallery-toggle]"),
+    matches: (item, filter) => filter === "all" || item.dataset.category === filter,
+    noun: "photos"
+  });
+  let visibleGalleryItems = galleryCollapser.matchingItems();
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filter = button.dataset.galleryFilter;
@@ -186,10 +232,8 @@
         item.classList.toggle("is-active", active);
         item.setAttribute("aria-pressed", String(active));
       });
-      galleryItems.forEach((item) => {
-        item.hidden = filter !== "all" && item.dataset.category !== filter;
-      });
-      visibleGalleryItems = galleryItems.filter((item) => !item.hidden);
+      galleryCollapser.setFilter(filter);
+      visibleGalleryItems = galleryCollapser.matchingItems();
     });
   });
 
@@ -214,7 +258,7 @@
     item.addEventListener("click", () => {
       if (!lightbox?.showModal) return;
       lightboxTrigger = item;
-      visibleGalleryItems = galleryItems.filter((galleryItem) => !galleryItem.hidden);
+      visibleGalleryItems = galleryCollapser.matchingItems();
       showLightboxItem(visibleGalleryItems.indexOf(item));
       lightbox.showModal();
     });
@@ -232,7 +276,16 @@
   lightbox?.addEventListener("close", () => lightboxTrigger?.focus());
 
   const videoFilterButtons = [...document.querySelectorAll("[data-video-filter]")];
-  const videoCards = [...document.querySelectorAll("[data-video-card]")];
+  const videoCards = [...document.querySelectorAll(".video-card")];
+  const projectVideoCards = [...document.querySelectorAll("[data-video-card]")];
+  const videoCollapser = createRowCollapser({
+    container: document.querySelector(".video-strip"),
+    items: videoCards,
+    toggle: document.querySelector("[data-video-toggle]"),
+    matches: (card, filter) => filter === "all" || card.dataset.videoCategory === filter,
+    countItems: () => projectVideoCards,
+    noun: "videos"
+  });
   videoFilterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filter = button.dataset.videoFilter;
@@ -241,10 +294,8 @@
         item.classList.toggle("is-active", active);
         item.setAttribute("aria-pressed", String(active));
       });
-      videoCards.forEach((card) => {
-        card.hidden = filter !== "all" && card.dataset.videoCategory !== filter;
-        if (card.hidden) card.querySelector("video")?.pause();
-      });
+      videoCollapser.setFilter(filter);
+      videoCards.forEach((card) => { if (card.hidden) card.querySelector("video")?.pause(); });
     });
   });
 

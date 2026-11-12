@@ -198,20 +198,22 @@
         <p class="eyebrow reveal">Client system graphics</p>
         <div class="section-heading reveal">
           <h2 id="explainer-title">Two waterproofing views.</h2>
-          <p>Switch between the supplied interior and exterior system diagrams.</p>
-        </div>
-        <div class="explainer-tabs" role="tablist" aria-label="Waterproofing system diagrams">
-          <button id="tab-interior" class="tab-button is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-interior" data-explainer-tab="interior">Interior system</button>
-          <button id="tab-exterior" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-exterior" data-explainer-tab="exterior" tabindex="-1">Exterior system</button>
+          <p>The same goal two ways: water is collected and led away from the foundation.</p>
         </div>
         <div class="explainer-stage reveal">
-          <figure id="panel-interior" class="explainer-panel is-active" role="tabpanel" aria-labelledby="tab-interior" data-explainer-panel="interior">
+          <figure class="explainer-panel">
+            <figcaption><h3>Inside the basement</h3><p>Interior waterproofing system</p></figcaption>
             <img src="../assets/explainer/interior-waterproofing.webp" width="1349" height="1166" loading="lazy" alt="Interior waterproofing diagram labelled with new concrete, membrane, drainage gravel, weeping tile and footing">
-            <figcaption>New concrete sits above drainage gravel and weeping tile. The interior membrane runs down the wall and covers the footing.</figcaption>
+            <ol class="explainer-legend">
+              <li>new concrete poured on top</li><li>interior waterproofing membrane installed</li><li>drainage gravel</li><li>weeping tile</li><li>membrane covers the footing</li><li>footing</li>
+            </ol>
           </figure>
-          <figure id="panel-exterior" class="explainer-panel" role="tabpanel" aria-labelledby="tab-exterior" data-explainer-panel="exterior" hidden>
+          <figure class="explainer-panel">
+            <figcaption><h3>Outside at the foundation</h3><p>Window well and drainage</p></figcaption>
             <img src="../assets/explainer/exterior-waterproofing.webp" width="1254" height="1254" loading="lazy" alt="Exterior waterproofing diagram labelled with foundation, window well, soil, gravel, weeping tile and footing">
-            <figcaption>The exterior view labels the foundation and window well, with soil, gravel and weeping tile beside the gravel footing.</figcaption>
+            <ol class="explainer-legend">
+              <li>foundation</li><li>window well</li><li>gravel</li><li>soil</li><li>weeping tile</li><li>gravel footing</li>
+            </ol>
           </figure>
         </div>
       </div>
@@ -252,7 +254,7 @@
           <button class="filter-button" type="button" data-gallery-filter="demolition" aria-pressed="false">Demolition</button>
           <button class="filter-button" type="button" data-gallery-filter="site" aria-pressed="false">Site</button>
         </div>
-        <div class="gallery-grid" data-gallery>
+        <div class="gallery-grid" id="gallery-cards" data-gallery>
           <button class="gallery-item gallery-item-wide" type="button" data-category="interior" data-caption="Membrane walls, round sump lid and new floor surface"><img src="../assets/img/IMG_5021-640.webp" width="640" height="853" loading="lazy" alt="Membrane walls, round sump lid and new floor surface"><span>Interior membrane &amp; sump</span></button>
           <button class="gallery-item" type="button" data-category="interior" data-caption="Membrane wall and new floor beside basement stairs"><img src="../assets/img/IMG_0885-640.webp" width="640" height="853" loading="lazy" alt="Membrane wall and new floor beside basement stairs"><span>Membrane beside stairs</span></button>
           <button class="gallery-item" type="button" data-category="interior" data-caption="Membrane room with floor being laid"><img src="../assets/img/IMG_0815-640.webp" width="640" height="853" loading="lazy" alt="Membrane room with floor being laid"><span>Floor being laid</span></button>
@@ -272,6 +274,7 @@
           <button class="gallery-item" type="button" data-category="site" data-caption="Excavated strip along a foundation wall"><img src="../assets/img/IMG_2634-640.webp" width="640" height="853" loading="lazy" alt="Excavated strip along a foundation wall"><span>Foundation access</span></button>
           <button class="gallery-item" type="button" data-category="site" data-caption="Yard surface after backfilling"><img src="../assets/img/IMG_7821-640.webp" width="640" height="853" loading="lazy" alt="Yard surface after backfilling"><span>Backfilled yard</span></button>
         </div>
+        <button class="collection-toggle" type="button" data-gallery-toggle aria-expanded="false" aria-controls="gallery-cards">Show all 18 photos</button>
       </div>
     </section>
 
@@ -295,7 +298,7 @@
           <button class="filter-button" type="button" data-video-filter="waterproofing" aria-pressed="false">Waterproofing</button>
           <button class="filter-button" type="button" data-video-filter="team" aria-pressed="false">Team</button>
         </div>
-        <div class="video-strip" aria-label="Project videos">
+        <div class="video-strip" id="video-cards" aria-label="Project videos">
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/demo-concrete-1-poster.jpg" width="720" height="1280" loading="lazy" alt="Worker breaking out a concrete floor"><button class="video-play" type="button" data-video-src="../assets/video/demo-concrete-1.mp4" aria-label="Play video: Breaking out a concrete floor"><span aria-hidden="true">▶</span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>Breaking out a concrete floor</strong></div></article>
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/demo-concrete-2-poster.jpg" width="720" height="1280" loading="lazy" alt="Worker breaking out a concrete floor"><button class="video-play" type="button" data-video-src="../assets/video/demo-concrete-2.mp4" aria-label="Play video: Breaking out a concrete floor"><span aria-hidden="true">▶</span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>Breaking out a concrete floor</strong></div></article>
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/site-onsite-poster.jpg" width="720" height="1280" loading="lazy" alt="On site, work in progress"><button class="video-play" type="button" data-video-src="../assets/video/site-onsite.mp4" aria-label="Play video: On site, work in progress"><span aria-hidden="true">▶</span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>On site, work in progress</strong></div></article>
@@ -309,6 +312,7 @@
           <article class="video-card" data-video-card data-video-category="team"><div class="video-media" data-video-media><img src="../assets/video/team-video-poster.jpg" width="720" height="1280" loading="lazy" alt="Video message from the team"><button class="video-play" type="button" data-video-src="../assets/video/team-video.mp4" aria-label="Play video: Video message from the team"><span aria-hidden="true">▶</span></button></div><div class="video-card-copy"><span class="video-chip">Team</span><strong>Video message from the team</strong></div></article>
           <article class="video-card placeholder"><span>Pending</span><strong>Video testimonials from customers: pending</strong></article>
         </div>
+        <button class="collection-toggle" type="button" data-video-toggle aria-expanded="false" aria-controls="video-cards">Show all 11 videos</button>
       </div>
     </section>
 
