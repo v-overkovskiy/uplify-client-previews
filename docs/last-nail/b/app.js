@@ -103,7 +103,8 @@
     let candidates = [...items];
     const columns = () => Math.max(1, getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length);
     const update = () => {
-      const limit = columns() * 3;
+      const maxRows = Math.max(1, Number.parseInt(grid.dataset.maxRows, 10) || 3);
+      const limit = columns() * maxRows;
       candidates.forEach((item, index) => {
         item.hidden = !expanded && index >= limit;
         if (item.hidden) item.querySelector('video')?.pause();

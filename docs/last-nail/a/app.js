@@ -153,6 +153,7 @@
     let currentFilter = "all";
     let resizeFrame = 0;
     let measuredWidth = 0;
+    const maxRows = Math.max(1, Number.parseInt(container.dataset.maxRows, 10) || 1);
 
     const matchingItems = () => items.filter((item) => matches(item, currentFilter));
     const update = () => {
@@ -163,10 +164,10 @@
       matching.forEach((item) => {
         if (!rowTops.some((top) => Math.abs(top - item.offsetTop) < 2)) rowTops.push(item.offsetTop);
       });
-      const hasMore = rowTops.length > 3;
+      const hasMore = rowTops.length > maxRows;
       if (!hasMore) expanded = false;
       if (!expanded && hasMore) {
-        const lastVisibleTop = rowTops[2];
+        const lastVisibleTop = rowTops[maxRows - 1];
         matching.forEach((item) => { item.hidden = item.offsetTop > lastVisibleTop + 1; });
       }
 
