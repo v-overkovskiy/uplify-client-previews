@@ -59,6 +59,9 @@
   let scrubVelocity = 0;
   let scrubActive = false;
   let lastFrame = performance.now();
+  let scrubCaptionIndex = Math.max(0, scrubCaptions.findIndex((caption) => caption.classList.contains("is-active")));
+  let scrubCaptionPendingIndex = scrubCaptionIndex;
+  let scrubCaptionIsExiting = false;
 
   const loadScrubVideo = () => {
     if (!scrubVideo || scrubLoaded || reducedMotion.matches) return;
@@ -99,7 +102,24 @@
   const setScrubCaption = (progress) => {
     if (!scrubCaptions.length) return;
     const index = Math.min(scrubCaptions.length - 1, Math.floor(progress * scrubCaptions.length));
-    scrubCaptions.forEach((caption, captionIndex) => caption.classList.toggle("is-active", captionIndex === index));
+    scrubCaptionPendingIndex = index;
+
+    if (reducedMotion.matches) {
+      scrubCaptions.forEach((caption, captionIndex) => caption.classList.toggle("is-active", captionIndex === index));
+      scrubCaptionIndex = index;
+      return;
+    }
+
+    if (scrubCaptionIsExiting || index === scrubCaptionIndex) return;
+    scrubCaptionIsExiting = true;
+    scrubCaptions[scrubCaptionIndex]?.classList.remove("is-active");
+
+    window.setTimeout(() => {
+      scrubCaptions.forEach((caption) => caption.classList.remove("is-active"));
+      scrubCaptionIndex = scrubCaptionPendingIndex;
+      scrubCaptions[scrubCaptionIndex]?.classList.add("is-active");
+      scrubCaptionIsExiting = false;
+    }, 150);
   };
 
   const animateScrub = (now) => {
