@@ -175,24 +175,36 @@
       </div>
     </section>
 
-    <section class="scrub-section" id="system" data-scrub aria-labelledby="scrub-title">
+    <section class="scrub-section story-section" id="system" data-scrub aria-labelledby="scrub-title">
       <div class="scrub-pin">
-        <video class="scrub-video" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true" poster="../assets/video/scrub-poster.jpg" data-desktop-src="../assets/video/scrub-1280.mp4" data-mobile-src="../assets/video/scrub-720.mp4"></video>
-        <img class="scrub-fallback" src="../assets/video/scrub-poster.jpg" width="1280" height="720" loading="lazy" alt="Dimpled drainage membrane beside a round sump lid">
-        <div class="scrub-vignette" aria-hidden="true"></div>
-        <div class="scrub-content shell">
-          <p class="eyebrow">Scroll through the system</p>
-          <h2 id="scrub-title">Membrane to sump.</h2>
-          <div class="scrub-captions" aria-live="polite">
-            <p class="is-active" data-scrub-caption>Dimpled membrane lines the wall.</p>
-            <p data-scrub-caption>The membrane meets the drainage channel.</p>
-            <p data-scrub-caption>The channel leads toward the sump.</p>
-            <p data-scrub-caption>The round sump lid closes the collection point.</p>
+        <div class="story-layout shell">
+          <div class="scrub-content story-copy">
+            <div class="story-intro">
+              <p class="eyebrow">System detail / Real footage</p>
+              <h2 id="scrub-title">From tear-out to a dry basement.</h2>
+            </div>
+            <div class="scrub-captions" aria-live="polite">
+              <p class="is-active" data-scrub-caption>Break out: a concrete floor is broken up.</p>
+              <p data-scrub-caption>Clear: broken concrete is carted off the site.</p>
+              <p data-scrub-caption>Drain: drainage pipe laid beside a window well.</p>
+              <p data-scrub-caption>Sump pit: where collected water goes.</p>
+              <p data-scrub-caption>Wrap: dimpled membrane lines the basement wall.</p>
+              <p data-scrub-caption>Finish: sump lid and membrane, ready for the next trade.</p>
+            </div>
+            <div class="story-chips" aria-label="Story chapters">
+              <button type="button" data-story-chip="0" aria-current="true">Break out</button><button type="button" data-story-chip="1" aria-current="false">Clear</button><button type="button" data-story-chip="2" aria-current="false">Drain</button><button type="button" data-story-chip="3" aria-current="false">Sump pit</button><button type="button" data-story-chip="4" aria-current="false">Wrap</button><button type="button" data-story-chip="5" aria-current="false">Finish</button>
+            </div>
+            <div class="scrub-progress" aria-hidden="true"><span data-scrub-progress></span></div>
+            <ol class="story-static-list"><li>Break out: a concrete floor is broken up.</li><li>Clear: broken concrete is carted off the site.</li><li>Drain: drainage pipe laid beside a window well.</li><li>Sump pit: where collected water goes.</li><li>Wrap: dimpled membrane lines the basement wall.</li><li>Finish: sump lid and membrane, ready for the next trade.</li></ol>
           </div>
-          <p class="scroll-hint">Scroll to inspect <span aria-hidden="true">↓</span></p>
+          <div class="story-stage">
+            <div class="story-hazard" aria-hidden="true"></div>
+            <div class="story-frame"><video class="scrub-video" muted playsinline preload="none" tabindex="-1" aria-hidden="true" poster="../assets/video/story-poster.jpg" data-desktop-src="../assets/video/story-720.mp4" data-mobile-src="../assets/video/story-540.mp4"></video><picture class="scrub-fallback"><source media="(max-width: 899px)" srcset="../assets/video/story-poster-540.jpg"><img src="../assets/video/story-poster.jpg" width="720" height="1280" loading="lazy" alt="Concrete floor being broken up on a job site"></picture></div>
+            <p class="story-footage-label">Real footage from our jobs</p>
+          </div>
         </div>
-        <div class="scrub-progress" aria-hidden="true"><span data-scrub-progress></span></div>
       </div>
+      <script type="application/json" data-story-chapters>{"duration":33.416667,"chapters":[{"id":"break-out","start":0.0,"end":5.291667},{"id":"clear","start":5.291667,"end":8.875},{"id":"drain","start":8.875,"end":15.458333},{"id":"sump-pit","start":15.458333,"end":20.041667},{"id":"wrap","start":20.041667,"end":24.625},{"id":"finish","start":24.625,"end":33.416667}]}</script>
     </section>
 
     <section class="section explainer-section" aria-labelledby="explainer-title">

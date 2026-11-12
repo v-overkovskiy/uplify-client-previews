@@ -52,6 +52,9 @@
   const scrubVideo = scrubSection?.querySelector(".scrub-video");
   const scrubProgress = scrubSection?.querySelector("[data-scrub-progress]");
   const scrubCaptions = [...(scrubSection?.querySelectorAll("[data-scrub-caption]") || [])];
+  const scrubChips = [...(scrubSection?.querySelectorAll("[data-story-chip]") || [])];
+  const scrubStory = JSON.parse(scrubSection?.querySelector("[data-story-chapters]")?.textContent || '{"duration":0,"chapters":[]}');
+  const scrubChapters = scrubStory.chapters || [];
   let scrubLoaded = false;
   let scrubDuration = 0;
   let scrubTarget = 0;
@@ -65,7 +68,7 @@
 
   const loadScrubVideo = () => {
     if (!scrubVideo || scrubLoaded || reducedMotion.matches) return;
-    const mobile = window.matchMedia("(max-width: 700px)").matches;
+    const mobile = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData;
     const source = document.createElement("source");
     source.src = mobile ? scrubVideo.dataset.mobileSrc : scrubVideo.dataset.desktopSrc;
     source.type = "video/mp4";
@@ -99,14 +102,20 @@
     scrubActive = rect.bottom > 0 && rect.top < window.innerHeight;
   };
 
-  const setScrubCaption = (progress) => {
+  const activateScrubCaption = (index) => {
+    scrubCaptions.forEach((caption, captionIndex) => caption.classList.toggle("is-active", captionIndex === index));
+    scrubChips.forEach((chip, chipIndex) => chip.setAttribute("aria-current", String(chipIndex === index)));
+    scrubCaptionIndex = index;
+  };
+
+  const setScrubCaption = (storyTime) => {
     if (!scrubCaptions.length) return;
-    const index = Math.min(scrubCaptions.length - 1, Math.floor(progress * scrubCaptions.length));
+    const foundIndex = scrubChapters.findIndex((chapter) => storyTime >= chapter.start && storyTime < chapter.end);
+    const index = foundIndex < 0 ? scrubCaptions.length - 1 : foundIndex;
     scrubCaptionPendingIndex = index;
 
     if (reducedMotion.matches) {
-      scrubCaptions.forEach((caption, captionIndex) => caption.classList.toggle("is-active", captionIndex === index));
-      scrubCaptionIndex = index;
+      activateScrubCaption(index);
       return;
     }
 
@@ -115,9 +124,7 @@
     scrubCaptions[scrubCaptionIndex]?.classList.remove("is-active");
 
     window.setTimeout(() => {
-      scrubCaptions.forEach((caption) => caption.classList.remove("is-active"));
-      scrubCaptionIndex = scrubCaptionPendingIndex;
-      scrubCaptions[scrubCaptionIndex]?.classList.add("is-active");
+      activateScrubCaption(scrubCaptionPendingIndex);
       scrubCaptionIsExiting = false;
     }, 150);
   };
@@ -136,7 +143,7 @@
         if (Math.abs(scrubVideo.currentTime - wantedTime) > 0.012) scrubVideo.currentTime = wantedTime;
       }
       if (scrubProgress) scrubProgress.style.transform = `scaleX(${scrubValue})`;
-      setScrubCaption(scrubValue);
+      setScrubCaption(scrubValue * (scrubDuration || scrubStory.duration || 0));
     }
     requestAnimationFrame(animateScrub);
   };
@@ -144,7 +151,20 @@
   updateScrubTarget();
   window.addEventListener("scroll", updateScrubTarget, { passive: true });
   window.addEventListener("resize", updateScrubTarget, { passive: true });
+  window.visualViewport?.addEventListener("resize", updateScrubTarget, { passive: true });
+  document.fonts?.ready?.then(updateScrubTarget);
   if (!reducedMotion.matches && scrubSection) requestAnimationFrame(animateScrub);
+
+  scrubChips.forEach((chip, index) => chip.addEventListener("click", () => {
+    const chapter = scrubChapters[index];
+    if (!chapter || !scrubSection) return;
+    const rect = scrubSection.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const travel = Math.max(1, scrubSection.offsetHeight - window.innerHeight);
+    const storyDuration = scrubStory.duration || 1;
+    const chapterProgress = ((chapter.start + chapter.end) / 2) / storyDuration;
+    window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
+  }));
 
   const createRowCollapser = ({ container, items, toggle, matches, countItems, noun }) => {
     let expanded = false;

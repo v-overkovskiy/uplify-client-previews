@@ -30,22 +30,33 @@
   const scrubVideo = scrub.querySelector('video');
   const progressBar = scrub.querySelector('.scrub-progress i');
   const captions = [...scrub.querySelectorAll('.scrub-captions p')];
+  const storyChips = [...scrub.querySelectorAll('[data-story-chip]')];
+  const storyData = JSON.parse(scrub.querySelector('[data-story-chapters]')?.textContent || '{"duration":0,"chapters":[]}');
+  const storyChapters = storyData.chapters || [];
   let target = 0;
   let smooth = 0;
   let velocity = 0;
   let loaded = false;
   let duration = 0;
+  let scrubActive = false;
+  let lastFrame = performance.now();
   let captionIndex = Math.max(0, captions.findIndex(caption => caption.classList.contains('active')));
   let captionPendingIndex = captionIndex;
   let captionIsExiting = false;
 
-  const setCaption = progress => {
-    const index = Math.min(captions.length - 1, Math.floor(Math.max(0, Math.min(.999, progress)) * captions.length));
+  const activateCaption = index => {
+    captions.forEach((caption, position) => caption.classList.toggle('active', position === index));
+    storyChips.forEach((chip, position) => chip.setAttribute('aria-current', String(position === index)));
+    captionIndex = index;
+  };
+
+  const setCaption = storyTime => {
+    const foundIndex = storyChapters.findIndex(chapter => storyTime >= chapter.start && storyTime < chapter.end);
+    const index = foundIndex < 0 ? captions.length - 1 : foundIndex;
     captionPendingIndex = index;
 
     if (reduceMotion) {
-      captions.forEach((caption, position) => caption.classList.toggle('active', position === index));
-      captionIndex = index;
+      activateCaption(index);
       return;
     }
 
@@ -54,16 +65,14 @@
     captions[captionIndex]?.classList.remove('active');
 
     window.setTimeout(() => {
-      captions.forEach(caption => caption.classList.remove('active'));
-      captionIndex = captionPendingIndex;
-      captions[captionIndex]?.classList.add('active');
+      activateCaption(captionPendingIndex);
       captionIsExiting = false;
     }, 150);
   };
   const loadScrub = () => {
     if (loaded || reduceMotion) return;
     loaded = true;
-    scrubVideo.src = innerWidth <= 700 ? scrubVideo.dataset.mobile : scrubVideo.dataset.desktop;
+    scrubVideo.src = innerWidth < 900 || navigator.connection?.saveData ? scrubVideo.dataset.mobile : scrubVideo.dataset.desktop;
     scrubVideo.load();
     scrubVideo.addEventListener('loadedmetadata', () => { duration = scrubVideo.duration || 0; }, { once: true });
   };
@@ -76,22 +85,42 @@
     near.observe(scrub);
     const updateTarget = () => {
       const rect = scrub.getBoundingClientRect();
-      target = Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height - innerHeight)));
+      const travel = Math.max(1, scrub.offsetHeight - window.innerHeight);
+      target = Math.max(0, Math.min(1, -rect.top / travel));
+      scrubActive = rect.bottom > 0 && rect.top < innerHeight;
     };
     addEventListener('scroll', updateTarget, { passive: true });
+    addEventListener('resize', updateTarget, { passive: true });
+    window.visualViewport?.addEventListener('resize', updateTarget, { passive: true });
+    document.fonts?.ready?.then(updateTarget);
     updateTarget();
-    const tick = () => {
-      const force = (target - smooth) * .12;
-      velocity = (velocity + force) * .72;
-      smooth += velocity;
-      const safeProgress = Math.max(0, Math.min(1, smooth));
-      if (duration && Math.abs(scrubVideo.currentTime - safeProgress * duration) > .025) scrubVideo.currentTime = safeProgress * duration;
-      progressBar.style.transform = `scaleX(${safeProgress})`;
-      setCaption(safeProgress);
+    const tick = now => {
+      const dt = Math.min(.032, Math.max(.001, (now - lastFrame) / 1000));
+      lastFrame = now;
+      if (scrubActive) {
+        const omega = 13;
+        const acceleration = omega * omega * (target - smooth) - 2 * omega * velocity;
+        velocity += acceleration * dt;
+        smooth += velocity * dt;
+        const safeProgress = Math.max(0, Math.min(1, smooth));
+        if (duration && Math.abs(scrubVideo.currentTime - safeProgress * duration) > .025) scrubVideo.currentTime = safeProgress * duration;
+        progressBar.style.transform = `scaleX(${safeProgress})`;
+        setCaption(safeProgress * (duration || storyData.duration || 0));
+      }
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   }
+
+  storyChips.forEach((chip, index) => chip.addEventListener('click', () => {
+    const chapter = storyChapters[index];
+    if (!chapter) return;
+    const rect = scrub.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    const travel = Math.max(1, scrub.offsetHeight - innerHeight);
+    const chapterProgress = ((chapter.start + chapter.end) / 2) / (storyData.duration || 1);
+    scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }));
 
   const classToggle = (element, className, state) => element.classList.toggle(className, state);
 
