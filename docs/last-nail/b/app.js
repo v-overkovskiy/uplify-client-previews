@@ -35,10 +35,30 @@
   let velocity = 0;
   let loaded = false;
   let duration = 0;
+  let captionIndex = Math.max(0, captions.findIndex(caption => caption.classList.contains('active')));
+  let captionPendingIndex = captionIndex;
+  let captionIsExiting = false;
 
   const setCaption = progress => {
     const index = Math.min(captions.length - 1, Math.floor(Math.max(0, Math.min(.999, progress)) * captions.length));
-    captions.forEach((caption, position) => caption.classList.toggle('active', position === index));
+    captionPendingIndex = index;
+
+    if (reduceMotion) {
+      captions.forEach((caption, position) => caption.classList.toggle('active', position === index));
+      captionIndex = index;
+      return;
+    }
+
+    if (captionIsExiting || index === captionIndex) return;
+    captionIsExiting = true;
+    captions[captionIndex]?.classList.remove('active');
+
+    window.setTimeout(() => {
+      captions.forEach(caption => caption.classList.remove('active'));
+      captionIndex = captionPendingIndex;
+      captions[captionIndex]?.classList.add('active');
+      captionIsExiting = false;
+    }, 150);
   };
   const loadScrub = () => {
     if (loaded || reduceMotion) return;

@@ -131,8 +131,8 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 .scrub-content { position: relative; z-index: 2; padding-bottom: clamp(4rem, 9vh, 7rem); }
 .scrub-content h2 { max-width: 8ch; margin-top: .7rem; font-size: clamp(4rem, 9vw, 9rem); }
 .scrub-captions { position: relative; min-height: 4.5rem; max-width: 33rem; margin-top: 1.3rem; }
-.scrub-captions p { position: absolute; inset: 0; color: #dedbd3; font-size: clamp(1rem, 2vw, 1.35rem); opacity: 0; transform: translateY(.6rem); transition: opacity 220ms ease, transform 220ms ease; }
-.scrub-captions p.is-active { opacity: 1; transform: translateY(0); }
+.scrub-captions p { position: absolute; inset: 0; color: #dedbd3; font-size: clamp(1rem, 2vw, 1.35rem); opacity: 0; transform: translateY(.6rem); transition: opacity 150ms ease, transform 150ms ease; }
+.scrub-captions p.is-active { opacity: 1; transform: translateY(0); transition-duration: 200ms; }
 .scroll-hint { margin-top: 1rem; color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .scroll-hint span { color: var(--yellow); }
 .scrub-progress { position: absolute; z-index: 3; right: 0; bottom: 0; left: 0; height: 4px; background: rgba(255,255,255,.14); }
@@ -348,7 +348,7 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
   .scrub-video { display: none; }
   .scrub-fallback { display: block; }
   .scrub-captions p { display: none; }
-  .scrub-captions p:first-child { display: block; opacity: 1; transform: none; }
+  .scrub-captions p:first-child { display: block; opacity: 1; transform: none; transition: none; }
   .process-section { height: auto; padding-block: 5rem; }
   .process-pin { position: relative; height: auto; }
   .process-stage { min-height: 34rem; }
