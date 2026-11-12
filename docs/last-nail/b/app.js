@@ -122,6 +122,130 @@
     scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reduceMotion ? 'auto' : 'smooth' });
   }));
 
+  const filmSection = document.querySelector('[data-film-scrub]');
+  const filmVideo = filmSection?.querySelector('.film-process__video');
+  const filmProgress = filmSection?.querySelector('[data-film-progress]');
+  const filmCaptions = [...(filmSection?.querySelectorAll('[data-film-caption]') || [])];
+  const filmChips = [...(filmSection?.querySelectorAll('[data-film-chip]') || [])];
+  const filmData = JSON.parse(filmSection?.querySelector('[data-film-chapters]')?.textContent || '{"duration":24,"chapters":[]}');
+  const filmChapters = filmData.chapters || [];
+  let filmLoaded = false;
+  let filmDuration = 0;
+  let filmTarget = 0;
+  let filmValue = 0;
+  let filmVelocity = 0;
+  let filmFrame = 0;
+  let filmLastFrame = performance.now();
+  let filmCaptionIndex = Math.max(0, filmCaptions.findIndex(caption => caption.classList.contains('is-active')));
+  let filmCaptionPendingIndex = filmCaptionIndex;
+  let filmCaptionIsExiting = false;
+
+  const readFilmState = () => {
+    if (!filmSection) return false;
+    const rect = filmSection.getBoundingClientRect();
+    const travel = Math.max(1, rect.height - innerHeight);
+    filmTarget = Math.max(0, Math.min(1, -rect.top / travel));
+    return rect.bottom > 0 && rect.top < innerHeight;
+  };
+
+  const activateFilmCaption = index => {
+    filmCaptions.forEach((caption, position) => caption.classList.toggle('is-active', position === index));
+    filmChips.forEach((chip, position) => {
+      if (position === index) chip.setAttribute('aria-current', 'step');
+      else chip.removeAttribute('aria-current');
+    });
+    filmCaptionIndex = index;
+  };
+
+  const setFilmCaption = filmTime => {
+    if (!filmCaptions.length) return;
+    const foundIndex = filmChapters.findIndex(chapter => filmTime >= chapter.start && filmTime < chapter.end);
+    const index = foundIndex < 0 ? filmCaptions.length - 1 : foundIndex;
+    filmCaptionPendingIndex = index;
+    if (index === filmCaptionIndex || filmCaptionIsExiting) return;
+    filmCaptionIsExiting = true;
+    filmCaptions[filmCaptionIndex]?.classList.remove('is-active');
+    window.setTimeout(() => {
+      activateFilmCaption(filmCaptionPendingIndex);
+      filmCaptionIsExiting = false;
+    }, 150);
+  };
+
+  const drawFilmFrame = now => {
+    filmFrame = 0;
+    const visible = readFilmState();
+    if (!visible || document.hidden || reduceMotion) return;
+    const dt = Math.min(.032, Math.max(.001, (now - filmLastFrame) / 1000));
+    filmLastFrame = now;
+    const omega = 13;
+    const acceleration = omega * omega * (filmTarget - filmValue) - 2 * omega * filmVelocity;
+    filmVelocity += acceleration * dt;
+    filmValue = Math.max(0, Math.min(1, filmValue + filmVelocity * dt));
+    const moving = Math.abs(filmTarget - filmValue) > .0005 || Math.abs(filmVelocity) > .0005;
+    if (!moving) {
+      filmValue = filmTarget;
+      filmVelocity = 0;
+    }
+    if (filmDuration && filmVideo.readyState >= 1) {
+      const wantedTime = filmValue * filmDuration;
+      if (Math.abs(filmVideo.currentTime - wantedTime) > .012) filmVideo.currentTime = wantedTime;
+    }
+    filmProgress.style.transform = `scaleX(${filmValue})`;
+    setFilmCaption(filmValue * (filmDuration || filmData.duration || 24));
+    if (moving) filmFrame = requestAnimationFrame(drawFilmFrame);
+  };
+
+  const wakeFilm = () => {
+    const visible = readFilmState();
+    if (!visible || document.hidden || reduceMotion || filmFrame) return;
+    filmLastFrame = performance.now();
+    filmFrame = requestAnimationFrame(drawFilmFrame);
+  };
+
+  const loadFilmVideo = () => {
+    if (filmLoaded || reduceMotion) return;
+    const source = document.createElement('source');
+    source.src = innerWidth < 900 || navigator.connection?.saveData ? filmVideo.dataset.mobileSrc : filmVideo.dataset.desktopSrc;
+    source.type = 'video/mp4';
+    filmVideo.append(source);
+    filmVideo.load();
+    filmLoaded = true;
+  };
+
+  if (!reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      const filmObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        loadFilmVideo();
+        observer.disconnect();
+      }, { rootMargin: '1200px 0px' });
+      filmObserver.observe(filmSection);
+    } else {
+      loadFilmVideo();
+    }
+    addEventListener('scroll', wakeFilm, { passive: true });
+    addEventListener('resize', wakeFilm, { passive: true });
+    window.visualViewport?.addEventListener('resize', wakeFilm, { passive: true });
+    document.addEventListener('visibilitychange', wakeFilm);
+    document.fonts?.ready?.then(wakeFilm);
+    wakeFilm();
+  }
+
+  filmVideo.addEventListener('loadedmetadata', () => {
+    filmDuration = Number.isFinite(filmVideo.duration) ? filmVideo.duration : 0;
+    wakeFilm();
+  });
+
+  filmChips.forEach((chip, index) => chip.addEventListener('click', () => {
+    const chapter = filmChapters[index];
+    if (!chapter) return;
+    const rect = filmSection.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    const travel = Math.max(1, rect.height - innerHeight);
+    const chapterProgress = chapter.start / (filmData.duration || 24);
+    scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }));
+
   const classToggle = (element, className, state) => element.classList.toggle(className, state);
 
   const createCollapsibleGrid = ({ grid, items, toggle, noun, countItem = () => true }) => {
