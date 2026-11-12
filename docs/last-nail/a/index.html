@@ -23,7 +23,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="../assets/img/IMG_5021-1200.webp" type="image/webp">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../assets/anim/site-sequence.css">
   <script src="app.js" defer></script>
+  <script src="../assets/anim/site-sequence.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -219,23 +221,164 @@
       </div>
     </section>
 
-    <section class="process-section" data-process aria-labelledby="process-title">
-      <div class="process-pin shell">
-        <div class="process-copy">
-          <p class="eyebrow">Four-stage view</p>
-          <h2 id="process-title">Open. Expose. Build. Close.</h2>
-          <ol class="process-list">
-            <li class="is-active" data-process-step><span>01</span><div><strong>Inspect</strong><small>Review the visible wall, floor and problem area.</small></div></li>
-            <li data-process-step><span>02</span><div><strong>Open and expose</strong><small>Clear the area and expose the working edge.</small></div></li>
-            <li data-process-step><span>03</span><div><strong>Membrane and drainage</strong><small>Place the membrane beside the drainage bed.</small></div></li>
-            <li data-process-step><span>04</span><div><strong>Dry and protected</strong><small>Close the edge around the membrane and sump area.</small></div></li>
+    <section class="site-sequence site-sequence--a" id="process" data-site-sequence aria-labelledby="process-title">
+      <div class="site-sequence__pin">
+        <div class="site-sequence__inner shell">
+          <header class="site-sequence__head">
+            <div><p class="eyebrow">Site sequence</p><h2 id="process-title">From tear-out to drainage.</h2></div>
+            <p class="site-sequence__head-note">One continuous cross-section connects concrete removal with exterior waterproofing and drainage.</p>
+          </header>
+          <div class="site-sequence__stage">
+            <div class="site-sequence__canvas">
+              <svg class="site-sequence__svg" data-site-sequence-graphic viewBox="0 0 1200 675" role="img" aria-label="Animated side cross-section of a house showing concrete removal, foundation excavation, drainage membrane, weeping tile, sump and backfill">
+                <defs aria-hidden="true">
+                  <pattern id="sq-soil-pattern-a" width="34" height="28" patternUnits="userSpaceOnUse"><circle cx="7" cy="8" r="2.2" fill="var(--sq-soil-dot)"/><circle cx="25" cy="20" r="1.8" fill="var(--sq-soil-dot)"/></pattern>
+                  <pattern id="sq-membrane-pattern-a" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="var(--sq-membrane)"/><circle cx="9" cy="9" r="3" fill="none" stroke="var(--sq-line)" stroke-width="1.5" opacity=".75"/></pattern>
+                  <clipPath id="sq-excavation-clip-a"><rect data-soil-clip x="535" y="300" width="300" height="340"/></clipPath>
+                  <clipPath id="sq-membrane-clip-a"><rect data-membrane-clip x="785" y="300" width="52" height="0"/></clipPath>
+                </defs>
+                <g data-camera aria-hidden="true">
+                  <rect width="1200" height="675" class="sq-bg"/>
+                  <path d="M0 300H1200V675H0Z" class="sq-soil"/>
+                  <path d="M0 300H1200V432H0Z" class="sq-topsoil"/>
+                  <path d="M0 300H1200V675H0Z" fill="url(#sq-soil-pattern-a)" opacity=".72"/>
+                  <path d="M0 300H1200" class="sq-line"/>
+                  <path d="M18 300l7-14m13 14 4-18m18 18 8-13m18 13 3-16m18 16 8-12m34 12 4-17m18 17 8-13m720 13 6-16m18 16 8-13m20 13 4-18m20 18 8-12m22 12 3-15m21 15 8-13m22 13 4-17" class="sq-line sq-fine"/>
+                  <path d="M118 342c22 7 35 20 40 42m-18-32 20-12M416 334c-18 11-27 25-28 45m15-29-17-9M1032 347c20 10 28 27 29 48m-13-30 19-10" class="sq-line sq-fine" opacity=".5"/>
+                  <path d="M222 386l10-8 13 5-2 12h-16ZM346 488l8-7 12 4-1 11h-15ZM1080 446l11-8 12 7-4 11h-14Z" class="sq-concrete sq-line sq-fine"/>
+
+                  <g>
+                    <path d="M804 300V118L1002 42l174 76v182" class="sq-room"/>
+                    <path d="M790 300V112L1002 32l188 80v188M828 300V135h330v165" class="sq-line"/>
+                    <path d="M790 112h400M1002 32v80" class="sq-line sq-fine"/>
+                    <rect x="858" y="166" width="94" height="72" class="sq-bg sq-line"/><path d="M905 166v72M858 202h94" class="sq-line sq-fine"/>
+                    <rect x="1030" y="164" width="84" height="136" class="sq-bg sq-line"/><circle cx="1096" cy="235" r="4" class="sq-line"/>
+                    <path d="M1128 137v157h-28" class="sq-line"/>
+                    <path d="M1128 137h22v150l-22 7M1122 294l-13-12m13 12 13-12" class="sq-line sq-fine"/>
+                    <rect x="828" y="300" width="350" height="320" class="sq-room"/>
+                    <rect x="828" y="596" width="350" height="24" class="sq-concrete"/>
+                    <path d="M806 300v320M828 300v320M1178 300v320M828 620h350" class="sq-line"/>
+                    <rect x="792" y="300" width="38" height="300" class="sq-concrete"/>
+                    <rect x="772" y="590" width="96" height="32" class="sq-concrete"/>
+                    <path d="M792 300h38v290h38v32h-96" class="sq-line"/>
+                    <path d="M960 620v-48h82v48M970 575c16 9 46 9 62 0M967 570h68v9h-68Z" class="sq-line"/>
+                    <path d="M1000 573v42" class="sq-line sq-fine"/>
+                    <path d="M876 300v58h82v-58M886 310h62v38" class="sq-line"/>
+                    <path d="M864 300v72h106v-72" class="sq-line sq-fine"/>
+                    <path d="M828 596h132m92 0h126" class="sq-line sq-fine"/>
+                    <path data-wall-crack d="M814 385l-10 18 13 17-14 25 12 24-11 22" class="sq-line"/>
+                    <g data-seep>
+                      <path d="M836 420c-11 14-11 21 0 21s11-7 0-21Z" class="sq-water-fill"/>
+                    </g>
+                    <g data-seep>
+                      <path d="M848 449c-9 12-9 18 0 18s9-6 0-18Z" class="sq-water-fill"/>
+                    </g>
+                    <rect data-water-layer x="829" y="548" width="148" height="48" rx="4" class="sq-water-fill" opacity="0" style="transform-origin:center bottom"/>
+                  </g>
+
+                  <g data-trench opacity="0">
+                    <path d="M535 302c22 72 18 204 3 315h248" class="sq-line" stroke-dasharray="8 11"/>
+                    <path d="M548 604h238" class="sq-line sq-fine"/>
+                  </g>
+
+                  <g data-installed-system>
+                    <g data-gravel><path d="M584 570l13-10 17 8-3 18h-22Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M620 584l11-15 20 5 2 18-24 4Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M662 566l16-11 17 12-6 17h-23Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M704 583l13-16 22 7-1 18-25 4Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M748 563l15-10 16 10-4 19h-21Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M600 610l14-14 20 8-2 16h-27Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M650 615l14-17 23 9-5 15h-25Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M706 612l12-15 20 5 4 18h-30Z" class="sq-concrete sq-line"/></g>
+                    <g data-gravel><path d="M754 611l14-13 17 8-3 16h-22Z" class="sq-concrete sq-line"/></g>
+                    <path data-drain pathLength="1" d="M582 592H894c57 0 74 24 108 24" class="sq-line" stroke-width="14"/>
+                    <path d="M610 592h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12" class="sq-line sq-fine"/>
+                    <path data-flow-arrow pathLength="1" d="M615 592H865c51 0 76 14 111 23m-20-15 20 15-22 7" class="sq-line sq-water-stroke"/>
+                  </g>
+
+                  <g clip-path="url(#sq-excavation-clip-a)">
+                    <rect x="535" y="300" width="300" height="340" class="sq-soil"/>
+                    <rect x="535" y="300" width="300" height="132" class="sq-topsoil"/>
+                    <rect x="535" y="300" width="300" height="340" fill="url(#sq-soil-pattern-a)" opacity=".72"/>
+                  </g>
+
+                  <g data-installed-membrane clip-path="url(#sq-membrane-clip-a)">
+                    <rect x="786" y="300" width="43" height="310" fill="url(#sq-membrane-pattern-a)"/>
+                    <path d="M786 300v310h43V300" class="sq-line sq-fine"/>
+                  </g>
+                  <g data-membrane-roll>
+                    <rect x="780" y="295" width="55" height="17" rx="8.5" class="sq-membrane-fill sq-line"/>
+                    <circle cx="827" cy="303.5" r="4" class="sq-bg sq-line sq-fine"/>
+                  </g>
+                  <g data-xray-ghost opacity="0">
+                    <path d="M786 304v302h39" class="sq-line" stroke="var(--sq-membrane)"/>
+                    <path d="M574 606c48-40 154-45 220-12" class="sq-line"/>
+                    <path d="M582 592H894c57 0 74 24 108 24" class="sq-line sq-water-stroke" stroke-width="9"/>
+                    <path d="M610 592h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12m18 0h12" class="sq-line sq-fine"/>
+                  </g>
+                  <g data-flow-drop><path d="M807 330c-9 12-9 18 0 18s9-6 0-18Z" class="sq-water-fill"/></g>
+                  <g data-flow-drop><path d="M817 330c-8 11-8 17 0 17s8-6 0-17Z" class="sq-water-fill"/></g>
+                  <g data-flow-drop><path d="M797 330c-7 10-7 15 0 15s7-5 0-15Z" class="sq-water-fill"/></g>
+
+                  <g data-new-slab opacity="0">
+                    <path d="M285 278H780v34H285Z" class="sq-concrete sq-line"/>
+                    <path d="M330 282v25m74-25v25m74-25v25m74-25v25m74-25v25m74-25v25" class="sq-line sq-fine"/>
+                  </g>
+                  <path data-restored-ground d="M250 300H806" class="sq-line" opacity="0"/>
+
+                  <g data-slab-chunk><path d="M286 278h93l-8 34h-85Z" class="sq-concrete sq-line"/><path d="M320 283v23m30-23v23" class="sq-line sq-fine"/></g>
+                  <g data-slab-chunk><path d="M379 278h98l7 34H371Z" class="sq-concrete sq-line"/><path d="M410 283v23m35-23v23" class="sq-line sq-fine"/></g>
+                  <g data-slab-chunk><path d="M477 278h96l-6 34h-83Z" class="sq-concrete sq-line"/><path d="M510 283v23m32-23v23" class="sq-line sq-fine"/></g>
+                  <g data-slab-chunk><path d="M573 278h105l5 34H567Z" class="sq-concrete sq-line"/><path d="M610 283v23m34-23v23" class="sq-line sq-fine"/></g>
+                  <g data-slab-chunk><path d="M678 278h102v34h-97Z" class="sq-concrete sq-line"/><path d="M712 283v23m34-23v23" class="sq-line sq-fine"/></g>
+
+                  <g>
+                    <path d="M66 228h187l-20 85H85Z" class="sq-concrete"/>
+                    <path d="M66 228h187l-20 85H85Z" class="sq-line"/>
+                    <path d="M82 248h157M103 228l-11-24h-24M218 228l12-24h25" class="sq-line"/>
+                    <circle cx="108" cy="319" r="12" class="sq-bg sq-line"/><circle cx="211" cy="319" r="12" class="sq-bg sq-line"/>
+                    <path d="M102 273h111" class="sq-line sq-fine"/>
+                  </g>
+
+                  <g data-breaker>
+                    <path d="M522 162h48v82h-48Z" class="sq-accent sq-line"/>
+                    <path d="M535 244h22l-5 45h-12Z" class="sq-concrete sq-line"/>
+                    <path d="M522 178h-25v22h25m48-22h25v22h-25" class="sq-line"/>
+                    <path d="M536 150h20v12h-20Z" class="sq-concrete sq-line"/>
+                  </g>
+                  <path data-crack-line pathLength="1" d="M531 288l-34-15-25 10-38-13" class="sq-line"/>
+                  <path data-crack-line pathLength="1" d="M530 291l31-12 28 10 40-17" class="sq-line"/>
+                  <path data-crack-line pathLength="1" d="M525 293l-18 14-32-5-25 15" class="sq-line"/>
+                  <circle data-dust cx="493" cy="274" r="6" class="sq-concrete"/><circle data-dust cx="518" cy="263" r="4" class="sq-concrete"/><circle data-dust cx="555" cy="270" r="7" class="sq-concrete"/><circle data-dust cx="580" cy="282" r="4" class="sq-concrete"/>
+                </g>
+              </svg>
+            </div>
+            <div class="site-sequence__controls">
+              <div class="site-sequence__captions" aria-live="polite">
+                <p class="site-sequence__caption is-active" data-sequence-caption>Break out and remove what is in the way.</p>
+                <p class="site-sequence__caption" data-sequence-caption>Open the foundation wall and find where the water gets in.</p>
+                <p class="site-sequence__caption" data-sequence-caption>Seal the wall and wrap it with a dimpled drainage membrane.</p>
+                <p class="site-sequence__caption" data-sequence-caption>Add gravel and a weeping tile so water has a path away.</p>
+                <p class="site-sequence__caption" data-sequence-caption>Water is collected and led away from the foundation.</p>
+              </div>
+              <div class="site-sequence__progress" aria-hidden="true"><i data-sequence-progress></i></div>
+              <div class="site-sequence__chips" aria-label="Site sequence acts">
+                <button class="site-sequence__chip" type="button" data-sequence-chip aria-current="step"><span>01</span>Tear out</button>
+                <button class="site-sequence__chip" type="button" data-sequence-chip><span>02</span>Expose</button>
+                <button class="site-sequence__chip" type="button" data-sequence-chip><span>03</span>Wrap</button>
+                <button class="site-sequence__chip" type="button" data-sequence-chip><span>04</span>Drain</button>
+                <button class="site-sequence__chip" type="button" data-sequence-chip><span>05</span>Backfill</button>
+              </div>
+              <p class="site-sequence__scale-note">Schematic illustration, not to scale</p>
+            </div>
+          </div>
+          <ol class="site-sequence__reduced-list">
+            <li><strong>1 Tear out</strong>Break out and remove what is in the way.</li>
+            <li><strong>2 Expose</strong>Open the foundation wall and find where the water gets in.</li>
+            <li><strong>3 Wrap</strong>Seal the wall and add the membrane.</li>
+            <li><strong>4 Drain</strong>Add gravel and a weeping tile.</li>
+            <li><strong>5 Backfill</strong>Collect water and lead it away.</li>
           </ol>
-        </div>
-        <div class="process-stage">
-          <figure class="process-frame is-active" data-process-frame><img src="../assets/img/IMG_0951.webp" width="1350" height="1800" loading="lazy" alt="Old stone basement wall"><figcaption>Inspect the visible condition.</figcaption></figure>
-          <figure class="process-frame" data-process-frame><img src="../assets/img/IMG_2703.webp" width="1350" height="1800" loading="lazy" alt="Foundation trench with a gravel drainage bed"><figcaption>Open and expose the working edge.</figcaption></figure>
-          <figure class="process-frame" data-process-frame><img src="../assets/img/IMG_2718.webp" width="1350" height="1800" loading="lazy" alt="Dimpled membrane on a foundation wall in a trench"><figcaption>Membrane beside the trench.</figcaption></figure>
-          <figure class="process-frame" data-process-frame><img src="../assets/img/IMG_5021.webp" width="1350" height="1800" loading="lazy" alt="Membrane walls, round sump lid and new floor surface"><figcaption>Membrane, sump lid and floor surface.</figcaption></figure>
         </div>
       </div>
     </section>
