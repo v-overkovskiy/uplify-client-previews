@@ -146,28 +146,6 @@
   window.addEventListener("resize", updateScrubTarget, { passive: true });
   if (!reducedMotion.matches && scrubSection) requestAnimationFrame(animateScrub);
 
-  const processSection = document.querySelector("[data-process]");
-  const processSteps = [...(processSection?.querySelectorAll("[data-process-step]") || [])];
-  const processFrames = [...(processSection?.querySelectorAll("[data-process-frame]") || [])];
-  const updateProcess = () => {
-    if (!processSection || reducedMotion.matches || !processFrames.length) return;
-    const rect = processSection.getBoundingClientRect();
-    const travel = Math.max(1, processSection.offsetHeight - window.innerHeight);
-    const progress = clamp(-rect.top / travel);
-    const position = progress * (processFrames.length - 1);
-    const activeIndex = Math.min(processFrames.length - 1, Math.round(position));
-    processSteps.forEach((step, index) => step.classList.toggle("is-active", index === activeIndex));
-    processFrames.forEach((frame, index) => {
-      const opacity = clamp(1 - Math.abs(position - index), 0, 1);
-      frame.style.opacity = String(opacity);
-      frame.style.transform = `scale(${1.02 - opacity * 0.02})`;
-      frame.classList.toggle("is-active", index === activeIndex);
-    });
-  };
-  updateProcess();
-  window.addEventListener("scroll", updateProcess, { passive: true });
-  window.addEventListener("resize", updateProcess, { passive: true });
-
   const createRowCollapser = ({ container, items, toggle, matches, countItems, noun }) => {
     let expanded = false;
     let currentFilter = "all";

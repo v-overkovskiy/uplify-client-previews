@@ -93,30 +93,7 @@
     requestAnimationFrame(tick);
   }
 
-  const steps = [...document.querySelectorAll('.process-steps li')];
-  const stageImages = [...document.querySelectorAll('.process-stage > img')];
-  const stageLabel = document.querySelector('.stage-label');
-  const stageTitles = ['Inspect the visible conditions', 'Open and expose the working area', 'Place membrane and drainage', 'Complete the interior surface'];
-  const setStage = index => {
-    steps.forEach((step, position) => classToggle(step, 'active', position === index));
-    stageImages.forEach((image, position) => classToggle(image, 'active', position === index));
-    stageLabel.innerHTML = `<span>0${index + 1} / 04</span><strong>${stageTitles[index]}</strong>`;
-  };
   const classToggle = (element, className, state) => element.classList.toggle(className, state);
-  steps.forEach((step, index) => {
-    step.addEventListener('click', () => setStage(index));
-    step.addEventListener('keydown', event => {
-      if (event.key !== 'Enter' && event.key !== ' ') return;
-      event.preventDefault();
-      setStage(index);
-    });
-  });
-  if (!reduceMotion) {
-    const stepObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) setStage(steps.indexOf(entry.target));
-    }), { rootMargin: '-35% 0px -55%' });
-    steps.forEach(step => stepObserver.observe(step));
-  }
 
   const createCollapsibleGrid = ({ grid, items, toggle, noun, countItem = () => true }) => {
     let expanded = false;
