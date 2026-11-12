@@ -166,6 +166,130 @@
     window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
   }));
 
+  const filmSection = document.querySelector("[data-film-scrub]");
+  const filmVideo = filmSection?.querySelector(".film-process__video");
+  const filmProgress = filmSection?.querySelector("[data-film-progress]");
+  const filmCaptions = [...(filmSection?.querySelectorAll("[data-film-caption]") || [])];
+  const filmChips = [...(filmSection?.querySelectorAll("[data-film-chip]") || [])];
+  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"duration":24,"chapters":[]}');
+  const filmChapters = filmData.chapters || [];
+  let filmLoaded = false;
+  let filmDuration = 0;
+  let filmTarget = 0;
+  let filmValue = 0;
+  let filmVelocity = 0;
+  let filmFrame = 0;
+  let filmLastFrame = performance.now();
+  let filmCaptionIndex = Math.max(0, filmCaptions.findIndex((caption) => caption.classList.contains("is-active")));
+  let filmCaptionPendingIndex = filmCaptionIndex;
+  let filmCaptionIsExiting = false;
+
+  const readFilmState = () => {
+    if (!filmSection) return false;
+    const rect = filmSection.getBoundingClientRect();
+    const travel = Math.max(1, rect.height - window.innerHeight);
+    filmTarget = clamp(-rect.top / travel);
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  };
+
+  const activateFilmCaption = (index) => {
+    filmCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
+    filmChips.forEach((chip, position) => {
+      if (position === index) chip.setAttribute("aria-current", "step");
+      else chip.removeAttribute("aria-current");
+    });
+    filmCaptionIndex = index;
+  };
+
+  const setFilmCaption = (filmTime) => {
+    if (!filmCaptions.length) return;
+    const foundIndex = filmChapters.findIndex((chapter) => filmTime >= chapter.start && filmTime < chapter.end);
+    const index = foundIndex < 0 ? filmCaptions.length - 1 : foundIndex;
+    filmCaptionPendingIndex = index;
+    if (index === filmCaptionIndex || filmCaptionIsExiting) return;
+    filmCaptionIsExiting = true;
+    filmCaptions[filmCaptionIndex]?.classList.remove("is-active");
+    window.setTimeout(() => {
+      activateFilmCaption(filmCaptionPendingIndex);
+      filmCaptionIsExiting = false;
+    }, 150);
+  };
+
+  const drawFilmFrame = (now) => {
+    filmFrame = 0;
+    const visible = readFilmState();
+    if (!visible || document.hidden || reducedMotion.matches) return;
+    const dt = Math.min(0.032, Math.max(0.001, (now - filmLastFrame) / 1000));
+    filmLastFrame = now;
+    const omega = 13;
+    const acceleration = omega * omega * (filmTarget - filmValue) - 2 * omega * filmVelocity;
+    filmVelocity += acceleration * dt;
+    filmValue = clamp(filmValue + filmVelocity * dt);
+    const moving = Math.abs(filmTarget - filmValue) > 0.0005 || Math.abs(filmVelocity) > 0.0005;
+    if (!moving) {
+      filmValue = filmTarget;
+      filmVelocity = 0;
+    }
+    if (filmVideo && filmDuration > 0 && filmVideo.readyState >= 1) {
+      const wantedTime = filmValue * filmDuration;
+      if (Math.abs(filmVideo.currentTime - wantedTime) > 0.012) filmVideo.currentTime = wantedTime;
+    }
+    if (filmProgress) filmProgress.style.transform = `scaleX(${filmValue})`;
+    setFilmCaption(filmValue * (filmDuration || filmData.duration || 24));
+    if (moving) filmFrame = requestAnimationFrame(drawFilmFrame);
+  };
+
+  const wakeFilm = () => {
+    const visible = readFilmState();
+    if (!visible || document.hidden || reducedMotion.matches || filmFrame) return;
+    filmLastFrame = performance.now();
+    filmFrame = requestAnimationFrame(drawFilmFrame);
+  };
+
+  const loadFilmVideo = () => {
+    if (!filmVideo || filmLoaded || reducedMotion.matches) return;
+    const source = document.createElement("source");
+    source.src = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData ? filmVideo.dataset.mobileSrc : filmVideo.dataset.desktopSrc;
+    source.type = "video/mp4";
+    filmVideo.append(source);
+    filmVideo.load();
+    filmLoaded = true;
+  };
+
+  if (filmSection && !reducedMotion.matches) {
+    if ("IntersectionObserver" in window) {
+      const filmObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        loadFilmVideo();
+        observer.disconnect();
+      }, { rootMargin: "1200px 0px" });
+      filmObserver.observe(filmSection);
+    } else {
+      loadFilmVideo();
+    }
+    window.addEventListener("scroll", wakeFilm, { passive: true });
+    window.addEventListener("resize", wakeFilm, { passive: true });
+    window.visualViewport?.addEventListener("resize", wakeFilm, { passive: true });
+    document.addEventListener("visibilitychange", wakeFilm);
+    document.fonts?.ready?.then(wakeFilm);
+    wakeFilm();
+  }
+
+  filmVideo?.addEventListener("loadedmetadata", () => {
+    filmDuration = Number.isFinite(filmVideo.duration) ? filmVideo.duration : 0;
+    wakeFilm();
+  });
+
+  filmChips.forEach((chip, index) => chip.addEventListener("click", () => {
+    const chapter = filmChapters[index];
+    if (!chapter || !filmSection) return;
+    const rect = filmSection.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const travel = Math.max(1, rect.height - window.innerHeight);
+    const chapterProgress = chapter.start / (filmData.duration || 24);
+    window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
+  }));
+
   const createRowCollapser = ({ container, items, toggle, matches, countItems, noun }) => {
     let expanded = false;
     let currentFilter = "all";
