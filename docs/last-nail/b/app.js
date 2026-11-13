@@ -5,6 +5,21 @@
   const estimateForm = document.querySelector('#estimate');
   const needSelect = estimateForm.querySelector('select[name="need"]');
 
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll('.section-head, .service-panel, .diagram-panel, .reviews-grid, .faq details');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    revealTargets.forEach(targetElement => {
+      targetElement.classList.add('reveal-ready');
+      revealObserver.observe(targetElement);
+    });
+  }
+
   document.querySelectorAll('[data-concept-form]').forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault();
