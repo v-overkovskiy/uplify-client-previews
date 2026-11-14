@@ -1,0 +1,66 @@
+{
+  "fps": 15,
+  "count": 361,
+  "duration": 24,
+  "pattern": "f%04d.webp",
+  "chapterFrames": [
+    0,
+    83,
+    143,
+    210,
+    293,
+    360
+  ],
+  "chapters": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 5.5,
+      "startFrame": 0,
+      "endFrame": 83
+    },
+    {
+      "index": 1,
+      "start": 5.5,
+      "end": 9.5,
+      "startFrame": 83,
+      "endFrame": 143
+    },
+    {
+      "index": 2,
+      "start": 9.5,
+      "end": 14,
+      "startFrame": 143,
+      "endFrame": 210
+    },
+    {
+      "index": 3,
+      "start": 14,
+      "end": 19.5,
+      "startFrame": 210,
+      "endFrame": 293
+    },
+    {
+      "index": 4,
+      "start": 19.5,
+      "end": 24,
+      "startFrame": 293,
+      "endFrame": 360
+    }
+  ],
+  "sizes": {
+    "1280": {
+      "width": 1280,
+      "height": 720,
+      "bytes": 11344608,
+      "quality": 70
+    },
+    "854": {
+      "width": 854,
+      "height": 480,
+      "bytes": 6389904,
+      "quality": 70
+    }
+  },
+  "totalBytes": 17734512
+}

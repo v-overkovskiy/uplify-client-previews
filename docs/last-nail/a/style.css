@@ -139,10 +139,11 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 .story-stage { position: relative; height: min(80vh, 760px); display: flex; flex-direction: column; align-items: center; padding: 14px 14px 16px; border: 2px solid var(--yellow); background: #0b0b0a; }
 .story-hazard { position: absolute; inset: 0 0 auto; height: 14px; background: repeating-linear-gradient(135deg, var(--yellow) 0 12px, #111 12px 24px); }
 .story-frame { position: relative; height: calc(100% - 14px); aspect-ratio: 9 / 16; margin-top: 14px; overflow: hidden; background: #000; }
-.scrub-video, .scrub-fallback, .scrub-fallback img { width: 100%; height: 100%; }
-.scrub-video, .scrub-fallback { position: absolute; inset: 0; }
-.scrub-video, .scrub-fallback img { object-fit: cover; }
-.scrub-fallback { display: none; }
+.scrub-canvas, .scrub-fallback, .scrub-fallback img { width: 100%; height: 100%; }
+.scrub-canvas, .scrub-fallback { position: absolute; inset: 0; }
+.scrub-canvas { display: block; }
+.scrub-fallback, .scrub-fallback img { display: block; }
+.scrub-fallback img { object-fit: cover; }
 .story-footage-label { position: absolute; right: 1.5rem; bottom: 1.35rem; margin: 0; padding: .45rem .6rem; color: var(--bone); background: rgba(5,5,5,.86); font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .story-static-list { display: none; }
 
@@ -162,9 +163,10 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 
 .film-process { position: relative; height: 450vh; color: var(--bone); background: #1b1f23; }
 .film-process__sticky { position: sticky; top: 0; height: 100svh; overflow: clip; background: #1b1f23; }
-.film-process__media, .film-process__video, .film-process__poster { position: absolute; inset: 0; width: 100%; height: 100%; }
-.film-process__video, .film-process__poster img { width: 100%; height: 100%; object-fit: cover; }
-.film-process__poster { display: none; }
+.film-process__media, .film-process__canvas, .film-process__poster { position: absolute; inset: 0; width: 100%; height: 100%; }
+.film-process__canvas { display: block; }
+.film-process__poster, .film-process__poster img { display: block; }
+.film-process__poster img { width: 100%; height: 100%; object-fit: cover; }
 .film-process__heading { position: absolute; z-index: 2; top: calc(var(--header-h) + clamp(1rem, 3vh, 2rem)); left: clamp(1.5rem, 4vw, 4.5rem); width: min(30rem, calc(100% - 3rem)); filter: drop-shadow(0 2px 12px rgba(0,0,0,.75)); }
 .film-process__heading .eyebrow { margin-bottom: .45rem; }
 .film-process__heading h2 { max-width: 9ch; font-size: clamp(2.6rem, 4.4vw, 4.8rem); }
@@ -365,7 +367,7 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
 @media (max-width: 899px) {
   .film-process__sticky { height: 100dvh; display: grid; grid-template-rows: auto auto auto; align-content: center; padding-top: var(--header-h); padding-bottom: var(--bar-h); background: linear-gradient(180deg, #171b1e 0%, #3b3837 100%); }
   .film-process__media { position: relative; grid-row: 1; aspect-ratio: 16 / 9; height: auto; }
-  .film-process__video, .film-process__poster img { object-fit: contain; }
+  .film-process__poster img { object-fit: contain; }
   .film-process__heading { position: relative; top: auto; left: auto; grid-row: 2; width: 100%; padding: .45rem 1rem .25rem; filter: none; }
   .film-process__heading .eyebrow { margin-bottom: .15rem; font-size: .62rem; }
   .film-process__heading h2 { max-width: none; font-size: clamp(2rem, 8.8vw, 2.8rem); line-height: .92; }
@@ -385,14 +387,14 @@ h3 { font-size: clamp(2.5rem, 4.2vw, 4.5rem); }
   .scrub-section { height: auto; }
   .scrub-pin { position: relative; height: auto; min-height: 100svh; overflow: visible; }
   .story-layout { min-height: 100svh; padding-block: 3rem; }
-  .scrub-video { display: none; }
+  .scrub-canvas { display: none; }
   .scrub-fallback { display: block; }
   .scrub-captions, .story-chips, .scrub-progress { display: none; }
   .story-static-list { display: grid; gap: .55rem; margin: 1rem 0 0; padding-left: 1.35rem; color: #dedbd3; font-size: .9rem; }
   .film-process { height: auto; }
   .film-process__sticky { position: relative; height: auto; min-height: 100svh; display: grid; grid-template-rows: auto auto auto; gap: 1rem; padding: calc(var(--header-h) + 1.5rem) clamp(1rem, 4vw, 4rem) 3rem; overflow: visible; }
   .film-process__media { position: relative; grid-row: 1; aspect-ratio: 16 / 9; }
-  .film-process__video { display: none; }
+  .film-process__canvas { display: none; }
   .film-process__poster { display: block; }
   .film-process__heading { position: relative; top: auto; left: auto; grid-row: 2; width: auto; padding: 0; filter: none; }
   .film-process__heading h2 { max-width: none; }
