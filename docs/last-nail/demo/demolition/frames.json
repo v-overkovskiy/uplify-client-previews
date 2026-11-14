@@ -1,5 +1,6 @@
 {
   "count": 211,
+  "version": "1",
   "fps": 15,
   "duration": 14,
   "pattern": "f%04d.webp",

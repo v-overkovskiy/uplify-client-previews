@@ -148,7 +148,8 @@
     var self = this;
     if (this._manifest || this._manifestLoading || this._destroyed) return;
     this._manifestLoading = true;
-    fetch(String(this._manifestInput))
+    /* Revalidate the manifest on every load so a new `version` is picked up immediately. */
+    fetch(String(this._manifestInput), { cache: "no-cache" })
       .then(function (response) {
         if (!response.ok) throw new Error("Manifest request failed: " + response.status);
         return response.json();
@@ -167,7 +168,10 @@
 
   FrameScrubber.prototype._frameUrl = function (index) {
     var filename = formatPattern(this._manifest.pattern, index + 1);
-    return this._base + "/" + encodeURIComponent(this._sizeKey) + "/" + filename;
+    /* Cache-busting: frame files keep their names between re-renders, so the manifest's
+       `version` is appended; bump it in the manifest whenever frames are regenerated. */
+    var version = this._manifest.version ? "?v=" + encodeURIComponent(String(this._manifest.version)) : "";
+    return this._base + "/" + encodeURIComponent(this._sizeKey) + "/" + filename + version;
   };
 
   FrameScrubber.prototype._effectiveTarget = function () {
