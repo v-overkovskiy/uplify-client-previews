@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Standalone demonstration of a procedural 3D interior demolition film and scroll-controlled frame sequence.">
+  <title>Interior demolition: 3D film (demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; font-family: Archivo, system-ui, sans-serif; background: #111315; color: #f4f3ef; }
+    * { box-sizing: border-box; }
+    html { background: #111315; }
+    body { margin: 0; min-width: 320px; background: radial-gradient(circle at 50% -10%, #292d30, #111315 42rem); }
+    button, video { font: inherit; }
+    .page { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: clamp(48px, 8vw, 104px) 0 80px; }
+    header { max-width: 860px; margin-bottom: clamp(34px, 6vw, 70px); }
+    .eyebrow, .label { margin: 0 0 14px; color: #b8bdc0; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 760px; font-size: clamp(38px, 6vw, 76px); line-height: .98; letter-spacing: -.045em; }
+    .intro { max-width: 680px; margin: 22px 0 0; color: #bdc1c2; font-size: clamp(17px, 2vw, 21px); line-height: 1.5; }
+    .player { margin-bottom: clamp(80px, 13vw, 160px); }
+    .player video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #373b3d; border-radius: 18px; background: #090a0b; box-shadow: 0 28px 80px rgba(0, 0, 0, .42); }
+    .player .label { margin-top: 14px; }
+    .scrub { position: relative; height: 400vh; margin-inline: calc(50% - 50vw); }
+    .scrub__sticky { position: sticky; top: 0; height: 100vh; min-height: 560px; overflow: hidden; background: #0b0d0e; }
+    .scrub__media, .scrub__shade, .scrub__poster, .scrub__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .scrub__canvas { display: block; opacity: 0; transition: opacity 220ms ease; }
+    .scrub__canvas.is-ready { opacity: 1; }
+    .scrub__poster { object-fit: cover; }
+    .scrub__shade { pointer-events: none; background: linear-gradient(90deg, rgba(5, 7, 8, .66) 0, rgba(5, 7, 8, .14) 46%, rgba(5, 7, 8, .06) 70%), linear-gradient(0deg, rgba(4, 6, 7, .65), transparent 35%); }
+    .scrub__content { position: relative; z-index: 2; display: grid; align-content: end; width: min(1180px, calc(100% - 40px)); height: 100%; margin: 0 auto; padding: 0 0 clamp(38px, 8vh, 80px); pointer-events: none; }
+    .scrub__top { position: absolute; top: clamp(28px, 6vh, 58px); left: 0; }
+    .scrub__top .label { display: inline-block; margin: 0; padding: 9px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: rgba(10, 12, 13, .38); backdrop-filter: blur(12px); }
+    .captions { position: relative; width: min(620px, 100%); min-height: 140px; }
+    .caption { position: absolute; left: 0; bottom: 0; margin: 0; opacity: 0; transform: translateY(16px); transition: opacity 180ms ease, transform 180ms ease; }
+    .caption.is-active { opacity: 1; transform: none; }
+    .caption span { display: block; margin-bottom: 10px; color: #c8cccd; font-size: 12px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .caption strong { display: block; max-width: 610px; font-size: clamp(30px, 5vw, 64px); line-height: 1; letter-spacing: -.04em; }
+    .progress { position: absolute; z-index: 3; right: 0; bottom: 0; left: 0; height: 4px; background: rgba(255,255,255,.16); transform-origin: left; }
+    .progress i { display: block; width: 100%; height: 100%; background: #fbca37; transform: scaleX(0); transform-origin: left; }
+    .chapters { position: absolute; z-index: 4; right: max(20px, calc((100vw - 1180px) / 2)); top: 50%; display: grid; gap: 8px; transform: translateY(-50%); }
+    .chapters button { width: 11px; height: 11px; padding: 0; border: 1px solid rgba(255,255,255,.58); border-radius: 50%; background: transparent; cursor: pointer; pointer-events: auto; transition: transform 100ms ease, background-color 150ms ease; }
+    .chapters button:active { transform: scale(.97); }
+    .chapters button[aria-current="step"] { border-color: #fbca37; background: #fbca37; }
+    .chapters button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .after { max-width: 680px; margin: 100px auto 0; color: #9fa4a6; font-size: 15px; line-height: 1.6; text-align: center; }
+    @media (max-width: 720px) {
+      .page { width: min(100% - 32px, 1180px); padding-top: 42px; }
+      .scrub__content { width: calc(100% - 32px); }
+      .scrub__shade { background: linear-gradient(0deg, rgba(5,7,8,.8), transparent 65%); }
+      .chapters { top: 28px; right: 16px; grid-auto-flow: column; transform: none; }
+      .captions { min-height: 120px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scrub { height: auto; margin: 0; }
+      .scrub__sticky { position: relative; height: min(76vh, 760px); }
+      .scrub__canvas, .progress, .chapters { display: none; }
+      .caption { display: none; transition: none; }
+      .caption:first-child { display: block; opacity: 1; transform: none; }
+    }
+    @media (prefers-contrast: more) {
+      .scrub__shade { background: rgba(0,0,0,.5); }
+      .caption strong { text-shadow: 0 2px 2px #000; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">Offline three.js study</p>
+      <h1>Interior demolition: 3D film (demo)</h1>
+      <p class="intro">A deterministic architectural illustration of a finished kitchen being removed to expose the framing and subfloor.</p>
+    </header>
+
+    <section class="player" aria-labelledby="playback-title">
+      <p class="label" id="playback-title">Normal playback</p>
+      <video controls loop muted playsinline preload="metadata" poster="./demolition-poster.jpg">
+        <source src="./demolition.mp4" type="video/mp4">
+        Your browser does not support embedded video.
+      </video>
+      <p class="label">3D illustration, not to scale</p>
+    </section>
+
+    <section class="scrub" aria-label="Scroll-controlled interior demolition sequence">
+      <div class="scrub__sticky">
+        <div class="scrub__media">
+          <img class="scrub__poster" src="./demolition-poster.jpg" width="1280" height="720" alt="Procedural 3D view of a finished white kitchen">
+          <canvas class="scrub__canvas" aria-hidden="true"></canvas>
+          <div class="scrub__shade"></div>
+        </div>
+        <div class="scrub__content">
+          <div class="scrub__top"><p class="label">3D illustration, not to scale</p></div>
+          <div class="captions" aria-live="polite">
+            <p class="caption is-active"><span>01 / Finished</span><strong>A complete kitchen holds for the opening view.</strong></p>
+            <p class="caption"><span>02 / Clear the wall</span><strong>Appliances and upper cabinets move out first.</strong></p>
+            <p class="caption"><span>03 / Remove the base</span><strong>Counters, base cabinets and tile leave the room.</strong></p>
+            <p class="caption"><span>04 / Open the walls</span><strong>Drywall peels away to reveal studs and services.</strong></p>
+            <p class="caption"><span>05 / Bare room</span><strong>Floor boards lift, leaving framing and subfloor exposed.</strong></p>
+          </div>
+        </div>
+        <nav class="chapters" aria-label="Demolition phases">
+          <button type="button" aria-label="Finished kitchen" aria-current="step"></button>
+          <button type="button" aria-label="Appliances and upper cabinets"></button>
+          <button type="button" aria-label="Base cabinets and backsplash"></button>
+          <button type="button" aria-label="Drywall stripped"></button>
+          <button type="button" aria-label="Floor removed"></button>
+        </nav>
+        <div class="progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <p class="after">The scene is generated from procedural geometry and materials. No client footage or reference-site media is used.</p>
+  </main>
+  <script src="../../assets/scrub/frame-scrubber.js"></script>
+  <script>
+    (() => {
+      'use strict';
+      const section = document.querySelector('.scrub');
+      const canvas = section.querySelector('.scrub__canvas');
+      const poster = section.querySelector('.scrub__poster');
+      const progress = section.querySelector('.progress i');
+      const captions = [...section.querySelectorAll('.caption')];
+      const buttons = [...section.querySelectorAll('.chapters button')];
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const chapters = [0, 23, 68, 113, 158];
+      const count = 211;
+      let scrubber = null;
+      let target = 0;
+      let value = 0;
+      let velocity = 0;
+      let activeCaption = 0;
+      let raf = 0;
+      let previous = performance.now();
+
+      const readProgress = () => {
+        const rect = section.getBoundingClientRect();
+        const travel = Math.max(1, rect.height - innerHeight);
+        target = Math.max(0, Math.min(1, -rect.top / travel));
+        return rect.bottom > 0 && rect.top < innerHeight;
+      };
+
+      const setCaption = frame => {
+        let index = 0;
+        chapters.forEach((start, position) => { if (frame >= start) index = position; });
+        if (index === activeCaption) return;
+        captions.forEach((caption, position) => caption.classList.toggle('is-active', position === index));
+        buttons.forEach((button, position) => {
+          if (position === index) button.setAttribute('aria-current', 'step');
+          else button.removeAttribute('aria-current');
+        });
+        activeCaption = index;
+      };
+
+      const draw = now => {
+        raf = 0;
+        if (!readProgress() || document.hidden) return;
+        const dt = Math.min(.032, Math.max(.001, (now - previous) / 1000));
+        previous = now;
+        const omega = 18;
+        const acceleration = omega * omega * (target - value) - 2 * omega * velocity;
+        velocity += acceleration * dt;
+        value = Math.max(0, Math.min(1, value + velocity * dt));
+        if (Math.abs(target - value) < .0005 && Math.abs(velocity) < .0005) { value = target; velocity = 0; }
+        scrubber?.setProgress(value);
+        setCaption(Math.round(value * (count - 1)));
+        progress.style.transform = `scaleX(${value})`;
+        if (value !== target || velocity) raf = requestAnimationFrame(draw);
+      };
+
+      const wake = () => {
+        const visible = readProgress();
+        if (!visible || document.hidden || reduced || raf) return;
+        previous = performance.now();
+        raf = requestAnimationFrame(draw);
+      };
+
+      const start = () => {
+        if (reduced || scrubber || typeof window.FrameScrubber !== 'function') return;
+        const compact = matchMedia('(max-width: 899px)').matches || navigator.connection?.saveData;
+        try {
+          scrubber = new window.FrameScrubber({
+            canvas,
+            poster,
+            base: '.',
+            manifest: './frames.json',
+            sizeKey: compact ? 'frames-854' : 'frames',
+            maxDpr: 2,
+            concurrency: 6,
+            fit: 'cover',
+            position: 'center',
+            onFrame: () => canvas.classList.add('is-ready')
+          });
+          scrubber.setProgress(value).start();
+        } catch (_error) { scrubber = null; }
+      };
+
+      buttons.forEach((button, index) => button.addEventListener('click', () => {
+        const rect = section.getBoundingClientRect();
+        const top = scrollY + rect.top;
+        const travel = Math.max(1, rect.height - innerHeight);
+        scrollTo({ top: top + chapters[index] / (count - 1) * travel, behavior: reduced ? 'auto' : 'smooth' });
+      }));
+
+      if (!reduced) {
+        const observer = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) { start(); observer.disconnect(); }
+        }, { rootMargin: '200% 0px' });
+        observer.observe(section);
+        readProgress(); value = target;
+        addEventListener('scroll', wake, { passive: true });
+        addEventListener('resize', wake, { passive: true });
+        window.visualViewport?.addEventListener('resize', wake, { passive: true });
+        document.addEventListener('visibilitychange', wake);
+        wake();
+      }
+    })();
+  </script>
+</body>
+</html>
