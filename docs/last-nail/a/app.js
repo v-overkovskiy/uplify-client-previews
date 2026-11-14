@@ -3,6 +3,47 @@
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  if (new URLSearchParams(window.location.search).get("scrubdebug") === "1") window.__SCRUB_DEBUG = true;
+
+  const setupLazyScrubber = (section, start) => {
+    if (!section || reducedMotion.matches) return;
+    let started = false;
+    let checkFrame = 0;
+    let observer;
+
+    const cleanup = () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", queueCheck);
+      window.removeEventListener("resize", queueCheck);
+      window.visualViewport?.removeEventListener("resize", queueCheck);
+      window.removeEventListener("load", queueCheck);
+    };
+    const check = () => {
+      checkFrame = 0;
+      if (started) return;
+      const rect = section.getBoundingClientRect();
+      const margin = window.innerHeight * 2.5;
+      if (rect.bottom < -margin || rect.top > window.innerHeight + margin) return;
+      started = true;
+      cleanup();
+      start();
+    };
+    function queueCheck() {
+      if (!checkFrame && !started) checkFrame = requestAnimationFrame(check);
+    }
+
+    window.addEventListener("scroll", queueCheck, { passive: true });
+    window.addEventListener("resize", queueCheck, { passive: true });
+    window.visualViewport?.addEventListener("resize", queueCheck, { passive: true });
+    window.addEventListener("load", queueCheck, { once: true });
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) check();
+      }, { rootMargin: "250% 0px" });
+      observer.observe(section);
+    }
+    check();
+  };
 
   const header = document.querySelector("[data-header]");
   const updateHeader = () => header?.classList.toggle("is-compact", window.scrollY > 24);
@@ -49,14 +90,14 @@
   });
 
   const scrubSection = document.querySelector("[data-scrub]");
-  const scrubVideo = scrubSection?.querySelector(".scrub-video");
+  const scrubCanvas = scrubSection?.querySelector(".scrub-canvas");
+  const scrubPoster = scrubSection?.querySelector(".scrub-fallback");
   const scrubProgress = scrubSection?.querySelector("[data-scrub-progress]");
   const scrubCaptions = [...(scrubSection?.querySelectorAll("[data-scrub-caption]") || [])];
   const scrubChips = [...(scrubSection?.querySelectorAll("[data-story-chip]") || [])];
-  const scrubStory = JSON.parse(scrubSection?.querySelector("[data-story-chapters]")?.textContent || '{"duration":0,"chapters":[]}');
+  const scrubStory = JSON.parse(scrubSection?.querySelector("[data-story-chapters]")?.textContent || '{"count":0,"chapters":[]}');
   const scrubChapters = scrubStory.chapters || [];
-  let scrubLoaded = false;
-  let scrubDuration = 0;
+  let storyScrubber = null;
   let scrubTarget = 0;
   let scrubValue = 0;
   let scrubVelocity = 0;
@@ -65,34 +106,6 @@
   let scrubCaptionIndex = Math.max(0, scrubCaptions.findIndex((caption) => caption.classList.contains("is-active")));
   let scrubCaptionPendingIndex = scrubCaptionIndex;
   let scrubCaptionIsExiting = false;
-
-  const loadScrubVideo = () => {
-    if (!scrubVideo || scrubLoaded || reducedMotion.matches) return;
-    const mobile = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData;
-    const source = document.createElement("source");
-    source.src = mobile ? scrubVideo.dataset.mobileSrc : scrubVideo.dataset.desktopSrc;
-    source.type = "video/mp4";
-    scrubVideo.append(source);
-    scrubVideo.load();
-    scrubLoaded = true;
-  };
-
-  if (scrubSection && !reducedMotion.matches) {
-    if ("IntersectionObserver" in window) {
-      const scrubObserver = new IntersectionObserver((entries, observer) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        loadScrubVideo();
-        observer.disconnect();
-      }, { rootMargin: "1200px 0px" });
-      scrubObserver.observe(scrubSection);
-    } else {
-      loadScrubVideo();
-    }
-  }
-
-  scrubVideo?.addEventListener("loadedmetadata", () => {
-    scrubDuration = Number.isFinite(scrubVideo.duration) ? scrubVideo.duration : 0;
-  });
 
   const updateScrubTarget = () => {
     if (!scrubSection || reducedMotion.matches) return;
@@ -108,9 +121,9 @@
     scrubCaptionIndex = index;
   };
 
-  const setScrubCaption = (storyTime) => {
+  const setScrubCaption = (frameIndex) => {
     if (!scrubCaptions.length) return;
-    const foundIndex = scrubChapters.findIndex((chapter) => storyTime >= chapter.start && storyTime < chapter.end);
+    const foundIndex = scrubChapters.findIndex((chapter, index) => frameIndex >= chapter.startFrame && (index === scrubChapters.length - 1 || frameIndex < scrubChapters[index + 1].startFrame));
     const index = foundIndex < 0 ? scrubCaptions.length - 1 : foundIndex;
     scrubCaptionPendingIndex = index;
 
@@ -129,30 +142,51 @@
     }, 150);
   };
 
+  const startStoryScrubber = () => {
+    if (!scrubCanvas || !scrubPoster || typeof window.FrameScrubber !== "function") return;
+    const compact = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData;
+    try {
+      storyScrubber = new window.FrameScrubber({
+        canvas: scrubCanvas,
+        poster: scrubPoster,
+        base: "../assets/frames/story",
+        manifest: "../assets/frames/story/story.json",
+        sizeKey: compact ? "540" : "720",
+        maxDpr: 2,
+        concurrency: 6,
+        fit: "cover",
+        position: "center",
+        onFrame: setScrubCaption
+      });
+      storyScrubber.setProgress(scrubValue);
+      storyScrubber.start();
+    } catch (_error) {
+      storyScrubber = null;
+    }
+  };
+
   const animateScrub = (now) => {
     const dt = Math.min(0.032, Math.max(0.001, (now - lastFrame) / 1000));
     lastFrame = now;
     if (scrubActive) {
       // Critically damped second-order follow: x'' + 2wx' + w^2(x-target) = 0.
-      const omega = 13;
+      const omega = 18;
       const acceleration = omega * omega * (scrubTarget - scrubValue) - 2 * omega * scrubVelocity;
       scrubVelocity += acceleration * dt;
       scrubValue = clamp(scrubValue + scrubVelocity * dt);
-      if (scrubVideo && scrubDuration > 0 && scrubVideo.readyState >= 1) {
-        const wantedTime = scrubValue * Math.max(0, scrubDuration - 0.04);
-        if (Math.abs(scrubVideo.currentTime - wantedTime) > 0.012) scrubVideo.currentTime = wantedTime;
-      }
+      storyScrubber?.setProgress(scrubValue);
       if (scrubProgress) scrubProgress.style.transform = `scaleX(${scrubValue})`;
-      setScrubCaption(scrubValue * (scrubDuration || scrubStory.duration || 0));
     }
     requestAnimationFrame(animateScrub);
   };
 
   updateScrubTarget();
+  scrubValue = scrubTarget;
   window.addEventListener("scroll", updateScrubTarget, { passive: true });
   window.addEventListener("resize", updateScrubTarget, { passive: true });
   window.visualViewport?.addEventListener("resize", updateScrubTarget, { passive: true });
   document.fonts?.ready?.then(updateScrubTarget);
+  setupLazyScrubber(scrubSection, startStoryScrubber);
   if (!reducedMotion.matches && scrubSection) requestAnimationFrame(animateScrub);
 
   scrubChips.forEach((chip, index) => chip.addEventListener("click", () => {
@@ -161,20 +195,19 @@
     const rect = scrubSection.getBoundingClientRect();
     const sectionTop = window.scrollY + rect.top;
     const travel = Math.max(1, scrubSection.offsetHeight - window.innerHeight);
-    const storyDuration = scrubStory.duration || 1;
-    const chapterProgress = ((chapter.start + chapter.end) / 2) / storyDuration;
+    const chapterProgress = chapter.startFrame / Math.max(1, scrubStory.count - 1);
     window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
   }));
 
   const filmSection = document.querySelector("[data-film-scrub]");
-  const filmVideo = filmSection?.querySelector(".film-process__video");
+  const filmCanvas = filmSection?.querySelector(".film-process__canvas");
+  const filmPoster = filmSection?.querySelector(".film-process__poster");
   const filmProgress = filmSection?.querySelector("[data-film-progress]");
   const filmCaptions = [...(filmSection?.querySelectorAll("[data-film-caption]") || [])];
   const filmChips = [...(filmSection?.querySelectorAll("[data-film-chip]") || [])];
-  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"duration":24,"chapters":[]}');
+  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":361,"chapters":[]}');
   const filmChapters = filmData.chapters || [];
-  let filmLoaded = false;
-  let filmDuration = 0;
+  let filmScrubber = null;
   let filmTarget = 0;
   let filmValue = 0;
   let filmVelocity = 0;
@@ -201,9 +234,9 @@
     filmCaptionIndex = index;
   };
 
-  const setFilmCaption = (filmTime) => {
+  const setFilmCaption = (frameIndex) => {
     if (!filmCaptions.length) return;
-    const foundIndex = filmChapters.findIndex((chapter) => filmTime >= chapter.start && filmTime < chapter.end);
+    const foundIndex = filmChapters.findIndex((chapter, index) => frameIndex >= chapter.startFrame && (index === filmChapters.length - 1 || frameIndex < filmChapters[index + 1].startFrame));
     const index = foundIndex < 0 ? filmCaptions.length - 1 : foundIndex;
     filmCaptionPendingIndex = index;
     if (index === filmCaptionIndex || filmCaptionIsExiting) return;
@@ -215,13 +248,37 @@
     }, 150);
   };
 
+  const startFilmScrubber = () => {
+    if (!filmCanvas || !filmPoster || typeof window.FrameScrubber !== "function") return;
+    const phone = window.matchMedia("(max-width: 899px)").matches;
+    const compact = phone || navigator.connection?.saveData;
+    try {
+      filmScrubber = new window.FrameScrubber({
+        canvas: filmCanvas,
+        poster: filmPoster,
+        base: "../assets/frames/film",
+        manifest: "../assets/frames/film/film.json",
+        sizeKey: compact ? "854" : "1280",
+        maxDpr: 2,
+        concurrency: 6,
+        fit: phone ? "contain" : "cover",
+        position: "center",
+        onFrame: setFilmCaption
+      });
+      filmScrubber.setProgress(filmValue);
+      filmScrubber.start();
+    } catch (_error) {
+      filmScrubber = null;
+    }
+  };
+
   const drawFilmFrame = (now) => {
     filmFrame = 0;
     const visible = readFilmState();
     if (!visible || document.hidden || reducedMotion.matches) return;
     const dt = Math.min(0.032, Math.max(0.001, (now - filmLastFrame) / 1000));
     filmLastFrame = now;
-    const omega = 13;
+    const omega = 18;
     const acceleration = omega * omega * (filmTarget - filmValue) - 2 * omega * filmVelocity;
     filmVelocity += acceleration * dt;
     filmValue = clamp(filmValue + filmVelocity * dt);
@@ -230,12 +287,8 @@
       filmValue = filmTarget;
       filmVelocity = 0;
     }
-    if (filmVideo && filmDuration > 0 && filmVideo.readyState >= 1) {
-      const wantedTime = filmValue * filmDuration;
-      if (Math.abs(filmVideo.currentTime - wantedTime) > 0.012) filmVideo.currentTime = wantedTime;
-    }
+    filmScrubber?.setProgress(filmValue);
     if (filmProgress) filmProgress.style.transform = `scaleX(${filmValue})`;
-    setFilmCaption(filmValue * (filmDuration || filmData.duration || 24));
     if (moving) filmFrame = requestAnimationFrame(drawFilmFrame);
   };
 
@@ -246,27 +299,10 @@
     filmFrame = requestAnimationFrame(drawFilmFrame);
   };
 
-  const loadFilmVideo = () => {
-    if (!filmVideo || filmLoaded || reducedMotion.matches) return;
-    const source = document.createElement("source");
-    source.src = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData ? filmVideo.dataset.mobileSrc : filmVideo.dataset.desktopSrc;
-    source.type = "video/mp4";
-    filmVideo.append(source);
-    filmVideo.load();
-    filmLoaded = true;
-  };
-
   if (filmSection && !reducedMotion.matches) {
-    if ("IntersectionObserver" in window) {
-      const filmObserver = new IntersectionObserver((entries, observer) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        loadFilmVideo();
-        observer.disconnect();
-      }, { rootMargin: "1200px 0px" });
-      filmObserver.observe(filmSection);
-    } else {
-      loadFilmVideo();
-    }
+    readFilmState();
+    filmValue = filmTarget;
+    setupLazyScrubber(filmSection, startFilmScrubber);
     window.addEventListener("scroll", wakeFilm, { passive: true });
     window.addEventListener("resize", wakeFilm, { passive: true });
     window.visualViewport?.addEventListener("resize", wakeFilm, { passive: true });
@@ -275,18 +311,13 @@
     wakeFilm();
   }
 
-  filmVideo?.addEventListener("loadedmetadata", () => {
-    filmDuration = Number.isFinite(filmVideo.duration) ? filmVideo.duration : 0;
-    wakeFilm();
-  });
-
   filmChips.forEach((chip, index) => chip.addEventListener("click", () => {
     const chapter = filmChapters[index];
     if (!chapter || !filmSection) return;
     const rect = filmSection.getBoundingClientRect();
     const sectionTop = window.scrollY + rect.top;
     const travel = Math.max(1, rect.height - window.innerHeight);
-    const chapterProgress = chapter.start / (filmData.duration || 24);
+    const chapterProgress = chapter.startFrame / Math.max(1, filmData.count - 1);
     window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
   }));
 

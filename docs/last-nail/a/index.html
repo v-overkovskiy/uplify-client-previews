@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="../assets/img/IMG_5021-1200.webp" type="image/webp">
   <link rel="stylesheet" href="style.css">
+  <script src="../assets/scrub/frame-scrubber.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -197,12 +198,12 @@
           </div>
           <div class="story-stage">
             <div class="story-hazard" aria-hidden="true"></div>
-            <div class="story-frame"><video class="scrub-video" muted playsinline preload="none" tabindex="-1" aria-hidden="true" poster="../assets/video/story-poster.jpg" data-desktop-src="../assets/video/story-720.mp4" data-mobile-src="../assets/video/story-540.mp4"></video><picture class="scrub-fallback"><source media="(max-width: 899px)" srcset="../assets/video/story-poster-540.jpg"><img src="../assets/video/story-poster.jpg" width="720" height="1280" loading="lazy" alt="Concrete floor being broken up on a job site"></picture></div>
+            <div class="story-frame"><canvas class="scrub-canvas" aria-hidden="true"></canvas><picture class="scrub-fallback"><source media="(max-width: 899px)" srcset="../assets/video/story-poster-540.jpg"><img src="../assets/video/story-poster.jpg" width="720" height="1280" loading="lazy" alt="Concrete floor being broken up on a job site"></picture></div>
             <p class="story-footage-label">Real footage from our jobs</p>
           </div>
         </div>
       </div>
-      <script type="application/json" data-story-chapters>{"duration":33.416667,"chapters":[{"id":"break-out","start":0.0,"end":5.291667},{"id":"clear","start":5.291667,"end":8.875},{"id":"drain","start":8.875,"end":15.458333},{"id":"sump-pit","start":15.458333,"end":20.041667},{"id":"wrap","start":20.041667,"end":24.625},{"id":"finish","start":24.625,"end":33.416667}]}</script>
+      <script type="application/json" data-story-chapters>{"fps":15,"count":502,"chapters":[{"id":"break-out","startFrame":0,"endFrame":79},{"id":"clear","startFrame":79,"endFrame":133},{"id":"drain","startFrame":133,"endFrame":232},{"id":"sump-pit","startFrame":232,"endFrame":301},{"id":"wrap","startFrame":301,"endFrame":369},{"id":"finish","startFrame":369,"endFrame":501}]}</script>
     </section>
 
     <section class="section explainer-section" aria-labelledby="explainer-title">
@@ -234,7 +235,7 @@
     <section class="film-process film-process--a" id="process" data-film-scrub aria-labelledby="film-process-title">
       <div class="film-process__sticky">
         <div class="film-process__media" aria-hidden="true">
-          <video class="film-process__video" muted playsinline preload="none" tabindex="-1" poster="../assets/video/film-poster-1280.jpg" data-desktop-src="../assets/video/film-1280.mp4" data-mobile-src="../assets/video/film-854.mp4"></video>
+          <canvas class="film-process__canvas" aria-hidden="true"></canvas>
           <picture class="film-process__poster">
             <source media="(max-width: 899px)" srcset="../assets/video/film-poster-854.jpg">
             <img src="../assets/video/film-poster-1280.jpg" width="1280" height="720" loading="lazy" alt="">
@@ -270,7 +271,7 @@
           <li><strong>5 Backfill</strong> Water is collected and led away from the foundation.</li>
         </ol>
       </div>
-      <script type="application/json" data-film-chapters>{"duration":24,"chapters":[{"id":"tear-out","start":0,"end":5.5},{"id":"expose","start":5.5,"end":9.5},{"id":"wrap","start":9.5,"end":14},{"id":"drain","start":14,"end":19.5},{"id":"backfill","start":19.5,"end":24}]}</script>
+      <script type="application/json" data-film-chapters>{"fps":15,"count":361,"chapters":[{"id":"tear-out","startFrame":0,"endFrame":83},{"id":"expose","startFrame":83,"endFrame":143},{"id":"wrap","startFrame":143,"endFrame":210},{"id":"drain","startFrame":210,"endFrame":293},{"id":"backfill","startFrame":293,"endFrame":360}]}</script>
     </section>
 
     <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
