@@ -3,6 +3,8 @@
 
   const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
   let reducedMotion = motionPreference.matches;
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const svgNamespace = 'http://www.w3.org/2000/svg';
 
   const registrationMarkup = '<span></span><span></span><span></span><span></span>';
   const addRegistration = (element) => {
@@ -25,6 +27,158 @@
     '.faq > .wrap',
     '.final-cta > .wrap'
   ].join(',')).forEach(addRegistration);
+
+  const gridModels = [];
+  const gridModelBySection = new Map();
+  const activeGridModels = new Set();
+  const gridSections = [...document.querySelectorAll('main > section')];
+  const darkGridSelector = '#system, #process, .final-cta';
+
+  const createSvgElement = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+
+  const getSectionCode = (section, index) => {
+    const match = section.querySelector('.index-tag')?.textContent.match(/\b(\d{2})\b/);
+    return match?.[1] || String(index + 1).padStart(2, '0');
+  };
+
+  const addGridLine = (group, axis, position, length, index) => {
+    const major = index % 4 === 0;
+    const line = createSvgElement('line', axis === 'vertical'
+      ? { x1: position, y1: 0, x2: position, y2: length, pathLength: 1 }
+      : { x1: 0, y1: position, x2: length, y2: position, pathLength: 1 });
+    line.classList.add('sheet-grid-line', major ? 'sheet-grid-line--major' : 'sheet-grid-line--minor');
+    group.append(line);
+    return { element: line, axis, index, major, order: 0, progress: reducedMotion ? 1 : 0 };
+  };
+
+  const assignDrawOrder = (lines) => {
+    [...lines]
+      .sort((a, b) => Number(b.major) - Number(a.major)
+        || Number(a.axis === 'horizontal') - Number(b.axis === 'horizontal')
+        || a.index - b.index)
+      .forEach((line, order) => { line.order = order; });
+  };
+
+  const collectTextBoxes = (section, sectionRect) => [...section.querySelectorAll([
+    'h1', 'h2', 'h3', 'p', 'a', 'button', 'label', 'summary', 'li',
+    '.form-head', '.film-process__heading', '.film-process__panel'
+  ].join(','))]
+    .filter(element => !element.closest('.sheet-grid-overlay'))
+    .map(element => {
+      const rect = element.getBoundingClientRect();
+      return {
+        left: rect.left - sectionRect.left - 14,
+        right: rect.right - sectionRect.left + 14,
+        top: rect.top - sectionRect.top - 10,
+        bottom: rect.bottom - sectionRect.top + 10
+      };
+    });
+
+  const buildGrid = (model) => {
+    const { section, overlay } = model;
+    const width = Math.max(1, section.clientWidth);
+    const height = Math.max(1, section.offsetHeight);
+    const rootSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const cssCell = innerWidth <= 700
+      ? rootSize * 4
+      : clamp(innerWidth * .07, rootSize * 5, rootSize * 8);
+    const lineLimit = innerWidth <= 700 ? 34 : 60;
+    let cell = cssCell;
+    let verticalCount = Math.floor(width / cell) + 1;
+    let horizontalCount = Math.floor(height / cell) + 1;
+    while (verticalCount + horizontalCount > lineLimit) {
+      cell *= 1.08;
+      verticalCount = Math.floor(width / cell) + 1;
+      horizontalCount = Math.floor(height / cell) + 1;
+    }
+
+    overlay.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    overlay.setAttribute('width', width);
+    overlay.setAttribute('height', height);
+    overlay.replaceChildren();
+
+    const lineGroup = createSvgElement('g');
+    const crossGroup = createSvgElement('g');
+    overlay.append(lineGroup, crossGroup);
+
+    const vertical = [];
+    const horizontal = [];
+    for (let index = 0; index < verticalCount; index += 1) {
+      vertical.push(addGridLine(lineGroup, 'vertical', index * cell, height, index));
+    }
+    for (let index = 0; index < horizontalCount; index += 1) {
+      horizontal.push(addGridLine(lineGroup, 'horizontal', index * cell, width, index));
+    }
+    assignDrawOrder([...vertical, ...horizontal]);
+
+    const sectionRect = section.getBoundingClientRect();
+    const textBoxes = collectTextBoxes(section, sectionRect);
+    const crosses = [];
+    let intersectionIndex = 0;
+    const majorVertical = vertical.filter(line => line.major);
+    const majorHorizontal = horizontal.filter(line => line.major);
+    majorHorizontal.forEach(horizontalLine => {
+      majorVertical.forEach(verticalLine => {
+        const x = verticalLine.index * cell;
+        const y = horizontalLine.index * cell;
+        const selected = intersectionIndex % 6 === 0;
+        intersectionIndex += 1;
+        if (!selected || crosses.length >= 6 || (x < 18 && y < 18)) return;
+        const touchesText = textBoxes.some(box => x >= box.left && x <= box.right && y >= box.top && y <= box.bottom);
+        if (touchesText) return;
+        const cross = createSvgElement('g', { class: 'sheet-grid-cross' });
+        cross.append(createSvgElement('path', { d: `M${x - 6} ${y}H${x + 6}M${x} ${y - 6}V${y + 6}` }));
+        crossGroup.append(cross);
+        crosses.push({ element: cross, x, y, verticalLine, horizontalLine });
+      });
+    });
+
+    const origin = createSvgElement('g', { class: 'sheet-grid-origin' });
+    origin.append(createSvgElement('path', { d: 'M4 10H16M10 4V16M7 7L13 13M13 7L7 13' }));
+    const originLabel = createSvgElement('text', { x: 22, y: 13 });
+    originLabel.textContent = `SECTION ${model.code} / ORIGIN`;
+    origin.append(originLabel);
+    crossGroup.append(origin);
+
+    model.width = width;
+    model.height = height;
+    model.cell = cell;
+    model.vertical = vertical;
+    model.horizontal = horizontal;
+    model.crosses = crosses;
+    model.origin = origin;
+    model.lineCount = vertical.length + horizontal.length;
+
+    if (reducedMotion) {
+      [...vertical, ...horizontal].forEach(line => { line.element.style.strokeDashoffset = '0'; });
+      crosses.forEach(cross => {
+        cross.element.style.opacity = '1';
+        cross.element.style.transform = 'scale(1)';
+      });
+      origin.style.opacity = '1';
+      origin.style.transform = 'scale(1)';
+    }
+  };
+
+  gridSections.forEach((section, index) => {
+    section.classList.add('sheet-grid-section');
+    if (section.matches(darkGridSelector)) section.classList.add('sheet-grid-section--dark');
+    const overlay = createSvgElement('svg', {
+      class: 'sheet-grid-overlay',
+      'aria-hidden': 'true',
+      focusable: 'false',
+      preserveAspectRatio: 'none'
+    });
+    section.prepend(overlay);
+    const model = { section, overlay, code: getSectionCode(section, index) };
+    gridModels.push(model);
+    gridModelBySection.set(section, model);
+    buildGrid(model);
+  });
 
   const createDetail = (target, modifier, viewBox, contents) => {
     if (!target) return null;
@@ -120,21 +274,64 @@
   const drawTargets = [...document.querySelectorAll('[data-draw]')];
   const nearViewport = new Set();
   let frame = 0;
-
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  let activeUntil = 0;
   const updateRulerVisibility = () => {
     const rulerWidth = parseFloat(getComputedStyle(ruler).width) || 0;
     const freeGutter = measuredContainer?.getBoundingClientRect().left || 0;
     ruler.classList.toggle('is-visible', freeGutter >= rulerWidth + 8);
   };
+
+  const updateGrid = () => {
+    const lineWrites = [];
+    const markWrites = [];
+    const models = reducedMotion ? gridModels : activeGridModels;
+
+    models.forEach(model => {
+      if (!model.vertical || !model.horizontal) return;
+      const rect = model.section.getBoundingClientRect();
+      const rangeDistance = innerHeight * (rect.height > innerHeight * 1.5 ? 1.2 : .85);
+      const sectionProgress = reducedMotion ? 1 : clamp(
+        (innerHeight * 1.05 - rect.top) / rangeDistance,
+        0,
+        1
+      );
+      const maxOrder = Math.max(1, model.lineCount - 1);
+
+      [...model.vertical, ...model.horizontal].forEach(line => {
+        const start = line.order / maxOrder * .72;
+        const linearProgress = clamp((sectionProgress - start) / .28, 0, 1);
+        const progress = reducedMotion ? 1 : 1 - (1 - linearProgress) ** 3;
+        line.progress = progress;
+        lineWrites.push([line.element, 1 - progress]);
+      });
+
+      model.crosses.forEach(cross => {
+        const lineProgress = Math.min(cross.verticalLine.progress, cross.horizontalLine.progress);
+        const progress = reducedMotion ? 1 : clamp((lineProgress - .9) / .1, 0, 1);
+        markWrites.push([cross.element, progress]);
+      });
+      const originLinearProgress = clamp(sectionProgress / .08, 0, 1);
+      const originProgress = reducedMotion ? 1 : 1 - (1 - originLinearProgress) ** 3;
+      markWrites.push([model.origin, originProgress]);
+    });
+
+    lineWrites.forEach(([element, dashOffset]) => {
+      element.style.strokeDashoffset = String(dashOffset);
+    });
+    markWrites.forEach(([element, progress]) => {
+      element.style.opacity = String(progress);
+      element.style.transform = `scale(${progress})`;
+    });
+  };
+
   const update = () => {
-    frame = 0;
     updateRulerVisibility();
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const pageProgress = reducedMotion ? 0 : clamp(scrollY / maxScroll, 0, 1);
     const markerY = reducedMotion ? 80 : 80 + pageProgress * Math.max(0, innerHeight - 160);
     marker.style.transform = `translate3d(0, ${markerY}px, 0)`;
     const elevation = pageProgress * -2.4;
+    updateGrid();
     markerLabel.textContent = pageProgress < .002 ? 'EL. ±0.00 m' : `EL. ${elevation.toFixed(2)} m`;
 
     if (reducedMotion) {
@@ -150,27 +347,61 @@
     });
   };
 
-  const requestUpdate = () => {
-    if (!frame) frame = requestAnimationFrame(update);
+  const runFrame = (time) => {
+    frame = 0;
+    update();
+    if (time < activeUntil) frame = requestAnimationFrame(runFrame);
+  };
+
+  const requestUpdate = (keepAlive = false) => {
+    if (keepAlive) activeUntil = performance.now() + 120;
+    if (!frame) frame = requestAnimationFrame(runFrame);
   };
 
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
+    const detailObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) nearViewport.add(entry.target);
         else nearViewport.delete(entry.target);
       });
       requestUpdate();
     }, { rootMargin: '75% 0px 75% 0px' });
-    drawTargets.forEach(target => observer.observe(target));
+    drawTargets.forEach(target => detailObserver.observe(target));
+
+    const gridObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const model = gridModelBySection.get(entry.target);
+        if (!model) return;
+        if (entry.isIntersecting) activeGridModels.add(model);
+        else activeGridModels.delete(model);
+      });
+      requestUpdate();
+    }, { rootMargin: '100% 0px 100% 0px' });
+    gridSections.forEach(section => gridObserver.observe(section));
   } else {
     drawTargets.forEach(target => nearViewport.add(target));
+    gridModels.forEach(model => activeGridModels.add(model));
   }
 
-  addEventListener('scroll', requestUpdate, { passive: true });
-  addEventListener('resize', requestUpdate, { passive: true });
+  if ('ResizeObserver' in window) {
+    const gridResizeObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const model = gridModelBySection.get(entry.target);
+        if (model) buildGrid(model);
+      });
+      requestUpdate();
+    });
+    gridSections.forEach(section => gridResizeObserver.observe(section));
+  }
+
+  addEventListener('scroll', () => requestUpdate(true), { passive: true });
+  addEventListener('resize', () => {
+    if (!('ResizeObserver' in window)) gridModels.forEach(buildGrid);
+    requestUpdate(true);
+  }, { passive: true });
   motionPreference.addEventListener?.('change', event => {
     reducedMotion = event.matches;
+    gridModels.forEach(buildGrid);
     requestUpdate();
   });
   requestUpdate();
