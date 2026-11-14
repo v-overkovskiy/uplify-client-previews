@@ -1,0 +1,70 @@
+{
+  "count": 211,
+  "fps": 15,
+  "duration": 14,
+  "pattern": "f%04d.webp",
+  "sizes": {
+    "frames": {
+      "width": 1280,
+      "height": 720,
+      "quality": 72,
+      "bytes": 5813398
+    },
+    "frames-854": {
+      "width": 854,
+      "height": 480,
+      "quality": 72,
+      "bytes": 3326016
+    }
+  },
+  "chapterFrames": [
+    0,
+    23,
+    68,
+    113,
+    158,
+    210
+  ],
+  "chapters": [
+    {
+      "id": "finished",
+      "label": "Finished kitchen",
+      "start": 0.0,
+      "end": 1.5,
+      "startFrame": 0,
+      "endFrame": 23
+    },
+    {
+      "id": "upper-removal",
+      "label": "Appliances and upper cabinets",
+      "start": 1.5,
+      "end": 4.5,
+      "startFrame": 23,
+      "endFrame": 68
+    },
+    {
+      "id": "base-removal",
+      "label": "Base cabinets and backsplash",
+      "start": 4.5,
+      "end": 7.5,
+      "startFrame": 68,
+      "endFrame": 113
+    },
+    {
+      "id": "wall-strip",
+      "label": "Drywall stripped to framing",
+      "start": 7.5,
+      "end": 10.5,
+      "startFrame": 113,
+      "endFrame": 158
+    },
+    {
+      "id": "floor-strip",
+      "label": "Floor removed and bare room settles",
+      "start": 10.5,
+      "end": 14.0,
+      "startFrame": 158,
+      "endFrame": 210
+    }
+  ]
+}
