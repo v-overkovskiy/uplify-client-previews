@@ -83,23 +83,17 @@
     chooseNeed(link.dataset.serviceLink);
   }));
 
-  const scrub = document.querySelector('.scrub');
-  const scrubCanvas = scrub.querySelector('.scrub-canvas');
-  const scrubPoster = scrub.querySelector('.scrub-fallback');
-  const progressBar = scrub.querySelector('.scrub-progress i');
-  const captions = [...scrub.querySelectorAll('.scrub-captions p')];
-  const storyChips = [...scrub.querySelectorAll('[data-story-chip]')];
-  const storyData = JSON.parse(scrub.querySelector('[data-story-chapters]')?.textContent || '{"count":0,"chapters":[]}');
-  const storyChapters = storyData.chapters || [];
-  let storyScrubber = null;
-  let target = 0;
-  let smooth = 0;
-  let velocity = 0;
-  let scrubActive = false;
-  let lastFrame = performance.now();
+  const storySection = document.querySelector('#system');
+  const storyVideo = storySection?.querySelector('.story-video');
+  const progressBar = storySection?.querySelector('.scrub-progress i');
+  const captions = [...(storySection?.querySelectorAll('.scrub-captions p') || [])];
+  const storyChips = [...(storySection?.querySelectorAll('[data-story-chip]') || [])];
+  const storyChapters = storyChips.map(chip => Number.parseFloat(chip.dataset.start) || 0);
   let captionIndex = Math.max(0, captions.findIndex(caption => caption.classList.contains('active')));
   let captionPendingIndex = captionIndex;
   let captionIsExiting = false;
+  let observerPausePending = false;
+  let manualStoryPause = false;
 
   const activateCaption = index => {
     captions.forEach((caption, position) => caption.classList.toggle('active', position === index));
@@ -107,88 +101,70 @@
     captionIndex = index;
   };
 
-  const setCaption = frameIndex => {
-    const foundIndex = storyChapters.findIndex((chapter, index) => frameIndex >= chapter.startFrame && (index === storyChapters.length - 1 || frameIndex < storyChapters[index + 1].startFrame));
-    const index = foundIndex < 0 ? captions.length - 1 : foundIndex;
+  const setStoryTime = () => {
+    if (!storyVideo) return;
+    let index = 0;
+    storyChapters.forEach((start, position) => {
+      if (storyVideo.currentTime >= start) index = position;
+    });
     captionPendingIndex = index;
+    if (index !== captionIndex && !captionIsExiting) {
+      captionIsExiting = true;
+      captions[captionIndex]?.classList.remove('active');
+      window.setTimeout(() => {
+        activateCaption(captionPendingIndex);
+        captionIsExiting = false;
+      }, reduceMotion ? 0 : 150);
+    }
+    const duration = Number.isFinite(storyVideo.duration) ? storyVideo.duration : 0;
+    if (progressBar) progressBar.style.transform = `scaleX(${duration ? storyVideo.currentTime / duration : 0})`;
+  };
+
+  if (storyVideo) {
+    const mobileStory = matchMedia('(max-width: 899px)');
+    const setStoryPoster = () => {
+      storyVideo.poster = mobileStory.matches
+        ? storyVideo.dataset.mobilePoster
+        : '../assets/video/story-poster.jpg';
+    };
+    setStoryPoster();
+    mobileStory.addEventListener?.('change', setStoryPoster);
+
+    storyVideo.addEventListener('timeupdate', setStoryTime);
+    storyVideo.addEventListener('loadedmetadata', setStoryTime);
+    storyVideo.addEventListener('seeking', setStoryTime);
+    storyVideo.addEventListener('pause', () => {
+      if (observerPausePending) {
+        observerPausePending = false;
+        return;
+      }
+      manualStoryPause = true;
+    });
+    storyVideo.addEventListener('play', () => { manualStoryPause = false; });
 
     if (reduceMotion) {
-      activateCaption(index);
-      return;
+      storyVideo.autoplay = false;
+      if (!storyVideo.paused) storyVideo.pause();
+      storyVideo.load();
+    } else if ('IntersectionObserver' in window) {
+      const storyObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio >= .4) {
+            if (!manualStoryPause) storyVideo.play().catch(() => {});
+          } else if (!storyVideo.paused) {
+            observerPausePending = true;
+            storyVideo.pause();
+          }
+        });
+      }, { threshold: [0, .4, 1] });
+      storyObserver.observe(storyVideo);
     }
-
-    if (captionIsExiting || index === captionIndex) return;
-    captionIsExiting = true;
-    captions[captionIndex]?.classList.remove('active');
-
-    window.setTimeout(() => {
-      activateCaption(captionPendingIndex);
-      captionIsExiting = false;
-    }, 150);
-  };
-
-  const startStoryScrubber = () => {
-    if (!scrubCanvas || !scrubPoster || typeof window.FrameScrubber !== 'function') return;
-    const compact = matchMedia('(max-width: 899px)').matches || navigator.connection?.saveData;
-    try {
-      storyScrubber = new window.FrameScrubber({
-        canvas: scrubCanvas,
-        poster: scrubPoster,
-        base: '../assets/frames/story',
-        manifest: '../assets/frames/story/story.json',
-        sizeKey: compact ? '540' : '720',
-        maxDpr: 2,
-        concurrency: 6,
-        fit: 'cover',
-        position: 'center',
-        onFrame: setCaption
-      });
-      storyScrubber.setProgress(smooth);
-      storyScrubber.start();
-    } catch (_error) {
-      storyScrubber = null;
-    }
-  };
-
-  if (!reduceMotion) {
-    const updateTarget = () => {
-      const rect = scrub.getBoundingClientRect();
-      const travel = Math.max(1, scrub.offsetHeight - window.innerHeight);
-      target = Math.max(0, Math.min(1, -rect.top / travel));
-      scrubActive = rect.bottom > 0 && rect.top < innerHeight;
-    };
-    addEventListener('scroll', updateTarget, { passive: true });
-    addEventListener('resize', updateTarget, { passive: true });
-    window.visualViewport?.addEventListener('resize', updateTarget, { passive: true });
-    document.fonts?.ready?.then(updateTarget);
-    updateTarget();
-    smooth = target;
-    setupLazyScrubber(scrub, startStoryScrubber);
-    const tick = now => {
-      const dt = Math.min(.032, Math.max(.001, (now - lastFrame) / 1000));
-      lastFrame = now;
-      if (scrubActive) {
-        const omega = 18;
-        const acceleration = omega * omega * (target - smooth) - 2 * omega * velocity;
-        velocity += acceleration * dt;
-        smooth += velocity * dt;
-        const safeProgress = Math.max(0, Math.min(1, smooth));
-        storyScrubber?.setProgress(safeProgress);
-        progressBar.style.transform = `scaleX(${safeProgress})`;
-      }
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
   }
 
   storyChips.forEach((chip, index) => chip.addEventListener('click', () => {
-    const chapter = storyChapters[index];
-    if (!chapter) return;
-    const rect = scrub.getBoundingClientRect();
-    const sectionTop = scrollY + rect.top;
-    const travel = Math.max(1, scrub.offsetHeight - innerHeight);
-    const chapterProgress = chapter.startFrame / Math.max(1, storyData.count - 1);
-    scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reduceMotion ? 'auto' : 'smooth' });
+    if (!storyVideo) return;
+    storyVideo.currentTime = storyChapters[index];
+    setStoryTime();
   }));
 
   const filmSection = document.querySelector('[data-film-scrub]');
@@ -197,7 +173,7 @@
   const filmProgress = filmSection?.querySelector('[data-film-progress]');
   const filmCaptions = [...(filmSection?.querySelectorAll('[data-film-caption]') || [])];
   const filmChips = [...(filmSection?.querySelectorAll('[data-film-chip]') || [])];
-  const filmData = JSON.parse(filmSection?.querySelector('[data-film-chapters]')?.textContent || '{"count":361,"chapters":[]}');
+  const filmData = JSON.parse(filmSection?.querySelector('[data-film-chapters]')?.textContent || '{"count":720,"chapters":[]}');
   const filmChapters = filmData.chapters || [];
   let filmScrubber = null;
   let filmTarget = 0;
@@ -248,10 +224,11 @@
       filmScrubber = new window.FrameScrubber({
         canvas: filmCanvas,
         poster: filmPoster,
-        base: '../assets/frames/film',
-        manifest: '../assets/frames/film/film.json',
+        base: '../assets/frames/film30',
+        manifest: '../assets/frames/film30/film.json',
         sizeKey: compact ? '854' : '1280',
         maxDpr: 2,
+        windowSize: compact ? 12 : 24,
         concurrency: 6,
         fit: phone ? 'contain' : 'cover',
         position: 'center',

@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  document.documentElement.classList.add("js");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   if (new URLSearchParams(window.location.search).get("scrubdebug") === "1") window.__SCRUB_DEBUG = true;
@@ -89,114 +90,80 @@
     });
   });
 
-  const scrubSection = document.querySelector("[data-scrub]");
-  const scrubCanvas = scrubSection?.querySelector(".scrub-canvas");
-  const scrubPoster = scrubSection?.querySelector(".scrub-fallback");
-  const scrubProgress = scrubSection?.querySelector("[data-scrub-progress]");
-  const scrubCaptions = [...(scrubSection?.querySelectorAll("[data-scrub-caption]") || [])];
-  const scrubChips = [...(scrubSection?.querySelectorAll("[data-story-chip]") || [])];
-  const scrubStory = JSON.parse(scrubSection?.querySelector("[data-story-chapters]")?.textContent || '{"count":0,"chapters":[]}');
-  const scrubChapters = scrubStory.chapters || [];
-  let storyScrubber = null;
-  let scrubTarget = 0;
-  let scrubValue = 0;
-  let scrubVelocity = 0;
-  let scrubActive = false;
-  let lastFrame = performance.now();
-  let scrubCaptionIndex = Math.max(0, scrubCaptions.findIndex((caption) => caption.classList.contains("is-active")));
-  let scrubCaptionPendingIndex = scrubCaptionIndex;
-  let scrubCaptionIsExiting = false;
+  const storyVideo = document.querySelector(".story-video");
+  const storyCaptions = [...document.querySelectorAll("[data-story-caption]")];
+  const storyChips = [...document.querySelectorAll("[data-story-chip]")];
+  const storyProgress = document.querySelector("[data-story-progress]");
+  const storyStarts = storyChips.map((chip) => Number.parseFloat(chip.dataset.start || "0"));
+  let storyChapterIndex = 0;
+  let storyPausedManually = false;
+  let storyPauseSource = "";
+  let storyVisible = false;
+  let storyVisibilityManaged = false;
 
-  const updateScrubTarget = () => {
-    if (!scrubSection || reducedMotion.matches) return;
-    const rect = scrubSection.getBoundingClientRect();
-    const travel = Math.max(1, scrubSection.offsetHeight - window.innerHeight);
-    scrubTarget = clamp(-rect.top / travel);
-    scrubActive = rect.bottom > 0 && rect.top < window.innerHeight;
+  const activateStoryChapter = (index) => {
+    if (index === storyChapterIndex && storyCaptions[index]?.classList.contains("is-active")) return;
+    storyCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
+    storyChips.forEach((chip, position) => chip.setAttribute("aria-current", String(position === index)));
+    storyChapterIndex = index;
   };
 
-  const activateScrubCaption = (index) => {
-    scrubCaptions.forEach((caption, captionIndex) => caption.classList.toggle("is-active", captionIndex === index));
-    scrubChips.forEach((chip, chipIndex) => chip.setAttribute("aria-current", String(chipIndex === index)));
-    scrubCaptionIndex = index;
+  const updateStoryTime = () => {
+    if (!storyVideo) return;
+    let index = 0;
+    storyStarts.forEach((start, position) => {
+      if (storyVideo.currentTime >= start) index = position;
+    });
+    activateStoryChapter(index);
+    const duration = Number.isFinite(storyVideo.duration) ? storyVideo.duration : 0;
+    if (storyProgress) storyProgress.style.transform = `scaleX(${duration ? storyVideo.currentTime / duration : 0})`;
   };
 
-  const setScrubCaption = (frameIndex) => {
-    if (!scrubCaptions.length) return;
-    const foundIndex = scrubChapters.findIndex((chapter, index) => frameIndex >= chapter.startFrame && (index === scrubChapters.length - 1 || frameIndex < scrubChapters[index + 1].startFrame));
-    const index = foundIndex < 0 ? scrubCaptions.length - 1 : foundIndex;
-    scrubCaptionPendingIndex = index;
-
+  if (storyVideo) {
+    if (window.matchMedia("(max-width: 899px)").matches) storyVideo.poster = "../assets/video/story-poster-540.jpg";
     if (reducedMotion.matches) {
-      activateScrubCaption(index);
-      return;
+      storyVideo.autoplay = false;
+      storyVideo.removeAttribute("autoplay");
+      storyVideo.pause();
     }
 
-    if (scrubCaptionIsExiting || index === scrubCaptionIndex) return;
-    scrubCaptionIsExiting = true;
-    scrubCaptions[scrubCaptionIndex]?.classList.remove("is-active");
+    storyVideo.addEventListener("timeupdate", updateStoryTime);
+    storyVideo.addEventListener("loadedmetadata", updateStoryTime);
+    storyVideo.addEventListener("durationchange", updateStoryTime);
+    storyVideo.addEventListener("play", () => {
+      storyPausedManually = false;
+      storyPauseSource = "";
+      if (storyVisibilityManaged && !storyVisible) {
+        storyPauseSource = "observer";
+        storyVideo.pause();
+      }
+    });
+    storyVideo.addEventListener("pause", () => {
+      if (storyPauseSource === "observer") {
+        storyPauseSource = "";
+        return;
+      }
+      storyPausedManually = true;
+    });
 
-    window.setTimeout(() => {
-      activateScrubCaption(scrubCaptionPendingIndex);
-      scrubCaptionIsExiting = false;
-    }, 150);
-  };
-
-  const startStoryScrubber = () => {
-    if (!scrubCanvas || !scrubPoster || typeof window.FrameScrubber !== "function") return;
-    const compact = window.matchMedia("(max-width: 899px)").matches || navigator.connection?.saveData;
-    try {
-      storyScrubber = new window.FrameScrubber({
-        canvas: scrubCanvas,
-        poster: scrubPoster,
-        base: "../assets/frames/story",
-        manifest: "../assets/frames/story/story.json",
-        sizeKey: compact ? "540" : "720",
-        maxDpr: 2,
-        concurrency: 6,
-        fit: "cover",
-        position: "center",
-        onFrame: setScrubCaption
-      });
-      storyScrubber.setProgress(scrubValue);
-      storyScrubber.start();
-    } catch (_error) {
-      storyScrubber = null;
+    if (!reducedMotion.matches && "IntersectionObserver" in window) {
+      storyVisibilityManaged = true;
+      const storyObserver = new IntersectionObserver((entries) => {
+        storyVisible = entries[0]?.intersectionRatio >= 0.4;
+        if (storyVisible && !storyPausedManually) storyVideo.play().catch(() => {});
+        if (!storyVisible && !storyVideo.paused) {
+          storyPauseSource = "observer";
+          storyVideo.pause();
+        }
+      }, { threshold: [0, 0.4, 1] });
+      storyObserver.observe(storyVideo);
     }
-  };
+  }
 
-  const animateScrub = (now) => {
-    const dt = Math.min(0.032, Math.max(0.001, (now - lastFrame) / 1000));
-    lastFrame = now;
-    if (scrubActive) {
-      // Critically damped second-order follow: x'' + 2wx' + w^2(x-target) = 0.
-      const omega = 18;
-      const acceleration = omega * omega * (scrubTarget - scrubValue) - 2 * omega * scrubVelocity;
-      scrubVelocity += acceleration * dt;
-      scrubValue = clamp(scrubValue + scrubVelocity * dt);
-      storyScrubber?.setProgress(scrubValue);
-      if (scrubProgress) scrubProgress.style.transform = `scaleX(${scrubValue})`;
-    }
-    requestAnimationFrame(animateScrub);
-  };
-
-  updateScrubTarget();
-  scrubValue = scrubTarget;
-  window.addEventListener("scroll", updateScrubTarget, { passive: true });
-  window.addEventListener("resize", updateScrubTarget, { passive: true });
-  window.visualViewport?.addEventListener("resize", updateScrubTarget, { passive: true });
-  document.fonts?.ready?.then(updateScrubTarget);
-  setupLazyScrubber(scrubSection, startStoryScrubber);
-  if (!reducedMotion.matches && scrubSection) requestAnimationFrame(animateScrub);
-
-  scrubChips.forEach((chip, index) => chip.addEventListener("click", () => {
-    const chapter = scrubChapters[index];
-    if (!chapter || !scrubSection) return;
-    const rect = scrubSection.getBoundingClientRect();
-    const sectionTop = window.scrollY + rect.top;
-    const travel = Math.max(1, scrubSection.offsetHeight - window.innerHeight);
-    const chapterProgress = chapter.startFrame / Math.max(1, scrubStory.count - 1);
-    window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
+  storyChips.forEach((chip) => chip.addEventListener("click", () => {
+    if (!storyVideo) return;
+    storyVideo.currentTime = Number.parseFloat(chip.dataset.start || "0");
+    updateStoryTime();
   }));
 
   const filmSection = document.querySelector("[data-film-scrub]");
@@ -205,7 +172,7 @@
   const filmProgress = filmSection?.querySelector("[data-film-progress]");
   const filmCaptions = [...(filmSection?.querySelectorAll("[data-film-caption]") || [])];
   const filmChips = [...(filmSection?.querySelectorAll("[data-film-chip]") || [])];
-  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":361,"chapters":[]}');
+  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":720,"chapters":[]}');
   const filmChapters = filmData.chapters || [];
   let filmScrubber = null;
   let filmTarget = 0;
@@ -256,10 +223,11 @@
       filmScrubber = new window.FrameScrubber({
         canvas: filmCanvas,
         poster: filmPoster,
-        base: "../assets/frames/film",
-        manifest: "../assets/frames/film/film.json",
+        base: "../assets/frames/film30",
+        manifest: "../assets/frames/film30/film.json",
         sizeKey: compact ? "854" : "1280",
         maxDpr: 2,
+        windowSize: compact ? 12 : 24,
         concurrency: 6,
         fit: phone ? "contain" : "cover",
         position: "center",
