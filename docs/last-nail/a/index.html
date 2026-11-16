@@ -174,36 +174,33 @@
       </div>
     </section>
 
-    <section class="scrub-section story-section" id="system" data-scrub aria-labelledby="scrub-title">
-      <div class="scrub-pin">
-        <div class="story-layout shell">
-          <div class="scrub-content story-copy">
+    <section class="section story-section" id="system" aria-labelledby="story-title">
+      <div class="story-layout shell">
+          <div class="story-copy">
             <div class="story-intro">
               <p class="eyebrow">System detail / Real footage</p>
-              <h2 id="scrub-title">From tear-out to a dry basement.</h2>
+              <h2 id="story-title">From tear-out to a dry basement.</h2>
             </div>
-            <div class="scrub-captions" aria-live="polite">
-              <p class="is-active" data-scrub-caption>Break out: a concrete floor is broken up.</p>
-              <p data-scrub-caption>Clear: broken concrete is carted off the site.</p>
-              <p data-scrub-caption>Drain: drainage pipe laid beside a window well.</p>
-              <p data-scrub-caption>Sump pit: where collected water goes.</p>
-              <p data-scrub-caption>Wrap: dimpled membrane lines the basement wall.</p>
-              <p data-scrub-caption>Finish: sump lid and membrane, ready for the next trade.</p>
+            <div class="story-captions" aria-live="polite">
+              <p class="is-active" data-story-caption>Break out: a concrete floor is broken up.</p>
+              <p data-story-caption>Clear: broken concrete is carted off the site.</p>
+              <p data-story-caption>Drain: drainage pipe laid beside a window well.</p>
+              <p data-story-caption>Sump pit: where collected water goes.</p>
+              <p data-story-caption>Wrap: dimpled membrane lines the basement wall.</p>
+              <p data-story-caption>Finish: sump lid and membrane, ready for the next trade.</p>
             </div>
             <div class="story-chips" aria-label="Story chapters">
-              <button type="button" data-story-chip="0" aria-current="true">Break out</button><button type="button" data-story-chip="1" aria-current="false">Clear</button><button type="button" data-story-chip="2" aria-current="false">Drain</button><button type="button" data-story-chip="3" aria-current="false">Sump pit</button><button type="button" data-story-chip="4" aria-current="false">Wrap</button><button type="button" data-story-chip="5" aria-current="false">Finish</button>
+              <button type="button" data-story-chip data-start="0" aria-current="true">Break out</button><button type="button" data-story-chip data-start="5.291667" aria-current="false">Clear</button><button type="button" data-story-chip data-start="8.875" aria-current="false">Drain</button><button type="button" data-story-chip data-start="15.458333" aria-current="false">Sump pit</button><button type="button" data-story-chip data-start="20.041667" aria-current="false">Wrap</button><button type="button" data-story-chip data-start="24.625" aria-current="false">Finish</button>
             </div>
-            <div class="scrub-progress" aria-hidden="true"><span data-scrub-progress></span></div>
+            <div class="story-progress" aria-hidden="true"><span data-story-progress></span></div>
             <ol class="story-static-list"><li>Break out: a concrete floor is broken up.</li><li>Clear: broken concrete is carted off the site.</li><li>Drain: drainage pipe laid beside a window well.</li><li>Sump pit: where collected water goes.</li><li>Wrap: dimpled membrane lines the basement wall.</li><li>Finish: sump lid and membrane, ready for the next trade.</li></ol>
           </div>
           <div class="story-stage">
             <div class="story-hazard" aria-hidden="true"></div>
-            <div class="story-frame"><canvas class="scrub-canvas" aria-hidden="true"></canvas><picture class="scrub-fallback"><source media="(max-width: 899px)" srcset="../assets/video/story-poster-540.jpg"><img src="../assets/video/story-poster.jpg" width="720" height="1280" loading="lazy" alt="Concrete floor being broken up on a job site"></picture></div>
+            <div class="story-frame"><video class="story-video" autoplay muted loop playsinline controls preload="metadata" poster="../assets/video/story-poster.jpg" width="720" height="1280" aria-label="Real job footage showing the waterproofing process"><source src="../assets/video/story-play-540.mp4" type="video/mp4" media="(max-width: 899px)"><source src="../assets/video/story-play-720.mp4" type="video/mp4">Your browser does not support HTML video.</video></div>
             <p class="story-footage-label">Real footage from our jobs</p>
           </div>
-        </div>
       </div>
-      <script type="application/json" data-story-chapters>{"fps":15,"count":502,"chapters":[{"id":"break-out","startFrame":0,"endFrame":79},{"id":"clear","startFrame":79,"endFrame":133},{"id":"drain","startFrame":133,"endFrame":232},{"id":"sump-pit","startFrame":232,"endFrame":301},{"id":"wrap","startFrame":301,"endFrame":369},{"id":"finish","startFrame":369,"endFrame":501}]}</script>
     </section>
 
     <section class="section explainer-section" aria-labelledby="explainer-title">
@@ -236,10 +233,7 @@
       <div class="film-process__sticky">
         <div class="film-process__media" aria-hidden="true">
           <canvas class="film-process__canvas" aria-hidden="true"></canvas>
-          <picture class="film-process__poster">
-            <source media="(max-width: 899px)" srcset="../assets/video/film-poster-854.jpg">
-            <img src="../assets/video/film-poster-1280.jpg" width="1280" height="720" loading="lazy" alt="">
-          </picture>
+          <picture class="film-process__poster"><img src="../assets/frames/film30/poster.webp" width="1280" height="720" loading="lazy" alt=""></picture>
         </div>
         <header class="film-process__heading">
           <p class="eyebrow">How it works / 3D illustration</p>
@@ -271,7 +265,7 @@
           <li><strong>5 Backfill</strong> Water is collected and led away from the foundation.</li>
         </ol>
       </div>
-      <script type="application/json" data-film-chapters>{"fps":15,"count":361,"chapters":[{"id":"tear-out","startFrame":0,"endFrame":83},{"id":"expose","startFrame":83,"endFrame":143},{"id":"wrap","startFrame":143,"endFrame":210},{"id":"drain","startFrame":210,"endFrame":293},{"id":"backfill","startFrame":293,"endFrame":360}]}</script>
+      <script type="application/json" data-film-chapters>{"fps":30,"count":720,"chapters":[{"id":"tear-out","startFrame":0,"endFrame":166},{"id":"expose","startFrame":166,"endFrame":286},{"id":"wrap","startFrame":286,"endFrame":420},{"id":"drain","startFrame":420,"endFrame":586},{"id":"backfill","startFrame":586,"endFrame":719}]}</script>
     </section>
 
     <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
