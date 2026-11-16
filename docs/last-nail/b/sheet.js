@@ -45,22 +45,14 @@
     return match?.[1] || String(index + 1).padStart(2, '0');
   };
 
-  const addGridLine = (group, axis, position, length, index) => {
-    const major = index % 4 === 0;
+  const addGridLine = (group, axis, position, length, index, gridIndex = index) => {
+    const major = Math.abs(gridIndex) % 4 === 0;
     const line = createSvgElement('line', axis === 'vertical'
       ? { x1: position, y1: 0, x2: position, y2: length, pathLength: 1 }
       : { x1: 0, y1: position, x2: length, y2: position, pathLength: 1 });
     line.classList.add('sheet-grid-line', major ? 'sheet-grid-line--major' : 'sheet-grid-line--minor');
     group.append(line);
-    return { element: line, axis, index, major, order: 0, progress: reducedMotion ? 1 : 0 };
-  };
-
-  const assignDrawOrder = (lines) => {
-    [...lines]
-      .sort((a, b) => Number(b.major) - Number(a.major)
-        || Number(a.axis === 'horizontal') - Number(b.axis === 'horizontal')
-        || a.index - b.index)
-      .forEach((line, order) => { line.order = order; });
+    return { element: line, axis, index, gridIndex, position, major, progress: reducedMotion ? 1 : 0 };
   };
 
   const collectTextBoxes = (section, sectionRect) => [...section.querySelectorAll([
@@ -82,19 +74,14 @@
     const { section, overlay } = model;
     const width = Math.max(1, section.clientWidth);
     const height = Math.max(1, section.offsetHeight);
-    const rootSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-    const cssCell = innerWidth <= 700
-      ? rootSize * 4
-      : clamp(innerWidth * .07, rootSize * 5, rootSize * 8);
-    const lineLimit = innerWidth <= 700 ? 34 : 60;
-    let cell = cssCell;
-    let verticalCount = Math.floor(width / cell) + 1;
-    let horizontalCount = Math.floor(height / cell) + 1;
-    while (verticalCount + horizontalCount > lineLimit) {
-      cell *= 1.08;
-      verticalCount = Math.floor(width / cell) + 1;
-      horizontalCount = Math.floor(height / cell) + 1;
-    }
+    const cell = innerWidth >= 1100 ? 160 : innerWidth >= 700 ? 128 : 96;
+    const sectionRect = section.getBoundingClientRect();
+    const pageTop = scrollY + sectionRect.top;
+    const pageLeft = sectionRect.left;
+    const firstX = ((cell - (pageLeft % cell)) % cell);
+    const firstY = ((cell - (pageTop % cell)) % cell);
+    const firstVerticalIndex = Math.round((pageLeft + firstX) / cell);
+    const firstHorizontalIndex = Math.round((pageTop + firstY) / cell);
 
     overlay.setAttribute('viewBox', `0 0 ${width} ${height}`);
     overlay.setAttribute('width', width);
@@ -107,15 +94,13 @@
 
     const vertical = [];
     const horizontal = [];
-    for (let index = 0; index < verticalCount; index += 1) {
-      vertical.push(addGridLine(lineGroup, 'vertical', index * cell, height, index));
+    for (let index = 0, x = firstX; x <= width; index += 1, x += cell) {
+      vertical.push(addGridLine(lineGroup, 'vertical', x, height, index, firstVerticalIndex + index));
     }
-    for (let index = 0; index < horizontalCount; index += 1) {
-      horizontal.push(addGridLine(lineGroup, 'horizontal', index * cell, width, index));
+    for (let index = 0, y = firstY; y <= height; index += 1, y += cell) {
+      horizontal.push(addGridLine(lineGroup, 'horizontal', y, width, index, firstHorizontalIndex + index));
     }
-    assignDrawOrder([...vertical, ...horizontal]);
 
-    const sectionRect = section.getBoundingClientRect();
     const textBoxes = collectTextBoxes(section, sectionRect);
     const crosses = [];
     let intersectionIndex = 0;
@@ -123,8 +108,8 @@
     const majorHorizontal = horizontal.filter(line => line.major);
     majorHorizontal.forEach(horizontalLine => {
       majorVertical.forEach(verticalLine => {
-        const x = verticalLine.index * cell;
-        const y = horizontalLine.index * cell;
+        const x = verticalLine.position;
+        const y = horizontalLine.position;
         const selected = intersectionIndex % 6 === 0;
         intersectionIndex += 1;
         if (!selected || crosses.length >= 6 || (x < 18 && y < 18)) return;
@@ -252,55 +237,60 @@
 
   const ruler = document.createElement('aside');
   ruler.className = 'elevation-ruler';
-  ruler.setAttribute('aria-hidden', 'true');
-  ruler.innerHTML =
-    '<span class="ruler-datum" style="top:4%">GRADE ±0.00</span>' +
-    '<span class="ruler-datum" style="top:13%">SLAB -0.15</span>' +
-    '<span class="ruler-datum" style="top:71%">BASEMENT FLOOR -2.20</span>' +
-    '<span class="ruler-datum" style="top:87%">FOOTING -2.40</span>' +
-    '<div class="ruler-marker"><span>EL. ±0.00 m</span></div>';
-  for (let pixels = 0; pixels <= 1800; pixels += 200) {
+  ruler.id = 'page-ruler';
+  ruler.setAttribute('role', 'scrollbar');
+  ruler.setAttribute('aria-label', 'Page depth');
+  ruler.setAttribute('aria-controls', 'main');
+  ruler.setAttribute('aria-orientation', 'vertical');
+  ruler.setAttribute('aria-valuemin', '0');
+  ruler.setAttribute('aria-valuemax', '100');
+  ruler.innerHTML = '<div class="ruler-marker"><span>EL. ±0.00 m</span></div>';
+  for (let index = 0; index <= 4; index += 1) {
     const label = document.createElement('span');
     label.className = 'ruler-number';
-    label.style.top = `${pixels + 3}px`;
-    label.textContent = pixels === 0 ? '0.00' : `-${(pixels / 500).toFixed(2)}`;
+    label.style.top = `${index * 25}%`;
+    label.textContent = index === 0 ? '0.00' : `-${(index * .6).toFixed(2)}`;
     ruler.append(label);
   }
   document.body.append(ruler);
 
   const marker = ruler.querySelector('.ruler-marker');
   const markerLabel = marker.querySelector('span');
-  const measuredContainer = document.querySelector('.wrap');
+  const rulerMedia = matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)');
   const drawTargets = [...document.querySelectorAll('[data-draw]')];
   const nearViewport = new Set();
   let frame = 0;
   let activeUntil = 0;
-  const updateRulerVisibility = () => {
-    const rulerWidth = parseFloat(getComputedStyle(ruler).width) || 0;
-    const freeGutter = measuredContainer?.getBoundingClientRect().left || 0;
-    ruler.classList.toggle('is-visible', freeGutter >= rulerWidth + 8);
+  let dragState = null;
+
+  const syncRulerMode = () => {
+    const active = rulerMedia.matches;
+    ruler.tabIndex = active ? 0 : -1;
+    ruler.setAttribute('aria-hidden', String(!active));
+    requestUpdate();
   };
 
-  const updateGrid = () => {
+  const updateGrid = (modelReads, viewportHeight, pageY) => {
     const lineWrites = [];
     const markWrites = [];
-    const models = reducedMotion ? gridModels : activeGridModels;
-
-    models.forEach(model => {
+    modelReads.forEach(({ model, rect }) => {
       if (!model.vertical || !model.horizontal) return;
-      const rect = model.section.getBoundingClientRect();
-      const rangeDistance = innerHeight * (rect.height > innerHeight * 1.5 ? 1.2 : .85);
-      const sectionProgress = reducedMotion ? 1 : clamp(
-        (innerHeight * 1.05 - rect.top) / rangeDistance,
-        0,
-        1
-      );
-      const maxOrder = Math.max(1, model.lineCount - 1);
 
-      [...model.vertical, ...model.horizontal].forEach(line => {
-        const start = line.order / maxOrder * .72;
-        const linearProgress = clamp((sectionProgress - start) / .28, 0, 1);
-        const progress = reducedMotion ? 1 : 1 - (1 - linearProgress) ** 3;
+      model.vertical.forEach(line => {
+        const stagger = line.index * 40;
+        const remaining = clamp((pageY - stagger) / Math.max(1, 700 - stagger), 0, 1);
+        const progress = reducedMotion ? 1 : .35 + remaining * .65;
+        line.progress = progress;
+        lineWrites.push([line.element, 1 - progress]);
+      });
+
+      model.horizontal.forEach(line => {
+        const viewportY = rect.top + line.position;
+        const progress = reducedMotion ? 1 : clamp(
+          (viewportHeight * .92 - viewportY) / (viewportHeight * .34),
+          0,
+          1
+        );
         line.progress = progress;
         lineWrites.push([line.element, 1 - progress]);
       });
@@ -310,8 +300,7 @@
         const progress = reducedMotion ? 1 : clamp((lineProgress - .9) / .1, 0, 1);
         markWrites.push([cross.element, progress]);
       });
-      const originLinearProgress = clamp(sectionProgress / .08, 0, 1);
-      const originProgress = reducedMotion ? 1 : 1 - (1 - originLinearProgress) ** 3;
+      const originProgress = reducedMotion ? 1 : (model.horizontal[0]?.progress || 0);
       markWrites.push([model.origin, originProgress]);
     });
 
@@ -325,24 +314,35 @@
   };
 
   const update = () => {
-    updateRulerVisibility();
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    const pageProgress = reducedMotion ? 0 : clamp(scrollY / maxScroll, 0, 1);
-    const markerY = reducedMotion ? 80 : 80 + pageProgress * Math.max(0, innerHeight - 160);
-    marker.style.transform = `translate3d(0, ${markerY}px, 0)`;
+    const viewportHeight = innerHeight;
+    const pageY = scrollY;
+    const pageHeight = document.documentElement.scrollHeight;
+    const maxScroll = Math.max(0, pageHeight - viewportHeight);
+    const pageProgress = maxScroll ? clamp(pageY / maxScroll, 0, 1) : 0;
+    const models = reducedMotion ? gridModels : activeGridModels;
+    const modelReads = [...models].map(model => ({ model, rect: model.section.getBoundingClientRect() }));
+    const detailReads = reducedMotion ? [] : [...nearViewport].map(target => ({ target, rect: target.getBoundingClientRect() }));
+    const headerHeight = innerWidth <= 700 ? 64 : 72;
+    const trackHeight = Math.max(0, viewportHeight - headerHeight);
+    const thumbHeight = Math.min(trackHeight, Math.max(28, trackHeight * viewportHeight / Math.max(viewportHeight, pageHeight)));
+    const markerY = pageProgress * Math.max(0, trackHeight - thumbHeight);
+
+    marker.style.setProperty('--thumb-h', `${thumbHeight}px`);
+    marker.style.setProperty('--thumb-y', `${markerY}px`);
     const elevation = pageProgress * -2.4;
-    updateGrid();
     markerLabel.textContent = pageProgress < .002 ? 'EL. ±0.00 m' : `EL. ${elevation.toFixed(2)} m`;
+    ruler.setAttribute('aria-valuenow', String(Math.round(pageProgress * 100)));
+    ruler.setAttribute('aria-valuetext', `${Math.round(pageProgress * 100)}%, elevation ${elevation.toFixed(2)} metres`);
+    updateGrid(modelReads, viewportHeight, pageY);
 
     if (reducedMotion) {
       drawTargets.forEach(target => target.style.setProperty('--dash', '0'));
       return;
     }
 
-    nearViewport.forEach(target => {
-      const rect = target.getBoundingClientRect();
-      const travel = innerHeight * .45 + rect.height * .5;
-      const progress = clamp((innerHeight * .9 - rect.top) / Math.max(1, travel), 0, 1);
+    detailReads.forEach(({ target, rect }) => {
+      const travel = viewportHeight * .45 + rect.height * .5;
+      const progress = clamp((viewportHeight * .9 - rect.top) / Math.max(1, travel), 0, 1);
       target.style.setProperty('--dash', String(1 - progress));
     });
   };
@@ -357,6 +357,64 @@
     if (keepAlive) activeUntil = performance.now() + 120;
     if (!frame) frame = requestAnimationFrame(runFrame);
   };
+
+  const scrollToRulerPosition = (clientY, behavior = 'auto') => {
+    if (!rulerMedia.matches) return;
+    const rect = ruler.getBoundingClientRect();
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const progress = clamp((clientY - rect.top) / Math.max(1, rect.height), 0, 1);
+    scrollTo({ top: progress * maxScroll, behavior });
+  };
+
+  marker.addEventListener('pointerdown', event => {
+    if (!rulerMedia.matches || event.button !== 0) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const trackRect = ruler.getBoundingClientRect();
+    const markerRect = marker.getBoundingClientRect();
+    dragState = {
+      pointerId: event.pointerId,
+      trackTop: trackRect.top,
+      trackHeight: trackRect.height,
+      thumbHeight: markerRect.height,
+      offset: event.clientY - markerRect.top
+    };
+    marker.setPointerCapture(event.pointerId);
+  });
+  marker.addEventListener('pointermove', event => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+    const travel = Math.max(1, dragState.trackHeight - dragState.thumbHeight);
+    const markerTop = clamp(event.clientY - dragState.trackTop - dragState.offset, 0, travel);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    scrollTo({ top: markerTop / travel * maxScroll, behavior: 'auto' });
+  });
+  const endRulerDrag = event => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+    if (marker.hasPointerCapture(event.pointerId)) marker.releasePointerCapture(event.pointerId);
+    dragState = null;
+  };
+  marker.addEventListener('pointerup', endRulerDrag);
+  marker.addEventListener('pointercancel', endRulerDrag);
+  ruler.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || event.target.closest('.ruler-marker')) return;
+    scrollToRulerPosition(event.clientY, reducedMotion ? 'auto' : 'smooth');
+  });
+  ruler.addEventListener('keydown', event => {
+    const pageStep = innerHeight * .9;
+    const keyTargets = {
+      ArrowUp: scrollY - 40,
+      ArrowDown: scrollY + 40,
+      PageUp: scrollY - pageStep,
+      PageDown: scrollY + pageStep,
+      Home: 0,
+      End: document.documentElement.scrollHeight
+    };
+    if (!(event.key in keyTargets)) return;
+    event.preventDefault();
+    scrollTo({ top: keyTargets[event.key], behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
+  rulerMedia.addEventListener?.('change', syncRulerMode);
+  syncRulerMode();
 
   if ('IntersectionObserver' in window) {
     const detailObserver = new IntersectionObserver(entries => {
