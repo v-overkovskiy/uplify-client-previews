@@ -40,11 +40,6 @@
     return element;
   };
 
-  const getSectionCode = (section, index) => {
-    const match = section.querySelector('.index-tag')?.textContent.match(/\b(\d{2})\b/);
-    return match?.[1] || String(index + 1).padStart(2, '0');
-  };
-
   const addGridLine = (group, axis, position, length, index, gridIndex = index) => {
     const major = Math.abs(gridIndex) % 4 === 0;
     const line = createSvgElement('line', axis === 'vertical'
@@ -124,9 +119,6 @@
 
     const origin = createSvgElement('g', { class: 'sheet-grid-origin' });
     origin.append(createSvgElement('path', { d: 'M4 10H16M10 4V16M7 7L13 13M13 7L7 13' }));
-    const originLabel = createSvgElement('text', { x: 22, y: 13 });
-    originLabel.textContent = `SECTION ${model.code} / ORIGIN`;
-    origin.append(originLabel);
     crossGroup.append(origin);
 
     model.width = width;
@@ -149,7 +141,7 @@
     }
   };
 
-  gridSections.forEach((section, index) => {
+  gridSections.forEach((section) => {
     section.classList.add('sheet-grid-section');
     if (section.matches(darkGridSelector)) section.classList.add('sheet-grid-section--dark');
     const overlay = createSvgElement('svg', {
@@ -159,7 +151,7 @@
       preserveAspectRatio: 'none'
     });
     section.prepend(overlay);
-    const model = { section, overlay, code: getSectionCode(section, index) };
+    const model = { section, overlay };
     gridModels.push(model);
     gridModelBySection.set(section, model);
     buildGrid(model);
@@ -190,24 +182,15 @@
     'sheet-detail--slab',
     '0 0 160 112',
     '<path data-stroke pathLength="1" d="M13 18H147V82H13ZM47 18V82M92 18V82M13 52H147M47 52l18-18 27 18-27 18zM104 27l28 28M110 21l28 28M104 67l28-28"/>' +
-    '<path data-stroke data-accent pathLength="1" d="M70 43l8-13 8 13-4 12v17h-8V55z"/><text x="13" y="103">D-01 SLAB REMOVAL</text>'
+    '<path data-stroke data-accent pathLength="1" d="M70 43l8-13 8 13-4 12v17h-8V55z"/><text x="13" y="103">SLAB REMOVAL</text>'
   );
   createDetail(
     servicePanels[1],
     'sheet-detail--wall',
     '0 0 160 112',
     '<path data-stroke pathLength="1" d="M30 12H75V82H118V98H18V82H55V12M75 20h18v62M93 32h40M93 40h34M113 72a10 10 0 1 0 0 20 10 10 0 1 0 0-20M20 78l25-12M38 62l7 4-2 8"/>' +
-    '<path data-stroke data-accent pathLength="1" stroke-dasharray="3 3" d="M80 18V78"/><text x="18" y="108">W-01 WALL SECTION</text>'
+    '<path data-stroke data-accent pathLength="1" stroke-dasharray="3 3" d="M80 18V78"/><text x="18" y="108">WALL SECTION</text>'
   );
-
-  document.querySelectorAll('.diagram-panel').forEach((panel, index) => {
-    const marker = document.createElement('span');
-    marker.className = 'sheet-section-marker';
-    marker.dataset.draw = '';
-    marker.textContent = index === 0 ? 'A' : 'B';
-    marker.setAttribute('aria-hidden', 'true');
-    panel.append(marker);
-  });
 
   const addGridNotation = (grid) => {
     if (!grid) return;
@@ -229,7 +212,6 @@
     titleBlock.innerHTML =
       '<div><b>Project</b><span>Last Nail Demolition and Waterproofing</span></div>' +
       '<div><b>Location</b><span>Toronto + GTA, ON</span></div>' +
-      '<div class="sheet-cell"><b>Sheet</b><span>10 / 10</span></div>' +
       '<div><b>Scale</b><span>N.T.S.</span></div>' +
       '<div><b>Drawn by</b><span>Last Nail</span></div>';
     footer.append(titleBlock);

@@ -176,9 +176,7 @@ a:active { transform: scale(.98); transition: transform 100ms ease-out; }
 .lede { max-width: 55ch; margin-top: 28px; color: var(--secondary); font-size: 1.125rem; font-weight: 400; }
 .index-tag,
 .service-title > span,
-.diagram-title > span,
-.video-chip,
-.fig-caption span {
+.video-chip {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -192,11 +190,9 @@ a:active { transform: scale(.98); transition: transform 100ms ease-out; }
   font-weight: 600;
   letter-spacing: .16em;
   line-height: 1.25;
-  text-transform: uppercase;
 }
 .index-tag::before,
-.service-title > span::before,
-.diagram-title > span::before {
+.service-title > span::before {
   content: "";
   flex: 0 0 24px;
   width: 24px;
@@ -250,8 +246,6 @@ a:active { transform: scale(.98); transition: transform 100ms ease-out; }
   line-height: 1.4;
   backdrop-filter: blur(14px);
 }
-.fig-caption span { display: inline; margin: 0 7px 0 0; color: var(--white); letter-spacing: .08em; }
-
 .work-order {
   grid-area: form;
   position: static;
@@ -280,7 +274,6 @@ a:active { transform: scale(.98); transition: transform 100ms ease-out; }
   font-weight: 600;
 }
 .form-head strong { white-space: nowrap; }
-.form-head span { flex: 0 0 auto; color: var(--secondary); font-variant-numeric: tabular-nums; }
 .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; padding: 22px; }
 .form-grid label { display: grid; gap: 7px; color: var(--secondary); font-size: .75rem; font-weight: 600; letter-spacing: .02em; }
 .work-order .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; padding: 20px; }
@@ -364,7 +357,6 @@ textarea:focus { border-color: var(--brass); box-shadow: 0 0 0 3px rgba(168, 127
 }
 .segment-grid button:first-child { border-left: 1px solid var(--hairline); }
 .segment-grid button:hover { background: var(--surface); }
-.segment-grid span { color: var(--brass); font-size: 1rem; font-weight: 400; font-variant-numeric: tabular-nums; }
 .segment-grid strong { margin: auto 0 14px; font-size: 1.125rem; font-weight: 600; line-height: 1.25; }
 .segment-grid small { color: var(--secondary); font-size: .75rem; }
 
@@ -499,7 +491,6 @@ textarea:focus { border-color: var(--brass); box-shadow: 0 0 0 3px rgba(168, 127
   box-shadow: var(--soft-shadow);
 }
 .diagram-title { min-width: 0; padding: 24px; }
-.diagram-title span { margin-bottom: 13px; color: var(--brass); }
 .diagram-title h3 { padding-right: 4px; line-height: 1.1; }
 .diagram-title p { margin: 7px 0 0; color: var(--secondary); font-size: .875rem; }
 .diagram-media {
