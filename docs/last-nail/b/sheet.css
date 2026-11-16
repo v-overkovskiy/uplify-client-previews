@@ -1,7 +1,8 @@
 /* Drawing-sheet layer: viewport scale, technical linework and elevation datum. */
 :root {
   --gutter: clamp(1.25rem, 3vw, 3rem);
-  --section: clamp(56px, 6vw, 88px);
+  --section: clamp(48px, 4.2vw, 60px);
+  --band-section: clamp(72px, 6vw, 88px);
   --h1: clamp(38px, 5.2vw, 76px);
   --h2: clamp(30px, 3.8vw, 54px);
   --h3: clamp(22px, 2.2vw, 30px);
@@ -29,9 +30,15 @@ a:active { transform: scale(.97); transition: transform 100ms ease-out; }
 .section { padding-block: var(--section); }
 .section-head {
   gap: clamp(1.5rem, 3vw, 3rem);
-  margin-bottom: clamp(1.5rem, 3vw, 3rem);
+  margin-bottom: clamp(2rem, 3vw, 3rem);
 }
 .section-head > p { padding-left: 1.5rem; }
+.section > .wrap > :last-child,
+.section > .wrap > :last-child > :last-child,
+.section-head > :last-child,
+.section-head > div > :last-child,
+.reviews-grid > div > :last-child,
+.faq .narrow > :last-child { margin-bottom: 0; }
 .index-tag,
 .service-title > span,
 .diagram-title > span,
@@ -131,7 +138,7 @@ a:active { transform: scale(.97); transition: transform 100ms ease-out; }
 .button-small { min-height: 2.75rem; padding: .5rem 1rem; }
 .button-row { gap: .75rem; margin-top: 2rem; }
 
-.hero { padding-block: clamp(2rem, 3vw, 2.75rem); }
+.hero { padding-block: var(--band-section); }
 .hero-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
   column-gap: clamp(2rem, 4vw, 3.5rem);
@@ -190,7 +197,7 @@ textarea { min-height: 3rem; padding: .625rem .75rem; }
 .service-main .service-photo { height: 36rem; }
 .service-panel ul { gap: .4375rem; margin-block: .75rem; padding-block: 1.25rem; }
 
-.story-layout { gap: clamp(2rem, 5vw, 5rem); padding-block: var(--section); }
+.story-layout { gap: clamp(2rem, 5vw, 5rem); padding-block: var(--band-section); }
 .scrub-copy h2 { font-size: var(--h2); }
 .scrub-captions { min-height: 5.75rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
 .story-chips { gap: .4375rem; max-width: 40rem; margin-top: 1rem; }
@@ -232,10 +239,10 @@ textarea { min-height: 3rem; padding: .625rem .75rem; }
 .faq h2 { margin-bottom: 3rem; }
 .faq summary { min-height: 4.875rem; padding-right: 2.5rem; }
 .faq details p { padding: 0 2.5rem 1.625rem 0; }
-.cta-grid { gap: 4.5rem; }
+.cta-grid { gap: 4.5rem; padding-block: var(--band-section); }
 .cta-logo { width: 5.75rem; height: 5.75rem; margin-bottom: 1.875rem; }
 .cta-phone { margin-top: 2.125rem; }
-footer { padding: 3.625rem 0 5.75rem; }
+footer { padding-block: var(--band-section); }
 .footer-grid { gap: 2rem; }
 .footer-brand,
 .footer-brand img { width: 13rem; }
@@ -519,15 +526,15 @@ footer .sheet-registration { color: var(--surface); opacity: .18; }
 }
 
 @media (max-width: 43.75rem) {
-  :root { --section: 48px; --h1: clamp(38px, 11vw, 44px); --h2: clamp(30px, 8.5vw, 36px); }
+  :root { --section: 32px; --band-section: 48px; --h1: clamp(38px, 11vw, 44px); --h2: clamp(30px, 8.5vw, 36px); }
   .sheet-grid-section { --sheet-grid-cell: 4rem; }
   .wrap { width: calc(100% - 2rem); }
   .site-header { min-height: 4rem; }
   .header-grid { min-height: 4rem; grid-template-columns: 1fr auto; gap: .75rem; }
   .brand img { height: 2.375rem; }
   .header-actions .button { min-height: 2.75rem; padding: .5rem .625rem; font-size: .72rem; }
-  .section,
-  .hero { padding-block: 48px; }
+  .section { padding-block: var(--section); }
+  .hero { padding-block: var(--band-section); }
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .hero-copy { padding: 0; }
   .hero-copy h1 { max-width: 14ch; font-size: var(--h1); }
@@ -556,7 +563,10 @@ footer .sheet-registration { color: var(--surface); opacity: .18; }
   .gallery-grid button:nth-child(4n + 2) img { height: 15rem; }
   .video-grid { grid-template-columns: 1fr; }
   .reviews-grid { gap: 2rem; }
-  .cta-grid { gap: 3rem; }
+  .section-head { margin-bottom: 24px; }
+  .faq h2 { margin-bottom: 32px; }
+  .cta-grid { gap: 3rem; padding-block: var(--band-section); }
+  footer { padding-block: var(--band-section); }
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .sheet-registration span:nth-child(1),
   .sheet-registration span:nth-child(3) { left: 0; }
