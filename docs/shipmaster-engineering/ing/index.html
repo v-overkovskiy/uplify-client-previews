@@ -1,0 +1,1450 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Концепт головної сторінки Shipmaster: вибір кораблика, будова, порівняння комплектацій. Попередній перегляд."><link rel="canonical" href="https://preview.uplify.agency/shipmaster-engineering/"><meta name="robots" content="noindex,nofollow,noarchive"><meta property="og:type" content="website"><meta property="og:locale" content="uk_UA"><meta property="og:title" content="Shipmaster: концепт «Інженерний каталог»"><meta property="og:description" content="Концепт головної сторінки Shipmaster: вибір кораблика, будова, порівняння комплектацій. Попередній перегляд."><meta property="og:url" content="https://preview.uplify.agency/shipmaster-engineering/"><meta property="og:image" content="https://preview.uplify.agency/shipmaster-engineering/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Shipmaster: концепт «Інженерний каталог»"><meta name="twitter:description" content="Концепт головної сторінки Shipmaster: вибір кораблика, будова, порівняння комплектацій. Попередній перегляд."><meta name="twitter:image" content="https://preview.uplify.agency/shipmaster-engineering/og.png"><title>Shipmaster: концепт «Інженерний каталог»</title><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f01.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f02.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f03.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f04.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f05.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f06.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f07.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f08.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f09.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f10.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f11.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f12.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f13.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f14.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f15.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f16.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f17.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f18.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/f19.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f20.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f21.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f22.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f23.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f24.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f25.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/f26.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f27.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f28.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f29.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f30.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f31.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f32.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/f33.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f34.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f35.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f36.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f37.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f38.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f39.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/f40.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f41.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f42.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f43.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f44.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f45.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f46.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/f47.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+/* Layout concept: каталог-інженерія. Світла основа, графітові секції для «техніки», один бурштиновий акцент лише на діях і ключових цифрах. */
+:root{
+  color-scheme:light;
+  --g950:#0e151c; --g900:#141e27; --g800:#1b2733; --g700:#25364a; --g500:#5b6b7a; --g300:#a9b6c3; --g100:#e7ecf1; --g50:#f2f5f8; --white:#fff;
+  --accent:#ffc21a; --on-accent:#0f1821; --accent-ink:#8a5a00;
+  --ui:"Onest","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--white);color:var(--g800);font:400 16px/1.6 var(--ui);
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+img,svg{max-width:100%}
+h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0}
+h1,h2,h3{text-wrap:balance}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+.tag{font:600 12px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g500)}
+.tag--acc{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--ui);padding:15px 22px;border-radius:4px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s}
+.btn--acc{background:var(--accent);color:var(--on-accent)}
+.btn--acc:hover{transform:translateY(-1px);box-shadow:0 6px 18px -6px var(--accent)}
+.btn--ghost{background:transparent;color:#fff;border-color:#ffffff66}
+.btn--ghost:hover{border-color:#fff}
+.btn--line{background:transparent;color:var(--g800);border-color:var(--g800)}
+.btn--line:hover{background:var(--g800);color:#fff}
+.btn--dark{background:var(--g800);color:#fff}
+.btn--dark:hover{background:var(--g700)}
+.btn--sm{padding:11px 16px;font-size:14px}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--on-accent);padding:10px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* верхня смуга + шапка */
+.topbar{background:var(--g950);color:var(--g300);font-size:12.5px}
+.topbar__in{display:flex;justify-content:space-between;gap:16px;padding-block:8px;align-items:center}
+.topbar nav{display:flex;gap:18px;flex-wrap:wrap}
+.topbar a{text-decoration:none}.topbar a:hover{color:#fff}
+.topbar__note{color:var(--accent);font-weight:600}
+.head{position:sticky;top:0;z-index:40;background:var(--g900);color:#fff;border-bottom:1px solid #ffffff14}
+.head__in{display:flex;align-items:center;gap:28px;height:68px}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:800 20px/1 var(--ui);letter-spacing:.02em;color:#fff}
+.logo b{color:var(--accent);font-weight:800}
+.nav{display:flex;gap:26px;margin-left:12px}
+.nav a{text-decoration:none;font-weight:500;font-size:15px;color:#dce5ec;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:#fff;border-bottom-color:var(--accent)}
+.head__tools{margin-left:auto;display:flex;align-items:center;gap:18px}
+.phone{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px}
+.phone svg{color:var(--accent)}
+.cart{position:relative;background:none;border:0;color:#fff;cursor:pointer;padding:6px}
+.cart em{position:absolute;top:-2px;right:-4px;background:var(--accent);color:var(--on-accent);font:700 11px/1 var(--mono);border-radius:9px;padding:3px 5px;font-style:normal}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:#fff;margin:5px 0}
+
+/* hero */
+.hero{position:relative;background:var(--g950);color:#fff;overflow:hidden}
+.hero__media{position:absolute;inset:0}
+.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.14);transform-origin:right center;object-position:60% 40%}
+.hero__shade{position:absolute;inset:0;background:linear-gradient(90deg,#0e151cf2 0%,#0f1b27c8 34%,#1b273322 62%,#1b273300 100%),linear-gradient(0deg,#0e151ce6 0%,#0e151c00 38%)}
+.hero__in{position:relative;z-index:2;min-height:min(90vh,860px);padding-block:84px 160px;display:flex;align-items:center}
+.hero__copy{max-width:480px;display:grid;gap:22px}
+.hero h1{font:800 clamp(40px,4.6vw,66px)/1.02 var(--ui);letter-spacing:-.025em}
+.hero .lead{font-size:18px;color:#d6e0e8;max-width:44ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px}
+.topbar,.head,.hero{--pad:clamp(20px,4.2vw,80px)}
+.topbar .wrap,.head .wrap,.hero .wrap{max-width:1840px;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
+.hero__boat{position:absolute;z-index:2;right:var(--pad);bottom:190px;width:min(40vw,640px)}
+.hero__disc{position:absolute;z-index:0;left:50%;top:50%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#141e27;box-shadow:0 0 0 1px #9fb3c733}
+.hero__boat img{display:block;width:100%;height:auto;position:relative;z-index:1;filter:drop-shadow(0 14px 14px #0009)}
+.hero__wake{position:absolute;left:4%;right:2%;bottom:-6%;height:14%;background:radial-gradient(ellipse at center,#0b121bcc 0%,#0b121b00 70%);filter:blur(6px);z-index:0}
+.specstrip{position:absolute;z-index:3;left:0;right:0;bottom:28px;list-style:none;padding:0;margin:0 auto;max-width:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ffffff26;border:1px solid #ffffff26;width:calc(100% - 2*var(--pad))}
+.specstrip li{background:#0e151ccc;backdrop-filter:blur(6px);padding:16px 20px;display:grid;gap:2px}
+.specstrip b{font:600 26px/1 var(--mono)}
+.specstrip span{font-size:13px;color:var(--g300)}
+
+/* секції */
+.sec{padding-block:96px}
+.sec--tint{background:var(--g50)}
+.sec--dark{background:var(--g800);color:#eef3f7}
+.sec__head{display:grid;gap:12px;max-width:700px;margin-bottom:44px}
+.sec__head h2{font:800 clamp(28px,3.4vw,44px)/1.08 var(--ui);letter-spacing:-.02em}
+.sec__head p{color:var(--g500);font-size:17px}
+.sec--dark .sec__head p{color:var(--g300)}
+.sec__head--row{max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+
+/* рівні */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tier{border:1px solid var(--g100);background:#fff;padding:28px;display:grid;gap:14px;align-content:start;transition:box-shadow .2s,transform .2s}
+.tier:hover{box-shadow:0 18px 40px -22px #1b2733aa;transform:translateY(-3px)}
+.tier--mid{border-color:var(--g800);box-shadow:0 0 0 1px var(--g800)}
+.tier__fig{background:linear-gradient(180deg,var(--g50),var(--g100));padding:18px 10px;margin:-28px -28px 4px;border-bottom:1px solid var(--g100)}
+.tier__lvl{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+.tier h3{font:700 24px/1.15 var(--ui)}
+.tier__task{color:var(--g500)}
+.ticks{list-style:none;padding:0;display:grid;gap:7px;font-size:15px}
+.ticks li{display:grid;grid-template-columns:18px 1fr;gap:10px}
+.ticks li::before{content:"";width:8px;height:8px;background:var(--accent);margin-top:8px;border-radius:1px}
+.tier__price{font-size:15px;color:var(--g500)}
+.tier__price b{font:700 30px/1 var(--mono);color:var(--g800);margin:0 4px 0 6px}
+
+/* анатомія: інтерактивна ілюстрація (з проєкту amur-interactive, перефарбовано під графіт і бурштин) */
+#ill{--i-paper:#141e27;--i-ink:#e8eef3;--i-muted:#a9b6c3;--i-line:#ffffff2e;--i-tint:color-mix(in srgb,var(--accent) 28%,#141e27);--i-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;color:var(--i-ink)}
+#ill .parts{display:grid;grid-template-columns:repeat(6,1fr);border-block:1px solid var(--i-line)}
+#ill .parts button{display:flex;align-items:center;gap:13px;justify-content:center;padding:18px 12px;border:0;border-bottom:3px solid transparent;background:transparent;white-space:nowrap;color:var(--i-muted);font:600 16px var(--ui);cursor:pointer;transition:background .15s,color .15s}
+#ill .parts button:hover{color:var(--i-ink);background:#ffffff0a}
+#ill .parts button[aria-pressed="true"]{background:var(--i-paper);border-bottom-color:var(--accent);color:var(--i-ink)}
+#ill .parts button span{font:500 12px var(--i-mono);color:var(--i-muted)}
+#ill .lab{display:grid;grid-template-columns:minmax(0,1fr) 360px;min-height:490px;border:1px solid var(--i-line);border-top:0;background:var(--i-paper)}
+#ill .overview{margin:0;display:flex;flex-direction:column;min-width:0;padding:19px 28px 0 24px}
+#ill .figure-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:25px}
+#ill .figure-label{font:500 11px var(--i-mono);letter-spacing:.09em;color:var(--i-muted)}
+#ill .labels-control{display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;color:var(--i-muted)}
+#ill .labels-control input{width:14px;height:14px;margin:0;accent-color:var(--accent)}
+#ill .overview>svg{width:100%;height:auto;flex:1;min-height:320px;max-height:520px;overflow:visible}
+#ill .overview figcaption{display:flex;align-items:center;gap:18px;font-size:12.5px;color:var(--i-muted);min-height:43px}
+#ill .overview figcaption>span{display:flex;align-items:center;gap:8px}
+#ill .overview figcaption i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+#ill .explanation{padding:25px 24px 18px 28px;border-left:1px solid var(--i-line);display:flex;flex-direction:column}
+#ill .part-heading{display:flex;gap:12px;align-items:baseline}
+#ill .part-number{font:600 13px var(--i-mono);color:var(--accent)}
+#ill .explanation h3{margin:0;font:800 28px/1.2 var(--ui);letter-spacing:-.02em}
+#ill .part-description{font-size:14.5px;line-height:1.7;margin:13px 0 12px;min-height:75px;color:var(--i-muted)}
+#ill .detail-wrap{margin:3px 0 17px;border-block:1px solid var(--i-line);padding:9px 0 7px}
+#ill .detail-wrap svg{display:block;width:100%;height:166px;overflow:visible}
+#ill .detail-note{display:block;font-size:11.5px;color:var(--i-muted);text-align:center;line-height:1.5}
+#ill .playback{display:flex;gap:8px}
+#ill .play,#ill .reset{border:1px solid var(--accent);border-radius:4px;min-height:46px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer}
+#ill .play{flex:1;padding:9px 10px;font:700 14px var(--ui)}
+#ill .play:hover{filter:brightness(1.08)}
+#ill .play svg{width:17px;height:17px;fill:currentColor;stroke:currentColor;stroke-width:1.5}
+#ill .reset{background:transparent;width:46px;flex-shrink:0;border-color:var(--i-line);color:var(--i-ink)}
+#ill .reset:hover{border-color:var(--accent)}
+#ill .reset svg,#ill .next-part svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#ill .parameter{margin-top:18px}
+#ill .parameter-heading{display:flex;justify-content:space-between;gap:15px;font-size:13px}
+#ill .parameter-heading output{font:500 13px var(--i-mono)}
+#ill input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:24px;background:transparent;cursor:pointer;margin:7px 0 0}
+#ill input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--i-line);border-radius:2px}
+#ill input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border:1px solid var(--accent);border-radius:50%;background:var(--i-paper);margin-top:-6.5px;box-shadow:inset 0 0 0 4px var(--accent)}
+#ill input[type=range]::-moz-range-track{height:3px;background:var(--i-line)}
+#ill input[type=range]::-moz-range-thumb{width:16px;height:16px;border:1px solid var(--accent);border-radius:50%;background:var(--accent)}
+#ill .range-ends{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:var(--i-muted)}
+#ill .live-note{font-size:13px;line-height:1.6;color:var(--i-muted);margin:12px 0 15px;min-height:42px}
+#ill .next-part{display:flex;align-items:center;justify-content:space-between;gap:15px;background:none;border:0;border-top:1px solid var(--i-line);padding:12px 0 0;font:500 13px var(--ui);margin-top:auto;color:var(--i-ink);cursor:pointer}
+#ill .next-part:hover{color:var(--accent)}
+#ill .ill-note{margin-top:14px;font-size:12.5px;line-height:1.6;color:var(--i-muted);max-width:90ch}
+#ill .ill-note a{color:var(--i-ink)}
+#ill .shape{fill:var(--i-paper);stroke:var(--i-ink);stroke-width:1.25;stroke-linejoin:round;vector-effect:non-scaling-stroke;fill-rule:evenodd}
+#ill .shape.hull{fill:#1d2a38}
+#ill .shape.rail{fill:#26364a;stroke-width:1}
+#ill .shape.deck{fill:#19232f}
+#ill .line{fill:none;stroke:#8496a8;stroke-width:.9;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+#ill .mould-line{stroke:#6f8296;stroke-width:.8}
+#ill .shape.cover{fill:#223142}
+#ill .shape.fastener,#ill .shape.small-hardware{fill:var(--i-paper);stroke-width:.8}
+#ill .shape.handle{fill:#26364a}
+#ill .shape.lens{fill:var(--i-paper);stroke-width:.6}
+#ill .shape.led{fill:#2c3c4d;stroke-width:.5}
+#ill .shape.lamp{fill:#223142}
+#ill .shape.prop{fill:#5f7388;stroke-width:1}
+#ill .shape.drive{fill:#1e2b39;stroke-width:.8}
+#ill .shape.rudder{fill:#3b5066;stroke-width:1}
+#ill #battery-well{opacity:0;transition:opacity .25s}
+#ill #battery-well .well{fill:#1f3347;stroke-dasharray:3 4}
+#ill .battery-block{fill:var(--accent);stroke:var(--i-ink);stroke-width:1}
+#ill .shape.selected{fill:var(--i-tint);stroke:var(--i-ink);stroke-width:1.8}
+#ill .hotspot{cursor:pointer;outline:none}
+#ill .leader{stroke:#6f8296;stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+#ill .anchor{fill:#8496a8}
+#ill .pin-hit{fill:transparent;stroke:none}
+#ill .pin{fill:var(--i-paper);stroke:var(--i-ink);stroke-width:1.2;vector-effect:non-scaling-stroke}
+#ill .hotspot text{font:11px var(--i-mono);fill:var(--i-ink);pointer-events:none}
+#ill .hotspot .pin-name{font:12px var(--ui);fill:var(--i-muted)}
+#ill .hotspot.active .pin,#ill .hotspot:hover .pin,#ill .hotspot:focus-visible .pin{fill:var(--accent);stroke:var(--accent);stroke-width:1.8}
+#ill .hotspot.active text:not(.pin-name),#ill .hotspot:hover text:not(.pin-name),#ill .hotspot:focus-visible text:not(.pin-name){fill:var(--on-accent)}
+#ill .hotspot.active .pin-name{fill:var(--i-ink)}
+#ill .hotspot.active .leader{stroke:var(--accent);stroke-width:1.4}
+#ill .hotspot.active .anchor{fill:var(--accent)}
+#ill .hotspot:focus-visible .pin-hit{stroke:var(--i-ink);stroke-dasharray:2 3;stroke-width:1}
+#ill .labels-hidden .pin-name{display:none}
+#ill .labels-hidden .leader{opacity:.5}
+#ill [data-part].shape{cursor:pointer}
+#ill .detail-line{fill:none;stroke:var(--i-ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#ill .detail-fill{fill:var(--i-paper);stroke:var(--i-ink);stroke-width:1.6;stroke-linejoin:round}
+#ill .detail-active{fill:var(--i-tint);stroke:var(--i-ink);stroke-width:1.6}
+#ill .detail-accent{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#ill .detail-water{fill:none;stroke:#5f7388;stroke-width:1;stroke-linecap:round}
+#ill .detail-text{font:9px var(--ui);fill:var(--i-muted)}
+#ill .acc-fill{fill:var(--accent)}
+#ill .acc-stroke{stroke:var(--accent)}
+#ill #hull-art,#ill #drive-art{transition:opacity .3s}
+#ill #cover-art{transition:opacity .2s}
+#ill #main-effects{pointer-events:none}
+/* світло-блакитна картка з ілюстрацією на графітовому тлі секції; вибрана деталь темнішає */
+#ill .parts button[aria-pressed="true"]{background:#eef4f9;color:#1b2733;border-bottom-color:var(--accent)}
+#ill .parts button[aria-pressed="true"] span{color:#5b6b7a}
+#ill .lab{--i-paper:#eef4f9;--i-ink:#1b2733;--i-muted:#5b6b7a;--i-line:#cdd9e3;--i-tint:#94aac0;background:var(--i-paper);color:var(--i-ink);border-color:#eef4f9}
+#ill .lab .shape.hull{fill:#dde8f1}
+#ill .lab .shape.rail{fill:#f5f9fc}
+#ill .lab .shape.deck{fill:#e6eef5}
+#ill .lab .line{stroke:#5f7184}
+#ill .lab .mould-line{stroke:#7a8ba0}
+#ill .lab .shape.cover,#ill .lab .shape.lamp{fill:#dfe9f2}
+#ill .lab .shape.handle{fill:#d6e2ed}
+#ill .lab .shape.led{fill:#d3e0ec}
+#ill .lab .shape.prop{fill:#9fb3c6}
+#ill .lab .shape.drive{fill:#e3edf5}
+#ill .lab .shape.rudder{fill:#c9d9e8}
+#ill .lab #battery-well .well{fill:#cfe0ef}
+#ill .lab .leader{stroke:#94a5b8}
+#ill .lab .anchor{fill:#8497ab}
+#ill .lab .detail-water{stroke:#a3b4c6}
+#ill .lab .hotspot.active .leader{stroke:var(--accent)}
+#ill .lab .hotspot.active .anchor{fill:var(--accent)}
+#ill .lab .part-number{color:var(--accent-ink)}
+#ill .lab .reset:hover{background:#e1ebf3}
+#ill .lab .next-part:hover{color:var(--accent-ink)}
+@media (max-width:980px){
+  #ill .lab{grid-template-columns:1fr}
+  #ill .explanation{border-left:0;border-top:1px solid var(--i-line);padding:23px 20px 18px}
+  #ill .overview{padding:17px 16px 0}
+  #ill .parts{display:flex;overflow-x:auto;scrollbar-width:thin}
+  #ill .parts button{min-width:140px;flex:none}
+  #ill .detail-wrap{max-width:460px;margin-inline:auto}
+}
+@media (max-width:700px){
+  #ill .overview>svg{display:block;min-height:0;max-height:none;aspect-ratio:1000/560;margin:11px 0 7px}
+  #ill .pin-name,#ill .labels-control{display:none}
+  #ill .hotspot .pin-hit{r:62}
+  #ill .hotspot .pin{r:28}
+  #ill .hotspot text{font-size:25px}
+}
+@media (prefers-reduced-motion:reduce){#ill *{transition:none!important}}
+
+.common{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#ffffff1f;border:1px solid #ffffff1f}
+.common li{background:var(--g800);padding:14px 18px;display:grid;gap:2px}
+.common span{font-size:12.5px;color:var(--g300)}
+.common b{font:600 15px var(--mono)}
+
+/* порівняння */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;align-items:center}
+.chip{font:600 14px var(--ui);padding:10px 16px;border-radius:999px;border:1px solid var(--g300);background:#fff;color:var(--g800);cursor:pointer;transition:background .15s}
+.chip[aria-pressed="true"]{background:var(--g800);color:#fff;border-color:var(--g800);box-shadow:inset 0 -3px 0 var(--accent)}
+.chip--reset{border-style:dashed;color:var(--g500)}
+.cmp{overflow-x:auto;border:1px solid var(--g100);background:#fff}
+.cmp table{border-collapse:collapse;width:100%;min-width:860px;font-size:15px}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--g100);vertical-align:middle;transition:opacity .2s,background .2s}
+.cmp thead th{vertical-align:bottom;font-weight:700;border-bottom:2px solid var(--g800);background:#fff}
+.cmp thead em{display:block;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--g500);font-style:normal;margin-bottom:4px}
+.cmp thead em.new{color:var(--accent-ink)}
+.cmp tbody th{font-weight:500;color:var(--g500);width:210px}
+.cmp .sticky{position:sticky;left:0;background:#fff;z-index:1}
+.cmp .yes{color:var(--accent-ink);font-style:normal;font-size:18px}
+.cmp .yes::before{content:"";display:inline-block;width:14px;height:14px;background:var(--accent);border-radius:50%;box-shadow:inset 0 0 0 3px #fff,0 0 0 1px var(--accent)}
+.cmp .yes{font-size:0}
+.cmp .no{color:var(--g300);font-style:normal}
+.cmp .dots{display:flex;gap:6px}
+.cmp .dots s{width:14px;height:14px;border-radius:50%;background:var(--c);display:block}
+.cmp tr.price td b{font:700 20px var(--mono);display:block}
+.cmp tr.price td .old{color:var(--g500);font:400 13px var(--mono);text-decoration:line-through}
+.cmp .dim{opacity:.28}
+.cmp .hit{background:#fff8e1}
+.note{font:500 12.5px/1.5 var(--mono);color:var(--g500);margin-top:12px}
+
+/* Амур-М */
+.feature{position:relative;background:var(--g900);color:#fff;overflow:hidden}
+.feature__bg{position:absolute;inset:0}
+.feature__bg img{width:100%;height:100%;object-fit:cover;object-position:30% 60%;filter:saturate(.3) contrast(1.05)}
+.feature__bg::before{content:"";position:absolute;inset:0;background:#2e5578;mix-blend-mode:color;opacity:.6;z-index:1}
+.feature__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0e151cf5 0%,#0f1b27d6 45%,#1b273366 100%);z-index:2}
+.feature__in{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:96px}
+.feature__copy{display:grid;gap:18px;max-width:520px}
+.feature h2{font:800 clamp(40px,5vw,72px)/1 var(--ui);letter-spacing:-.03em}
+.feature p{color:#d0dbe4;font-size:17px}
+.ticks--lg{font-size:17px}
+.feature__price{display:flex;align-items:baseline;gap:10px}
+.feature__price span{color:var(--g300)}
+.feature__price b{font:700 32px var(--mono)}
+.feature__fig .boatimg{filter:drop-shadow(0 22px 20px #000a)}
+
+/* картки */
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--g300);border-radius:6px;overflow:hidden}
+.seg button{font:600 14px var(--ui);padding:11px 18px;background:#fff;border:0;border-right:1px solid var(--g100);cursor:pointer;color:var(--g800)}
+.seg button:last-child{border-right:0}
+.seg button.is-on{background:var(--g800);color:#fff;box-shadow:inset 0 -3px 0 var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--g100);display:grid;grid-template-rows:auto auto auto auto auto auto;align-content:start;padding:0 0 20px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 18px 40px -24px #1b2733aa}
+.card[hidden]{display:none}
+.card__fig{position:relative;background:linear-gradient(180deg,#eef2f6,#dde5ec);padding:30px 18px 22px;margin-bottom:18px;border-bottom:1px solid var(--g100)}
+.boatimg{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 8px #1b273333)}
+.card__fig img{transition:transform .25s}
+.card:hover .card__fig img{transform:translateX(6px)}
+.card__fig .boatimg{width:92%;margin:0 auto}
+.tier__fig .boatimg{width:86%;margin:0 auto}
+.badges{position:absolute;top:12px;left:12px;display:flex;flex-wrap:wrap;gap:6px;max-width:75%}
+.badge{font:600 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;background:var(--g800);color:#fff;padding:5px 7px;border-radius:2px}
+.badge--acc{background:var(--accent);color:var(--on-accent)}
+.badge--off{background:#fff;color:#a8352a;box-shadow:inset 0 0 0 1px #e6bcb6}
+.card h3,.card__sub,.sw,.card__foot,.stock{padding-inline:20px}
+.card h3{font:700 19px/1.25 var(--ui)}
+.card__sub{color:var(--g500);font-size:14.5px;margin-top:4px}
+.sw{display:flex;gap:10px;margin-top:14px}
+.sw button{width:26px;height:26px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 0 0 1px var(--g300);cursor:pointer;padding:0}
+.sw button.is-on{box-shadow:0 0 0 2px var(--g800)}
+.card__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.pr{display:grid;line-height:1.1}
+.pr s{font:400 13px var(--mono);color:var(--g500)}
+.pr b{font:700 24px var(--mono)}
+.pr small{font:500 13px var(--ui)}
+.stock{font-size:13px;color:#2b7a58;margin-top:10px;font-weight:600}
+.stock::before{content:"● "}
+.card--more{background:var(--g800);color:#fff;text-decoration:none;padding:28px;align-content:center;gap:10px;grid-template-rows:none;border:0}
+.card--more b{font:700 24px/1.15 var(--ui)}
+.card--more em{font-style:normal;color:var(--accent)}
+.card--more .mono{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--g300)}
+
+/* як працює */
+.how__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--g800);counter-reset:s}
+.how__steps li{list-style:none;padding:26px 28px 8px 0;display:grid;gap:8px;align-content:start;position:relative}
+.how__steps li+li{padding-left:28px;border-left:1px solid var(--g100)}
+.how__steps .n{font:700 40px/1 var(--mono);color:var(--accent)}
+.how__steps h3{font:700 22px/1.2 var(--ui)}
+.how__steps p{color:var(--g500)}
+.how__photo{margin-top:44px;position:relative;aspect-ratio:21/8;overflow:hidden;background:var(--g800)}
+.how__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.4)}
+.how__photo::after{content:"";position:absolute;inset:0;background:#2e5578;mix-blend-mode:color;opacity:.5}
+.how__photo figcaption{position:absolute;z-index:2;left:24px;bottom:20px;color:#fff;font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 8px #000a}
+
+/* FAQ */
+.guide{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;align-items:start}
+.acc details{border-top:1px solid var(--g100)}
+.acc details:last-child{border-bottom:1px solid var(--g100)}
+.acc summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font:600 18px/1.3 var(--ui);position:relative}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font:500 24px var(--mono);color:var(--accent-ink)}
+.acc details[open] summary::after{content:"–"}
+.acc details p{padding:0 40px 22px 0;color:var(--g500)}
+.acc a{color:var(--g800);font-weight:600}
+
+/* CTA */
+.cta{position:relative;background:var(--g900);color:#fff;overflow:hidden}
+.cta__bg{position:absolute;inset:0}
+.cta__bg img{width:100%;height:100%;object-fit:cover;object-position:30% 70%;filter:saturate(.3)}
+.cta__bg::before{content:"";position:absolute;inset:0;background:#2e5578;mix-blend-mode:color;opacity:.6;z-index:1}
+.cta__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0e151cf5,#0f1b27d9 55%,#0e151c99);z-index:2}
+.cta__in{position:relative;z-index:3;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding-block:96px}
+.cta__copy{display:grid;gap:18px}
+.cta h2{font:800 clamp(30px,3.6vw,48px)/1.08 var(--ui);letter-spacing:-.02em}
+.cta p{color:#d0dbe4;font-size:17px}
+.svc{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#ffffff26;border:1px solid #ffffff26}
+.svc li{background:#0e151cd9;padding:20px;display:grid;gap:4px}
+.svc b{font-size:16px}
+.svc span{font-size:14px;color:var(--g300)}
+
+/* футер */
+.foot{background:var(--g950);color:var(--g300);padding-block:44px}
+.foot__in{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start}
+.foot__tel{margin-top:10px;font-size:15px}
+.foot__tel a{color:#fff;text-decoration:none}
+.foot__proto{font-size:13px;line-height:1.6;max-width:70ch;justify-self:end}
+
+/* перемикач акценту */
+.pick{position:fixed;z-index:60;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));background:#0e151ce6;backdrop-filter:blur(8px);color:#fff;border:1px solid #ffffff33;border-radius:999px;padding:8px 14px;display:flex;align-items:center;gap:10px;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.pick button{width:22px;height:22px;border-radius:50%;border:2px solid transparent;background:var(--s);cursor:pointer;padding:0}
+.pick button.is-on{border-color:#fff}
+.toast{position:fixed;z-index:70;left:50%;bottom:max(24px,env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--g950);color:#fff;padding:14px 20px;border-radius:6px;font-size:14px;border-left:4px solid var(--accent);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:min(92vw,520px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.rv{opacity:1}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+
+/* адаптив */
+@media (max-width:1040px){
+  .nav{gap:18px}.nav__video{display:none}
+  .tiers,.grid{grid-template-columns:repeat(2,1fr)}
+  .feature__in,.cta__in,.guide{grid-template-columns:1fr;gap:32px}
+  .feature__fig{max-width:560px}
+  .common{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+  .burger{display:block}
+  .nav{position:absolute;left:0;right:0;top:68px;background:var(--g900);flex-direction:column;gap:0;margin:0;padding:8px max(20px,env(safe-area-inset-left,0px)) 16px;border-bottom:1px solid #ffffff1f;display:none}
+  .nav.open{display:flex}
+  .nav a{padding:14px 0;border-bottom:1px solid #ffffff14}
+  .phone span{display:none}
+  .head__tools{gap:6px}
+  .topbar nav a:nth-child(n+3){display:none}
+  .hero__boat{width:min(92vw,520px)}
+}
+@media (max-width:720px){
+  .sec{padding-block:64px}
+  .hero__media{position:relative;height:min(78vw,380px);overflow:hidden}
+  .hero__media img{object-position:62% 40%;transform:scale(1.2);transform-origin:70% 50%}
+  .hero__shade{background:linear-gradient(0deg,#0e151c 0%,#0e151c00 55%)}
+  .hero__in{min-height:0;padding-block:28px 12px;display:block}
+  .hero__boat{position:relative;right:auto;bottom:auto;margin:0 auto 28px;transform:none;padding-block:40px}
+  .hero__boat img{margin:0}
+  .hero__disc{width:58%}
+  .hero h1{font-size:40px}
+  .specstrip{position:relative;bottom:auto;grid-template-columns:1fr 1fr;width:calc(100% - 40px);margin:0 auto 28px}
+  .tiers,.grid,.how__steps,.svc{grid-template-columns:1fr}
+  .how__steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--g100)}
+  .how__photo{aspect-ratio:4/3}
+  .common{grid-template-columns:1fr 1fr}
+  .foot__in{grid-template-columns:1fr}.foot__proto{justify-self:start}
+  .topbar__note{display:none}
+  .seg{width:100%}.seg button{flex:1;padding-inline:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+
+/* ===== Каталог (об'єднано з головною), стилі обмежені класом .cat ===== */
+.cat{background:var(--g50);--cpad:clamp(20px,4.2vw,80px)}
+.cat[hidden]{display:none}
+.cat .cwrap{max-width:1840px;margin:0 auto;padding-left:max(var(--cpad),env(safe-area-inset-left,0px));padding-right:max(var(--cpad),env(safe-area-inset-right,0px))}
+.cat .band{background:var(--g800);color:#fff;overflow:hidden}
+.cat .band__in{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-block:34px 38px}
+.cat .crumbs{display:flex;gap:8px;font-size:13.5px;color:var(--g300);margin-bottom:14px;flex-wrap:wrap}
+.cat .crumbs a{text-decoration:none}.cat .crumbs a:hover{color:#fff}
+.cat .band h1{font:800 clamp(32px,4vw,52px)/1.04 var(--ui);letter-spacing:-.025em}
+.cat .band p{color:#d0dbe4;max-width:60ch;margin-top:12px}
+.cat .band__fig{position:relative;width:min(36vw,420px)}
+.cat .band__fig i{position:absolute;left:50%;top:50%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#141e27;box-shadow:0 0 0 1px #9fb3c733}
+.cat .band__fig img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 10px 10px #0008)}
+.cat .quick{background:#fff;border-bottom:1px solid var(--g100)}
+.cat .quick__in{display:flex;gap:10px;padding-block:14px;overflow-x:auto}
+.cat .qbtn{flex:none;font:600 14px var(--ui);padding:10px 16px;border-radius:999px;border:1px solid var(--g300);background:#fff;color:var(--g800);cursor:pointer}
+.cat .qbtn[aria-pressed="true"]{background:var(--g800);color:#fff;border-color:var(--g800);box-shadow:inset 0 -3px 0 var(--accent)}
+.cat .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:32px;padding-block:28px 72px;align-items:start}
+.cat .filters{background:#fff;border:1px solid var(--g100);position:sticky;top:88px;max-height:calc(100vh - 104px);overflow:auto}
+.cat .filters__head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--g100)}
+.cat .filters__head h2{font:700 17px var(--ui)}
+.cat .linkbtn{background:none;border:0;color:var(--accent-ink);font:600 13px var(--ui);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
+.cat .fgroup{padding:16px 18px;border-bottom:1px solid var(--g100)}
+.cat .fgroup:last-child{border-bottom:0}
+.cat .fgroup h3{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g500);margin-bottom:12px}
+.cat .chk{display:flex;align-items:center;gap:10px;padding:6px 0;cursor:pointer;font-size:15px;position:relative}
+.cat .chk input{position:absolute;opacity:0;pointer-events:none}
+.cat .chk i{flex:none;width:18px;height:18px;border:1.5px solid var(--g300);border-radius:3px;background:#fff}
+.cat .chk input:checked+i{background:var(--g800);border-color:var(--g800);box-shadow:inset 0 0 0 2px #fff}
+.cat .chk input:focus-visible+i{outline:2px solid var(--accent);outline-offset:2px}
+.cat .chk span{flex:1}
+.cat .chk em{font:500 12.5px var(--mono);color:var(--g500);font-style:normal}
+.cat .chk.is-off{opacity:.45}
+.cat .swf{display:flex;gap:10px;flex-wrap:wrap}
+.cat .swf label{position:relative;cursor:pointer}
+.cat .swf input{position:absolute;opacity:0}
+.cat .swf span{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border:1.5px solid var(--g300);border-radius:999px;font-size:14px;background:#fff}
+.cat .swf span::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--c)}
+.cat .swf input:checked+span{border-color:var(--g800);background:var(--g800);color:#fff}
+.cat .swf input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.cat .price-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat .price-row label{display:grid;gap:4px;font:500 12px var(--mono);color:var(--g500)}
+.cat .price-row input{width:100%;font:600 15px var(--mono);padding:10px;border:1.5px solid var(--g300);border-radius:4px;background:#fff;color:var(--g800)}
+.cat .fclose,.cat .fopen{display:none}
+.cat .scrim{display:none}
+.cat .bar{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cat .bar__count{font-size:15px;color:var(--g500)}
+.cat .bar__count b{color:var(--g800);font-family:var(--mono)}
+.cat .bar__tools{display:flex;gap:12px;align-items:center}
+.cat .sel{font:600 14px var(--ui);padding:10px 12px;border:1px solid var(--g300);border-radius:4px;background:#fff;color:var(--g800)}
+.cat .vtgl{display:flex;border:1px solid var(--g300);border-radius:4px;overflow:hidden;background:#fff}
+.cat .vtgl button{background:#fff;border:0;padding:9px 11px;cursor:pointer;color:var(--g500);display:grid;place-items:center}
+.cat .vtgl button[aria-pressed="true"]{background:var(--g800);color:#fff}
+.cat .active{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.cat .active:empty{display:none}
+.cat .tagx{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--g300);border-radius:999px;padding:6px 8px 6px 14px;font-size:14px;font-weight:500}
+.cat .tagx button{background:var(--g100);border:0;border-radius:50%;width:22px;height:22px;cursor:pointer;color:var(--g800);font-size:13px;line-height:1}
+/* більші картки товару */
+.cat .pcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.cat .pc{background:#fff;border:1px solid var(--g100);display:grid;grid-template-rows:auto 1fr;transition:box-shadow .2s,transform .2s}
+.cat .pc:hover{box-shadow:0 22px 44px -28px #1b2733cc;transform:translateY(-2px)}
+.cat .pc__fig{position:relative;background:linear-gradient(180deg,#eef2f6,#dde5ec);padding:48px 22px 28px;border-bottom:1px solid var(--g100)}
+.cat .pc__fig img{display:block;width:94%;height:auto;margin:0 auto;filter:drop-shadow(0 12px 10px #1b273333);transition:transform .25s}
+.cat .pc:hover .pc__fig img{transform:translateX(8px)}
+.cat .pc .badges{position:absolute;top:14px;left:14px;display:flex;flex-wrap:wrap;gap:6px;max-width:80%}
+.cat .pc__body{padding:22px;display:grid;gap:16px;align-content:start}
+.cat .pc__series{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+.cat .pc h3{font:700 22px/1.25 var(--ui);margin-top:3px}
+.cat .specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g100);border:1px solid var(--g100)}
+.cat .specs div{background:#fff;padding:11px 13px;display:grid;gap:2px}
+.cat .specs dt{font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--g500)}
+.cat .specs dd{margin:0;font:600 15px/1.3 var(--ui)}
+.cat .specs dd.yes::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);border-radius:50%;margin-right:7px;box-shadow:0 0 0 1px #c99700}
+.cat .specs dd.no{color:var(--g300);font-weight:500}
+.cat .specs dd .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px;box-shadow:0 0 0 1px #0003}
+.cat .specs .wide{grid-column:1/-1}
+.cat .pc__foot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding-top:2px}
+.cat .ppr{display:grid;line-height:1.1}
+.cat .ppr s{font:400 14px var(--mono);color:var(--g500)}
+.cat .ppr b{font:700 28px var(--mono)}
+.cat .ppr small{font:500 14px var(--ui)}
+.cat .pstock{font-size:13.5px;color:#2b7a58;font-weight:600;margin-top:4px}
+.cat .pstock::before{content:"● "}
+.cat .pc__foot .btn{padding:15px 22px;font-size:15px}
+.cat .empty{background:#fff;border:1px dashed var(--g300);padding:48px 24px;text-align:center;display:grid;gap:12px;justify-items:center;grid-column:1/-1}
+.cat .empty h3{font:700 22px var(--ui)}
+.cat .empty p{color:var(--g500)}
+.cat .pcgrid.is-list{grid-template-columns:1fr}
+.cat .is-list .pc{grid-template-columns:340px minmax(0,1fr);grid-template-rows:none}
+.cat .is-list .pc__fig{border-bottom:0;border-right:1px solid var(--g100);display:grid;align-items:center}
+.cat .is-list .pc__body{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start;gap:14px 24px}
+.cat .is-list .pc__head{grid-column:1}
+.cat .is-list .specs{grid-column:1;grid-row:2}
+.cat .is-list .pc__foot{grid-column:2;grid-row:1/3;align-self:stretch;flex-direction:column;align-items:flex-start;justify-content:space-between;border-left:1px solid var(--g100);padding-left:24px}
+.cat .info{margin-top:44px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:48px;padding-top:36px;border-top:1px solid var(--g300)}
+.cat .info h2{font:800 clamp(24px,2.6vw,32px)/1.12 var(--ui);letter-spacing:-.02em}
+.cat .info>div>p{color:var(--g500);margin-top:10px}
+@media (max-width:1180px){.cat .pcgrid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}}
+@media (max-width:980px){
+  .cat .layout{grid-template-columns:1fr}
+  .cat .filters{position:fixed;z-index:80;inset:0 0 0 auto;width:min(92vw,380px);max-height:none;transform:translateX(105%);transition:transform .3s;border:0;box-shadow:-20px 0 60px #0008}
+  .cat .filters.open{transform:none}
+  .cat .fclose,.cat .fopen{display:inline-flex}
+  .cat .scrim{position:fixed;inset:0;background:#0b121988;z-index:79}
+  .cat .scrim.on{display:block}
+  .cat .info{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:860px){.cat .band__in{grid-template-columns:1fr}.cat .band__fig{width:min(70vw,320px);margin-left:auto;margin-right:auto}}
+@media (max-width:640px){
+  .cat .pcgrid{grid-template-columns:1fr}
+  .cat .is-list .pc{grid-template-columns:1fr}
+  .cat .is-list .pc__fig{border-right:0;border-bottom:1px solid var(--g100)}
+  .cat .is-list .pc__body{grid-template-columns:1fr}
+  .cat .is-list .pc__foot{grid-column:1;grid-row:auto;border-left:0;padding-left:0;flex-direction:row;align-items:flex-end}
+  .cat .is-list .specs{grid-row:auto}
+  .cat .vtgl{display:none}
+}
+
+/* блок «Яка задача — така й модель»: ширше, більші картки, більший проміжок */
+#choose .wrap{max-width:1840px;padding-left:max(clamp(20px,4.2vw,80px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4.2vw,80px),env(safe-area-inset-right,0px))}
+#choose .tiers{gap:clamp(24px,2.8vw,52px)}
+#choose .tier{--tp:clamp(24px,2.2vw,40px);padding:var(--tp);gap:18px}
+#choose .tier__fig{margin:calc(var(--tp)*-1) calc(var(--tp)*-1) 6px;padding:30px 16px}
+#choose .tier h3{font-size:clamp(24px,1.9vw,32px)}
+#choose .tier__task{font-size:17px}
+#choose .tier .ticks{font-size:16.5px;gap:9px}
+#choose .tier__price{font-size:16px}
+#choose .tier__price b{font-size:clamp(30px,2.4vw,42px)}
+#choose .tier .btn{padding:18px 26px;font-size:16px;justify-content:center}
+/* аксесуари під картками */
+.xs{margin-top:56px;padding-top:36px;border-top:1px solid var(--g300)}
+.xs__head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;margin-bottom:22px}
+.xs__head h3{font:800 clamp(22px,2.2vw,30px)/1.15 var(--ui);letter-spacing:-.02em}
+.xs__head p{color:var(--g500);margin-top:6px;max-width:62ch}
+.xs__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.xs__card{background:#fff;border:1px solid var(--g100);display:grid;grid-template-rows:auto 1fr;text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s}
+.xs__card:hover{box-shadow:0 18px 40px -26px #1b2733cc;transform:translateY(-2px)}
+.xs__fig{aspect-ratio:4/3;background:#eef2f6;display:grid;place-items:center;border-bottom:1px solid var(--g100);overflow:hidden}
+.xs__fig img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.xs__fig svg{width:84px;height:84px;fill:none;stroke:var(--g800);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.xs__body{padding:16px 18px 18px;display:grid;gap:4px;align-content:start}
+.xs__body b{font:700 18px/1.25 var(--ui)}
+.xs__body span{color:var(--g500);font-size:14px}
+.xs__body em{font:700 19px var(--mono);font-style:normal;margin-top:8px}
+.xs__card--all{background:var(--g800);color:#fff;padding:24px;align-content:center;gap:8px;grid-template-rows:none;border:0}
+.xs__card--all .mono{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--g300)}
+.xs__card--all b{font:700 24px/1.15 var(--ui)}
+.xs__card--all em{font-style:normal;color:var(--accent)}#grid>.xs{grid-column:1/-1}
+
+/* «Будова»: текст ліворуч, ілюстрація праворуч */
+#anatomy .wrap{max-width:1840px;padding-left:max(clamp(20px,4.2vw,80px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4.2vw,80px),env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);column-gap:clamp(28px,3.4vw,64px);align-items:start}
+#anatomy .wrap{grid-template-rows:auto 1fr auto}
+#anatomy .sec__head{grid-column:1;grid-row:1;margin:0 0 32px;max-width:none}
+#anatomy .sec__head h2{font-size:clamp(28px,2.6vw,42px)}
+#anatomy #ill{grid-column:2;grid-row:1/span 2}
+#anatomy .common{grid-column:1;grid-row:2;margin:0;grid-template-columns:1fr;gap:10px;background:none;border:0;align-self:start}
+#anatomy .common li{border:1px solid #ffffff2e;padding:16px 20px;background:var(--g800)}
+@media (max-width:1100px){
+  #anatomy .wrap{display:block}
+  #anatomy .sec__head{margin-bottom:36px;max-width:700px}
+  #anatomy .common{margin-top:28px;grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){#anatomy .common{grid-template-columns:1fr}}
+/* колір як модифікація картки каталогу */
+.cat .sws2{display:flex;align-items:center;gap:10px;margin:2px 0 0}
+.cat .csw{width:30px;height:30px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 0 0 1px var(--g300);cursor:pointer;padding:0}
+.cat .csw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--g800)}
+.cat .csw:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cat .cname{font:600 15px var(--ui);color:var(--g800);margin-left:4px}
+/* «Будова»: п'ять блоків лівої колонки закінчуються рівно там, де закінчується картка з ілюстрацією */
+#anatomy .common{align-self:stretch;grid-template-rows:repeat(5,minmax(0,1fr))}
+#anatomy .common li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:0 20px}
+#anatomy .common li b{text-align:right}
+#anatomy .ill-note{grid-column:2;grid-row:3;margin:14px 0 0;font-size:12.5px;line-height:1.6;color:var(--g300);max-width:90ch}
+#anatomy .ill-note a{color:#fff}
+@media (max-width:1100px){#anatomy .common{grid-template-rows:none}#anatomy .common li{padding:14px 18px}#anatomy .ill-note{margin-top:20px}}
+/* міні-картка каталогу: без сітки, трохи більший текст */
+.cat .specs{background:none;border:0;gap:16px 24px;padding:2px 0 6px}
+.cat .specs div{background:none;padding:0;gap:3px}
+.cat .specs dt{font:500 12.5px var(--mono);letter-spacing:.05em}
+.cat .specs dd{font:600 17px/1.35 var(--ui)}
+.cat .specs dd .dot{width:12px;height:12px}
+.cat .cname{font-size:16.5px}
+.cat .pc__series{font-size:12.5px}
+/* каталог: без фону за корабликом */
+.cat .pc__fig{background:#fff;border-bottom:0;padding-bottom:10px}
+/* порівняння комплектацій: зрозумілі позначки «Є / Немає», ціна й перехід у заголовках */
+.cmp table{min-width:940px}
+.cmp thead th[data-m]{padding:22px 18px 20px;vertical-align:top;background:#fff}
+.cmp thead th[data-m].hit{background:#fff3cc}
+.cmp thead th[data-m] b{display:block;font:700 18px/1.25 var(--ui);margin-bottom:12px;color:var(--g800)}
+.cmp .cp{display:grid;gap:2px}
+.cmp .cp s{font:400 13px var(--mono);color:var(--g500)}
+.cmp .cp strong{font:700 22px var(--mono);color:var(--g800)}
+.cmp .cmp__corner{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--g500)}
+.cmp tbody tr:nth-child(odd) th,.cmp tbody tr:nth-child(odd) td{background:var(--g50)}
+.cmp tbody th{width:250px;padding-block:20px}
+.cmp tbody th b{display:block;font:600 16px var(--ui);color:var(--g800)}
+.cmp tbody th small{display:block;font-size:13px;color:var(--g500);margin-top:2px;font-weight:400}
+.cmp .cy{display:inline-flex;align-items:center;gap:10px;font:600 16px var(--ui);color:var(--g800)}
+.cmp .cy i{width:26px;height:26px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+.cmp .cy svg{width:13px;height:13px;fill:none;stroke:var(--on-accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cmp .cn{color:var(--g500);font-size:15px;opacity:.75}
+.cmp tr.go th,.cmp tr.go td{border-bottom:0;padding-block:22px 24px;background:#fff}
+.cmp__legend{display:flex;gap:26px;flex-wrap:wrap;align-items:center;font-size:14.5px;color:var(--g500);margin:0 0 14px}
+.cmp__legend .cy{font-size:14.5px;font-weight:500;color:var(--g500)}
+.cmp__legend .cy i{width:22px;height:22px}
+/* позначки «Є / Немає» працюють і в легенді поза таблицею */
+.sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cy{display:inline-flex;align-items:center;gap:10px;font:600 16px var(--ui);color:var(--g800)}
+.cy i{width:26px;height:26px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+.cy svg{width:13px;height:13px;fill:none;stroke:var(--on-accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cn{color:var(--g500);font-size:15px;opacity:.75}
+.cmp .cp strong{white-space:nowrap;font-size:20px}</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="boat" viewBox="0 0 900 360">
+      <path d="M70 118 L652 102 C764 110 846 150 876 180 C846 210 764 250 652 258 L70 242 Z" fill="var(--boat,#ffc21a)" stroke="rgba(8,14,20,.55)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M92 134 L642 120 C732 128 802 156 830 180 C802 204 732 232 642 240 L92 226 Z" fill="rgba(8,14,20,.10)"/>
+      <rect x="34" y="162" width="42" height="36" rx="6" fill="#0e151c"/><rect x="14" y="170" width="24" height="20" rx="4" fill="#25364a"/>
+      <rect x="150" y="146" width="112" height="68" rx="8" fill="rgba(8,14,20,.55)" stroke="rgba(255,255,255,.25)" stroke-dasharray="5 5"/><rect x="164" y="158" width="84" height="44" rx="4" fill="#141e27"/>
+      <rect x="296" y="132" width="262" height="96" rx="12" fill="#0e151c"/><rect x="310" y="144" width="234" height="72" rx="7" fill="#1b2733" stroke="rgba(255,255,255,.18)"/><path d="M427 144 V216" stroke="rgba(255,255,255,.14)"/>
+      <circle cx="610" cy="180" r="22" fill="#0e151c"/><circle cx="610" cy="180" r="14" fill="#25364a" stroke="rgba(255,255,255,.3)"/><circle cx="610" cy="180" r="4" fill="var(--accent)"/>
+      <ellipse cx="742" cy="180" rx="26" ry="14" fill="rgba(8,14,20,.5)" stroke="rgba(255,255,255,.3)" stroke-dasharray="4 4"/>
+      <path d="M110 134 L96 70" stroke="#0e151c" stroke-width="6" stroke-linecap="round"/><circle cx="95" cy="66" r="6" fill="var(--accent)"/>
+      <path d="M100 228 C130 262 180 262 214 236" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#viewHome">До змісту</a>
+
+<div class="topbar"><div class="wrap topbar__in">
+  <nav aria-label="Службові сторінки"><a href="https://shipmaster.com.ua/oplata-i-dostavka/" target="_blank" rel="noopener">Оплата і доставка</a><a href="https://shipmaster.com.ua/obmin-ta-povernennya/" target="_blank" rel="noopener">Обмін та повернення</a><a href="https://shipmaster.com.ua/harantiia-ta-servis/" target="_blank" rel="noopener">Гарантія та сервіс</a><a href="https://shipmaster.com.ua/store-reviews/" target="_blank" rel="noopener">Відгуки</a><a href="https://shipmaster.com.ua/kontaktna-informatsiya/" target="_blank" rel="noopener">Контакти</a></nav>
+  <span class="topbar__note">Оплата при отриманні</span>
+</div></div>
+
+<header class="head"><div class="wrap head__in">
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  <a class="logo" href="#top" aria-label="Shipmaster, на початок"><svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><path d="M3 24 L28 20 C33 20 36 22 38 25 C36 28 33 30 28 30 L3 28 Z" fill="var(--accent)"/><rect x="13" y="16" width="10" height="5" rx="1.5" fill="#fff"/><path d="M6 20 L5 11" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span>SHIP<b>MASTER</b></span></a>
+  <nav class="nav" id="nav" aria-label="Основне меню"><a href="#choose">Підбір моделі</a><a href="#anatomy">Будова</a><a href="#compare">Порівняння</a><a href="#catalog" data-nav="catalog" data-cat="all">Каталог</a><a href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener">Аксесуари</a><a class="nav__video" href="https://shipmaster.com.ua/store-reviews/" target="_blank" rel="noopener">Відеовідгуки</a></nav>
+  <div class="head__tools">
+    <a class="phone" href="tel:+380505672446"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.6a1 1 0 01-.25 1z" fill="currentColor"/></svg><span>+38 050 567 24 46</span></a>
+    <button class="cart" data-proto="Кошик працює на рідному кошику Horoshop. У прототипі він не активний." aria-label="Кошик"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2M9 20a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><em>0</em></button>
+  </div>
+</div></header>
+
+<main id="viewHome">
+
+<section class="hero" id="top">
+  <div class="hero__media">
+    <img src="img/cast.jpg" alt="Рибалка на мілководді замахується вудилищем над сірим озером на тлі туманних гір" fetchpriority="high">
+    <i class="hero__shade"></i>
+  </div>
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <p class="tag tag--acc">Радіокеровані коропові кораблики</p>
+      <h1>Прикормка — точно в точку</h1>
+      <p class="lead">Кораблики Shipmaster із GPS-автопілотом, ехолотом і сигналом до 600 м. Від базової моделі до комплектації для досвідчених коропників.</p>
+      <div class="hero__cta"><a class="btn btn--acc" href="#catalog" data-cat="all">Дивитись моделі <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--ghost" href="#choose">Підібрати за задачею</a></div>
+    </div>
+  </div>
+  <div class="hero__boat"><i class="hero__disc" aria-hidden="true"></i><img src="img/amur-red.webp" alt="Червоний коропових кораблик Shipmaster «Амур» збоку" width="1805" height="600"><i class="hero__wake" aria-hidden="true"></i></div>
+  <ul class="specstrip" aria-label="Головні характеристики">
+    <li><b>600 м</b><span>радіус сигналу</span></li><li><b>3 л</b><span>об'єм бункера</span></li><li><b>GPS</b><span>автопілот у моделях від 34 000 грн</span></li><li><b>3</b><span>кольори корпусу на вибір</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="choose">
+  <div class="wrap">
+    <header class="sec__head rv"><p class="tag">Вибір</p><h2>Яка задача — така й модель</h2><p>Три рівні комплектації. Обирайте за тим, як ви ловите, а не за довгою назвою товару.</p></header>
+    <div class="tiers">
+      <article class="tier rv"><div class="tier__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"></div><p class="tier__lvl">Рівень 1</p><h3>Базовий</h3><p class="tier__task">Керуєте самі на воді, яку бачите з берега.</p><ul class="ticks"><li>Ручне керування пультом</li><li>Бункер 3 л</li><li>Сигнал до 600 м</li></ul><p class="tier__price">від<b>25 000</b>грн</p><a class="btn btn--line" href="#catalog" data-cat="base">Дивитись базові</a></article>
+      <article class="tier tier--mid rv"><div class="tier__fig"><img class="boatimg" src="img/amur-orange.webp" alt="Помаранчевий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"></div><p class="tier__lvl">Рівень 2</p><h3>Автопілот і глибиномір</h3><p class="tier__task">Точні заїзди за GPS і контроль глибини під кораблем.</p><ul class="ticks"><li>GPS-навігація й автопілот</li><li>Глибиномір</li><li>Є версія Амур-М з водяним охолодженням</li></ul><p class="tier__price">від<b>34 000</b>грн</p><a class="btn btn--dark" href="#catalog" data-cat="gps">Дивитись з автопілотом</a></article>
+      <article class="tier rv"><div class="tier__fig"><img class="boatimg" src="img/amur-red.webp" alt="Червоний кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"></div><p class="tier__lvl">Рівень 3</p><h3>Автопілот і ехолот</h3><p class="tier__task">Розвідка дна й завантаження в точку, яку ви самі знайшли.</p><ul class="ticks"><li>GPS-навігація й автопілот</li><li>Ехолот, в Амур-М TOSLON TF-520</li><li>Водяне охолодження в Амур-М</li></ul><p class="tier__price">від<b>52 000</b>грн</p><a class="btn btn--line" href="#catalog" data-cat="echo">Дивитись з ехолотом</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--dark" id="anatomy">
+  <div class="wrap">
+    <header class="sec__head rv"><p class="tag tag--acc">Будова</p><h2>З чого складається кораблик</h2><p>Оберіть деталь і запустіть механізм: бункер нахиляється, кермо повертається, ліхтар світить, а повзунок дозволяє керувати рухом вручну.</p></header>
+    <div id="ill" class="rv">
+      <nav id="iparts" class="parts" aria-label="Вибрати деталь кораблика">
+        <button data-select="hopper" aria-pressed="true"><span>01</span>Бункер</button>
+        <button data-select="prop" aria-pressed="false"><span>02</span>Гвинт</button>
+        <button data-select="rudder" aria-pressed="false"><span>03</span>Кермо</button>
+        <button data-select="power" aria-pressed="false"><span>04</span>Живлення</button>
+        <button data-select="gps" aria-pressed="false"><span>05</span>GPS</button>
+        <button data-select="light" aria-pressed="false"><span>06</span>Ліхтар</button>
+      </nav>
+      <section class="lab" aria-label="Інтерактивна ілюстрація кораблика Амур">
+        <figure class="overview">
+          <div class="figure-toolbar"><span class="figure-label">БУДОВА КОРАБЛИКА</span><label class="labels-control"><input id="show-labels" type="checkbox" checked><span>Назви деталей</span></label></div>
+<svg id="ib" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" aria-labelledby="boat-title boat-desc">
+    <title id="boat-title">Контурна ілюстрація кораблика Амур</title><desc id="boat-desc">Кораблик із шістьма інтерактивними позначками: бункер, гвинт, кермо, живлення, GPS і ліхтар.</desc>
+    <g id="boat-art"><g id="drive-art"><path class="shape drive" d="M778.5,379.0 778.0,364.0 776.0,358.0 776.0,355.5 773.0,349.0 774.5,346.0 773.5,345.0 771.5,345.5 768.0,339.5 762.0,333.5 757.5,331.0 753.5,330.5 750.5,331.5 748.5,327.5 746.5,328.0 748.0,332.5 745.0,336.0 726.0,338.5 701.5,344.5 692.5,339.0 694.5,337.5 694.5,334.5 693.0,332.5 688.0,333.5 687.0,335.5 685.0,336.0 684.5,338.5 694.5,345.5 660.5,354.5 654.5,355.0 650.0,353.0 645.5,353.5 642.5,356.0 639.5,362.5 586.0,363.5 584.5,364.5 583.5,367.0 583.5,371.5 586.0,375.5 639.5,374.5 641.0,381.5 647.0,394.0 651.0,398.5 654.5,401.0 658.5,402.5 664.0,401.5 667.0,398.5 719.5,396.0 753.0,391.5 755.5,390.5 760.0,390.5 765.5,393.0 770.5,392.5 772.0,396.0 774.0,396.0 774.5,394.5 773.0,390.5 775.5,388.0 777.0,385.0Z M769.0,388.0 768.5,389.0 764.5,388.5 767.5,387.5Z M664.5,378.5 666.0,383.0 666.0,390.5 664.5,395.5 654.5,397.0 648.5,390.0 645.0,381.5 651.0,380.0Z M664.0,374.5 662.5,376.0 648.0,377.5 645.0,378.5 643.5,378.0 643.0,375.5 643.5,374.5Z M755.0,386.5 748.5,388.0 726.0,390.5 701.0,391.5 669.0,394.5 669.0,381.0 668.0,378.0 680.5,376.5 683.0,375.5 695.0,374.5 697.5,373.5 728.0,373.0 729.5,372.5 731.5,369.5 744.5,367.5 747.5,374.5 746.5,378.0 749.0,378.0Z M759.5,365.0 760.5,365.5 763.5,372.5 764.0,375.5 767.5,383.5 767.0,385.0 760.0,386.0 754.0,379.0 751.5,374.5Z M757.0,362.5 757.0,364.0 750.5,371.5 749.0,368.0 749.5,364.0Z M772.5,360.0 773.5,361.0 774.5,366.5 775.0,376.0 773.5,383.0 771.0,384.5 767.0,376.5 762.0,362.0Z M657.0,361.5 643.5,362.0 644.5,360.0 650.5,359.5 654.0,358.5Z M770.0,352.0 771.5,354.0 772.0,357.0 765.5,358.5 765.0,358.0Z M743.0,341.0 742.0,347.0 743.0,360.0 742.0,361.0 730.5,362.5 729.0,361.0 726.0,360.0 726.5,357.5 725.0,355.0 719.5,356.0 719.5,358.0 717.5,358.0 715.5,361.0 661.5,362.0 658.0,358.0 689.0,351.0 694.0,349.0 708.5,345.5 726.0,342.5 730.0,342.5 732.5,341.5 736.5,341.5 739.0,340.5Z M749.0,338.0 750.5,339.0 752.5,346.0 758.0,359.0 753.0,360.5 748.0,360.5 746.5,359.5 746.0,345.5 747.0,341.0Z M759.5,336.5 764.5,341.5 769.0,349.0 761.0,359.0 752.5,338.0Z" data-part="prop" /><g id="prop-main"><path class="shape prop" d="M735.0,346.0 731.5,348.5 730.5,350.5 730.5,353.5 727.5,355.0 725.5,357.5 725.5,370.0 728.0,374.0 740.5,372.5 745.5,383.0 747.0,389.0 747.5,378.0 745.0,372.0 750.0,371.0 752.5,368.5 753.5,368.5 756.5,365.0 756.5,361.0 755.0,359.0 749.5,357.0 750.0,354.0 745.0,348.0 741.5,346.0Z" data-part="prop" /></g><path class="shape rudder" d="M728.0,344.0 726.5,346.0 726.5,358.0 729.0,361.0 733.0,363.5 736.5,364.0 750.0,360.0 752.5,358.0 752.5,345.0 753.5,344.0 773.5,338.5 774.0,361.0 769.5,363.0 769.5,414.0 778.5,414.0 780.5,412.0 787.5,410.5 796.5,407.5 800.0,405.5 800.0,355.0 786.0,357.5 780.0,359.5 779.5,338.0 778.0,336.5 777.0,333.5 748.5,341.5 745.0,339.5 743.0,339.5Z" data-part="rudder" /></g><g id="hull-art"><path class="shape hull" d="M874.0,292.5 721.0,184.5 718.5,184.0 696.5,189.5 695.0,190.5 686.0,192.0 667.0,197.5 640.5,203.5 631.5,206.5 623.0,208.0 614.0,211.0 605.5,212.5 581.0,219.5 572.5,221.0 571.0,222.0 565.0,223.0 533.5,232.0 525.0,233.5 523.5,234.5 457.5,251.5 436.5,258.0 415.5,263.0 409.5,265.5 403.5,266.5 385.0,272.5 379.0,273.5 368.0,277.5 362.0,278.5 322.5,291.5 319.0,292.0 289.5,302.5 277.0,308.0 274.0,308.5 268.5,311.5 241.5,322.0 234.0,326.0 231.0,326.5 211.5,336.0 193.5,346.0 179.5,357.0 170.5,367.0 159.0,384.5 153.5,401.5 154.0,415.5 155.0,417.0 163.0,419.0 167.0,421.0 185.5,436.5 217.5,456.5 229.0,461.0 235.5,461.5 238.0,462.5 255.0,462.5 270.0,461.0 325.0,450.0 362.0,449.5 405.5,447.5 461.0,443.0 517.5,435.5 523.0,434.0 527.0,434.0 609.5,420.0 613.0,420.0 664.5,410.0 695.5,403.0 699.0,401.5 734.0,393.5 735.5,392.5 791.0,378.0 820.0,372.5 831.0,372.0 842.0,370.0 859.5,364.0 868.0,362.0 870.0,360.5 871.0,356.0Z" /></g><path class="shape deck" d="M869.0,234.5 865.0,224.0 861.0,219.5 847.5,219.5 825.5,221.0 813.0,224.5 808.0,224.5 793.0,229.0 788.5,229.0 768.0,235.5 764.0,235.5 756.0,238.5 752.0,239.0 739.0,243.5 729.5,245.0 699.0,254.5 695.0,254.5 688.5,257.0 683.0,258.0 679.0,260.0 670.5,262.0 657.0,267.5 655.5,267.0 643.5,272.5 636.5,266.0 620.5,253.5 593.0,234.5 585.0,228.0 574.0,221.0 571.5,218.5 582.5,215.0 591.5,213.5 608.0,208.5 616.5,207.0 625.5,204.0 632.0,203.0 643.0,199.5 650.0,198.5 661.0,195.0 667.5,194.0 678.5,190.5 695.5,187.0 719.5,180.5 721.0,156.5 724.0,135.5 727.5,129.5 732.5,129.0 708.5,129.0 690.5,130.5 645.0,140.5 555.0,164.0 522.0,174.0 512.0,178.0 478.5,195.5 470.5,203.0 465.0,210.5 441.0,210.5 416.0,214.0 380.5,223.5 367.5,228.5 357.5,233.5 347.5,240.5 340.0,248.0 325.0,269.0 304.0,277.0 292.0,280.0 252.0,299.0 247.0,302.5 234.0,308.5 221.0,316.0 211.5,323.0 201.0,329.0 191.5,336.5 181.5,346.0 174.5,354.5 164.0,370.5 158.5,381.0 153.5,397.5 154.0,412.0 156.0,413.5 170.0,416.0 181.5,419.5 209.0,423.0 215.0,424.5 222.5,424.5 238.5,426.5 269.0,428.5 306.5,428.5 355.0,424.0 400.0,416.0 408.0,415.5 454.5,407.0 460.0,405.0 475.5,402.5 479.0,401.0 488.5,399.5 504.0,395.0 509.0,394.5 520.0,391.0 528.5,389.5 530.0,388.5 581.0,375.5 589.0,372.5 608.0,368.0 626.5,362.0 632.5,361.0 651.0,355.0 657.0,354.0 668.0,350.0 674.0,349.0 685.0,345.0 691.0,344.0 716.0,336.0 720.0,335.5 743.5,328.0 747.5,327.5 750.5,326.0 764.0,322.5 767.0,321.0 771.0,320.5 782.0,316.5 791.0,314.5 808.5,308.5 817.5,306.5 844.5,297.5 850.5,296.5 856.5,294.0 874.0,289.0 871.5,251.0Z" /><path class="shape rail" d="M880.5,285.5 872.5,279.0 725.0,175.5 713.0,175.5 709.5,177.0 703.0,178.0 691.5,181.5 655.0,190.0 646.0,193.0 619.5,199.0 610.5,202.0 594.5,205.5 585.5,208.5 569.5,212.0 560.5,215.0 546.5,218.0 522.5,225.0 484.0,234.5 482.5,235.5 461.5,240.5 460.0,241.5 395.0,259.0 374.5,265.5 370.5,266.0 308.0,285.5 239.0,312.5 213.5,324.0 192.0,335.5 177.5,345.5 168.5,354.0 156.0,371.5 150.5,381.5 146.0,396.0 147.0,416.5 148.0,418.0 153.5,421.0 188.0,428.5 203.5,430.0 217.5,432.5 275.5,436.5 300.0,436.5 335.5,434.0 351.5,431.5 356.5,431.5 366.0,429.5 371.5,429.5 402.5,423.5 407.5,423.5 475.5,410.5 501.0,404.5 502.5,403.5 511.5,402.0 530.5,396.5 537.0,395.5 538.5,394.5 572.5,386.0 581.0,383.0 592.5,380.5 595.5,379.0 601.5,378.0 608.0,375.5 614.0,374.5 620.5,372.0 626.5,371.0 632.5,368.5 638.5,367.5 657.0,361.5 668.0,359.0 674.0,356.5 680.0,355.5 732.5,339.5 736.5,339.0 749.5,334.5 753.5,334.0 756.5,332.5 777.0,327.0 793.0,321.5 797.0,321.0 800.0,319.5 802.0,319.5 819.5,313.5 823.5,313.0 875.0,297.0 880.5,292.0Z M860.5,287.0 852.5,290.0 848.5,290.5 845.5,292.0 829.0,296.5 823.0,299.0 802.5,304.5 796.5,307.0 791.0,308.0 773.0,314.0 769.0,314.5 753.0,320.0 747.5,321.0 707.0,333.5 696.0,336.0 676.0,342.5 672.0,343.0 636.5,354.0 630.5,355.0 612.0,361.0 571.5,371.5 565.0,374.0 519.0,385.5 517.5,386.5 509.0,388.0 505.5,389.5 488.5,393.0 485.0,394.5 418.5,408.0 410.5,408.5 374.0,415.5 369.0,415.5 357.0,418.0 343.0,419.0 330.5,421.0 303.0,423.0 272.5,423.0 227.5,420.0 206.5,417.5 197.5,415.5 182.0,414.0 170.5,410.5 159.0,408.5 157.5,407.5 157.5,400.0 163.0,385.0 176.0,365.5 186.5,355.0 199.5,346.0 224.5,333.0 278.5,310.0 328.0,292.0 357.5,283.5 363.5,281.0 374.5,278.5 380.5,276.0 386.5,275.0 405.0,269.0 421.5,265.0 424.5,263.5 430.5,262.5 439.0,259.5 517.5,239.0 519.0,238.0 527.5,236.5 559.0,227.5 563.5,227.0 566.5,225.5 571.0,225.0 574.0,223.5 582.5,222.0 591.5,219.0 596.0,218.5 609.0,214.5 613.5,214.0 616.5,212.5 640.5,207.0 642.0,206.0 678.5,197.5 697.5,192.0 706.5,190.5 717.5,187.0 719.0,187.0Z" /><path class="line panel-line" d="M201.8,345.9 L203.3,336.6 L204.9,334.0 L206.5,332.7 L208.1,331.4 L209.7,330.0 L211.3,328.7 L212.9,327.4 L214.5,326.2 L216.1,325.1 L217.7,323.9 L219.3,322.8 L220.9,321.7 L222.5,320.5 L224.1,319.4 L225.7,318.3 L227.3,317.2 L228.9,316.1 L230.5,315.0 L232.1,314.0 L233.6,312.9 L235.2,311.9 L236.8,310.9 L238.4,309.9 L240.0,308.9 L241.6,307.9 L243.2,306.9 L244.8,306.0 L246.4,305.0 L248.0,304.1 L249.6,303.2 L251.2,302.2 L252.8,301.3 L254.4,300.4 L256.0,299.5 L257.6,298.7 L259.2,297.8 L260.8,297.0 L262.4,296.1 L263.9,295.3 L265.5,294.4 L267.1,293.6 L268.7,292.8 L270.3,292.0 L271.9,291.2 L273.5,290.5 L275.1,289.7 L276.7,288.9 L278.3,288.2 L279.9,287.4 L281.5,286.7 L283.1,286.0 L284.7,285.2 L286.3,284.5 L287.9,283.8 L289.5,283.1 L291.1,282.4 L292.6,281.7 L294.2,281.0 L295.8,280.3 L297.4,279.6 L299.0,278.9 L300.6,278.3 L302.2,277.6 L303.8,276.9 L305.4,276.3 L307.0,275.7 L308.6,275.0 L310.2,274.4 L311.8,273.8 L313.4,273.2 L315.0,272.5 L316.6,271.9 L318.2,271.3 L319.8,270.7 L321.4,270.1 L322.9,269.6 L324.5,269.0 L326.1,268.4 L327.7,268.3 L329.3,268.9 L330.9,270.1"/><path class="line mould-line" d="M220.1,327.7 L219.9,327.2 L219.7,326.7 L219.5,326.3 L219.2,325.8 L219.0,325.4 L218.7,325.1 L218.5,324.7 L218.2,324.4 L218.0,324.2 L217.7,323.9 L217.4,323.7 L217.2,323.5 L216.9,323.2 L216.6,323.0 L216.3,322.8 L216.0,322.6 L215.7,322.5 L215.4,322.3 L215.1,322.1 L214.8,322.0 L214.5,321.9 L214.2,321.8 L213.8,321.7 L213.5,321.7 L213.2,321.7 L212.8,321.8 L212.5,321.9 L212.2,322.0 L211.8,322.3 L211.5,322.6 L211.1,323.1"/><path class="line mould-line" d="M256.6,305.8 L256.3,305.3 L255.9,304.9 L255.5,304.4 L255.2,304.0 L254.8,303.7 L254.4,303.4 L254.0,303.2 L253.7,303.0 L253.3,302.8 L252.9,302.6 L252.5,302.4 L252.1,302.3 L251.7,302.2 L251.3,302.0 L251.0,301.9 L250.6,301.8 L250.2,301.8 L249.8,301.7 L249.4,301.7 L249.0,301.7 L248.6,301.7 L248.2,301.7 L247.8,301.8 L247.4,301.9 L247.0,302.1 L246.5,302.4 L246.1,302.7 L245.7,303.0 L245.3,303.5 L244.9,304.1 L244.5,304.8"/><path class="line panel-line" d="M253.0,381.9 L254.9,372.8 L256.7,370.4 L258.6,369.3 L260.5,368.2 L262.3,367.0 L264.2,365.9 L266.1,364.8 L267.9,363.8 L269.8,362.8 L271.7,361.9 L273.5,360.9 L275.4,360.0 L277.3,359.0 L279.1,358.1 L281.0,357.1 L282.8,356.2 L284.7,355.3 L286.6,354.5 L288.4,353.6 L290.3,352.8 L292.2,351.9 L294.0,351.1 L295.9,350.3 L297.8,349.5 L299.6,348.7 L301.5,347.9 L303.4,347.1 L305.2,346.4 L307.1,345.6 L309.0,344.9 L310.8,344.2 L312.7,343.5 L314.6,342.8 L316.4,342.1 L318.3,341.4 L320.2,340.7 L322.0,340.0 L323.9,339.4 L325.8,338.7 L327.6,338.1 L329.5,337.5 L331.4,336.9 L333.2,336.3 L335.1,335.7 L337.0,335.1 L338.8,334.5 L340.7,333.9 L342.6,333.4 L344.4,332.8 L346.3,332.3 L348.2,331.7 L350.0,331.2 L351.9,330.6 L353.8,330.1 L355.6,329.6 L357.5,329.1 L359.4,328.6 L361.2,328.1 L363.1,327.6 L365.0,327.1 L366.8,326.6 L368.7,326.1 L370.6,325.7 L372.4,325.2 L374.3,324.7 L376.2,324.3 L378.0,323.8 L379.9,323.4 L381.8,323.0 L383.6,322.6 L385.5,322.1 L387.4,321.7 L389.2,321.3 L391.1,320.9 L393.0,320.5 L394.8,320.1 L396.7,319.7 L398.6,319.3 L400.4,319.4 L402.3,320.2 L404.2,321.5"/><path class="line mould-line" d="M285.3,373.5 L286.6,374.1 L288.0,374.7 L289.3,375.4 L290.7,376.1 L292.1,376.8 L293.4,377.6 L294.8,378.4 L296.2,379.3 L297.6,380.1 L299.0,381.1 L300.4,382.0 L301.8,382.9 L303.2,383.9 L304.6,384.9 L306.0,385.9 L307.4,386.9 L308.8,387.9 L310.3,389.0 L311.7,390.0 L313.1,391.1 L314.6,392.2 L316.0,393.4 L317.4,394.6 L318.9,395.8 L320.3,397.0 L321.8,398.4 L323.3,399.7 L324.7,401.2 L326.2,402.7 L327.7,404.3 L329.2,406.1"/><path class="line mould-line" d="M328.0,356.0 L329.5,356.8 L331.0,357.6 L332.5,358.5 L334.0,359.4 L335.5,360.4 L337.0,361.4 L338.5,362.5 L340.0,363.6 L341.5,364.8 L343.0,365.9 L344.5,367.1 L346.0,368.3 L347.5,369.5 L349.0,370.7 L350.5,371.9 L352.0,373.2 L353.6,374.5 L355.1,375.7 L356.6,377.1 L358.1,378.4 L359.7,379.8 L361.2,381.2 L362.7,382.6 L364.2,384.1 L365.8,385.6 L367.3,387.2 L368.8,388.9 L370.4,390.7 L371.9,392.5 L373.4,394.4 L375.0,396.5"/><g id="battery-well" aria-hidden="true"><path class="shape well" d="M343.5,258.0 344.5,267.0 349.5,276.5 353.0,281.0 362.0,289.5 375.0,298.5 386.5,305.0 404.0,313.0 418.0,317.5 431.0,320.5 450.0,323.5 490.0,323.5 510.0,320.5 529.5,315.5 549.5,309.0 561.5,303.5 569.0,298.5 572.5,295.0 576.0,290.0 577.0,286.0 575.5,276.5 570.0,266.0 562.5,258.0 547.5,246.0 528.5,233.0 509.5,222.5 491.5,215.5 470.5,211.0 446.0,210.0 425.0,212.0 398.0,218.0 374.5,225.5 361.5,232.0 351.5,240.5 346.0,249.0Z" data-part="power" /><path class="battery-block" d="M392.7,261.1 L437.4,292.6 L512.7,271.7 L467.9,240.2Z"/></g><g id="cover-art" data-part="power"><path class="shape cover" d="M343.5,258.0 344.5,267.0 349.5,276.5 353.0,281.0 362.0,289.5 375.0,298.5 386.5,305.0 404.0,313.0 418.0,317.5 431.0,320.5 450.0,323.5 490.0,323.5 510.0,320.5 529.5,315.5 549.5,309.0 561.5,303.5 569.0,298.5 572.5,295.0 576.0,290.0 577.0,286.0 576.5,279.5 572.0,269.0 567.5,263.5 565.5,259.0 557.0,250.0 540.5,237.0 516.5,221.0 503.5,214.5 489.0,209.0 467.0,204.5 435.5,204.5 407.0,210.0 378.0,219.0 364.5,226.5 355.5,234.5 353.5,238.5 347.5,246.0Z" data-part="power" /><path class="shape fastener" d="M357.5,230.5 357.5,232.5 359.0,234.0 362.0,235.0 367.0,234.5 369.5,233.0 369.5,230.5 367.5,228.5 362.5,228.0Z" data-part="power" /><path class="shape fastener" d="M359.5,224.5 359.5,232.0 361.0,233.0 367.0,232.5 367.5,225.0 365.5,223.5 362.0,223.5Z" data-part="power" /><path class="shape fastener" d="M356.5,223.5 356.5,227.0 357.5,229.0 360.0,229.0 360.5,230.0 365.5,230.0 369.0,229.0 369.0,228.0 370.5,227.5 370.5,223.5 368.5,220.5 366.0,219.5 361.5,219.5 361.0,220.5 359.0,220.5Z" data-part="power" /><path class="shape fastener" d="M366.0,221.5 365.0,221.0 361.5,222.5 363.0,223.0Z" data-part="power" /><path class="shape fastener" d="M441.5,207.0 441.5,209.5 445.0,211.5 452.0,211.0 453.5,209.5 453.5,207.0 450.5,205.0 445.0,205.0Z" data-part="power" /><path class="shape fastener" d="M444.0,201.0 443.5,208.5 446.5,210.0 451.5,209.0 451.5,201.5 450.0,200.5Z" data-part="power" /><path class="shape fastener" d="M441.0,199.0 440.5,204.0 441.5,204.5 441.5,205.5 449.0,207.0 450.5,206.0 453.0,206.0 453.0,205.0 454.5,204.5 454.5,200.5 453.0,198.0 450.5,196.5 443.0,197.0Z" data-part="power" /><path class="shape fastener" d="M449.5,198.0 448.5,197.5 445.0,199.0 446.5,199.5Z" data-part="power" /><path class="shape fastener" d="M459.0,301.5 459.0,304.0 460.5,305.5 468.5,306.0 471.0,304.0 471.0,302.0 469.0,300.0 463.0,299.5Z" data-part="power" /><path class="shape fastener" d="M461.5,295.5 461.0,303.5 463.5,304.5 469.0,303.5 469.0,296.0 467.0,295.0Z" data-part="power" /><path class="shape fastener" d="M458.0,294.5 458.0,298.5 459.5,300.5 462.5,301.5 467.0,301.5 468.0,300.5 470.5,300.5 470.5,299.5 472.0,299.0 472.0,295.0 470.5,292.5 468.0,291.0 461.0,291.5Z" data-part="power" /><path class="shape fastener" d="M467.0,292.5 464.0,293.0 463.0,294.0 466.0,293.5Z" data-part="power" /><path class="shape fastener" d="M543.0,278.5 543.0,280.5 544.5,282.0 547.5,283.0 552.5,282.5 555.0,281.0 555.0,278.5 552.0,276.5 545.5,276.5Z" data-part="power" /><path class="shape fastener" d="M545.0,272.5 544.5,279.5 546.5,281.0 552.5,280.5 553.0,273.0 550.0,271.5Z" data-part="power" /><path class="shape fastener" d="M542.5,270.5 542.0,275.0 543.0,277.0 545.0,277.0 546.0,278.0 551.5,278.0 552.5,277.0 554.0,277.5 556.0,275.5 556.0,272.0 553.5,268.5 547.5,267.5 544.5,268.5Z" data-part="power" /><path class="shape fastener" d="M551.0,269.5 550.0,269.0 546.5,270.5 548.0,271.0Z" data-part="power" /></g><path class="shape handle" d="M512.0,177.0 502.0,176.5 488.5,180.5 484.5,182.5 483.0,184.5 483.0,202.0 484.0,203.5 494.5,210.0 500.0,210.0 518.5,204.5 520.5,202.0 520.5,184.5 518.0,181.5Z" /><path class="shape handle" d="M498.5,181.0 498.5,183.5 500.0,184.5 503.5,184.5 505.0,183.5 505.0,181.0 503.5,180.0 500.0,180.0Z" /><path class="shape handle" d="M634.0,263.0 627.0,258.5 621.5,258.0 601.5,263.5 599.5,266.0 599.5,284.0 602.0,287.0 611.0,292.0 616.5,292.0 634.0,287.0 637.0,283.5 637.0,266.5Z" /><path class="shape handle" d="M615.0,263.0 615.0,265.5 617.0,266.5 621.5,265.5 621.5,263.0 620.0,262.0 616.5,262.0Z" /><path class="shape handle" d="M495.5,166.0 491.5,174.5 488.0,187.5 489.5,190.0 493.0,190.0 511.5,184.5 513.5,177.5 597.0,236.0 599.5,238.5 601.5,242.0 605.0,255.5 608.5,273.5 615.5,272.5 632.0,267.5 626.0,239.5 620.5,228.0 521.5,158.5 517.0,158.0 497.5,164.0Z" /><path class="shape small-hardware" d="M731.5,171.5 731.0,175.5 734.5,179.0 860.0,267.0 863.5,267.5 866.0,266.0 867.5,261.5 866.5,259.5 738.5,169.5 735.5,168.5Z" /><path class="shape small-hardware" d="M715.5,175.5 716.0,194.5 842.0,283.0 844.5,283.0 844.0,264.0 718.5,175.5Z" /><path class="shape small-hardware" d="M756.0,182.5 755.5,185.5 757.5,189.0 761.5,188.5 762.0,185.5 761.5,183.5 759.5,181.5Z" /><path class="shape small-hardware" d="M761.5,182.0 759.5,182.5 758.5,184.0 760.5,187.5 763.0,187.0 763.5,186.0 763.0,183.0Z" /><path class="shape small-hardware" d="M761.5,183.5 763.0,185.5 763.5,184.5Z" /><path class="shape small-hardware" d="M803.0,213.0 800.5,214.5 800.5,218.0 802.5,220.5 804.5,220.5 806.5,219.5 806.5,216.0 804.5,213.0Z" /><path class="shape small-hardware" d="M805.5,213.5 804.0,214.0 803.5,216.5 804.5,218.5 806.5,219.0 808.5,216.5 807.5,214.5Z" /><path class="shape small-hardware" d="M806.0,215.0 808.0,217.0 808.0,216.0Z" /><path class="shape small-hardware" d="M848.0,244.5 845.5,246.0 845.0,248.0 847.0,252.0 851.0,251.5 851.5,248.5 850.0,245.0Z" /><path class="shape small-hardware" d="M851.0,245.0 849.0,245.5 848.0,247.0 850.0,250.5 852.5,250.0 853.0,249.0 852.5,246.0Z" /><path class="shape small-hardware" d="M851.0,246.5 852.5,248.5 853.0,247.5Z" /><path class="shape small-hardware" d="M724.0,127.5 724.0,132.5 725.5,134.5 728.5,134.0 728.5,128.5 727.0,127.0Z" /><path class="shape small-hardware" d="M726.5,128.0 726.0,131.0 727.0,133.0 728.5,133.0 729.5,132.0 729.5,130.5 728.0,128.0Z" /><path class="shape small-hardware" d="M867.5,227.0 866.0,228.5 866.0,231.0 868.0,234.5 870.0,234.5 871.5,233.0 871.5,230.5 869.5,227.0Z" /><path class="shape small-hardware" d="M869.0,228.0 868.0,229.0 868.0,230.5 869.5,233.0 871.0,233.0 871.5,230.0 870.5,228.0Z" /><g id="hopper-art" data-part="hopper"></g><g id="lamp-art" data-part="light"><path class="shape lamp" d="M197.5,343.0 196.5,345.0 196.5,372.0 199.5,376.0 238.5,403.5 240.5,403.5 249.0,399.5 254.5,394.0 255.0,372.0 252.5,368.0 216.5,343.0 210.5,341.5Z" data-part="light" /><path class="shape lens" d="M200.0,354.5 197.5,356.5 197.0,358.5 197.5,367.5 200.5,373.5 202.5,375.5 205.5,376.5 209.0,373.5 209.0,365.0 207.5,360.5 205.0,356.5 202.5,354.5Z" data-part="light" /><path class="shape lens" d="M200.0,356.0 197.5,358.5 197.5,366.0 200.0,372.0 202.5,374.5 205.5,375.0 207.0,374.0 208.0,371.0 207.0,362.5 203.0,357.0Z" data-part="light" /><path class="shape lens" d="M200.0,358.5 198.0,361.0 198.0,365.5 200.0,370.5 202.0,372.5 204.0,373.0 206.0,371.5 206.5,369.5 206.0,364.5 204.5,361.0 202.5,359.0Z" data-part="light" /><path class="shape led" d="M201.0,364.0 200.5,366.0 202.5,368.0 203.0,365.5 202.0,364.0Z" data-part="light" /><path class="shape lens" d="M212.0,363.5 209.5,367.0 210.0,376.0 213.0,382.5 216.5,385.0 218.5,385.0 221.5,382.0 221.5,373.5 218.0,366.0 215.5,363.5Z" data-part="light" /><path class="shape lens" d="M212.0,365.0 210.0,367.5 210.0,375.0 213.0,381.5 217.0,384.0 219.5,382.5 220.5,379.5 219.5,371.5 218.5,369.0 215.5,365.5Z" data-part="light" /><path class="shape lens" d="M212.0,367.5 210.5,370.0 211.5,377.5 215.0,381.5 217.0,381.5 218.5,380.0 219.0,378.0 218.5,373.0 215.5,368.0Z" data-part="light" /><path class="shape led" d="M213.5,372.5 213.0,375.0 214.0,376.5 215.0,376.5 215.5,374.0 214.5,372.5Z" data-part="light" /><path class="shape lens" d="M225.0,372.0 222.0,375.0 222.0,383.5 225.5,391.0 227.5,393.0 230.0,394.0 234.0,391.0 234.0,382.5 231.0,375.5 228.0,372.5Z" data-part="light" /><path class="shape lens" d="M225.0,373.5 223.5,374.5 222.0,378.0 223.5,387.0 226.5,391.5 230.5,392.5 232.5,390.0 233.0,387.0 231.5,379.0 228.0,374.5Z" data-part="light" /><path class="shape lens" d="M225.0,376.0 223.0,378.0 223.5,385.5 227.0,390.0 229.0,390.5 231.0,388.0 231.0,382.5 229.5,378.5 227.0,376.0Z" data-part="light" /><path class="shape led" d="M226.5,381.0 225.5,381.5 225.5,383.5 227.0,385.5 228.0,385.0 228.0,383.0Z" data-part="light" /></g><path class="shape small-hardware" d="M283.0,283.5 283.0,286.0 288.0,287.0 290.0,286.0 290.0,283.5 288.0,282.5Z" /><path class="shape small-hardware" d="M284.0,283.5 284.0,284.5 286.0,285.5 289.0,284.5 289.0,283.5 287.5,282.5 285.0,282.5Z" /><path class="shape small-hardware" d="M288.0,283.0 285.0,284.0Z" /><path class="shape small-hardware" d="M421.0,381.5 421.5,383.5 427.0,384.0 428.5,383.0 428.5,381.0 427.0,380.0 422.5,380.0Z" /><path class="shape small-hardware" d="M422.5,380.5 423.0,382.5 427.0,382.0 427.0,380.0 424.5,379.5Z" /><path class="shape small-hardware" d="M426.0,380.0 423.5,381.0 424.5,381.5Z" /><path class="shape small-hardware" d="M509.0,177.0 509.5,179.0 515.0,179.5 516.5,178.5 516.5,176.5 515.0,175.5 510.5,175.5Z" /><path class="shape small-hardware" d="M510.5,176.0 510.5,177.5 514.0,178.0 515.5,177.0 515.0,175.5 513.0,175.0Z" /><path class="shape small-hardware" d="M514.5,176.0 513.5,175.5 511.5,176.5 512.5,177.0Z" /><path class="shape small-hardware" d="M652.5,277.0 652.5,279.5 655.0,280.5 657.5,280.5 660.0,279.0 660.0,277.5 657.5,276.0Z" /><path class="shape small-hardware" d="M653.5,277.0 654.0,278.5 656.5,279.0 658.5,278.0 658.0,276.0 655.0,276.0Z" /><path class="shape small-hardware" d="M657.5,276.5 655.0,277.5Z" /><path class="shape small-hardware" d="M702.5,131.0 702.5,133.0 703.5,134.0 707.0,134.5 710.0,133.0 710.0,131.5 708.5,130.0 704.0,130.0Z" /><path class="shape small-hardware" d="M703.5,131.0 704.5,132.5 708.5,132.0 708.0,130.0 704.5,130.0Z" /><path class="shape small-hardware" d="M707.5,130.5 705.0,131.5Z" /><path class="shape small-hardware" d="M845.5,232.0 845.5,233.5 847.5,235.0 851.5,235.0 853.0,234.0 853.0,232.0 852.0,231.0 848.5,230.5Z" /><path class="shape small-hardware" d="M847.0,231.5 847.0,232.5 848.5,233.5 852.0,232.5 852.0,231.5 850.5,230.5Z" /><path class="shape small-hardware" d="M850.5,231.0 848.0,232.0 849.5,232.0Z" /><path class="shape small-hardware" d="M626.5,291.5 627.0,296.0 630.5,297.5 637.0,297.5 639.5,296.5 640.5,295.0 640.5,291.0 636.5,289.0 630.5,289.0Z" /><path class="shape small-hardware" d="M628.5,290.5 628.5,292.5 630.5,294.0 634.5,294.5 638.5,293.0 638.5,290.5 636.5,289.0 631.5,289.0Z" /><g id="main-effects" aria-hidden="true"></g></g><g class="hotspot" data-part="hopper" role="button" tabindex="0" aria-label="01. Бункер" aria-pressed="false"><path class="leader" d="M693.8,182.7 L795,146 V129"/><circle class="anchor" cx="693.8" cy="182.7" r="3"/><circle class="pin-hit" cx="795" cy="112" r="24"/><circle class="pin" cx="795" cy="112" r="17"/><text x="795" y="116" text-anchor="middle">01</text><text class="pin-name" x="820" y="117" text-anchor="start">Бункер</text></g><g class="hotspot" data-part="prop" role="button" tabindex="0" aria-label="02. Гвинт" aria-pressed="false"><path class="leader" d="M745.3,348.9 L835,408 V425"/><circle class="anchor" cx="745.3" cy="348.9" r="3"/><circle class="pin-hit" cx="835" cy="442" r="24"/><circle class="pin" cx="835" cy="442" r="17"/><text x="835" y="446" text-anchor="middle">02</text><text class="pin-name" x="860" y="447" text-anchor="start">Гвинт</text></g><g class="hotspot" data-part="rudder" role="button" tabindex="0" aria-label="03. Кермо" aria-pressed="false"><path class="leader" d="M783.9,374.7 L928,395 V378"/><circle class="anchor" cx="783.9" cy="374.7" r="3"/><circle class="pin-hit" cx="928" cy="361" r="24"/><circle class="pin" cx="928" cy="361" r="17"/><text x="928" y="365" text-anchor="middle">03</text><text class="pin-name" x="903" y="366" text-anchor="end">Кермо</text></g><g class="hotspot" data-part="power" role="button" tabindex="0" aria-label="04. Живлення" aria-pressed="false"><path class="leader" d="M456.2,254.5 L383,157 V140"/><circle class="anchor" cx="456.2" cy="254.5" r="3"/><circle class="pin-hit" cx="383" cy="123" r="24"/><circle class="pin" cx="383" cy="123" r="17"/><text x="383" y="127" text-anchor="middle">04</text><text class="pin-name" x="408" y="128" text-anchor="start">Живлення</text></g><g class="hotspot" data-part="gps" role="button" tabindex="0" aria-label="05. GPS" aria-pressed="false"><path class="leader" d="M520.5,237.2 L548,118 V101"/><circle class="anchor" cx="520.5" cy="237.2" r="3"/><circle class="pin-hit" cx="548" cy="84" r="24"/><circle class="pin" cx="548" cy="84" r="17"/><text x="548" y="88" text-anchor="middle">05</text><text class="pin-name" x="573" y="89" text-anchor="start">GPS</text></g><g class="hotspot" data-part="light" role="button" tabindex="0" aria-label="06. Ліхтар" aria-pressed="false"><path class="leader" d="M216.3,374.0 L120,358 V375"/><circle class="anchor" cx="216.3" cy="374.0" r="3"/><circle class="pin-hit" cx="120" cy="392" r="24"/><circle class="pin" cx="120" cy="392" r="17"/><text x="120" y="396" text-anchor="middle">06</text><text class="pin-name" x="145" y="397" text-anchor="start">Ліхтар</text></g>
+   </svg>
+          <figcaption><span id="figure-caption"><i></i>Бункер виділено на ілюстрації</span></figcaption>
+        </figure>
+        <aside class="explanation" aria-labelledby="part-title">
+          <div class="part-heading"><span id="part-number" class="part-number">01</span><h3 id="part-title">Бункер</h3></div>
+          <p id="part-description" class="part-description">Доставляє прикормку до обраного місця. За командою з пульта бункер нахиляється й вивантажує вміст у воду.</p>
+          <div class="detail-wrap"><svg id="idetail" viewBox="0 0 320 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема роботи бункера"></svg><span id="detail-note" class="detail-note">Розвантаження показано схематично</span></div>
+          <div class="playback"><button id="iPlay" class="play"><svg id="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l9 6-9 6Z"/></svg><span id="play-label">Розвантажити бункер</span></button><button id="iReset" class="reset" aria-label="Повернути початковий стан" title="Початковий стан"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 9a6 6 0 1 1 1.8 5M4 4v5h5"/></svg></button></div>
+          <div class="parameter"><div class="parameter-heading"><label id="parameter-label" for="parameter">Нахил бункера</label><output id="parameter-value" for="parameter">0°</output></div><input id="parameter" type="range" min="0" max="100" step="1" value="0" aria-label="Нахил бункера"><div class="range-ends"><span id="range-min">Закритий</span><span id="range-max">Нахилений</span></div></div>
+          <p id="live-note" class="live-note" aria-live="polite">Прикормка залишається в бункері.</p>
+          <button id="next-part" class="next-part">Наступна деталь <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></button>
+        </aside>
+      </section>
+    </div>
+<ul class="common rv"><li><span>Двигун</span><b>електричний</b></li><li><span>Бункер</span><b>один, 3 л</b></li><li><span>Корпус</span><b>пластик</b></li><li><span>Габарити</span><b>820×160×330 мм</b></li><li><span>Керування</span><b>дистанційне</b></li></ul>
+    <p class="ill-note">Форму відтворено за фото «Амура» та моделлю v10. Рух механізмів, GPS-маршрут і розміщення електроніки показано схематично. Це пояснення принципу роботи, а не інструкція з ремонту. Основа пояснень: <a href="https://shipmaster.com.ua/instruktsiia-po-ekspluatatsii-korablyka-z-avtopilotom/" target="_blank" rel="noopener">інструкція Shipmaster</a>. GPS показано для версії з автопілотом.</p>
+  </div>
+</section>
+
+<section class="sec" id="compare">
+  <div class="wrap">
+    <header class="sec__head rv"><h2>Порівняйте комплектації</h2></header>
+    <div class="chips" role="group" aria-label="Фільтр за функціями"><button class="chip" data-f="gps" aria-pressed="false">GPS-автопілот</button><button class="chip" data-f="echo" aria-pressed="false">Ехолот</button><button class="chip" data-f="cool" aria-pressed="false">Водяне охолодження</button><button class="chip chip--reset" id="chipReset" hidden>Скинути</button></div>
+    <div class="cmp rv">
+      <table>
+        <caption class="sr">Порівняння комплектацій Амур</caption>
+        <thead><tr><th class="sticky" scope="col"><span class="cmp__corner">Що входить</span></th><th scope="col" data-m="base"><em>Амур</em><b>Базовий</b></th><th scope="col" data-m="gps"><em>Амур</em><b>GPS + глибиномір</b></th><th scope="col" data-m="echo"><em>Амур</em><b>GPS + ехолот</b></th><th scope="col" data-m="mgps"><em class="new">Амур-М · 2026</em><b>GPS + глибиномір</b></th><th scope="col" data-m="mecho"><em class="new">Амур-М · 2026</em><b>GPS + ехолот TF-520</b></th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="sticky"><b>Автопілот і GPS</b><small>Рух до заданої точки</small></th><td data-m="base"><span class="cn">Немає</span></td><td data-m="gps"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td><td data-m="echo"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td><td data-m="mgps"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td><td data-m="mecho"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td></tr>
+          <tr><th scope="row" class="sticky"><b>Контроль глибини</b><small>Глибиномір або ехолот</small></th><td data-m="base"><span class="cn">Немає</span></td><td data-m="gps"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Глибиномір</span></td><td data-m="echo"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Ехолот</span></td><td data-m="mgps"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Глибиномір</span></td><td data-m="mecho"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Ехолот TOSLON TF-520</span></td></tr>
+          <tr><th scope="row" class="sticky"><b>Ехолот</b><small>Дозволяє бачити дно</small></th><td data-m="base"><span class="cn">Немає</span></td><td data-m="gps"><span class="cn">Немає</span></td><td data-m="echo"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td><td data-m="mgps"><span class="cn">Немає</span></td><td data-m="mecho"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td></tr>
+          <tr><th scope="row" class="sticky"><b>Водяне охолодження</b><small>Серія Амур-М</small></th><td data-m="base"><span class="cn">Немає</span></td><td data-m="gps"><span class="cn">Немає</span></td><td data-m="echo"><span class="cn">Немає</span></td><td data-m="mgps"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td><td data-m="mecho"><span class="cy"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg></i>Є</span></td></tr>
+          <tr class="go"><th class="sticky" scope="row"><span class="sr">Перейти до моделі</span></th><td data-m="base"><a class="btn btn--line btn--sm" href="#catalog" data-cat="base">Дивитись</a></td><td data-m="gps"><a class="btn btn--line btn--sm" href="#catalog" data-cat="gps">Дивитись</a></td><td data-m="echo"><a class="btn btn--line btn--sm" href="#catalog" data-cat="echo">Дивитись</a></td><td data-m="mgps"><a class="btn btn--line btn--sm" href="#catalog" data-cat="amurm">Дивитись</a></td><td data-m="mecho"><a class="btn btn--line btn--sm" href="#catalog" data-cat="amurm">Дивитись</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="amurm">
+  <div class="feature__bg"><img src="img/waders.jpg" alt="" loading="lazy"></div>
+  <div class="wrap feature__in">
+    <div class="feature__copy rv"><p class="tag tag--acc">Новинка 2026</p><h2>Амур-М</h2><p>Нова серія з водяним охолодженням і GPS-навігацією. Версія з глибиноміром або з ехолотом TOSLON TF-520.</p><ul class="ticks ticks--lg"><li>Водяне охолодження</li><li>GPS-навігація й автопілот</li><li>Глибиномір або ехолот TOSLON TF-520</li></ul><div class="feature__price"><span>від</span><b>39 950 грн</b></div><div><a class="btn btn--acc" href="#catalog" data-cat="amurm">Дивитись Амур-М</a></div></div>
+    <div class="feature__fig rv"><img class="boatimg" src="img/amur-orange.webp" alt="Помаранчевий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="models">
+  <div class="wrap">
+    <header class="sec__head sec__head--row rv"><div style="display:grid;gap:12px"><p class="tag">Каталог</p><h2>Оберіть свій кораблик</h2></div>
+      <div class="seg" role="tablist" aria-label="Фільтр каталогу"><button role="tab" class="is-on" data-flt="all">Усі</button><button role="tab" data-flt="base">Базові</button><button role="tab" data-flt="gps">Автопілот</button><button role="tab" data-flt="echo">Ехолот</button><button role="tab" data-flt="new">Амур-М</button></div></header>
+    <div class="grid" id="grid">
+      <article class="card" data-t="base"><div class="card__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"><div class="badges"><span class="badge badge--acc">Хіт</span><span class="badge badge--off">−19%</span></div></div><h3>Амур базовий</h3><p class="card__sub">Ручне керування · бункер 3 л</p><div class="sw" role="radiogroup" aria-label="Колір"><button class="is-on" data-img="img/amur-yellow.webp" style="--c:#F5C400" aria-label="Жовтий" role="radio" aria-checked="true"></button><button data-img="img/amur-red.webp" style="--c:#D93A2B" aria-label="Червоний" role="radio" aria-checked="false"></button><button data-img="img/amur-orange.webp" style="--c:#F27A1A" aria-label="Помаранчевий" role="radio" aria-checked="false"></button></div><div class="card__foot"><p class="pr"><s>31 000</s><b>25 000 <small>грн</small></b></p><button class="btn btn--dark btn--sm" data-buy>Купити</button></div><p class="stock">В наявності</p></article>
+      <article class="card" data-t="gps"><div class="card__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"><div class="badges"><span class="badge badge--acc">Хіт</span><span class="badge badge--off">−13%</span></div></div><h3>Амур GPS + глибиномір</h3><p class="card__sub">Автопілот · глибиномір</p><div class="sw" role="radiogroup" aria-label="Колір"><button class="is-on" data-img="img/amur-yellow.webp" style="--c:#F5C400" aria-label="Жовтий" role="radio" aria-checked="true"></button><button data-img="img/amur-red.webp" style="--c:#D93A2B" aria-label="Червоний" role="radio" aria-checked="false"></button><button data-img="img/amur-orange.webp" style="--c:#F27A1A" aria-label="Помаранчевий" role="radio" aria-checked="false"></button></div><div class="card__foot"><p class="pr"><s>39 000</s><b>34 000 <small>грн</small></b></p><button class="btn btn--dark btn--sm" data-buy>Купити</button></div><p class="stock">В наявності</p></article>
+      <article class="card" data-t="echo gps"><div class="card__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"><div class="badges"><span class="badge">Автопілот</span><span class="badge">Ехолот</span><span class="badge badge--off">−12%</span></div></div><h3>Амур GPS + ехолот</h3><p class="card__sub">Автопілот · ехолот</p><div class="sw" role="radiogroup" aria-label="Колір"><button class="is-on" data-img="img/amur-yellow.webp" style="--c:#F5C400" aria-label="Жовтий" role="radio" aria-checked="true"></button><button data-img="img/amur-red.webp" style="--c:#D93A2B" aria-label="Червоний" role="radio" aria-checked="false"></button><button data-img="img/amur-orange.webp" style="--c:#F27A1A" aria-label="Помаранчевий" role="radio" aria-checked="false"></button></div><div class="card__foot"><p class="pr"><s>59 000</s><b>52 000 <small>грн</small></b></p><button class="btn btn--dark btn--sm" data-buy>Купити</button></div><p class="stock">В наявності</p></article>
+      <article class="card" data-t="new gps"><div class="card__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"><div class="badges"><span class="badge badge--acc">Новинка 2026</span></div></div><h3>Амур-М GPS + глибиномір</h3><p class="card__sub">Автопілот · глибиномір · водяне охолодження</p><div class="sw" role="radiogroup" aria-label="Колір"><button class="is-on" data-img="img/amur-yellow.webp" style="--c:#F5C400" aria-label="Жовтий" role="radio" aria-checked="true"></button><button data-img="img/amur-red.webp" style="--c:#D93A2B" aria-label="Червоний" role="radio" aria-checked="false"></button><button data-img="img/amur-orange.webp" style="--c:#F27A1A" aria-label="Помаранчевий" role="radio" aria-checked="false"></button></div><div class="card__foot"><p class="pr"><b>39 950 <small>грн</small></b></p><button class="btn btn--dark btn--sm" data-buy>Купити</button></div><p class="stock">В наявності</p></article>
+      <article class="card" data-t="new echo gps"><div class="card__fig"><img class="boatimg" src="img/amur-yellow.webp" alt="Жовтий кораблик Shipmaster «Амур» збоку" width="1805" height="600" loading="lazy"><div class="badges"><span class="badge badge--acc">Новинка 2026</span></div></div><h3>Амур-М GPS + ехолот TF-520</h3><p class="card__sub">Автопілот · ехолот TOSLON · водяне охолодження</p><div class="sw" role="radiogroup" aria-label="Колір"><button class="is-on" data-img="img/amur-yellow.webp" style="--c:#F5C400" aria-label="Жовтий" role="radio" aria-checked="true"></button><button data-img="img/amur-red.webp" style="--c:#D93A2B" aria-label="Червоний" role="radio" aria-checked="false"></button><button data-img="img/amur-orange.webp" style="--c:#F27A1A" aria-label="Помаранчевий" role="radio" aria-checked="false"></button></div><div class="card__foot"><p class="pr"><b>57 950 <small>грн</small></b></p><button class="btn btn--dark btn--sm" data-buy>Купити</button></div><p class="stock">В наявності</p></article>
+      <a class="card card--more" href="#catalog" data-cat="all"><span class="mono">5 моделей · 3 кольори</span><b>Повний каталог із фільтрами</b><em>Функції, серія, ціна →</em></a>
+    <aside class="xs" aria-labelledby="xsTitle">
+      <div class="xs__head"><div><h3 id="xsTitle">До кораблика є аксесуари</h3><p>Сумка з підставкою, акумулятори, ехолот і автопілот можна додати до замовлення.</p></div><a class="btn btn--line btn--sm" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener">Усі аксесуари</a></div>
+      <div class="xs__grid">
+        <a class="xs__card" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener"><div class="xs__fig"><img src="img/bag.webp" alt="Темно-синя сумка з дерев'яною підставкою для кораблика" width="1800" height="1200" loading="lazy"></div><div class="xs__body"><b>Сумка з підставкою</b><span>Для перенесення кораблика</span><em>3 000 грн</em></div></a>
+        <a class="xs__card" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener"><div class="xs__fig"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="20" width="44" height="26" rx="3"/><path d="M52 29h4v8h-4M17 33h12M23 27v12M38 33h8"/></svg></div><div class="xs__body"><b>Акумулятори</b><span>Збірки 4s4p, 4s5p, 5s3p, 6s3p</span><em>7 позицій</em></div></a>
+        <a class="xs__card" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener"><div class="xs__fig"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="5"/><path d="M20 30q12 10 24 0M14 38q18 16 36 0M8 46q24 22 48 0"/></svg></div><div class="xs__body"><b>Ехолот Toslon TF-520</b><span>Для моделей без ехолота</span><em>18 500 грн</em></div></a>
+        <a class="xs__card" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener"><div class="xs__fig"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="16"/><circle cx="32" cy="32" r="4"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8"/></svg></div><div class="xs__body"><b>Автопілот TWIN GPS X4</b><span>GPS-навігація й автопілот</span><em>11 000 грн</em></div></a>
+        <a class="xs__card xs__card--all" href="https://shipmaster.com.ua/aksesuary/" target="_blank" rel="noopener"><span class="mono">Ще більше</span><b>Усі аксесуари</b><em>20 позицій →</em></a>
+      </div>
+    </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="wrap">
+    <header class="sec__head rv"><p class="tag">Заїзд</p><h2>Три кроки від берега до точки</h2></header>
+    <ol class="how__steps rv" style="padding:0;margin:0">
+      <li><span class="n">01</span><h3>Завантажте</h3><p>Прикормку в бункер на 3 л. Один заїзд — одна порція.</p></li>
+      <li><span class="n">02</span><h3>Виведіть на точку</h3><p>Пультом або автопілотом, залежно від комплектації.</p></li>
+      <li><span class="n">03</span><h3>Скиньте й поверніть</h3><p>Без забродів і метання. Керуйте з берега в радіусі 600 м.</p></li>
+    </ol>
+    <figure class="how__photo rv"><img src="img/waders.jpg" alt="Рибалка стоїть у воді біля лісового берега з вудилищем" loading="lazy"><figcaption>Тихий берег, точна подача</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="guide">
+  <div class="wrap guide">
+    <header class="sec__head rv" style="margin:0"><p class="tag">Поради</p><h2>Як вибрати кораблик</h2><p>Коротко про те, на що дивитися перед покупкою.</p></header>
+    <div class="acc rv">
+      <details open><summary>Дальність керування</summary><p>Радіус сигналу в лінійці Shipmaster — 600 м. Для більшості водойм цього достатньо, але перевірте відстань до ваших точок.</p></details>
+      <details><summary>Об'єм бункера</summary><p>Бункер на 3 л розрахований на один заїзд. Порахуйте, скільки прикормки потрібно на точку і скільки заїздів дає сесія.</p></details>
+      <details><summary>GPS, автопілот чи ехолот</summary><p>База підійде, якщо точки видно з берега. Автопілот і GPS потрібні для точних повторних заїздів. Ехолот потрібен, коли ви ще шукаєте бровки й ями.</p></details>
+      <details><summary>Охолодження й акумулятор</summary><p>Амур-М має водяне охолодження. Акумулятори в лінійці: збірки 4s4p, 4s5p, 5s3p і 6s3p. Конкретну комплектацію дивіться в картці моделі.</p></details>
+      <details><summary>Хто допоможе обрати</summary><p>Зателефонуйте: <a href="tel:+380505672446">+38 050 567 24 46</a>. Підкажемо модель під вашу водойму й спосіб ловлі.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta__bg"><img src="img/cast.jpg" alt="" loading="lazy"></div>
+  <div class="wrap cta__in">
+    <div class="cta__copy rv"><h2>Не впевнені, яка модель вам потрібна?</h2><p>Розкажіть, на якій водоймі ловите, і ми підкажемо комплектацію.</p><div class="hero__cta"><a class="btn btn--acc" href="tel:+380505672446">+38 050 567 24 46</a><a class="btn btn--ghost" href="https://shipmaster.com.ua/store-reviews/" target="_blank" rel="noopener">Відгуки покупців</a></div></div>
+    <ul class="svc rv"><li><b>Оплата при отриманні</b><span>Платите, коли кораблик у ваших руках.</span></li><li><b>Обмін та повернення</b><span>Умови на сторінці обміну й повернення.</span></li><li><b>Доставка</b><span>Відправляємо по Україні.</span></li><li><b>Гарантія та сервіс</b><span>Підтримка після покупки.</span></li></ul>
+  </div>
+</section>
+
+</main>
+<footer class="foot"><div class="wrap foot__in">
+  <div><a class="logo" href="#top"><span>SHIP<b>MASTER</b></span></a><p class="foot__tel"><a href="tel:+380505672446">+38 050 567 24 46</a> · <a href="tel:+380933892264">+38 093 389 22 64</a></p></div>
+  <p class="foot__proto">Концепт-прототип для обговорення дизайну. Це не діючий магазин: кошик, ціни й наявність не змінюються. Фото корабликів і фотографії для атмосфери надані замовником. Схема будови — ілюстрація-заглушка.</p>
+</div></footer>
+
+<div class="pick" role="group" aria-label="Колір акценту (інструмент перегляду концепту)"><span>Акцент</span><button class="is-on" style="--s:#ffc21a" data-a="#ffc21a" aria-label="Бурштин"></button><button style="--s:#6cc4f0" data-a="#6cc4f0" aria-label="Лід"></button><button style="--s:#c9f25b" data-a="#c9f25b" aria-label="Сонар"></button><button style="--s:#ff7a3d" data-a="#ff7a3d" aria-label="Корал"></button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  document.documentElement.classList.add('js');
+  // меню
+  var burger=$('#burger'),nav=$('#nav');
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  $$('#nav a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+  // тости
+  var toast=$('#toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},3200)}
+  $$('[data-proto]').forEach(function(b){b.addEventListener('click',function(){say(b.dataset.proto)})});
+  $$('[data-buy]').forEach(function(b){b.addEventListener('click',function(){say('Прототип: кнопка «Купити» працює на рідному кошику Horoshop.')})});
+  // акцент
+  function acc(c){
+    var n=parseInt(c.slice(1),16),r=n>>16&255,g=n>>8&255,b=n&255,l=(.299*r+.587*g+.114*b)/255;
+    document.documentElement.style.setProperty('--accent',c);
+    document.documentElement.style.setProperty('--on-accent','#0f1821');
+    document.documentElement.style.setProperty('--accent-ink',l>.75?'#6b4a00':'#8a5a00');
+  }
+  $$('.pick button').forEach(function(b){b.addEventListener('click',function(){acc(b.dataset.a);$$('.pick button').forEach(function(x){x.classList.toggle('is-on',x===b)})})});
+  // анатомія: інтерактивна ілюстрація (з проєкту amur-interactive)
+  (function(){
+(()=>{'use strict';
+const $=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],NS='http://www.w3.org/2000/svg';
+const order=['hopper','prop','rudder','power','gps','light'];
+const parts={
+ hopper:{n:'01',title:'Бункер',description:'Доставляє прикормку до обраного місця. За командою з пульта бункер нахиляється й вивантажує вміст у воду.',note:'Розвантаження показано схематично',action:'Розвантажити бункер',parameter:'Нахил бункера',min:0,max:100,initial:0,ends:['Закритий','Нахилений'],format:v=>Math.round(v*.42)+'°'},
+ prop:{n:'02',title:'Гвинт',description:'Електродвигун обертає вал і гвинт. Лопаті відштовхують воду назад, створюючи тягу, яка рухає кораблик уперед.',note:'Корпус напівпрозорий, щоб було видно гвинт',action:'Запустити гвинт',parameter:'Швидкість демонстрації',min:0,max:100,initial:55,ends:['Повільніше','Швидше'],format:v=>Math.round(v)+'%'},
+ rudder:{n:'03',title:'Кермо',description:'Перо керма відхиляється вбік і змінює напрямок потоку води. Так кораблик повертає ліворуч або праворуч.',note:'Вигляд зверху на кермо й потік води',action:'Показати поворот',parameter:'Відхилення керма',min:-30,max:30,initial:0,ends:['Ліворуч','Праворуч'],format:v=>(v>0?'+':'')+Math.round(v)+'°'},
+ power:{n:'04',title:'Живлення',description:'Акумулятор живить двигун, керування та бортову електроніку. Щоб дістатися до нього, відгвинчують чотири фіксатори й знімають кришку.',note:'Розташування й підключення показано умовно',action:'Відкрити відсік',parameter:'Підняття кришки',min:0,max:100,initial:0,ends:['Кришка закрита','Відсік відкритий'],format:v=>Math.round(v)+'%'},
+ gps:{n:'05',title:'GPS-навігація',description:'Автопілот веде кораблик до збереженої точки прикорму. У цьому прикладі він доставляє корм і повертається до домашньої точки.',note:'Умовний маршрут для версії з GPS-автопілотом',action:'Пройти маршрут',parameter:'Крок маршруту',min:0,max:100,initial:0,ends:['Старт від берега','Повернення'],format:v=>Math.round(v)+'%'},
+ light:{n:'06',title:'Ліхтар',description:'Три передні лінзи спрямовують світло вперед. Увімкніть ліхтар, щоб побачити напрямок освітлення перед носом кораблика.',note:'Умовна схема напрямку світла',action:'Увімкнути ліхтар',parameter:'Стан ліхтаря',min:0,max:1,initial:0,ends:['Вимкнений','Увімкнений'],format:v=>v?'Увімкнено':'Вимкнено'}
+};
+const state={part:'hopper',value:0,running:false,paused:false,elapsed:0,last:0,angle:0};
+const q=p=>[480+935*(.847*p[0]+.532*p[2]),326-935*(.235*p[0]+.898*p[1]-.374*p[2])];
+const pts=a=>a.map(p=>q(p).map(n=>n.toFixed(2)).join(',')).join(' ');
+const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)};
+const el=(tag,attrs={},parent)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(parent)parent.append(e);return e};
+const poly=(p,c,parent)=>el('polygon',{points:p.map(x=>q(x).join(',')).join(' '),class:c},parent);
+let detailCache='',detailNodes={};
+function detailSkeleton(){
+ const d=$('#idetail');d.innerHTML='<defs><marker id="arrow-detail" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" class="acc-stroke" stroke-width="1.2"/></marker></defs>';
+ const key=state.part;
+ if(key==='hopper')d.insertAdjacentHTML('beforeend','<path class="detail-water" d="M21 150q12-5 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0"/><path class="detail-line" d="M55 119H231l-15 17H74Z"/><g id="d-hopper"><path class="detail-active" d="M88 44H218L208 103H101Z"/><path class="detail-line" d="M88 44l13 13h104l13-13M101 57v46"/><g id="d-feed"></g></g><circle class="detail-fill" cx="215" cy="105" r="4"/><g id="d-grains"></g><path class="detail-accent" d="M247 62q20 18 8 40" marker-end="url(#arrow-detail)"/><text class="detail-text" x="40" y="29">команда з пульта</text><path class="detail-water" stroke-dasharray="3 4" d="M42 34H82"/>');
+ if(key==='prop')d.insertAdjacentHTML('beforeend','<path class="detail-line" d="M27 76H126M27 91H126"/><rect class="detail-fill" x="28" y="67" width="57" height="32" rx="5"/><text class="detail-text" x="35" y="120">двигун</text><circle class="detail-line" cx="173" cy="83" r="54"/><circle class="detail-water" cx="173" cy="83" r="47" stroke-dasharray="3 4"/><g id="d-rotor"></g><circle class="detail-fill" cx="173" cy="83" r="10"/><path class="detail-accent" d="M242 61h44M242 84h51M242 107h44" marker-end="url(#arrow-detail)"/><text class="detail-text" x="246" y="138">потік води</text>');
+ if(key==='rudder')d.insertAdjacentHTML('beforeend','<path class="detail-water" d="M20 45H115M20 75H115M20 105H115"/><path class="detail-fill" d="M126 64q-18 14-18 20t18 21l35-14V77Z"/><g id="d-rudder"><path class="detail-active" d="M154 77q47-8 79 7-32 15-79 7Z"/></g><circle class="detail-fill" cx="157" cy="84" r="4"/><path id="d-turn-flow" class="detail-accent" marker-end="url(#arrow-detail)"/><path class="detail-water" d="M158 38a47 47 0 0 1 0 92" stroke-dasharray="3 4"/><text class="detail-text" x="92" y="150">відхилення потоку → поворот</text>');
+ if(key==='power')d.insertAdjacentHTML('beforeend','<path class="detail-water" d="M30 143H290"/><rect class="detail-active" x="66" y="72" width="95" height="56" rx="4"/><path class="detail-line" d="M84 89h14m-7-7v14M133 89h14M78 113h69"/><path class="detail-line" d="M91 72V46H243V83M137 72V56H226V83"/><rect class="detail-fill" x="211" y="83" width="47" height="37" rx="4"/><path class="detail-line" d="M221 101h27"/><circle class="detail-fill" cx="91" cy="46" r="3"/><g id="d-current"></g><text class="detail-text" x="66" y="153">акумулятор</text><text class="detail-text" x="210" y="142">електроніка</text><g id="d-lid"><path class="detail-fill" d="M52 64h127l-9 7H61Z"/><circle class="detail-line" cx="65" cy="64" r="2"/><circle class="detail-line" cx="166" cy="64" r="2"/></g>');
+ if(key==='gps')d.insertAdjacentHTML('beforeend','<path class="detail-water" d="M15 151q51-52 13-119M15 153H303"/><path class="detail-water" d="M54 132Q103 17 234 48Q245 139 54 132" stroke-dasharray="3 5"/><path id="d-route" class="detail-accent" d="M54 132Q103 17 234 48Q245 139 54 132" stroke-dasharray="3 5"/><circle class="detail-active" cx="54" cy="132" r="7"/><circle class="detail-active" cx="234" cy="48" r="7"/><text class="detail-text" x="35" y="157">берег</text><text class="detail-text" x="232" y="31">точка 01</text><g id="d-gps-boat"><path class="detail-active" d="M0-11q9 9 5 21H-5q-4-12 5-21Z"/><path class="detail-line" d="M-3-1H3"/></g>');
+ if(key==='light')d.insertAdjacentHTML('beforeend','<g id="d-beams"><path d="M164 55L293 27V139L164 111Z" class="acc-fill" opacity=".32"/><path class="detail-accent" d="M169 62l103-26M169 83h114M169 104l103 26"/></g><rect class="detail-fill" x="36" y="49" width="130" height="68" rx="5"/><circle class="detail-active" cx="61" cy="83" r="16"/><circle class="detail-active" cx="101" cy="83" r="16"/><circle class="detail-active" cx="141" cy="83" r="16"/><circle class="detail-line" cx="61" cy="83" r="9"/><circle class="detail-line" cx="101" cy="83" r="9"/><circle class="detail-line" cx="141" cy="83" r="9"/><text class="detail-text" x="52" y="148">три лінзи</text><text class="detail-text" x="224" y="148">вперед</text>');
+ detailCache=key;detailNodes={};
+}
+function dn(id){return detailNodes[id]||(detailNodes[id]=document.getElementById(id))}
+function hopper(){
+ const group=$('#hopper-art');group.replaceChildren();
+ const amount=state.part==='hopper'?state.value:0,angle=-amount*.42*Math.PI/180,hinge=[.403,.023,0];
+ const rot=p=>{let x=p[0]-hinge[0],y=p[1]-hinge[1];return[hinge[0]+x*Math.cos(angle)-y*Math.sin(angle),hinge[1]+x*Math.sin(angle)+y*Math.cos(angle),p[2]]};
+ const top=[[-.141,.102,-.143],[.141,.102,-.143],[.141,.102,.143],[-.141,.102,.143]].map(p=>[p[0]+.270,p[1],p[2]]);
+ const bottom=[[-.1135,.025,-.1125],[.1135,.025,-.1125],[.1135,.025,.1125],[-.1135,.025,.1125]].map(p=>[p[0]+.270,p[1],p[2]]);
+ const itop=top.map(p=>[.270+(p[0]-.270)*.916,p[1],p[2]*.92]);
+ const floor=bottom.map(p=>[.270+(p[0]-.270)*.89,.039,p[2]*.89]);
+ let faces=[{p:floor,c:'hopper-floor'}];
+ for(let i=0;i<4;i++){const j=(i+1)%4;faces.push({p:[bottom[i],bottom[j],top[j],top[i]],c:'hopper-wall'});faces.push({p:[floor[j],floor[i],itop[i],itop[j]],c:'hopper-inner'});faces.push({p:[top[i],top[j],itop[j],itop[i]],c:'hopper-rim'});}
+ faces=faces.map(f=>({...f,p:f.p.map(rot)}));
+ faces.sort((a,b)=>a.p.reduce((s,p)=>s+p[0]*-.477+p[1]*.442+p[2]*.760,0)/a.p.length-b.p.reduce((s,p)=>s+p[0]*-.477+p[1]*.442+p[2]*.760,0)/b.p.length);
+ for(const face of faces){let e=poly(face.p,'shape '+face.c,group);e.dataset.part='hopper';if(state.part==='hopper')e.classList.add('selected')}
+ // Small V in the photographed rear rim.
+ const notch=[[.411,.102,-.014],[.411,.089,0],[.411,.102,.014]].map(rot);el('polyline',{points:pts(notch),class:'line'},group);
+ if(state.part==='hopper'&&state.value>2){
+  const f=(state.last/1000)%1;
+  for(let i=0;i<11;i++){const t=(f+i/11)%1,p=rot([.393,.088,(i%5-2)*.012]);p[0]+=.016+.06*t;p[1]-=t*.13;const a=q(p);el('circle',{cx:a[0],cy:a[1],r:2.2,class:'acc-fill',opacity:state.value>50?1:state.value/50},group)}
+ }
+}
+function boatEffects(){
+ const key=state.part,v=state.value,fx=$('#main-effects');fx.replaceChildren();
+ $('#hull-art').style.opacity=(key==='prop'||key==='rudder')?'.24':'1';
+ $('#battery-well').style.opacity=key==='power'?String(v/100):'0';
+ $('#cover-art').setAttribute('transform',key==='power'?`translate(${-v*.11} ${-v*.52})`:'');
+ const pa=q([.326,-.13,0]);$('#prop-main').setAttribute('transform',key==='prop'?`rotate(${state.angle} ${pa[0]} ${pa[1]})`:'');
+ const ru=q([.344,-.14,.049]);all('.shape.rudder').forEach(e=>e.setAttribute('transform',key==='rudder'?`rotate(${-v*.35} ${ru[0]} ${ru[1]})`:''));
+ if(key==='light'&&v){
+  poly([[-.335,.03,-.039],[-.52,.03,-.13],[-.52,.03,.13],[-.335,.03,.039]],'',fx).setAttribute('style','fill:var(--accent);fill-opacity:.30;stroke:none');
+  for(const z of[-.025,0,.025])el('polyline',{points:pts([[-.338,.031,z],[-.50,.031,z*3]]),class:'detail-accent'},fx);
+ }
+ if(key==='gps'){
+  const c=q([.07,.08,-.03]),t=state.last/1600;
+  for(let i=0;i<3;i++){const r=15+((t+i/3)%1)*45;el('ellipse',{cx:c[0],cy:c[1],rx:r,ry:r*.42,fill:'none',class:'acc-stroke','stroke-width':1,opacity:1-(r-15)/45},fx)}
+  el('path',{d:`M${c[0]-20},${c[1]-72}l15-15 15 15-15 15Z M${c[0]-21},${c[1]-86}l-8-8 8-8 8 8Z M${c[0]+13},${c[1]-62}l-8-8 8-8 8 8Z`,class:'detail-line'},fx);
+ }
+}
+function detail(){
+ if(detailCache!==state.part)detailSkeleton();
+ const v=state.value,t=state.last/1000;
+ if(state.part==='hopper'){
+  dn('d-hopper').setAttribute('transform',`rotate(${-v*.42} 215 105)`);
+  dn('d-feed').innerHTML=Array.from({length:13},(_,i)=>`<circle cx="${111+(i%6)*15}" cy="${76+Math.floor(i/6)*11}" r="2.5" class="acc-fill"/>`).join('');
+  dn('d-grains').innerHTML=v>35?Array.from({length:8},(_,i)=>{const a=(t*.6+i/8)%1;return`<circle cx="${228+a*34+i%2*8}" cy="${94+a*50}" r="2.4" class="acc-fill" opacity="${Math.min(1,(v-35)/30)}"/>`}).join(''):'';
+ }
+ if(state.part==='prop'){
+  dn('d-rotor').innerHTML=[0,120,240].map(a=>`<path class="detail-active" d="M172 80C138 57 154 26 173 35C188 44 179 63 178 80Z" transform="rotate(${a+state.angle} 173 83)"/>`).join('');
+ }
+ if(state.part==='rudder'){
+  dn('d-rudder').setAttribute('transform',`rotate(${v} 157 84)`);const yy=84+v*1.25;
+  dn('d-turn-flow').setAttribute('d',`M22 84H127Q182 84 218 ${yy}T292 ${yy}`);
+ }
+ if(state.part==='power'){
+  dn('d-lid').setAttribute('transform',`translate(0 ${-v*.30})`);
+  dn('d-current').innerHTML=Array.from({length:5},(_,i)=>{const x=92+((t*35+i*29)%149);return`<circle cx="${x}" cy="46" r="2.8" class="acc-fill"/>`}).join('');
+ }
+ if(state.part==='gps'){
+  const progress=v/100,returning=progress>.52,z=returning?(progress-.52)/.48:Math.min(1,progress/.45),p0=returning?[234,48]:[54,132],p1=returning?[245,139]:[103,17],p2=returning?[54,132]:[234,48];
+  const x=(1-z)**2*p0[0]+2*(1-z)*z*p1[0]+z*z*p2[0],y=(1-z)**2*p0[1]+2*(1-z)*z*p1[1]+z*z*p2[1];
+  const dx=2*(1-z)*(p1[0]-p0[0])+2*z*(p2[0]-p1[0]),dy=2*(1-z)*(p1[1]-p0[1])+2*z*(p2[1]-p1[1]);
+  dn('d-gps-boat').setAttribute('transform',`translate(${x} ${y}) rotate(${Math.atan2(dy,dx)*180/Math.PI+90})`);
+ }
+ if(state.part==='light')dn('d-beams').setAttribute('opacity',v?'1':'.08');
+}
+function note(){const v=state.value;return({hopper:v<10?'Прикормка залишається в бункері.':v<65?'Бункер нахиляється.':'Прикормка висипається у воду.',prop:state.running&&v>0?'Гвинт обертається, потік води спрямований назад.':v===0?'Швидкість демонстрації нульова, гвинт зупинено.':'Запустіть обертання або змініть швидкість демонстрації.',rudder:v<-4?'Кермо відхилене ліворуч.':v>4?'Кермо відхилене праворуч.':'Кермо в центральному положенні.',power:v<15?'Кришка закриває акумуляторний відсік.':v<75?'Кришку піднято над відсіком.':'Відкрито доступ до акумулятора.',gps:v<1?'Домашня точка біля берега.':v<45?'Рух до збереженої точки 01.':v<53?'Точка 01: вивантаження прикормки.':v<99?'Повернення до домашньої точки.':'Кораблик повернувся до берега.',light:v?'Світло спрямоване вперед перед носом.':'Ліхтар вимкнений.'})[state.part]}
+function sync(){
+ const p=parts[state.part];$('#parameter').value=state.value;$('#parameter-value').value=p.format(state.value);$('#parameter').setAttribute('aria-valuetext',p.format(state.value));
+ const text=note();if($('#live-note').textContent!==text)$('#live-note').textContent=text;
+ $('#play-label').textContent=state.part==='light'?(state.value?'Вимкнути ліхтар':'Увімкнути ліхтар'):state.running?'Призупинити':state.paused?'Продовжити':p.action;
+ $('#play-icon').innerHTML=state.running?'<path d="M6 4h2v12H6Zm6 0h2v12h-2Z"/>':'<path d="M7 4l9 6-9 6Z"/>';
+}
+function render(){hopper();boatEffects();detail();sync()}
+function select(key){
+ if(!parts[key])return;state.part=key;state.value=parts[key].initial;state.running=false;state.paused=false;state.elapsed=0;state.angle=0;
+ const p=parts[key];$('#part-number').textContent=p.n;$('#part-title').textContent=p.title;$('#part-description').textContent=p.description;$('#detail-note').textContent=p.note;$('#idetail').setAttribute('aria-label','Схема роботи: '+p.title.toLowerCase());$('#parameter-label').textContent=p.parameter;
+ const input=$('#parameter');input.min=p.min;input.max=p.max;input.step=1;input.setAttribute('aria-label',p.parameter);$('#range-min').textContent=p.ends[0];$('#range-max').textContent=p.ends[1];
+ $('#figure-caption').innerHTML='<i></i>'+(key==='gps'?'GPS-маршрут показано схематично':p.title+' виділено на ілюстрації');
+ all('#ill [data-select]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.select===key)));
+ const selectedButton=$(`#ill [data-select="${key}"]`),rail=$('#iparts');if(rail.scrollWidth>rail.clientWidth)rail.scrollTo({left:selectedButton.offsetLeft-rail.offsetLeft-15,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+ all('#ib [data-part]').forEach(e=>{e.classList.toggle('selected',e.dataset.part===key);e.classList.toggle('active',e.dataset.part===key);if(e.getAttribute('role')==='button')e.setAttribute('aria-pressed',String(e.dataset.part===key))});
+ detailCache='';render();
+}
+all('#ill [data-select]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.select)));
+$('#iparts').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const i=order.indexOf(state.part),n=e.key==='Home'?0:e.key==='End'?order.length-1:(i+(e.key==='ArrowRight'?1:-1)+order.length)%order.length;select(order[n]);$(`#ill [data-select="${order[n]}"]`).focus()});
+$('#ib').addEventListener('click',e=>{const part=e.target.closest('[data-part]');if(part)select(part.dataset.part)});
+$('#ib').addEventListener('keydown',e=>{const part=e.target.closest('.hotspot');if(part&&['Enter',' '].includes(e.key)){e.preventDefault();select(part.dataset.part)}});
+$('#show-labels').addEventListener('change',e=>$('#ib').classList.toggle('labels-hidden',!e.target.checked));
+$('#parameter').addEventListener('input',e=>{state.value=Number(e.target.value);state.running=false;state.paused=false;state.elapsed=0;if(state.part==='prop')state.angle=state.value*3.6;render()});
+$('#iReset').addEventListener('click',()=>select(state.part));
+$('#next-part').addEventListener('click',()=>select(order[(order.indexOf(state.part)+1)%order.length]));
+$('#iPlay').addEventListener('click',()=>{if(state.part==='light'){state.value=state.value?0:1;render();return}if(state.running){state.running=false;state.paused=true}else{if(!state.paused){state.elapsed=0;if(['hopper','gps','power','rudder'].includes(state.part))state.value=0}state.running=true;state.paused=false}sync()});
+let lastPaint=0;
+function tick(time){
+ const dt=Math.min(60,time-(state.last||time));state.last=time;let advanced=false;
+ if(state.running){advanced=true;state.elapsed+=dt;const p=state.part;
+  if(p==='prop')state.angle=(state.angle+dt*.007*state.value)%360;
+  if(p==='rudder'){state.value=25*Math.sin(state.elapsed/850);if(state.elapsed>5350){state.running=false;state.paused=false;state.value=0}}
+  if(p==='hopper'||p==='power'){const f=state.elapsed/5200;state.value=f<.3?ease(f/.3)*100:f<.65?100:(1-ease((f-.65)/.35))*100;if(f>=1){state.running=false;state.paused=false;state.value=0}}
+  if(p==='gps'){state.value=Math.min(100,state.elapsed/80);if(state.value===100){state.running=false;state.paused=false}}
+ }
+ if(advanced&&(time-lastPaint>32||!state.running)){render();lastPaint=time}
+ requestAnimationFrame(tick);
+}
+select('hopper');requestAnimationFrame(tick);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.running){state.running=false;state.paused=true;sync()}});
+})();
+  })();
+  // порівняння
+  var feat={base:[],gps:['gps'],echo:['gps','echo'],mgps:['gps','cool'],mecho:['gps','echo','cool']};
+  var on=[];
+  function paint(){
+    $$('[data-m]',$('.cmp')).forEach(function(el){
+      var m=el.dataset.m,ok=on.every(function(f){return feat[m].indexOf(f)>-1});
+      el.classList.toggle('dim',on.length>0&&!ok);
+      el.classList.toggle('hit',on.length>0&&ok&&el.tagName==='TH');
+    });
+    $('#chipReset').hidden=on.length===0;
+  }
+  $$('.chip[data-f]').forEach(function(c){c.addEventListener('click',function(){
+    var f=c.dataset.f,i=on.indexOf(f);if(i>-1)on.splice(i,1);else on.push(f);
+    c.setAttribute('aria-pressed',i===-1);paint()})});
+  $('#chipReset').addEventListener('click',function(){on=[];$$('.chip[data-f]').forEach(function(c){c.setAttribute('aria-pressed','false')});paint()});
+  // каталог
+  function filt(k){
+    $$('#grid .card[data-t]').forEach(function(c){c.hidden=!(k==='all'||c.dataset.t.split(' ').indexOf(k)>-1)});
+    $$('.seg button').forEach(function(b){b.classList.toggle('is-on',b.dataset.flt===k)});
+  }
+  $$('.seg button').forEach(function(b){b.addEventListener('click',function(){filt(b.dataset.flt)})});
+  // колір
+  $$('.sw').forEach(function(sw){$$('button',sw).forEach(function(b){b.addEventListener('click',function(){
+    $$('button',sw).forEach(function(x){x.classList.toggle('is-on',x===b);x.setAttribute('aria-checked',x===b)});
+    var im=sw.closest('.card').querySelector('.card__fig img');
+    im.src=b.dataset.img;im.alt=b.getAttribute('aria-label')+' кораблик Shipmaster «Амур» збоку';
+  })})});
+  // каталогу в концепті немає: посилання «Каталог» ведуть до блоку моделей на головній
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href="#catalog"]');if(!a)return;
+    e.preventDefault();var m=document.getElementById('models');if(m)m.scrollIntoView({behavior:'smooth'});
+  });
+  // поява при скролі (безпечно без IntersectionObserver)
+  var rv=$$('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+    rv.forEach(function(el){io.observe(el)});
+    setTimeout(function(){rv.forEach(function(el){el.classList.add('in')})},2500);
+  } else rv.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</head></html>
