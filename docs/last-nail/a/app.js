@@ -172,7 +172,7 @@
   const filmProgress = filmSection?.querySelector("[data-film-progress]");
   const filmCaptions = [...(filmSection?.querySelectorAll("[data-film-caption]") || [])];
   const filmChips = [...(filmSection?.querySelectorAll("[data-film-chip]") || [])];
-  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":720,"chapters":[]}');
+  const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":1440,"chapters":[]}');
   const filmChapters = filmData.chapters || [];
   let filmScrubber = null;
   let filmTarget = 0;
@@ -223,11 +223,11 @@
       filmScrubber = new window.FrameScrubber({
         canvas: filmCanvas,
         poster: filmPoster,
-        base: "../assets/frames/film30",
-        manifest: "../assets/frames/film30/film.json",
+        base: "../assets/frames/film60",
+        manifest: "../assets/frames/film60/film.json",
         sizeKey: compact ? "854" : "1280",
         maxDpr: 2,
-        windowSize: compact ? 12 : 24,
+        windowSize: compact ? 20 : 40,
         concurrency: 6,
         fit: phone ? "contain" : "cover",
         position: "center",
