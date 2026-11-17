@@ -184,11 +184,41 @@
   let filmCaptionPendingIndex = filmCaptionIndex;
   let filmCaptionIsExiting = false;
 
+  // Scroll-to-film mapping with a short hold at the end of every stage, so each
+  // finished step stays on screen for a moment before the next one starts.
+  const FILM_HOLD = 0.05;
+  const filmLastIndex = Math.max(1, (filmData.count || 1320) - 1);
+  const filmHolds = filmChapters.slice(1).map((chapter) => Math.max(0, chapter.startFrame - 1) / filmLastIndex);
+  const filmMoveShare = Math.max(0.1, 1 - FILM_HOLD * filmHolds.length);
+  const scrollToFilm = (s) => {
+    let pos = 0;
+    let prev = 0;
+    for (const hold of filmHolds) {
+      const segment = (hold - prev) * filmMoveShare;
+      if (s < pos + segment) return prev + (s - pos) / filmMoveShare;
+      pos += segment;
+      if (s < pos + FILM_HOLD) return hold;
+      pos += FILM_HOLD;
+      prev = hold;
+    }
+    return clamp(prev + (s - pos) / filmMoveShare);
+  };
+  const filmToScroll = (f) => {
+    let pos = 0;
+    let prev = 0;
+    for (const hold of filmHolds) {
+      if (f <= hold) return pos + (f - prev) * filmMoveShare;
+      pos += (hold - prev) * filmMoveShare + FILM_HOLD;
+      prev = hold;
+    }
+    return clamp(pos + (f - prev) * filmMoveShare);
+  };
+
   const readFilmState = () => {
     if (!filmSection) return false;
     const rect = filmSection.getBoundingClientRect();
     const travel = Math.max(1, rect.height - window.innerHeight);
-    filmTarget = clamp(-rect.top / travel);
+    filmTarget = clamp(scrollToFilm(clamp(-rect.top / travel)));
     return rect.bottom > 0 && rect.top < window.innerHeight;
   };
 
@@ -223,9 +253,9 @@
       filmScrubber = new window.FrameScrubber({
         canvas: filmCanvas,
         poster: filmPoster,
-        base: "../assets/frames/film40hq",
-        manifest: "../assets/frames/film40hq/film.json",
-        sizeKey: compact ? "854" : "1280",
+        base: "../assets/frames/film40fhd",
+        manifest: "../assets/frames/film40fhd/film.json",
+        sizeKey: compact ? "854" : (window.innerWidth * Math.min(2, window.devicePixelRatio || 1) > 1440 ? "1920" : "1280"),
         maxDpr: 2,
         windowSize: compact ? 14 : 28,
         concurrency: 6,
@@ -246,7 +276,7 @@
     if (!visible || document.hidden || reducedMotion.matches) return;
     const dt = Math.min(0.032, Math.max(0.001, (now - filmLastFrame) / 1000));
     filmLastFrame = now;
-    const omega = 18;
+    const omega = 10;
     const acceleration = omega * omega * (filmTarget - filmValue) - 2 * omega * filmVelocity;
     filmVelocity += acceleration * dt;
     filmValue = clamp(filmValue + filmVelocity * dt);
@@ -285,8 +315,8 @@
     const rect = filmSection.getBoundingClientRect();
     const sectionTop = window.scrollY + rect.top;
     const travel = Math.max(1, rect.height - window.innerHeight);
-    const chapterProgress = chapter.startFrame / Math.max(1, filmData.count - 1);
-    window.scrollTo({ top: sectionTop + chapterProgress * travel, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    const chapterProgress = filmToScroll(chapter.startFrame / filmLastIndex);
+    window.scrollTo({ top: sectionTop + chapterProgress * travel + 2, behavior: reducedMotion.matches ? "auto" : "smooth" });
   }));
 
   const createRowCollapser = ({ container, items, toggle, matches, countItems, noun }) => {
