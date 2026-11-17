@@ -104,6 +104,15 @@ h3 { font-size: clamp(24px, 2.4vw, 36px); }
 .trust-item small { margin-top: .45rem; color: var(--muted); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .trust-item[href]:hover strong { color: var(--yellow); }
 
+.trust-badges { padding-block: clamp(1rem, 2vw, 1.5rem); background: #090909; }
+.trust-badges-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .65rem; }
+.trust-badge-card { min-width: 0; height: 13rem; display: grid; grid-template-rows: 6.875rem auto; align-content: center; justify-items: center; gap: .75rem; padding: 1.15rem .75rem 1rem; border: 1px solid rgba(242,239,232,.38); border-radius: 2px; color: #17130a; background: #f2efe8; text-align: center; }
+.trust-badge-art { width: 100%; height: 6.875rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.trust-badge-art-image { padding: 0 .35rem; background: #fff; }
+.trust-badge-art-image img { display: block; width: auto; max-width: 100%; height: 100%; max-height: 6.875rem; object-fit: contain; object-position: center; }
+.trust-badge-svg { width: 100%; height: 6.875rem; display: block; }
+.trust-badge-card figcaption { max-width: 14rem; color: #25231e; font-size: .875rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+
 .needs-section { background: linear-gradient(180deg, #0a0a0a, #10100f); }
 .need-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-top: 3rem; }
 .need-card { min-height: 17rem; display: flex; flex-direction: column; align-items: flex-start; padding: 1.4rem; border: 1px solid var(--line); border-radius: 3px; color: inherit; background: var(--panel); text-align: left; cursor: pointer; transition: transform 100ms ease-out, border-color 180ms ease, background-color 180ms ease; }
@@ -291,6 +300,10 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
   .video-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (min-width: 701px) and (max-width: 1099px) {
+  .trust-badges-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 @media (min-width: 1000px) {
   .explainer-stage { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; }
   .explainer-panel { grid-row: span 4; grid-template-rows: subgrid; }
@@ -359,6 +372,9 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
   .trust-grid { grid-template-columns: 1fr 1fr; }
   .trust-item { min-height: 7rem; border-bottom: 1px solid var(--line); }
   .trust-item:nth-child(3) { grid-column: 1 / -1; border-left: 0; border-bottom: 0; text-align: center; }
+  .trust-badges { padding-block: 1rem; }
+  .trust-badges-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .trust-badge-card { height: 13rem; padding-inline: .55rem; }
   .section-heading { grid-template-columns: 1fr; gap: 1rem; }
   .need-grid { grid-template-columns: 1fr; }
   .need-card { min-height: 12rem; }
