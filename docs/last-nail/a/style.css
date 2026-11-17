@@ -178,7 +178,7 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
 .explainer-legend { display: grid; gap: .7rem; margin: 0; padding: 1.25rem 1.25rem 1.5rem 3rem; color: #3e3b35; font-size: .9rem; line-height: 1.45; }
 .explainer-legend li::marker { color: #806000; font-weight: 800; }
 
-.film-process { position: relative; height: 450vh; color: var(--bone); background: #1b1f23; }
+.film-process { position: relative; height: 850vh; color: var(--bone); background: #1b1f23; }
 .film-process__sticky { position: sticky; top: 0; height: 100svh; overflow: clip; background: #1b1f23; }
 .film-process__media, .film-process__canvas, .film-process__poster { position: absolute; inset: 0; width: 100%; height: 100%; }
 .film-process__canvas { display: block; }
