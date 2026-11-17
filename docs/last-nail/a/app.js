@@ -253,9 +253,9 @@
       filmScrubber = new window.FrameScrubber({
         canvas: filmCanvas,
         poster: filmPoster,
-        base: "../assets/frames/film40hq",
-        manifest: "../assets/frames/film40hq/film.json",
-        sizeKey: compact ? "854" : "1280",
+        base: "../assets/frames/film40fhd",
+        manifest: "../assets/frames/film40fhd/film.json",
+        sizeKey: compact ? "854" : (window.innerWidth * Math.min(2, window.devicePixelRatio || 1) > 1440 ? "1920" : "1280"),
         maxDpr: 2,
         windowSize: compact ? 14 : 28,
         concurrency: 6,
