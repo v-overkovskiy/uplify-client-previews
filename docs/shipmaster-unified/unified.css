@@ -390,3 +390,16 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 #top .u-hero-service strong{display:block;margin-bottom:6px;color:#f3f5f7;font-size:19px;font-weight:700}
 #top .u-hero-service span{display:block}
 @media(max-width:700px){#home #top .u-hero-service{font-size:15px}#top .u-hero-service strong{font-size:18px}}
+
+/* Equal model columns keep headings, values and actions on one rhythm. */
+.u-feature-table{table-layout:fixed}
+.u-feature-table thead th[data-compare-model]{padding:0}
+.u-feature-model{display:flex;flex-direction:column;justify-content:center;width:100%;min-height:100px;padding:20px 18px;border:0;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}
+.u-feature-model:hover{background:#2a3b4b}
+.u-feature-model:focus-visible{outline-offset:-4px}
+.u-feature-table .u-feature-go td{text-align:center}
+.u-feature-link{width:108px;padding-inline:10px}
+.u-feature-table [data-compare-model].u-column-selected{background:#304557}
+.u-feature-table thead .u-column-selected{box-shadow:inset 0 3px #ffc21a}
+.u-column-selected .u-feature-model b{color:#ffc21a}
+@media(max-width:700px){.u-feature-model{padding:16px 14px}}
