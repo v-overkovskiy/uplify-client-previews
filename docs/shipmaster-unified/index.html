@@ -1390,7 +1390,7 @@ add('ge','yellow',52000,59000);add('ge','red',52000,61000);add('ge','orange',520
 
 var SERIES=[{k:'all',n:'Усі'},{k:'base',n:'Базові'},{k:'gd',n:'GPS + глибиномір'},{k:'ge',n:'GPS + ехолот'},{k:'m',n:'Амур-М',tag:'2026'},{k:'acc',n:'Аксесуари'}];
 var FILT=[
- {k:'color',t:'Колір',vals:['yellow','orange','red'],lab:function(v){return COL[v].n}},
+
  {k:'gps',t:'Автопілот GPS',vals:['yes','no'],lab:function(v){return v==='yes'?'Є':'Немає'}},
  {k:'depth',t:'Глибина',vals:['sonar','gauge','none'],lab:function(v){return {sonar:'Ехолот',gauge:'Глибиномір',none:'Без'}[v]}},
  {k:'cool',t:'Водяне охолодження',vals:['yes','no'],lab:function(v){return v==='yes'?'Є':'Немає'}},
