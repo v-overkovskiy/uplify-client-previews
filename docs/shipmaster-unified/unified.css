@@ -403,3 +403,12 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 .u-feature-table thead .u-column-selected{box-shadow:inset 0 3px #ffc21a}
 .u-column-selected .u-feature-model b{color:#ffc21a}
 @media(max-width:700px){.u-feature-model{padding:16px 14px}}
+
+/* A ring identifies only the chosen hull colour, in its own tone. */
+:is(#choose,#cat) .sw button,#pdp .sws button{background-clip:padding-box!important;border-color:transparent}
+:is(#choose,#cat) .sw button[data-c="yellow"],#pdp .sws button[data-color="yellow"]{--swatch-tone:#ffc21a}
+:is(#choose,#cat) .sw button[data-c="orange"],#pdp .sws button[data-color="orange"]{--swatch-tone:#ff6a1f}
+:is(#choose,#cat) .sw button[data-c="red"],#pdp .sws button[data-color="red"]{--swatch-tone:#e8262b}
+#home #choose .sw button[aria-pressed=true],#cat .sw button[aria-pressed=true],#pdp .sws button[aria-pressed=true]{border-color:var(--swatch-tone)}
+/* Override the inherited section padding on secondary purchase actions. */
+#pdp .btns .row>.btn.sec{padding:12px 18px;display:flex;align-items:center;justify-content:center;text-align:center}
