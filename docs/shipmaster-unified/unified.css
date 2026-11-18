@@ -207,3 +207,9 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  .u-config-mobile select:focus-visible{outline:2px solid #ffc21a;outline-offset:2px}
  .u-column-choice{padding-inline:6px;font-size:12px;min-height:84px}
 }
+
+/* Light grey FAQ surface with readable dark text and links. */
+#questions{--text:#141820;--muted:#5b6575;--line:#c7cfd8;background:#edf0f3;color:#141820;color-scheme:light}
+#questions .u-faq details{border-bottom-color:#c7cfd8}
+#questions .u-faq-phone>a,#questions .u-faq a{color:#141820;text-decoration:underline;text-underline-offset:3px}
+#questions .u-faq summary:after{color:#8a5a00}
