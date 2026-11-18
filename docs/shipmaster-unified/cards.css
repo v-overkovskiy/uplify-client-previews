@@ -116,3 +116,5 @@
  #choose .sp dt{line-height:1.35}
  #choose .sp dd{line-height:1.15}
 }
+
+@media(min-width:1201px){#choose.u-section{padding-block:12px}#choose .u-products{padding-block:12px 16px}}
