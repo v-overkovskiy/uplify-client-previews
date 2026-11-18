@@ -338,3 +338,16 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  .u-feature-table tbody th b{font-size:14px}
  .u-feature-table tbody th small{font-size:12px}
 }
+
+/* Owner refinements: softer graphite, prominent contact and a fifth warranty benefit. */
+#top{background:#171f28}
+#top .u-hero-assurances li{background:#222d38}
+#top .u-range-rings{stroke:#3a4653}
+#top .u-btn-outline,#top .u-fleet-caption a{background:#222d38;border-color:#465260}
+#home #top .u-hero-help{font-size:14px;margin-top:28px}
+#home #top .u-hero-help a{display:flex;align-items:center;width:fit-content;min-height:44px;margin-top:4px;color:#f3f5f7;font:700 clamp(24px,2vw,30px)/1.3 var(--body);text-decoration:none}
+@media(min-width:1401px){#home #top .u-hero-assurances{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(min-width:701px) and (max-width:1400px){
+ #home #top .u-hero-assurances{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #top .u-hero-assurances li:last-child{grid-column:1 / -1}
+}
