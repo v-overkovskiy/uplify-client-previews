@@ -370,3 +370,6 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  #top .u-hero-grid{min-height:calc(100svh - 127px)}
 }
 @media(max-width:380px){.hdr .top .logo{font-size:12px}.hdr .u-phone{font-size:12px}}
+
+/* Keep the catalogue action on the right edge of the header. */
+@media(max-width:700px){.hdr>.top>.u-header-catalog{grid-column:1 / -1;justify-self:end}}
