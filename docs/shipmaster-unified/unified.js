@@ -34,12 +34,13 @@ function choose(key){
  document.getElementById('u-selection-price').textContent=m.price;
  document.getElementById('u-selection-delta').textContent=m.delta;
  document.getElementById('u-selected-buy').dataset.uPdp=key;
- document.getElementById('u-m-variant').hidden=!['md','me'].includes(key);
+ document.getElementById('u-config-select').value=key;
  document.querySelectorAll('[data-u-config]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.uConfig===key)));
  const keys=['base','gd','ge','md','me'];
  document.querySelectorAll('.u-table tr').forEach(row=>Array.from(row.children).forEach((cell,i)=>{if(!i)return;cell.classList.toggle('u-selected',keys[i-1]===key);cell.classList.toggle('u-mobile-hide',keys[i-1]!=='base'&&keys[i-1]!==key&&!(key==='base'&&keys[i-1]==='gd'));}));
 }
 choose(selection);
+document.getElementById('u-config-select').addEventListener('change',e=>choose(e.target.value));
 // The video will be supplied later; show an honest inline state until then.
 const videoButton=document.getElementById('u-video-button'),videoStatus=document.getElementById('u-video-status');
 videoButton.addEventListener('click',()=>{videoStatus.hidden=!videoStatus.hidden;videoButton.setAttribute('aria-expanded',String(!videoStatus.hidden));});

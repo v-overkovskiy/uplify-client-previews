@@ -192,13 +192,18 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  #top .u-fleet-name{top:0}
 }
 
-/* Match each configuration selector to the corresponding table column. */
-@media(min-width:701px){
- #compare .u-configs{grid-template-columns:22% repeat(5,minmax(0,1fr));margin-bottom:0}
- #compare .u-configs::before{content:''}
- #compare .u-configs button{text-align:center;padding-inline:8px;min-width:0}
- #compare .u-configs button b{font-size:15px}
- #compare .u-configs button span{font-size:12px}
- #compare .u-table th:first-child{box-sizing:border-box;width:22%}
+/* One interactive model name per comparison column. */
+.u-config-mobile{display:none}
+#compare .u-table thead th[data-column]{padding:0}
+.u-column-choice{width:100%;min-height:76px;padding:12px 8px;border:0;border-bottom:3px solid transparent;background:none;color:inherit;font:inherit;line-height:1.5;cursor:pointer}
+.u-column-choice b,.u-column-choice span{display:block}
+.u-column-choice[aria-pressed=true]{border-bottom-color:#ffc21a}
+.u-column-choice:hover{background:#25364a}
+.u-column-choice:focus-visible{outline:2px solid #ffc21a;outline-offset:-4px}
+@media(min-width:701px){#compare .u-table th:first-child{box-sizing:border-box;width:22%}}
+@media(max-width:700px){
+ .u-config-mobile{display:grid;gap:8px;margin-bottom:16px;font-size:14px;color:var(--muted)}
+ .u-config-mobile select{width:100%;min-height:48px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#1d2b39;color:var(--text);font:inherit;font-size:15px}
+ .u-config-mobile select:focus-visible{outline:2px solid #ffc21a;outline-offset:2px}
+ .u-column-choice{padding-inline:6px;font-size:12px;min-height:84px}
 }
-@media(max-width:700px){#compare .u-configs button:last-child{grid-column:1 / -1}}
