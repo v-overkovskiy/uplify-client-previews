@@ -277,3 +277,12 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  #top .u-hero-assurances strong{font-size:15px}
  #top .u-hero-assurances span{font-size:13px}
 }
+
+/* Centre the sales title directly above the featured middle product. */
+@media(min-width:1101px){
+ #choose .u-section-head{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:center}
+ #choose .u-section-head>div{display:contents}
+ #home #choose .u-section-head h2{grid-column:2;grid-row:1;text-align:center;margin:0;white-space:nowrap}
+ #choose .u-section-head p{grid-column:1;grid-row:1;margin:0}
+ #choose .u-section-head>.u-text-link{grid-column:3;grid-row:1;justify-self:end}
+}
