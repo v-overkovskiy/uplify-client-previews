@@ -40,6 +40,10 @@ function choose(key){
  document.querySelectorAll('.u-table tr').forEach(row=>Array.from(row.children).forEach((cell,i)=>{if(!i)return;cell.classList.toggle('u-selected',keys[i-1]===key);cell.classList.toggle('u-mobile-hide',keys[i-1]!=='base'&&keys[i-1]!==key&&!(key==='base'&&keys[i-1]==='gd'));}));
 }
 choose(selection);
+// The video will be supplied later; show an honest inline state until then.
+const videoButton=document.getElementById('u-video-button'),videoStatus=document.getElementById('u-video-status');
+videoButton.addEventListener('click',()=>{videoStatus.hidden=!videoStatus.hidden;videoButton.setAttribute('aria-expanded',String(!videoStatus.hidden));});
+
 document.addEventListener('click',e=>{
  const link=e.target.closest('[data-u-pdp]');
  if(link){e.preventDefault();const card=link.closest('.u-product');SM.openPdp(link.dataset.uPdp,card?card.dataset.colour:'yellow');return;}
