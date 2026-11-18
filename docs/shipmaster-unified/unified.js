@@ -87,9 +87,9 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');i
 const stage=document.getElementById('u-turntable'),image=document.getElementById('u-frame');let frame=61,drag=null;
 function show(n){frame=(Math.round(n)%72+72)%72;image.src='assets/spin/s'+String(frame).padStart(2,'0')+'.webp';image.alt='Модель Амур за фотографіями, ракурс '+Math.round(frame*5)+' градусів';}
 stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,frame};stage.setPointerCapture(e.pointerId);});
-stage.addEventListener('pointermove',e=>{if(drag)show(drag.frame+(e.clientX-drag.x)/8);});
+stage.addEventListener('pointermove',e=>{if(drag)show(drag.frame-(e.clientX-drag.x)/8);});
 stage.addEventListener('pointerup',()=>drag=null);stage.addEventListener('pointercancel',()=>drag=null);
-stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(frame+(e.key==='ArrowLeft'?-3:3));}});
+stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(frame+(e.key==='ArrowLeft'?3:-3));}});
 // Fetch the remaining view frames only when the reader approaches the viewer.
 if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){for(let i=0;i<72;i++){const im=new Image();im.src='assets/spin/s'+String(i).padStart(2,'0')+'.webp';}io.disconnect();}},{rootMargin:'250px'});io.observe(stage);}
 })();
