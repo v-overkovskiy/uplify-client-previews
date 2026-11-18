@@ -27,20 +27,27 @@ document.getElementById('u-top-sales-grid').addEventListener('click',e=>{
 document.getElementById('u-top-sales-grid').addEventListener('change',e=>{const input=e.target.closest('[data-cmp]');if(!input)return;const key=input.closest('[data-home-config]').dataset.homeConfig;if(input.checked)homeComparison.add(key);else homeComparison.delete(key);syncHomeComparison();});
 document.getElementById('u-compare-open').addEventListener('click',()=>SM.compareFromHome([...homeComparison].map(key=>key+'-'+homeColours[key])));
 document.getElementById('u-compare-clear').addEventListener('click',()=>{homeComparison.clear();drawHomeCards();syncHomeComparison();});
-let selection='gd';
-function choose(key){
- selection=key;const m=models[key];
- document.getElementById('u-selection-name').textContent=m.name;
- document.getElementById('u-selection-price').textContent=m.price;
- document.getElementById('u-selection-delta').textContent=m.delta;
- document.getElementById('u-selected-buy').dataset.uPdp=key;
- document.getElementById('u-config-select').value=key;
- document.querySelectorAll('[data-u-config]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.uConfig===key)));
- const keys=['base','gd','ge','md','me'];
- document.querySelectorAll('.u-table tr').forEach(row=>Array.from(row.children).forEach((cell,i)=>{if(!i)return;cell.classList.toggle('u-selected',keys[i-1]===key);cell.classList.toggle('u-mobile-hide',keys[i-1]!=='base'&&keys[i-1]!==key&&!(key==='base'&&keys[i-1]==='gd'));}));
+// Comparison filters retain all columns and mark the configurations that match every choice.
+const compareFeatures={base:[],gd:['gps'],ge:['gps','echo'],md:['gps','cool'],me:['gps','echo','cool']};
+const compareRequired=new Set();
+function paintCompareFilters(){
+ const matches=Object.keys(compareFeatures).filter(key=>[...compareRequired].every(feature=>compareFeatures[key].includes(feature)));
+ document.querySelectorAll('#compare [data-compare-model]').forEach(cell=>{
+  const match=matches.includes(cell.dataset.compareModel);
+  cell.classList.toggle('u-filter-muted',compareRequired.size>0&&!match);
+  cell.classList.toggle('u-filter-match',compareRequired.size>0&&match);
+ });
+ document.querySelectorAll('[data-compare-filter]').forEach(button=>button.setAttribute('aria-pressed',String(compareRequired.has(button.dataset.compareFilter))));
+ document.getElementById('u-feature-reset').hidden=compareRequired.size===0;
+ document.getElementById('u-feature-status').textContent=compareRequired.size?'Відповідають обраним можливостям: '+matches.length+' з 5 комплектацій.':'Показано всі п’ять комплектацій.';
 }
-choose(selection);
-document.getElementById('u-config-select').addEventListener('change',e=>choose(e.target.value));
+document.querySelectorAll('[data-compare-filter]').forEach(button=>button.addEventListener('click',()=>{
+ const feature=button.dataset.compareFilter;
+ if(compareRequired.has(feature))compareRequired.delete(feature);else compareRequired.add(feature);
+ paintCompareFilters();
+}));
+document.getElementById('u-feature-reset').addEventListener('click',()=>{compareRequired.clear();paintCompareFilters();});
+paintCompareFilters();
 // The video will be supplied later; show an honest inline state until then.
 const videoButton=document.getElementById('u-video-button'),videoStatus=document.getElementById('u-video-status');
 videoButton.addEventListener('click',()=>{videoStatus.hidden=!videoStatus.hidden;videoButton.setAttribute('aria-expanded',String(!videoStatus.hidden));});
@@ -50,7 +57,6 @@ document.addEventListener('click',e=>{
  if(link){e.preventDefault();const card=link.closest('.u-product');SM.openPdp(link.dataset.uPdp,card?card.dataset.colour:'yellow');return;}
  const col=e.target.closest('[data-u-colour]');
  if(col){const card=col.closest('.u-product');card.dataset.colour=col.dataset.uColour;const im=card.querySelector('img');im.src='assets/amur-'+col.dataset.uColour+'.webp';im.alt=names[col.dataset.uColour]+' '+models[card.dataset.config].name;card.querySelectorAll('[data-u-colour]').forEach(b=>b.setAttribute('aria-pressed',String(b===col)));return;}
- const cfg=e.target.closest('[data-u-config]');if(cfg){choose(cfg.dataset.uConfig);return;}
  const menu=e.target.closest('.u-menu');if(menu){const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Закрити меню':'Відкрити меню');document.getElementById('u-mobile-nav').hidden=!open;return;}
  if(e.target.closest('#u-mobile-nav a'))closeMenu();
 });
