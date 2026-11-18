@@ -18,11 +18,40 @@
   <meta name="twitter:description" content="Interior demolition, concrete removal, basement waterproofing and foundation crack repair in Toronto and the GTA. Tell us the job and address for a free estimate.">
   <meta name="twitter:image" content="https://preview.uplify.agency/last-nail/a/og.png">
   <title>Demolition &amp; Basement Waterproofing Toronto | Last Nail</title>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    // CONSENT_DEFAULT_STATE: keep optional storage denied until a visitor chooses otherwise.
+    const CONSENT_DEFAULT_STATE = {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    };
+    gtag('consent', 'default', CONSENT_DEFAULT_STATE);
+    try {
+      const savedConsent = JSON.parse(localStorage.getItem('lastnail.consent.v1'));
+      if (savedConsent && typeof savedConsent.analytics === 'boolean' && typeof savedConsent.ads === 'boolean') {
+        gtag('consent', 'update', {
+          analytics_storage: savedConsent.analytics ? 'granted' : 'denied',
+          ad_storage: savedConsent.ads ? 'granted' : 'denied',
+          ad_user_data: savedConsent.ads ? 'granted' : 'denied',
+          ad_personalization: savedConsent.ads ? 'granted' : 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted'
+        });
+      }
+    } catch (_error) {}
+  </script>
+  <!-- Future Google Tag Manager snippet goes here after the container is approved. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="../assets/img/IMG_5021-1200.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css?v=20261117e">
+  <link rel="stylesheet" href="style.css?v=20261118a">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,7 +82,7 @@
     }
   </script>
   <script src="../assets/scrub/frame-scrubber.js?v=20261117b" defer></script>
-  <script src="app.js?v=20261117b" defer></script>
+  <script src="app.js?v=20261118a" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -120,6 +149,7 @@
             </label>
           </div>
           <button class="button button-full" type="submit">Send request</button>
+          <p class="form-consent">By sending this request, you agree that we use your details to respond to it, as described in our <a href="#privacy">Privacy Policy</a>.</p>
           <p class="form-note" data-form-note aria-live="polite">Concept form — not connected.</p>
         </form>
       </div>
@@ -504,6 +534,7 @@
             <label class="field field-wide">Short description<textarea name="details" rows="2" required></textarea></label>
           </div>
           <button class="button button-full" type="submit">Send request</button>
+          <p class="form-consent">By sending this request, you agree that we use your details to respond to it, as described in our <a href="#privacy">Privacy Policy</a>.</p>
           <p class="form-note" data-form-note aria-live="polite">Concept form — not connected.</p>
         </form>
       </div>
@@ -515,10 +546,79 @@
       <img class="footer-badge" src="../assets/logo/badge-round.png" width="512" height="512" loading="lazy" alt="Last Nail Demolition and Waterproofing round badge">
       <div><strong>Last Nail Demolition and Waterproofing</strong><p>Toronto and the GTA, Ontario</p><a href="tel:+14373777737">(437) 377-7737</a></div>
       <div class="footer-services"><strong>Services</strong><a href="#services">Demolition</a><a href="#services">Waterproofing</a><a href="#gallery">Project gallery</a></div>
-      <div class="footer-legal"><strong>Legal placeholders</strong><span class="placeholder-link">Privacy policy — page pending</span><span class="placeholder-link">Terms — page pending</span><span class="placeholder-link">Insurance / warranty / contract badges — documents pending</span></div>
+      <div class="footer-legal"><strong>Legal</strong><a href="#privacy">Privacy Policy</a><a href="#cookie-settings">Cookie settings</a></div>
     </div>
     <div class="shell footer-bottom"><span>© Last Nail Demolition and Waterproofing</span><span>Concept A</span></div>
   </footer>
+
+  <dialog class="legal-dialog" id="privacy" aria-labelledby="privacy-title">
+    <div class="legal-dialog-inner">
+      <button class="legal-dialog-close" type="button" data-privacy-close aria-label="Close privacy policy">×</button>
+      <div class="legal-dialog-body">
+        <p class="legal-kicker">Privacy</p>
+        <h2 id="privacy-title">Privacy Policy</h2>
+
+        <section>
+          <h3>1. Who we are</h3>
+          <p>This website is operated by <span class="client-fill" data-client-fill="legal-name">[CLIENT: legal business name]</span>, operating as <span class="client-fill" data-client-fill="operating-name">[CLIENT: operating name if different]</span>, serving Toronto &amp; the GTA. This policy covers this website and estimate requests.</p>
+        </section>
+        <section>
+          <h3>2. What we collect</h3>
+          <p>We collect what you enter in the estimate form, including your project need, name, phone number, address or postal code, and description. If you call us, we may collect your phone number and call details. When analytics or ads tracking is enabled and you allow it, we may collect technical data such as your IP address, browser, device, pages viewed, ad click identifiers such as gclid, and UTM tags.</p>
+        </section>
+        <section>
+          <h3>3. Why we collect it</h3>
+          <p>We use this information to respond to your request, prepare and schedule an estimate, follow up on that request, keep business records, protect the site from spam and abuse, and, only with your consent, measure which pages and ads bring requests.</p>
+        </section>
+        <section>
+          <h3>4. Consent</h3>
+          <p>By sending the form, you agree to this use. You can withdraw consent by contacting us below, which may limit our ability to respond. We do not send marketing email or texts without separate consent as required by Canada's Anti-Spam Legislation (CASL).</p>
+        </section>
+        <section>
+          <h3>5. Who we share it with</h3>
+          <p>We do not sell personal information. We share it only with service providers that help us operate, including Cloudflare for hosting, security, spam protection, Turnstile checks, and Worker relay; Bitrix24 for customer relationship management; Google for fonts and, when enabled and allowed, Google Analytics 4 and Google Ads conversion tracking through Google Tag Manager; and our phone and email providers for business notifications. These providers may store data outside Canada, including in the United States and the European Union, where it may be accessible to authorities under local law.</p>
+        </section>
+        <section>
+          <h3>6. Cookies and similar technologies</h3>
+          <p>We use essential storage to remember your cookie choice. Analytics and advertising cookies are used only after you choose Accept or save those permissions. You can change your choice anytime through <a href="#cookie-settings">Cookie settings</a>.</p>
+        </section>
+        <section>
+          <h3>7. Retention</h3>
+          <p>We keep inquiry records for <span class="client-fill" data-client-fill="retention">[CLIENT: inquiry record retention period]</span>, then securely delete or anonymize them.</p>
+        </section>
+        <section>
+          <h3>8. Safeguards</h3>
+          <p>We limit access to staff who need the information and use providers with security controls. No method of storage or transmission is 100% secure.</p>
+        </section>
+        <section>
+          <h3>9. Your rights</h3>
+          <p>You may ask to access or correct your personal information, or withdraw consent. Contact <span class="client-fill" data-client-fill="privacy-officer">[CLIENT: privacy officer name or title]</span> at <span class="client-fill" data-client-fill="privacy-email">[CLIENT: privacy email]</span>, <span class="client-fill" data-client-fill="privacy-phone">[CLIENT: privacy phone]</span>, or <span class="client-fill" data-client-fill="mailing-address">[CLIENT: mailing address for privacy requests]</span>. We respond within 30 days.</p>
+        </section>
+        <section>
+          <h3>10. Complaints</h3>
+          <p>Please contact us first so we can try to resolve your concern. You can also contact the <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">Office of the Privacy Commissioner of Canada</a>.</p>
+        </section>
+        <section>
+          <h3>11. Changes</h3>
+          <p>We may update this policy. Effective date: <span class="client-fill" data-client-fill="effective-date">[CLIENT: effective date]</span>.</p>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <section class="cookie-banner" data-cookie-banner role="region" aria-label="Cookie choices" hidden>
+    <p>We use essential storage to run this site. With your permission, we also use analytics and advertising cookies to see which pages and ads bring requests. See our <a href="#privacy">Privacy Policy</a>.</p>
+    <div class="cookie-actions">
+      <button class="cookie-choice" type="button" data-consent-accept>Accept</button>
+      <button class="cookie-choice" type="button" data-consent-decline>Decline</button>
+      <button class="cookie-settings-toggle" type="button" data-consent-settings aria-expanded="false" aria-controls="cookie-settings-panel">Settings</button>
+    </div>
+    <div class="cookie-settings-panel" id="cookie-settings-panel" data-consent-panel hidden>
+      <label><input type="checkbox" data-consent-analytics> Analytics</label>
+      <label><input type="checkbox" data-consent-ads> Advertising</label>
+      <button class="cookie-save" type="button" data-consent-save>Save choices</button>
+    </div>
+  </section>
 
   <div class="mobile-bar" aria-label="Quick contact actions">
     <a class="button button-ghost" href="tel:+14373777737">Call</a>
