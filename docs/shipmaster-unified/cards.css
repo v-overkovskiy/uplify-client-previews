@@ -130,3 +130,10 @@
 
 /* Separate the section introduction from the raised product cards. */
 @media(min-width:1101px){#choose .u-section-head{margin-bottom:44px}}
+
+/* Keep scaled product cards fully inside their section. */
+@media(min-width:1101px){
+ #choose .u-products{padding-bottom:36px}
+ #choose .u-products>.card{transform:translateY(8px) scale(.98)}
+ #choose .u-products>.u-product-featured{transform:translateY(-4px) scale(1.02)}
+}
