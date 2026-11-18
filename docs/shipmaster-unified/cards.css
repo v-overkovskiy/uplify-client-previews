@@ -127,3 +127,6 @@
 }
 
 @media(min-width:1201px){#choose .panel{grid-template-rows:repeat(6,auto);align-content:space-between}}
+
+/* Separate the section introduction from the raised product cards. */
+@media(min-width:1101px){#choose .u-section-head{margin-bottom:44px}}
