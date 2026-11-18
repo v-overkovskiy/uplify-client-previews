@@ -191,3 +191,14 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  #top .u-fleet-art{transform:translate(8px,12px)}
  #top .u-fleet-name{top:0}
 }
+
+/* Match each configuration selector to the corresponding table column. */
+@media(min-width:701px){
+ #compare .u-configs{grid-template-columns:22% repeat(5,minmax(0,1fr));margin-bottom:0}
+ #compare .u-configs::before{content:''}
+ #compare .u-configs button{text-align:center;padding-inline:8px;min-width:0}
+ #compare .u-configs button b{font-size:15px}
+ #compare .u-configs button span{font-size:12px}
+ #compare .u-table th:first-child{box-sizing:border-box;width:22%}
+}
+@media(max-width:700px){#compare .u-configs button:last-child{grid-column:1 / -1}}

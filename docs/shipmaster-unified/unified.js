@@ -35,7 +35,7 @@ function choose(key){
  document.getElementById('u-selection-delta').textContent=m.delta;
  document.getElementById('u-selected-buy').dataset.uPdp=key;
  document.getElementById('u-m-variant').hidden=!['md','me'].includes(key);
- document.querySelectorAll('[data-u-config]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.uConfig===key||(b.closest('.u-configs')&&b.dataset.uConfig==='md'&&key==='me'))));
+ document.querySelectorAll('[data-u-config]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.uConfig===key)));
  const keys=['base','gd','ge','md','me'];
  document.querySelectorAll('.u-table tr').forEach(row=>Array.from(row.children).forEach((cell,i)=>{if(!i)return;cell.classList.toggle('u-selected',keys[i-1]===key);cell.classList.toggle('u-mobile-hide',keys[i-1]!=='base'&&keys[i-1]!==key&&!(key==='base'&&keys[i-1]==='gd'));}));
 }
