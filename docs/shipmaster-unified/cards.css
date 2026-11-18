@@ -140,3 +140,7 @@
 
 /* Centre both product action labels on every card size. */
 #choose .btns > button{display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* Give the sales heading more room below the hero. */
+@media(min-width:1101px){#choose.u-section{padding-top:44px}}
+@media(min-width:1201px){#choose>.u-wrap{min-height:calc(100svh - 143px)}}
