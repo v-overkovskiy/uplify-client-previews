@@ -20,7 +20,16 @@ function syncHomeComparison(){
 drawHomeCards();
 document.getElementById('u-top-sales-grid').addEventListener('click',e=>{
  const card=e.target.closest('[data-home-config]');if(!card)return;const key=card.dataset.homeConfig;
- const sw=e.target.closest('[data-sw]');if(sw){homeColours[key]=sw.dataset.c;card.replaceWith(renderHomeCard(key));document.querySelector('#u-top-sales-grid [data-home-config="'+key+'"] [data-c="'+homeColours[key]+'"]').focus({preventScroll:true});return;}
+ const sw=e.target.closest('[data-sw]');if(sw){
+  if(homeColours[key]===sw.dataset.c)return;
+  homeColours[key]=sw.dataset.c;
+  const next=renderHomeCard(key),nextImage=next.querySelector('.imgz img');
+  card.dataset.id=next.dataset.id;
+  card.querySelector('.imgz').dataset.more=next.querySelector('.imgz').dataset.more;
+  ['.panel','.badges'].forEach(selector=>card.querySelector(selector).replaceWith(next.querySelector(selector)));
+  SM.homeFlyTo(card.querySelector('.imgz img'),nextImage.getAttribute('src'),nextImage.alt);
+  card.querySelector('[data-c="'+homeColours[key]+'"]').focus({preventScroll:true});return;
+ }
  const buy=e.target.closest('[data-buy]');if(buy){const inCart=SM.homeCart(buy.dataset.buy);buy.textContent=inCart?'У кошику':'Купити';buy.setAttribute('aria-pressed',String(inCart));document.getElementById('u-card-status').textContent=inCart?'Додано в демонстраційний кошик. Замовлення не надсилається.':'Прибрано з демонстраційного кошика.';return;}
  const more=e.target.closest('[data-more]');if(more){SM.openPdp(key,homeColours[key]);}
 });
@@ -30,6 +39,15 @@ document.getElementById('u-compare-clear').addEventListener('click',()=>{homeCom
 // Comparison filters retain all columns and mark the configurations that match every choice.
 const compareFeatures={base:[],gd:['gps'],ge:['gps','echo'],md:['gps','cool'],me:['gps','echo','cool']};
 const compareRequired=new Set();
+let selectedCompare='gd';
+function paintCompareSelection(){
+ document.querySelectorAll('#compare [data-compare-model]').forEach(cell=>cell.classList.toggle('u-column-selected',cell.dataset.compareModel===selectedCompare));
+ document.querySelectorAll('[data-compare-select]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.compareSelect===selectedCompare)));
+}
+document.querySelectorAll('[data-compare-select]').forEach(button=>button.addEventListener('click',()=>{
+ selectedCompare=button.dataset.compareSelect;paintCompareSelection();
+}));
+paintCompareSelection();
 function paintCompareFilters(){
  const matches=Object.keys(compareFeatures).filter(key=>[...compareRequired].every(feature=>compareFeatures[key].includes(feature)));
  document.querySelectorAll('#compare [data-compare-model]').forEach(cell=>{
