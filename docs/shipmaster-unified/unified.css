@@ -384,3 +384,9 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 
 /* Lift the desktop benefit row while retaining the hero height. */
 @media(min-width:1401px){#home #top .u-hero-assurances{margin-bottom:24px}}
+
+/* Plain maintenance reassurance directly below the hero phone. */
+#home #top .u-hero-service{max-width:520px;margin:20px 0 0;color:#b7c5d2;font-size:16px;line-height:1.5}
+#top .u-hero-service strong{display:block;margin-bottom:6px;color:#f3f5f7;font-size:19px;font-weight:700}
+#top .u-hero-service span{display:block}
+@media(max-width:700px){#home #top .u-hero-service{font-size:15px}#top .u-hero-service strong{font-size:18px}}
