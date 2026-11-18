@@ -156,3 +156,8 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 #home #top .u-hero-points{margin:0 0 28px;padding:0}
 #home #top .u-hero-details{margin:24px 0 0;padding:0}
 @media(max-width:700px){#home #top .u-hero-points{margin-bottom:24px}#home #top .u-hero-details{margin-top:20px}}
+
+/* Fill the viewport below the pinned header without clipping taller content. */
+#top .u-hero-grid{min-height:calc(100svh - 87px)}
+#top .u-fleet-caption{justify-content:flex-end}
+@media(max-width:700px){#top .u-hero-grid{min-height:calc(100svh - 75px)}}
