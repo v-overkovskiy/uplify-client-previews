@@ -26,3 +26,22 @@ html{scroll-padding-top:100px;scrollbar-color:#65798b #141e27}body{padding:0 0 4
 @media(max-width:700px){#home .u-btn{font-size:16px}.u-boat-yellow{top:56%;width:92%}.u-fleet-caption{bottom:0}#home .u-hero-copy>p{margin-bottom:24px}}
 @media(max-width:480px){.u-hero-copy h1{font-size:clamp(30px,9.2vw,37px)}.u-boat-yellow{top:57%}.u-fleet-caption{bottom:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.u-btn:hover{transform:none}}
+
+/* Compact the complete comparison, including its order action, on desktop. */
+@media(min-width:1101px){
+ #compare{scroll-margin-top:-76px}
+ #compare>.u-section{padding-block:28px}
+ #compare .u-section-head{margin-bottom:20px}
+ #home #compare h2{font-size:34px;line-height:1.18;margin-bottom:12px}
+ #compare .u-section-head p{font-size:17px}
+ #compare .u-configs{margin-bottom:20px}
+ #compare .u-configs button{padding:12px 20px}
+ #compare .u-configs button b{margin-bottom:4px}
+ #compare .u-table th,#compare .u-table td{padding-block:10px}
+ #compare .u-compare-bottom{padding-top:16px}
+ #compare .u-compare-bottom h3{margin-block:2px;font-size:21px}
+ #home #compare .u-note{margin-top:12px}
+ #compare .u-m-variant{margin-top:12px}
+}
+
+@media(min-width:1101px){#compare h2 br{display:none}}

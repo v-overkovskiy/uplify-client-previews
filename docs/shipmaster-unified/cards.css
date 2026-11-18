@@ -90,3 +90,29 @@
  #choose .u-product-featured .now{font-size:26px}
 }
 @media(max-width:1100px){#choose .u-product-featured .panel{box-shadow:inset 0 0 0 2px #ffc21a,0 18px 36px -24px rgba(20,30,39,.4)}}
+
+/* Keep the complete sales choice in one desktop viewport. */
+@media(min-width:1101px){
+ #choose.u-section{padding-block:28px;scroll-margin-top:-76px}
+ #choose .u-section-head{margin-bottom:20px}
+ #home #choose h2{font-size:36px;margin-bottom:12px}
+ #choose .u-section-head p{font-size:17px}
+ #choose .u-products{padding-block:20px 24px}
+ #choose .panel{padding:32px 28px 20px;gap:12px}
+ #choose .panel>div:first-child{min-height:64px}
+ #choose .panel h3{min-height:0}
+ #choose .specs{row-gap:12px}
+ #choose .u-home-card-tools:has(#u-card-status:empty):has(#u-card-comparison[hidden]){display:none}
+ #home #choose .u-inline-help{margin-top:12px}
+}
+
+@media(min-width:1101px){
+ #choose.u-section{padding-block:20px}
+ #home #choose h2{font-size:32px}
+ #choose .u-products{padding-block:16px 20px}
+ #choose .imgz img{height:112px;aspect-ratio:auto;object-fit:contain}
+ #choose .panel{padding:28px 24px 16px;gap:8px}
+ #choose .specs{row-gap:8px}
+ #choose .sp dt{line-height:1.35}
+ #choose .sp dd{line-height:1.15}
+}
