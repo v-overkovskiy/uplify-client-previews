@@ -56,7 +56,7 @@
 #choose .imgz img{width:90%}
 #choose .b.hit{background:var(--signal);color:#141e27}
 #choose .b.new{background:#0b8766;color:#fff}
-#choose .stock{color:#b9d9bf}
+#choose .stock{color:#0b7a5e}
 #choose .specs{gap:20px 18px}
 #choose .sw button{width:32px;height:32px;position:relative}
 #choose .sw button:before{content:'';position:absolute;inset:-6px}
@@ -64,7 +64,7 @@
 #choose .cta,#choose .more{min-height:54px;cursor:pointer}
 #choose .cta{background:#ffc21a;color:#141e27}
 #choose .cta[aria-pressed=true]{background:#b9d9bf;color:#141e27}
-#choose .more{background:#304458;color:#f2f5f8}
+#choose .more{background:#e3e6eb;color:#141820}
 .u-home-card-tools{margin-top:22px}
 #home #u-card-status{margin:0;color:var(--muted);font-size:14px;min-height:0}
 #u-card-comparison{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 0 0;font-size:15px}
@@ -80,13 +80,13 @@
 #choose{background:#edf0f3;color:#141e27}
 #home #choose .u-section-head p,#home #choose .u-inline-help,#home #choose #u-card-status{color:#526171}
 #home #choose .u-text-link,#home #choose .u-inline-help a{color:#141e27}
-#choose .u-products>.card{color:#f2f5f8}
+#choose .u-products>.card{--bg:#fff;--card:#fff;--text:#141820;--muted:#5b6575;--off:#9aa3b1;--ok:#0b7a5e;--s2:#e3e6eb;--shadow:rgba(15,18,24,.25);color:#141820}
 #choose #u-compare-count{color:#141e27}
 #choose .u-product-featured .panel,#choose .u-product-featured:hover .panel{box-shadow:inset 0 0 0 2px #ffc21a,0 26px 50px -24px rgba(20,30,39,.55)}
 @media(min-width:1101px){
- #choose .u-products{grid-template-columns:minmax(0,.94fr) minmax(0,1.14fr) minmax(0,.94fr);gap:26px;padding-block:28px 24px;align-items:stretch}
- #choose .u-products>.card{position:relative;z-index:1;transform:translateY(20px) scale(.96);transform-origin:center}
- #choose .u-products>.u-product-featured{z-index:2;transform:translateY(-8px)}
- #choose .u-product-featured .now{font-size:29px}
+ #choose .u-products{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-block:40px 56px;align-items:stretch}
+ #choose .u-products>.card{position:relative;z-index:1;transform:translateY(14px);transform-origin:center top}
+ #choose .u-products>.u-product-featured{z-index:2;transform:translateY(-10px) scale(1.06)}
+ #choose .u-product-featured .now{font-size:26px}
 }
 @media(max-width:1100px){#choose .u-product-featured .panel{box-shadow:inset 0 0 0 2px #ffc21a,0 18px 36px -24px rgba(20,30,39,.4)}}
