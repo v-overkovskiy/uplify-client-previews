@@ -118,3 +118,12 @@
 }
 
 @media(min-width:1201px){#choose.u-section{padding-block:12px}#choose .u-products{padding-block:12px 16px}}
+
+/* Let each desktop section fill the space below the pinned header. */
+@media(min-width:1201px){
+ #choose.u-section{min-height:calc(100svh - 87px)}
+ #choose>.u-wrap{min-height:calc(100svh - 111px);display:flex;flex-direction:column}
+ #choose .u-products{flex:1}
+}
+
+@media(min-width:1201px){#choose .panel{grid-template-rows:repeat(6,auto);align-content:space-between}}
