@@ -161,3 +161,17 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 #top .u-hero-grid{min-height:calc(100svh - 87px)}
 #top .u-fleet-caption{justify-content:flex-end}
 @media(max-width:700px){#top .u-hero-grid{min-height:calc(100svh - 75px)}}
+
+/* Primary owner-requested benefits: readable explanations beside the hero. */
+#home #top .u-hero-points{grid-template-columns:1fr 1fr;gap:24px}
+#home #top .u-hero-points li{display:flex;align-items:flex-start;gap:12px;padding-right:24px}
+#home #top .u-hero-points li:last-child{padding-right:0}
+#home #top .u-hero-points svg{width:32px;height:32px;margin:0}
+#home #top .u-hero-points strong{font-size:17px;line-height:1.4;min-height:0}
+#home #top .u-hero-points span{font-size:14px;line-height:1.55;margin-top:8px}
+@media(max-width:980px){
+ #home #top .u-hero-points{grid-template-columns:1fr;gap:18px}
+ #home #top .u-hero-points li{padding-right:0;border-right:0}
+ #home #top .u-hero-points li+li{padding-top:18px;border-top:1px solid #536778}
+ #home #top .u-hero-points span{margin-top:4px}
+}
