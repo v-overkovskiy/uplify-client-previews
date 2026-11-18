@@ -351,3 +351,7 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
  #home #top .u-hero-assurances{grid-template-columns:repeat(2,minmax(0,1fr))}
  #top .u-hero-assurances li:last-child{grid-column:1 / -1}
 }
+
+/* Lower the comparison content within its graphite section. */
+#compare>.u-section{padding-top:72px}
+@media(max-width:1100px){#compare>.u-section{padding-top:64px}}
