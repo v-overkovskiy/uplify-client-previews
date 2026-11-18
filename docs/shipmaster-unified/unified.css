@@ -373,3 +373,8 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 
 /* Keep the catalogue action on the right edge of the header. */
 @media(max-width:700px){.hdr>.top>.u-header-catalog{grid-column:1 / -1;justify-self:end}}
+
+/* Make the boat rotation gesture visible at a glance. */
+#u-turntable .u-drag-label{display:flex;align-items:center;justify-content:center;gap:10px;inset-inline:auto;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);padding:9px 16px;border:1px solid #435767;border-radius:999px;background:#23313e;color:#e5edf4;font-size:14px;line-height:1.4;pointer-events:none}
+#u-turntable .u-drag-icon{width:32px;height:32px;flex:none;color:#ffc21a}
+@media(max-width:480px){#u-turntable .u-drag-label{font-size:12px;padding:8px 12px;gap:8px}#u-turntable .u-drag-icon{width:28px;height:28px}}
