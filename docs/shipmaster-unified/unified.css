@@ -73,3 +73,19 @@ body{padding-bottom:0}
  #compare .u-table-scroll{flex:1;display:flex;align-items:stretch}
  #compare .u-table{flex:1}
 }
+
+/* Restore the supplied Spin catalogue's structure within the current theme. */
+#cat{font:500 15px/1.5 var(--body)}
+#cat>.wrap{width:calc(100% - 32px);max-width:1760px}
+#cat .shell{gap:clamp(48px,5vw,88px)}
+#cat .side{top:103px}
+#cat .lede{font-size:15px}
+#cat .card{--bg:#fff;--card:#fff;--s2:#e3e6eb;--line:#d3d8e0;--text:#141820;--muted:#5b6575;--off:#9aa3b1;--ok:#0b7a5e;--shadow:rgba(15,18,24,.3);color:#141820;color-scheme:light}
+#cat .imgz{background:transparent}
+#cat .b.new{background:#0b8766;color:#fff}
+#cat .cta{min-height:48px}
+#cat .more{min-height:48px}
+@media(max-width:1100px){#cat .shell{gap:28px}#cat .side{top:0}}
+@media(max-width:700px){#cat .shell{gap:20px}}
+
+body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1760px,calc(100% - 32px))}
