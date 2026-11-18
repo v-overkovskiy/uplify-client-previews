@@ -174,3 +174,6 @@
 @media(max-width:640px){#anatomy{padding-block:48px}#anatomy .wrap{width:calc(100% - 36px)}#anatomy .sec__head h2{font-size:30px}#anatomy .common{grid-template-columns:1fr}#anatomy .ill-note{font-size:12px}}
 #anatomy .sec__head h2{font-size:clamp(28px,2.1vw,40px)}
 @media(max-width:640px){#anatomy .sec__head h2{font-size:30px}}
+
+/* Blue divider beneath the construction illustration section. */
+#anatomy{border-bottom:2px solid #3b82f6}
