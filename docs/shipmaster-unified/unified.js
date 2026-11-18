@@ -55,11 +55,8 @@ window.addEventListener('hashchange',closeMenu);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 // Existing router does not scroll between anchors on the same home page.
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.dataset.uPdp)return;const id=a.getAttribute('href').slice(1);if(['katalog','konfigurator','pasport'].includes(id))return;const el=document.getElementById(id||'top');if(el)setTimeout(()=>el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'}),0);});
-const stage=document.getElementById('u-turntable'),image=document.getElementById('u-frame'),range=document.getElementById('u-angle');let frame=61,drag=null;
-function show(n){frame=(Math.round(n)%72+72)%72;image.src='assets/spin/s'+String(frame).padStart(2,'0')+'.webp';range.value=frame;image.alt='Модель Амур за фотографіями, ракурс '+Math.round(frame*5)+' градусів';}
-range.addEventListener('input',()=>show(+range.value));
-document.querySelectorAll('[data-u-rotate]').forEach(b=>b.addEventListener('click',()=>show(frame+Number(b.dataset.uRotate))));
-document.getElementById('u-reset').addEventListener('click',()=>show(61));
+const stage=document.getElementById('u-turntable'),image=document.getElementById('u-frame');let frame=61,drag=null;
+function show(n){frame=(Math.round(n)%72+72)%72;image.src='assets/spin/s'+String(frame).padStart(2,'0')+'.webp';image.alt='Модель Амур за фотографіями, ракурс '+Math.round(frame*5)+' градусів';}
 stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,frame};stage.setPointerCapture(e.pointerId);});
 stage.addEventListener('pointermove',e=>{if(drag)show(drag.frame+(e.clientX-drag.x)/8);});
 stage.addEventListener('pointerup',()=>drag=null);stage.addEventListener('pointercancel',()=>drag=null);
