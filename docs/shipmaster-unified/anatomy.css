@@ -178,3 +178,8 @@
 /* Graphite band beneath the construction illustration, matching the supplied reference. */
 #home #anatomy{border-bottom:0;padding-bottom:88px}
 @media(max-width:640px){#home #anatomy{padding-bottom:56px}}
+
+/* Reserve the largest wrapped variant without clipping content or fixing pixels. */
+#ill .size-stable-text{display:grid;min-width:0}
+#ill .size-stable-text>span{grid-area:1 / 1;min-width:0}
+#ill .text-size-reserve{visibility:hidden;pointer-events:none;user-select:none}

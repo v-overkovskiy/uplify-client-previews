@@ -11,6 +11,16 @@ const parts={
  gps:{n:'05',title:'GPS-навігація',description:'Автопілот веде кораблик до збереженої точки прикорму. У цьому прикладі він доставляє корм і повертається до домашньої точки.',note:'Умовний маршрут для версії з GPS-автопілотом',action:'Пройти маршрут',parameter:'Крок маршруту',min:0,max:100,initial:0,ends:['Старт від берега','Повернення'],format:v=>Math.round(v)+'%'},
  light:{n:'06',title:'Ліхтар',description:'Три передні лінзи спрямовують світло вперед. Увімкніть ліхтар, щоб побачити напрямок освітлення перед носом кораблика.',note:'Умовна схема напрямку світла',action:'Увімкнути ліхтар',parameter:'Стан ліхтаря',min:0,max:1,initial:0,ends:['Вимкнений','Увімкнений'],format:v=>v?'Увімкнено':'Вимкнено'}
 };
+// Overlaid hidden variants reserve the tallest wrapped text at each viewport width.
+const stableText={};
+function reserveText(selector,variants){
+ const host=$(selector),copy=document.createElement('span');copy.textContent=host.textContent;
+ const reserves=[...new Set(variants)].map(text=>{const span=document.createElement('span');span.textContent=text;span.className='text-size-reserve';span.setAttribute('aria-hidden','true');return span});
+ host.classList.add('size-stable-text');host.replaceChildren(copy,...reserves);stableText[selector]=copy;
+}
+reserveText('#part-description',order.map(key=>parts[key].description));
+reserveText('#detail-note',order.map(key=>parts[key].note));
+reserveText('#play-label',order.map(key=>parts[key].action).concat(['Призупинити','Продовжити','Вимкнути ліхтар']));
 const state={part:'hopper',value:0,running:false,paused:false,elapsed:0,last:0,angle:0};
 const q=p=>[480+935*(.847*p[0]+.532*p[2]),326-935*(.235*p[0]+.898*p[1]-.374*p[2])];
 const pts=a=>a.map(p=>q(p).map(n=>n.toFixed(2)).join(',')).join(' ');
@@ -98,13 +108,13 @@ function note(){const v=state.value;return({hopper:v<10?'Прикормка за
 function sync(){
  const p=parts[state.part];$('#parameter').value=state.value;$('#parameter-value').value=p.format(state.value);$('#parameter').setAttribute('aria-valuetext',p.format(state.value));
  const text=note();if($('#live-note').textContent!==text)$('#live-note').textContent=text;
- $('#play-label').textContent=state.part==='light'?(state.value?'Вимкнути ліхтар':'Увімкнути ліхтар'):state.running?'Призупинити':state.paused?'Продовжити':p.action;
+ stableText['#play-label'].textContent=state.part==='light'?(state.value?'Вимкнути ліхтар':'Увімкнути ліхтар'):state.running?'Призупинити':state.paused?'Продовжити':p.action;
  $('#play-icon').innerHTML=state.running?'<path d="M6 4h2v12H6Zm6 0h2v12h-2Z"/>':'<path d="M7 4l9 6-9 6Z"/>';
 }
 function render(){hopper();boatEffects();detail();sync()}
 function select(key){
  if(!parts[key])return;state.part=key;state.value=parts[key].initial;state.running=false;state.paused=false;state.elapsed=0;state.angle=0;
- const p=parts[key];$('#part-number').textContent=p.n;$('#part-title').textContent=p.title;$('#part-description').textContent=p.description;$('#detail-note').textContent=p.note;$('#idetail').setAttribute('aria-label','Схема роботи: '+p.title.toLowerCase());$('#parameter-label').textContent=p.parameter;
+ const p=parts[key];$('#part-number').textContent=p.n;$('#part-title').textContent=p.title;stableText['#part-description'].textContent=p.description;stableText['#detail-note'].textContent=p.note;$('#idetail').setAttribute('aria-label','Схема роботи: '+p.title.toLowerCase());$('#parameter-label').textContent=p.parameter;
  const input=$('#parameter');input.min=p.min;input.max=p.max;input.step=1;input.setAttribute('aria-label',p.parameter);$('#range-min').textContent=p.ends[0];$('#range-max').textContent=p.ends[1];
  $('#figure-caption').innerHTML='<i></i>'+(key==='gps'?'GPS-маршрут показано схематично':p.title+' виділено на ілюстрації');
  all('#ill [data-select]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.select===key)));
