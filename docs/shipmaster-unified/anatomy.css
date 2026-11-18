@@ -175,5 +175,6 @@
 #anatomy .sec__head h2{font-size:clamp(28px,2.1vw,40px)}
 @media(max-width:640px){#anatomy .sec__head h2{font-size:30px}}
 
-/* Blue divider beneath the construction illustration section. */
-#anatomy{border-bottom:2px solid #3b82f6}
+/* Graphite band beneath the construction illustration, matching the supplied reference. */
+#home #anatomy{border-bottom:0;padding-bottom:88px}
+@media(max-width:640px){#home #anatomy{padding-bottom:56px}}
