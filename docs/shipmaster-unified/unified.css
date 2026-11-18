@@ -213,3 +213,67 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 #questions .u-faq details{border-bottom-color:#c7cfd8}
 #questions .u-faq-phone>a,#questions .u-faq a{color:#141820;text-decoration:underline;text-underline-offset:3px}
 #questions .u-faq summary:after{color:#8a5a00}
+
+/* Reference-led black hero: clear hierarchy, technical rings and a compact benefit rail. */
+#top{background:#0f1113;overflow:hidden}
+#top:before{display:none}
+#top .u-hero-grid{grid-template-columns:1fr 1.1fr;grid-template-rows:1fr auto;column-gap:48px;row-gap:36px;padding-block:40px;min-height:calc(100svh - 87px)}
+#home #top .u-hero-copy h1{font-size:clamp(42px,4.65vw,76px);line-height:1.04;letter-spacing:-.035em;margin:0 0 32px}
+#home #top .u-hero-copy h1 span{color:#f3f5f7}
+#top .u-actions{gap:12px;flex-wrap:nowrap}
+#top .u-actions .u-btn{min-height:58px;padding-inline:24px;border-radius:12px}
+#top .u-btn-outline{background:#1a1d21;border-color:#343b43;color:#f3f5f7}
+#top .u-btn-outline:hover{background:#272d34}
+#home #top .u-hero-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:32px 0 0;padding:0;max-width:600px}
+#top .u-hero-metrics>div{display:flex;flex-direction:column;min-width:0}
+#top .u-hero-metrics dt{font-size:12px;line-height:1.5;color:#a9b6c3;font-weight:400}
+#top .u-hero-metrics dd{order:-1;font:500 clamp(23px,2vw,32px)/1.2 var(--display);color:#f3f5f7;margin:0 0 4px;white-space:nowrap}
+#home #top .u-hero-help{font-size:13px;margin:24px 0 0;color:#a9b6c3}
+#top .u-fleet{min-height:460px;align-self:stretch}
+#top .u-fleet-art{filter:drop-shadow(8px 24px 18px #00000070);transform:translate(24px,32px)}
+#top .u-range-rings{position:absolute;width:115%;max-width:none;height:auto;right:-8%;top:50%;transform:translateY(-50%);stroke:#30353b;stroke-width:1.5;pointer-events:none}
+#top .u-range-mark{position:absolute;right:2%;top:0;color:#a9b6c3;font:600 22px/1.3 var(--display)}
+#top .u-fleet-caption{justify-content:center;bottom:0}
+#top .u-fleet-caption a{display:inline-flex;align-items:center;gap:12px;min-height:40px;padding:8px 16px;border:1px solid #343b43;border-radius:999px;background:#1a1d21;color:#a9b6c3;font-size:13px;text-decoration:none}
+#top .u-fleet-caption a:hover{color:#fff;border-color:#ffc21a}
+#home #top .u-hero-assurances{grid-column:1 / -1;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0;margin:0}
+#top .u-hero-assurances li{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:20px;background:#1a1d21;border-radius:16px}
+#top .u-hero-assurances svg{width:26px;height:26px;flex:none;color:#ffc21a}
+#top .u-hero-assurances strong{display:block;color:#f3f5f7;font-size:15px;font-weight:700;line-height:1.4}
+#top .u-hero-assurances span{display:block;margin-top:6px;color:#a9b6c3;font-size:12px;line-height:1.5}
+@media(max-width:1100px){
+ #top .u-hero-grid{column-gap:28px}
+ #top .u-actions .u-btn{padding-inline:16px;font-size:15px}
+ #top .u-fleet{min-height:380px}
+ #home #top .u-hero-metrics{gap:12px}
+ #home #top .u-hero-assurances{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ #top .u-hero-grid{grid-template-columns:1fr;grid-template-rows:auto;row-gap:32px;padding-block:36px;min-height:calc(100svh - 75px)}
+ #home #top .u-hero-copy h1{font-size:clamp(30px,9.5vw,54px);margin-bottom:28px}
+ #top .u-actions{flex-direction:row;flex-wrap:wrap}
+ #top .u-actions .u-btn{flex:1;min-height:54px;font-size:15px;padding-inline:16px}
+ #home #top .u-hero-metrics{gap:12px;margin-top:28px}
+ #top .u-hero-metrics dd{font-size:23px}
+ #top .u-hero-metrics dt{font-size:11px}
+ #top .u-fleet{min-height:0;height:auto;padding-block:28px 56px}
+ #top .u-fleet-art{transform:translate(8px,12px)}
+ #top .u-range-rings{width:120%;right:-10%}
+ #top .u-range-mark{font-size:16px;top:0;right:0}
+ #top .u-hero-assurances li{padding:16px;gap:10px}
+ #top .u-hero-assurances svg{width:22px;height:22px}
+ #top .u-hero-assurances strong{font-size:14px}
+}
+@media(max-width:380px){#home #top .u-hero-assurances{grid-template-columns:1fr}#top .u-hero-metrics dd{font-size:21px}}
+
+@media(max-width:700px){
+ #top .u-actions{flex-direction:column}
+ #top .u-actions .u-btn{flex:none;width:100%;min-height:54px;font-size:16px}
+ #home #top .u-hero-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px}
+ #top .u-hero-metrics dd{font-size:26px}
+ #top .u-hero-metrics dt{font-size:12px;max-width:150px}
+ #home #top .u-hero-assurances{grid-template-columns:1fr}
+ #top .u-hero-assurances li{padding:18px 20px;gap:14px}
+ #top .u-hero-assurances strong{font-size:15px}
+ #top .u-hero-assurances span{font-size:13px}
+}
