@@ -137,3 +137,6 @@
  #choose .u-products>.card{transform:translateY(8px) scale(.98)}
  #choose .u-products>.u-product-featured{transform:translateY(-4px) scale(1.02)}
 }
+
+/* Centre both product action labels on every card size. */
+#choose .btns > button{display:flex;align-items:center;justify-content:center;text-align:center}
