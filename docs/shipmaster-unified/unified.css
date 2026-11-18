@@ -48,8 +48,8 @@ html{scroll-padding-top:100px;scrollbar-color:#65798b #141e27}body{padding:0 0 4
 
 /* Keep the primary navigation available while the utility strip scrolls away. */
 body[data-page] .hdr{position:sticky;top:0;z-index:20;width:100%;max-width:none;background:#141e27;border-bottom:1px solid #405366}
-.hdr>.top{width:min(1440px,calc(100% - 96px));margin-inline:auto;padding-block:10px}
-html{scroll-padding-top:76px}
+.hdr>.top{width:min(1440px,calc(100% - 96px));margin-inline:auto;padding-block:22px}
+html{scroll-padding-top:100px}
 #choose,#compare{scroll-margin-top:0}
 @media(min-width:1201px){
  #choose .u-section-head>div{display:flex;align-items:center;gap:24px}
@@ -61,5 +61,5 @@ html{scroll-padding-top:76px}
  #compare .u-table th,#compare .u-table td{padding-block:8px}
 }
 @media(max-width:980px){.hdr>.top{width:calc(100% - 48px)}}
-@media(max-width:700px){.hdr>.top{padding-block:10px}html{scroll-padding-top:80px}}
+@media(max-width:700px){.hdr>.top{padding-block:18px}html{scroll-padding-top:96px}}
 @media(max-width:480px){.hdr>.top{width:calc(100% - 36px)}}
