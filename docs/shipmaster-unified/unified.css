@@ -381,3 +381,6 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 
 /* Balance the space above and below each benefit's content. */
 #top .u-hero-assurances li{align-items:center}
+
+/* Lift the desktop benefit row while retaining the hero height. */
+@media(min-width:1401px){#home #top .u-hero-assurances{margin-bottom:24px}}
