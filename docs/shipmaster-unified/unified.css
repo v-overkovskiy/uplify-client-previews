@@ -718,6 +718,6 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
 
 /* Use the wide viewport instead of leaving the hero inside the 1440px page column. */
 @media(min-width:1401px){
- #top[data-hero-layout="1"]>.u-hero-grid{width:calc(100% - 80px);max-width:none}
+ #top[data-hero-layout="1"]>.u-hero-grid{width:calc(100% - clamp(80px,12vw,224px));max-width:none}
  #top[data-hero-layout="1"] .u-hero-copy,#top[data-hero-layout="1"] .u-hero-benefits-area{transform:none}
 }
