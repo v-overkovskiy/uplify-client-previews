@@ -52,22 +52,22 @@
     "1920": {
       "width": 1920,
       "height": 1080,
-      "bytes": 109535188,
-      "quality": 78
+      "bytes": 176554500,
+      "quality": 58
     },
     "1280": {
       "width": 1280,
       "height": 720,
-      "bytes": 68819900,
-      "quality": 80
+      "bytes": 87545198,
+      "quality": 62
     },
     "854": {
       "width": 854,
       "height": 480,
-      "bytes": 33908638,
-      "quality": 75
+      "bytes": 41359232,
+      "quality": 62
     }
   },
-  "totalBytes": 212263726,
-  "version": "40fps-33s-fhd2"
+  "totalBytes": 305458930,
+  "version": "40fps-33s-fhd3-real"
 }
