@@ -485,11 +485,11 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
 #top .u-hero-benefits-area .u-layout-options{flex-direction:column;width:100%}
 #top .u-hero-benefits-area .u-layout-options button{width:100%;padding-inline:12px}
 @media(min-width:1101px){
- #top[data-hero-layout="2"] .u-hero-grid{grid-template-columns:minmax(0,1fr) 404px;column-gap:28px}
- #top[data-hero-layout="2"] .u-hero-benefits-area{grid-column:2;grid-row:1 / span 2;grid-template-columns:260px 128px;gap:16px;align-self:start}
+ #top[data-hero-layout="2"] .u-hero-grid{grid-template-columns:minmax(0,1fr) 464px;column-gap:28px}
+ #top[data-hero-layout="2"] .u-hero-benefits-area{grid-column:2;grid-row:1 / span 2;grid-template-columns:320px 128px;gap:16px;align-self:start}
 }
 @media(min-width:701px) and (max-width:1100px){
- #top[data-hero-layout="2"] .u-hero-benefits-area{grid-template-columns:260px 128px;justify-self:center}
+ #top[data-hero-layout="2"] .u-hero-benefits-area{grid-template-columns:320px 128px;justify-self:center}
 }
 @media(max-width:700px){
  #top .u-hero-benefits-area{display:flex;flex-direction:column;gap:18px;width:100%}
