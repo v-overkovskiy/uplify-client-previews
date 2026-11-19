@@ -1,6 +1,6 @@
 {
   "fps": 24,
-  "duration": 33.416667,
+  "duration": 26.833333,
   "dissolve_seconds": 0.416667,
   "chapters": [
     {
@@ -18,32 +18,25 @@
       "end": 8.875
     },
     {
-      "id": "drain",
-      "label": "DRAIN",
-      "caption": "Drain: drainage pipe laid beside a window well.",
-      "start": 8.875,
-      "end": 15.458333
-    },
-    {
       "id": "sump-pit",
       "label": "SUMP PIT",
       "caption": "Sump pit: where collected water goes.",
-      "start": 15.458333,
-      "end": 20.041667
+      "start": 8.875,
+      "end": 13.458333
     },
     {
       "id": "wrap",
       "label": "WRAP",
       "caption": "Wrap: dimpled membrane lines the basement wall.",
-      "start": 20.041667,
-      "end": 24.625
+      "start": 13.458333,
+      "end": 18.041667
     },
     {
       "id": "finish",
       "label": "FINISH",
       "caption": "Finish: sump lid and membrane, ready for the next trade.",
-      "start": 24.625,
-      "end": 33.416667
+      "start": 18.041667,
+      "end": 26.833333
     }
   ]
 }

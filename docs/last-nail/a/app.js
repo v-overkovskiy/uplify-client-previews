@@ -207,13 +207,17 @@
   const storyChips = [...document.querySelectorAll("[data-story-chip]")];
   const storyProgress = document.querySelector("[data-story-progress]");
   const storyStarts = storyChips.map((chip) => Number.parseFloat(chip.dataset.start || "0"));
+  const garageVideo = document.querySelector(".garage-video");
+  const garageCaptions = [...document.querySelectorAll("[data-garage-caption]")];
+  const garageChips = [...document.querySelectorAll("[data-garage-chip]")];
+  const garageStarts = garageChips.map((chip) => Number.parseFloat(chip.dataset.start || "0"));
   let storyChapterIndex = 0;
   let storyPausedManually = false;
   let storyPauseSource = "";
   let storyVisible = false;
   let storyVisibilityManaged = false;
 
-  const chipRows = [storyChips[0]?.parentElement].filter(Boolean);
+  const chipRows = [storyChips[0]?.parentElement, garageChips[0]?.parentElement].filter(Boolean);
   const updateChipRowOverflow = () => {
     chipRows.forEach((row) => {
       row.classList.remove("is-overflowing");
@@ -237,6 +241,53 @@
       behavior: reducedMotion.matches ? "auto" : "smooth"
     });
   };
+
+  let garageChapterIndex = 0;
+  const activateGarageChapter = (index) => {
+    if (index === garageChapterIndex && garageCaptions[index]?.classList.contains("is-active")) return;
+    const changed = index !== garageChapterIndex;
+    garageCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
+    garageChips.forEach((chip, position) => chip.setAttribute("aria-current", String(position === index)));
+    garageChapterIndex = index;
+    if (changed) keepActiveChipVisible(garageChips, index);
+  };
+
+  const updateGarageTime = () => {
+    if (!garageVideo) return;
+    let index = 0;
+    garageStarts.forEach((start, position) => {
+      if (garageVideo.currentTime >= start) index = position;
+    });
+    activateGarageChapter(index);
+  };
+
+  if (garageVideo) {
+    const garageIsSmall = window.matchMedia("(max-width: 899px)").matches;
+    if (garageIsSmall) garageVideo.poster = "../assets/video/garage-poster-854.jpg?v=1";
+    garageVideo.src = garageIsSmall ? garageVideo.dataset.srcSmall : garageVideo.dataset.srcLarge;
+    if (reducedMotion.matches) {
+      garageVideo.autoplay = false;
+      garageVideo.removeAttribute("autoplay");
+      garageVideo.controls = true;
+      garageVideo.pause();
+    } else if ("IntersectionObserver" in window) {
+      const garageObserver = new IntersectionObserver((entries) => {
+        const visible = entries[0]?.intersectionRatio >= 0.4;
+        if (visible) garageVideo.play().catch(() => {});
+        else garageVideo.pause();
+      }, { threshold: [0, 0.4, 1] });
+      garageObserver.observe(garageVideo);
+    }
+    garageVideo.addEventListener("timeupdate", updateGarageTime);
+    garageVideo.addEventListener("loadedmetadata", updateGarageTime);
+  }
+
+  garageChips.forEach((chip) => chip.addEventListener("click", () => {
+    if (!garageVideo) return;
+    garageVideo.currentTime = Number.parseFloat(chip.dataset.start || "0");
+    updateGarageTime();
+    garageVideo.play().catch(() => {});
+  }));
 
   const activateStoryChapter = (index) => {
     if (index === storyChapterIndex && storyCaptions[index]?.classList.contains("is-active")) return;

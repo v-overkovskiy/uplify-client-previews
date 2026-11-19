@@ -51,7 +51,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="../assets/img/IMG_5021-1200.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css?v=20261118a">
+  <link rel="stylesheet" href="style.css?v=20261119a">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -82,7 +82,7 @@
     }
   </script>
   <script src="../assets/scrub/frame-scrubber.js?v=20261117b" defer></script>
-  <script src="app.js?v=20261118a" defer></script>
+  <script src="app.js?v=20261119a" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -307,6 +307,48 @@
       </div>
     </section>
 
+    <section class="section garage-section" id="garage-demolition" aria-labelledby="garage-title">
+      <div class="shell">
+        <p class="eyebrow reveal">3D illustration</p>
+        <div class="garage-heading reveal">
+          <h2 id="garage-title">How a garage comes down.</h2>
+          <p>From the first panel off to a clean, graded lot: our garage demolition process, step by step.</p>
+        </div>
+        <div class="garage-process reveal">
+          <div class="garage-video-frame">
+            <video class="garage-video" muted loop playsinline preload="metadata" poster="../assets/video/garage-poster-1280.jpg?v=1" width="1280" height="720" data-src-small="../assets/video/garage-854.mp4?v=1" data-src-large="../assets/video/garage-1280.mp4?v=1" aria-label="3D illustration of a garage demolition process">
+              Your browser does not support HTML video.
+            </video>
+          </div>
+          <div class="garage-captions" aria-live="polite">
+            <p class="is-active" data-garage-caption>A detached garage on a concrete slab, bin placed on the driveway.</p>
+            <p data-garage-caption>Overhead door off, the excavator moves into position.</p>
+            <p data-garage-caption>The roof is pulled down into the footprint.</p>
+            <p data-garage-caption>Walls come in and debris goes straight into the bin.</p>
+            <p data-garage-caption>The concrete slab is broken and loaded out.</p>
+            <p data-garage-caption>A clean, graded lot, ready for what comes next.</p>
+          </div>
+          <div class="garage-chips" aria-label="Garage demolition chapters">
+            <button type="button" data-garage-chip data-start="0.0" aria-current="true">Site</button>
+            <button type="button" data-garage-chip data-start="1.5" aria-current="false">Prep</button>
+            <button type="button" data-garage-chip data-start="4.0" aria-current="false">Roof</button>
+            <button type="button" data-garage-chip data-start="8.0" aria-current="false">Walls</button>
+            <button type="button" data-garage-chip data-start="11.0" aria-current="false">Slab</button>
+            <button type="button" data-garage-chip data-start="13.5" aria-current="false">Clear</button>
+          </div>
+          <p class="garage-label">3D illustration of the process, not to scale</p>
+          <ul class="garage-static-list">
+            <li>Site: A detached garage on a concrete slab, bin placed on the driveway.</li>
+            <li>Prep: Overhead door off, the excavator moves into position.</li>
+            <li>Roof: The roof is pulled down into the footprint.</li>
+            <li>Walls: Walls come in and debris goes straight into the bin.</li>
+            <li>Slab: The concrete slab is broken and loaded out.</li>
+            <li>Clear: A clean, graded lot, ready for what comes next.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="section story-section" id="system" aria-labelledby="story-title">
       <div class="story-layout shell">
           <div class="story-copy">
@@ -316,20 +358,19 @@
             <div class="story-captions" aria-live="polite">
               <p class="is-active" data-story-caption>Break out: a concrete floor is broken up.</p>
               <p data-story-caption>Clear: broken concrete is carted off the site.</p>
-              <p data-story-caption>Drain: drainage pipe laid beside a window well.</p>
               <p data-story-caption>Sump pit: where collected water goes.</p>
               <p data-story-caption>Wrap: dimpled membrane lines the basement wall.</p>
               <p data-story-caption>Finish: sump lid and membrane, ready for the next trade.</p>
             </div>
             <div class="story-chips" aria-label="Story chapters">
-              <button type="button" data-story-chip data-start="0" aria-current="true">Break out</button><button type="button" data-story-chip data-start="5.291667" aria-current="false">Clear</button><button type="button" data-story-chip data-start="8.875" aria-current="false">Drain</button><button type="button" data-story-chip data-start="15.458333" aria-current="false">Sump pit</button><button type="button" data-story-chip data-start="20.041667" aria-current="false">Wrap</button><button type="button" data-story-chip data-start="24.625" aria-current="false">Finish</button>
+              <button type="button" data-story-chip data-start="0.0" aria-current="true">Break out</button><button type="button" data-story-chip data-start="5.291667" aria-current="false">Clear</button><button type="button" data-story-chip data-start="8.875" aria-current="false">Sump pit</button><button type="button" data-story-chip data-start="13.458333" aria-current="false">Wrap</button><button type="button" data-story-chip data-start="18.041667" aria-current="false">Finish</button>
             </div>
             <div class="story-progress" aria-hidden="true"><span data-story-progress></span></div>
-            <ul class="story-static-list"><li>Break out: a concrete floor is broken up.</li><li>Clear: broken concrete is carted off the site.</li><li>Drain: drainage pipe laid beside a window well.</li><li>Sump pit: where collected water goes.</li><li>Wrap: dimpled membrane lines the basement wall.</li><li>Finish: sump lid and membrane, ready for the next trade.</li></ul>
+            <ul class="story-static-list"><li>Break out: a concrete floor is broken up.</li><li>Clear: broken concrete is carted off the site.</li><li>Sump pit: where collected water goes.</li><li>Wrap: dimpled membrane lines the basement wall.</li><li>Finish: sump lid and membrane, ready for the next trade.</li></ul>
           </div>
           <div class="story-stage">
             <div class="story-hazard" aria-hidden="true"></div>
-            <div class="story-frame"><video class="story-video" autoplay muted loop playsinline controls preload="metadata" poster="../assets/video/story-poster.jpg" width="720" height="1280" aria-label="Real job footage showing the waterproofing process"><source src="../assets/video/story-play-540.mp4?v=2" type="video/mp4" media="(max-width: 899px)"><source src="../assets/video/story-play-720.mp4?v=2" type="video/mp4">Your browser does not support HTML video.</video></div>
+            <div class="story-frame"><video class="story-video" autoplay muted loop playsinline controls preload="metadata" poster="../assets/video/story-poster.jpg" width="720" height="1280" aria-label="Real job footage showing the waterproofing process"><source src="../assets/video/story-play-540.mp4?v=3" type="video/mp4" media="(max-width: 899px)"><source src="../assets/video/story-play-720.mp4?v=3" type="video/mp4">Your browser does not support HTML video.</video></div>
             <p class="story-footage-label">Real footage from our jobs</p>
           </div>
       </div>
@@ -365,7 +406,7 @@
       <div class="film-process__sticky">
         <div class="film-process__media" aria-hidden="true">
           <canvas class="film-process__canvas" aria-hidden="true"></canvas>
-          <picture class="film-process__poster"><img src="../assets/frames/film40fhd/poster.webp" width="1280" height="720" loading="lazy" alt=""></picture>
+          <picture class="film-process__poster"><img src="../assets/frames/film40fhd/poster.webp?v=real" width="1280" height="720" loading="lazy" alt=""></picture>
         </div>
         <header class="film-process__heading">
           <p class="eyebrow">3D illustration</p>
@@ -456,21 +497,20 @@
           <button class="filter-button is-active" type="button" data-video-filter="all" aria-pressed="true">All</button>
           <button class="filter-button" type="button" data-video-filter="demolition" aria-pressed="false">Demolition</button>
           <button class="filter-button" type="button" data-video-filter="waterproofing" aria-pressed="false">Waterproofing</button>
-          <button class="filter-button" type="button" data-video-filter="team" aria-pressed="false">Team</button>
+          <button class="filter-button" type="button" data-video-filter="reviews" aria-pressed="false">Reviews</button>
         </div>
         <div class="video-strip" id="video-cards" data-max-rows="2" aria-label="Project videos">
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/demo-concrete-1-poster.jpg" width="720" height="1280" loading="lazy" alt="Worker breaking out a concrete floor"><button class="video-play" type="button" data-video-src="../assets/video/demo-concrete-1.mp4" aria-label="Play video: Breaking out a concrete floor"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>Breaking out a concrete floor</strong></div></article>
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/demo-concrete-2-poster.jpg" width="720" height="1280" loading="lazy" alt="Worker breaking out a concrete floor"><button class="video-play" type="button" data-video-src="../assets/video/demo-concrete-2.mp4" aria-label="Play video: Breaking out a concrete floor"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>Breaking out a concrete floor</strong></div></article>
           <article class="video-card" data-video-card data-video-category="demolition"><div class="video-media" data-video-media><img src="../assets/video/site-onsite-poster.jpg" width="720" height="1280" loading="lazy" alt="On site, work in progress"><button class="video-play" type="button" data-video-src="../assets/video/site-onsite.mp4" aria-label="Play video: On site, work in progress"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Demolition</span><strong>On site, work in progress</strong></div></article>
-          <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/drain-pipe-poster.jpg" width="720" height="1280" loading="lazy" alt="Drainage pipe in place"><button class="video-play" type="button" data-video-src="../assets/video/drain-pipe.mp4" aria-label="Play video: Drainage pipe in place"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Drainage pipe in place</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/sump-pit-poster.jpg" width="720" height="1280" loading="lazy" alt="Sump pit"><button class="video-play" type="button" data-video-src="../assets/video/sump-pit.mp4" aria-label="Play video: Sump pit"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Sump pit</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/sump-membrane-poster.jpg" width="720" height="1280" loading="lazy" alt="Sump and drainage membrane"><button class="video-play" type="button" data-video-src="../assets/video/sump-membrane.mp4" aria-label="Play video: Sump and drainage membrane"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Sump and drainage membrane</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/interior-membrane-1-poster.jpg" width="720" height="1280" loading="lazy" alt="Interior drainage membrane"><button class="video-play" type="button" data-video-src="../assets/video/interior-membrane-1.mp4" aria-label="Play video: Interior drainage membrane"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Interior drainage membrane</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/interior-membrane-2-poster.jpg" width="720" height="1280" loading="lazy" alt="Interior drainage membrane"><button class="video-play" type="button" data-video-src="../assets/video/interior-membrane-2.mp4" aria-label="Play video: Interior drainage membrane"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Interior drainage membrane</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/interior-stairs-poster.jpg" width="720" height="1280" loading="lazy" alt="Membrane-lined basement, stairs"><button class="video-play" type="button" data-video-src="../assets/video/interior-stairs.mp4" aria-label="Play video: Membrane-lined basement, stairs"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Membrane-lined basement, stairs</strong></div></article>
           <article class="video-card" data-video-card data-video-category="waterproofing"><div class="video-media" data-video-media><img src="../assets/video/sump-lid-poster.jpg" width="720" height="1280" loading="lazy" alt="Membrane around a sump lid"><button class="video-play" type="button" data-video-src="../assets/video/sump-lid.mp4" aria-label="Play video: Membrane around a sump lid"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Waterproofing</span><strong>Membrane around a sump lid</strong></div></article>
-          <article class="video-card" data-video-card data-video-category="team"><div class="video-media" data-video-media><img src="../assets/video/team-video-poster.jpg" width="720" height="1280" loading="lazy" alt="Video message from the team"><button class="video-play" type="button" data-video-src="../assets/video/team-video.mp4" aria-label="Play video: Video message from the team"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Team</span><strong>Video message from the team</strong></div></article>
-          <article class="video-card placeholder"><span>Pending</span><strong>Video testimonials from customers: pending</strong></article>
+          <article class="video-card" data-video-card data-video-category="reviews"><div class="video-media" data-video-media><img src="../assets/video/drain-pipe-poster.jpg" width="720" height="1280" loading="lazy" alt="Customer video review"><button class="video-play" type="button" data-video-src="../assets/video/drain-pipe.mp4" aria-label="Customer video review"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Customer review</span><strong>Customer video review: drainage job</strong></div></article>
+          <article class="video-card" data-video-card data-video-category="reviews"><div class="video-media" data-video-media><img src="../assets/video/team-video-poster.jpg" width="720" height="1280" loading="lazy" alt="Customer video review"><button class="video-play" type="button" data-video-src="../assets/video/team-video.mp4" aria-label="Customer video review"><span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><div class="video-card-copy"><span class="video-chip">Customer review</span><strong>Customer video review</strong></div></article>
         </div>
         <button class="collection-toggle" type="button" data-video-toggle aria-expanded="false" aria-controls="video-cards">Show all 11 videos</button>
       </div>
