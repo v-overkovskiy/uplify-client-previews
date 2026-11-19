@@ -710,3 +710,6 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
 
 /* Nudge variant 1 copy left while keeping its line lengths and surrounding layout. */
 @media(min-width:1101px){#top[data-hero-layout="1"] .u-hero-copy{transform:translateX(-28px)}}
+
+/* Align the variant 1 benefit row with the shifted copy group. */
+@media(min-width:1101px){#top[data-hero-layout="1"] .u-hero-benefits-area{transform:translateX(-28px)}}
