@@ -476,3 +476,24 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
 @media(max-width:700px){#top .u-hero-switcher{justify-content:center;padding-top:14px}#top .u-layout-options button{padding-inline:18px}#top[data-hero-layout="2"] .u-hero-grid{padding-top:28px}}
 
 @media(max-width:380px){.hdr>.top>.logo{font-size:17.9px}}
+
+/* Keep the layout chooser beside the benefits it changes. */
+#top .u-hero-grid{min-height:calc(100svh - var(--u-header-height))}
+#top .u-hero-benefits-area{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:16px;align-items:center;min-width:0}
+#home #top .u-hero-benefits-area>.u-hero-assurances{grid-column:1;grid-row:1;width:100%;margin:0}
+#top .u-hero-benefits-area>.u-hero-switcher{grid-column:2;grid-row:1;display:flex;justify-content:center;padding:0;width:128px}
+#top .u-hero-benefits-area .u-layout-options{flex-direction:column;width:100%}
+#top .u-hero-benefits-area .u-layout-options button{width:100%;padding-inline:12px}
+@media(min-width:1101px){
+ #top[data-hero-layout="2"] .u-hero-grid{grid-template-columns:minmax(0,1fr) 404px;column-gap:28px}
+ #top[data-hero-layout="2"] .u-hero-benefits-area{grid-column:2;grid-row:1 / span 2;grid-template-columns:260px 128px;gap:16px;align-self:start}
+}
+@media(min-width:701px) and (max-width:1100px){
+ #top[data-hero-layout="2"] .u-hero-benefits-area{grid-template-columns:260px 128px;justify-self:center}
+}
+@media(max-width:700px){
+ #top .u-hero-benefits-area{display:flex;flex-direction:column;gap:18px;width:100%}
+ #top .u-hero-benefits-area>.u-hero-switcher{order:-1;width:auto;align-self:center}
+ #top .u-hero-benefits-area .u-layout-options{flex-direction:row;width:auto}
+ #top .u-hero-benefits-area .u-layout-options button{width:auto;padding-inline:18px}
+}
