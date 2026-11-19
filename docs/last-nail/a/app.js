@@ -213,11 +213,38 @@
   let storyVisible = false;
   let storyVisibilityManaged = false;
 
+  const chipRows = [storyChips[0]?.parentElement].filter(Boolean);
+  const updateChipRowOverflow = () => {
+    chipRows.forEach((row) => {
+      row.classList.remove("is-overflowing");
+      row.classList.toggle("is-overflowing", row.scrollWidth > row.clientWidth + 1);
+    });
+  };
+
+  const keepActiveChipVisible = (chips, index) => {
+    const chip = chips[index];
+    const row = chip?.parentElement;
+    if (!row || row.scrollWidth <= row.clientWidth + 1) return;
+    const margin = 12;
+    const rowRect = row.getBoundingClientRect();
+    const chipRect = chip.getBoundingClientRect();
+    let left = row.scrollLeft;
+    if (chipRect.left < rowRect.left + margin) left -= rowRect.left + margin - chipRect.left;
+    else if (chipRect.right > rowRect.right - margin) left += chipRect.right - (rowRect.right - margin);
+    else return;
+    row.scrollTo({
+      left: clamp(left, 0, row.scrollWidth - row.clientWidth),
+      behavior: reducedMotion.matches ? "auto" : "smooth"
+    });
+  };
+
   const activateStoryChapter = (index) => {
     if (index === storyChapterIndex && storyCaptions[index]?.classList.contains("is-active")) return;
+    const changed = index !== storyChapterIndex;
     storyCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
     storyChips.forEach((chip, position) => chip.setAttribute("aria-current", String(position === index)));
     storyChapterIndex = index;
+    if (changed) keepActiveChipVisible(storyChips, index);
   };
 
   const updateStoryTime = () => {
@@ -284,6 +311,10 @@
   const filmProgress = filmSection?.querySelector("[data-film-progress]");
   const filmCaptions = [...(filmSection?.querySelectorAll("[data-film-caption]") || [])];
   const filmChips = [...(filmSection?.querySelectorAll("[data-film-chip]") || [])];
+  if (filmChips[0]?.parentElement) chipRows.push(filmChips[0].parentElement);
+  requestAnimationFrame(updateChipRowOverflow);
+  window.addEventListener("resize", updateChipRowOverflow, { passive: true });
+  document.fonts?.ready?.then(updateChipRowOverflow);
   const filmData = JSON.parse(filmSection?.querySelector("[data-film-chapters]")?.textContent || '{"count":1320,"chapters":[]}');
   const filmChapters = filmData.chapters || [];
   let filmScrubber = null;
@@ -335,12 +366,14 @@
   };
 
   const activateFilmCaption = (index) => {
+    const changed = index !== filmCaptionIndex;
     filmCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
     filmChips.forEach((chip, position) => {
       if (position === index) chip.setAttribute("aria-current", "step");
       else chip.removeAttribute("aria-current");
     });
     filmCaptionIndex = index;
+    if (changed) keepActiveChipVisible(filmChips, index);
   };
 
   const setFilmCaption = (frameIndex) => {

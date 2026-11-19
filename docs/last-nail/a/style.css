@@ -190,10 +190,11 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
 .film-process__heading .eyebrow { margin-bottom: .45rem; }
 .film-process__heading h2 { max-width: 12ch; font-size: clamp(32px, 4.2vw, 64px); text-wrap: balance; }
 .film-process__panel { position: absolute; z-index: 2; bottom: clamp(1.25rem, 3vh, 2.25rem); left: clamp(1.5rem, 4vw, 4.5rem); width: min(27.5rem, calc(100% - 3rem)); padding: 1rem 1.1rem .9rem; border-left: 2px solid var(--yellow); color: var(--bone); background: rgba(5,6,7,.94); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
-.film-process__captions { position: relative; min-height: 3.25rem; }
-.film-process__captions p { position: absolute; inset: 0; margin: 0; color: var(--bone); opacity: 0; transform: translateY(.45rem); font-size: .96875rem; font-weight: 600; line-height: 1.45; transition: opacity 150ms ease, transform 150ms ease; }
+.film-process__captions { position: relative; min-height: 3.25rem; display: grid; }
+.film-process__captions p { position: relative; inset: auto; grid-area: 1 / 1; margin: 0; color: var(--bone); opacity: 0; transform: translateY(.45rem); font-size: .96875rem; font-weight: 600; line-height: 1.45; transition: opacity 150ms ease, transform 150ms ease; }
 .film-process__captions p.is-active { opacity: 1; transform: none; transition-duration: 200ms; }
 .film-process__chips { display: flex; gap: .35rem; margin-top: .65rem; overflow-x: auto; scrollbar-width: thin; }
+.film-process__chips.is-overflowing, .story-chips.is-overflowing { padding-right: 1.25rem; -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 1.25rem), transparent 100%); mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 1.25rem), transparent 100%); }
 .film-process__chips button { min-width: 0; min-height: 44px; flex: 1 0 auto; padding: .45rem .55rem; border: 1px solid rgba(242,239,232,.45); border-radius: 2px; color: var(--bone); background: transparent; font-size: .62rem; font-weight: 800; letter-spacing: .055em; text-transform: uppercase; cursor: pointer; transition: color 150ms ease, background-color 150ms ease, transform 100ms ease-out; }
 .film-process__chips button:active { transform: scale(.97); }
 .film-process__chips button[aria-current="step"] { color: var(--yellow-ink); border-color: var(--yellow); background: var(--yellow); }
@@ -450,7 +451,7 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
 }
 
 @media (max-width: 899px) {
-  .film-process__sticky { height: 100dvh; display: grid; grid-template-rows: auto auto auto; align-content: center; padding-top: var(--header-h); padding-bottom: var(--bar-h); background: linear-gradient(180deg, #171b1e 0%, #3b3837 100%); }
+  .film-process__sticky { height: 100dvh; display: grid; grid-template-rows: auto auto auto; align-content: center; padding-top: var(--header-h); padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom)); background: linear-gradient(180deg, #171b1e 0%, #3b3837 100%); }
   .film-process__media { position: relative; grid-row: 1; aspect-ratio: 16 / 9; height: auto; }
   .film-process__poster img { object-fit: contain; }
   .film-process__heading { position: relative; top: auto; left: auto; grid-row: 2; width: 100%; padding: .45rem 1rem .25rem; filter: none; }
@@ -463,6 +464,19 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
   .film-process__chips button { flex: 0 0 auto; min-width: 4.65rem; padding: .35rem .45rem; font-size: .7rem; }
   .film-process__progress { margin-top: .35rem; }
   .film-process__label { margin-top: .3rem; font-size: .8rem; }
+}
+
+@media (max-width: 899px) and (max-height: 640px) {
+  .film-process__heading { padding-top: .25rem; padding-bottom: .15rem; }
+  .film-process__heading h2 { font-size: 26px; }
+  .film-process__label { margin-top: .2rem; font-size: .68rem; }
+}
+
+@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
+  .film-process__sticky { grid-template-rows: minmax(0, 1fr) auto auto auto minmax(0, 1fr); align-content: normal; }
+  .film-process__media { grid-row: 2; }
+  .film-process__heading { grid-row: 3; }
+  .film-process__panel { grid-row: 4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
