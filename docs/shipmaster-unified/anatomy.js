@@ -18,8 +18,10 @@ function reserveText(selector,variants){
  const reserves=[...new Set(variants)].map(text=>{const span=document.createElement('span');span.textContent=text;span.className='text-size-reserve';span.setAttribute('aria-hidden','true');return span});
  host.classList.add('size-stable-text');host.replaceChildren(copy,...reserves);stableText[selector]=copy;
 }
+reserveText('#part-title',order.map(key=>parts[key].title));
 reserveText('#part-description',order.map(key=>parts[key].description));
 reserveText('#detail-note',order.map(key=>parts[key].note));
+reserveText('#live-note',order.flatMap(key=>[-30,0,1,5,15,45,52,65,75,99,100].flatMap(value=>[note(key,value,false),note(key,value,true)])));
 reserveText('#play-label',order.map(key=>parts[key].action).concat(['Призупинити','Продовжити','Вимкнути ліхтар']));
 const state={part:'hopper',value:0,running:false,paused:false,elapsed:0,last:0,angle:0};
 const q=p=>[480+935*(.847*p[0]+.532*p[2]),326-935*(.235*p[0]+.898*p[1]-.374*p[2])];
@@ -104,17 +106,17 @@ function detail(){
  }
  if(state.part==='light')dn('d-beams').setAttribute('opacity',v?'1':'.08');
 }
-function note(){const v=state.value;return({hopper:v<10?'Прикормка залишається в бункері.':v<65?'Бункер нахиляється.':'Прикормка висипається у воду.',prop:state.running&&v>0?'Гвинт обертається, потік води спрямований назад.':v===0?'Швидкість демонстрації нульова, гвинт зупинено.':'Запустіть обертання або змініть швидкість демонстрації.',rudder:v<-4?'Кермо відхилене ліворуч.':v>4?'Кермо відхилене праворуч.':'Кермо в центральному положенні.',power:v<15?'Кришка закриває акумуляторний відсік.':v<75?'Кришку піднято над відсіком.':'Відкрито доступ до акумулятора.',gps:v<1?'Домашня точка біля берега.':v<45?'Рух до збереженої точки 01.':v<53?'Точка 01: вивантаження прикормки.':v<99?'Повернення до домашньої точки.':'Кораблик повернувся до берега.',light:v?'Світло спрямоване вперед перед носом.':'Ліхтар вимкнений.'})[state.part]}
+function note(part=state.part,v=state.value,running=state.running){return({hopper:v<10?'Прикормка залишається в бункері.':v<65?'Бункер нахиляється.':'Прикормка висипається у воду.',prop:running&&v>0?'Гвинт обертається, потік води спрямований назад.':v===0?'Швидкість демонстрації нульова, гвинт зупинено.':'Запустіть обертання або змініть швидкість демонстрації.',rudder:v<-4?'Кермо відхилене ліворуч.':v>4?'Кермо відхилене праворуч.':'Кермо в центральному положенні.',power:v<15?'Кришка закриває акумуляторний відсік.':v<75?'Кришку піднято над відсіком.':'Відкрито доступ до акумулятора.',gps:v<1?'Домашня точка біля берега.':v<45?'Рух до збереженої точки 01.':v<53?'Точка 01: вивантаження прикормки.':v<99?'Повернення до домашньої точки.':'Кораблик повернувся до берега.',light:v?'Світло спрямоване вперед перед носом.':'Ліхтар вимкнений.'})[part]}
 function sync(){
  const p=parts[state.part];$('#parameter').value=state.value;$('#parameter-value').value=p.format(state.value);$('#parameter').setAttribute('aria-valuetext',p.format(state.value));
- const text=note();if($('#live-note').textContent!==text)$('#live-note').textContent=text;
+ const text=note();if(stableText['#live-note'].textContent!==text)stableText['#live-note'].textContent=text;
  stableText['#play-label'].textContent=state.part==='light'?(state.value?'Вимкнути ліхтар':'Увімкнути ліхтар'):state.running?'Призупинити':state.paused?'Продовжити':p.action;
  $('#play-icon').innerHTML=state.running?'<path d="M6 4h2v12H6Zm6 0h2v12h-2Z"/>':'<path d="M7 4l9 6-9 6Z"/>';
 }
 function render(){hopper();boatEffects();detail();sync()}
 function select(key){
  if(!parts[key])return;state.part=key;state.value=parts[key].initial;state.running=false;state.paused=false;state.elapsed=0;state.angle=0;
- const p=parts[key];$('#part-number').textContent=p.n;$('#part-title').textContent=p.title;stableText['#part-description'].textContent=p.description;stableText['#detail-note'].textContent=p.note;$('#idetail').setAttribute('aria-label','Схема роботи: '+p.title.toLowerCase());$('#parameter-label').textContent=p.parameter;
+ const p=parts[key];$('#part-number').textContent=p.n;stableText['#part-title'].textContent=p.title;stableText['#part-description'].textContent=p.description;stableText['#detail-note'].textContent=p.note;$('#idetail').setAttribute('aria-label','Схема роботи: '+p.title.toLowerCase());$('#parameter-label').textContent=p.parameter;
  const input=$('#parameter');input.min=p.min;input.max=p.max;input.step=1;input.setAttribute('aria-label',p.parameter);$('#range-min').textContent=p.ends[0];$('#range-max').textContent=p.ends[1];
  $('#figure-caption').innerHTML='<i></i>'+(key==='gps'?'GPS-маршрут показано схематично':p.title+' виділено на ілюстрації');
  all('#ill [data-select]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.select===key)));
