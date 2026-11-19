@@ -677,3 +677,17 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
  #top[data-hero-layout="1"] .u-fleet{min-height:0;height:auto}
 }
 @media(min-width:701px) and (max-width:1400px){#top[data-hero-layout="1"] .u-hero-grid{padding-block:24px 48px;row-gap:24px}}
+
+/* Variant 1 uses the generated river scene; boats are already in this photograph. */
+#top[data-hero-layout="1"]:before{background-image:linear-gradient(90deg,rgba(16,27,35,.94),rgba(16,27,35,.84)34%,rgba(16,27,35,.15)58%,rgba(16,27,35,.04)),linear-gradient(0deg,rgba(23,31,40,.9),rgba(23,31,40,.15)34%,transparent 66%),url("img/hero-river-amur-v62.webp");background-position:center bottom;background-size:cover;opacity:1}
+#top[data-hero-layout="1"] .u-fleet-art,#top[data-hero-layout="1"] .u-range-rings,#top[data-hero-layout="1"] .u-range-mark{display:none}
+#top[data-hero-layout="1"] .u-fleet-caption a{background:#1c2933;color:#d4e0e8}
+@media(min-width:1101px) and (max-width:1750px){#top[data-hero-layout="1"]:before{background-position:center calc(100% - 32px)}}
+@media(max-width:1100px){
+ #top[data-hero-layout="1"]:before{display:none}
+ #top[data-hero-layout="1"] .u-fleet{background-image:linear-gradient(0deg,#171f28,transparent 35%),url("img/hero-river-amur-v62.webp");background-size:100% auto;background-position:center top;background-repeat:no-repeat;min-height:0;height:340px;padding:0}
+ #top[data-hero-layout="1"] .u-fleet-caption{bottom:0}
+}
+@media(max-width:700px){#top[data-hero-layout="1"] .u-fleet{height:calc((100vw - 36px) * .563 + 64px)}}
+
+#top[data-hero-layout="1"] .u-hero-copy>.u-fleet-caption{position:static;display:flex;justify-content:flex-start;inset:auto;margin-top:16px;font-size:14.6px;flex-direction:row}
