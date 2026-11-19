@@ -203,6 +203,7 @@ html:not(.js) .story-captions, html:not(.js) .story-chips, html:not(.js) .story-
 .film-process__sticky { position: sticky; top: 0; height: 100svh; overflow: clip; background: #1b1f23; }
 .film-process__media, .film-process__canvas, .film-process__poster { position: absolute; inset: 0; width: 100%; height: 100%; }
 .film-process__canvas { display: block; }
+@media (min-width: 900px) { .film-process__sticky::before { content: ""; position: absolute; z-index: 1; top: 0; left: 0; width: min(62rem, 72%); height: 52%; pointer-events: none; background: radial-gradient(ellipse 85% 90% at 0 0, rgba(5,6,7,.78) 0%, rgba(5,6,7,.45) 45%, rgba(5,6,7,0) 75%); } }
 .film-process__poster, .film-process__poster img { display: block; }
 .film-process__poster img { width: 100%; height: 100%; object-fit: cover; }
 .film-process__heading { position: absolute; z-index: 2; top: calc(var(--header-h) + clamp(1rem, 3vh, 2rem)); left: clamp(1.5rem, 4vw, 4.5rem); width: min(40rem, calc(100% - 3rem)); filter: drop-shadow(0 2px 12px rgba(0,0,0,.75)); }
