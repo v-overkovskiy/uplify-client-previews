@@ -668,3 +668,12 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
 /* Compact benefit cards in variant 1 without shrinking their type. */
 #top[data-hero-layout="1"] .u-hero-assurances li{min-height:0;padding:10px 14px;gap:10px}
 #top[data-hero-layout="1"] .u-hero-assurances span{margin-top:4px}
+
+/* Lift variant 1 and leave a clear lower margin around the compact cards. */
+#top[data-hero-layout="1"] .u-hero-assurances li{padding:6px 12px}
+#top[data-hero-layout="1"] .u-hero-assurances span{margin-top:3px}
+@media(min-width:1401px){
+ #top[data-hero-layout="1"] .u-hero-grid{min-height:calc(100svh - var(--u-header-height) - var(--u-utility-height,42px));padding-block:24px 56px;row-gap:24px}
+ #top[data-hero-layout="1"] .u-fleet{min-height:0;height:auto}
+}
+@media(min-width:701px) and (max-width:1400px){#top[data-hero-layout="1"] .u-hero-grid{padding-block:24px 48px;row-gap:24px}}
