@@ -538,3 +538,17 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
  .hdr .u-preview-layout-switch>span{display:none}
  .hdr .u-preview-layout-switch button{height:18px;min-width:24px;padding:1px 4px}
 }
+
+/* Keep the fleet left and the text/benefit blocks right at tablet widths too. */
+@media(min-width:701px) and (max-width:1100px){
+ #top[data-hero-layout="2"] .u-hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto;gap:28px;align-items:start}
+ #top[data-hero-layout="2"] .u-hero-copy{grid-column:2;grid-row:1;min-width:0}
+ #top[data-hero-layout="2"] .u-fleet{grid-column:1;grid-row:1 / span 2;align-self:start;height:460px;min-height:0;max-height:none;padding-bottom:48px}
+ #top[data-hero-layout="2"] .u-fleet-art{width:100%;height:auto;transform:none}
+ #top[data-hero-layout="2"] .u-range-rings{width:100%;height:100%;inset:0;transform:none}
+ #top[data-hero-layout="2"] .u-range-mark{right:0;top:0}
+ #top[data-hero-layout="2"] .u-hero-benefits-area{grid-column:2;grid-row:2;width:100%;justify-self:stretch}
+ #home #top[data-hero-layout="2"] .u-hero-assurances{width:100%}
+}
+
+@media(min-width:701px) and (max-width:1100px){#home #top[data-hero-layout="2"] .u-hero-copy h1{font-size:clamp(30.2px,4.5vw,45.4px)}}
