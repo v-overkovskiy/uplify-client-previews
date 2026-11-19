@@ -9,8 +9,12 @@ function setHeroLayout(layout){
 try{setHeroLayout(localStorage.getItem('shipmaster-hero-layout')||'2')}catch(_){setHeroLayout('2')}
 layoutChoices.forEach(button=>button.addEventListener('click',()=>{setHeroLayout(button.dataset.heroLayoutChoice);try{localStorage.setItem('shipmaster-hero-layout',hero.dataset.heroLayout)}catch(_){} }));
 const siteHeader=document.querySelector('.hdr');
-function measureHeader(){document.documentElement.style.setProperty('--u-header-height',Math.ceil(siteHeader.getBoundingClientRect().height)+'px')}
-measureHeader();if('ResizeObserver'in window)new ResizeObserver(measureHeader).observe(siteHeader);else window.addEventListener('resize',measureHeader);
+const utilityBar=document.querySelector('.u-utility');
+function measureHeader(){
+ document.documentElement.style.setProperty('--u-header-height',Math.ceil(siteHeader.getBoundingClientRect().height)+'px');
+ document.documentElement.style.setProperty('--u-utility-height',(utilityBar?Math.ceil(utilityBar.getBoundingClientRect().height):0)+'px');
+}
+measureHeader();if('ResizeObserver'in window){const headerObserver=new ResizeObserver(measureHeader);headerObserver.observe(siteHeader);if(utilityBar)headerObserver.observe(utilityBar)}else window.addEventListener('resize',measureHeader);
 const models={base:{name:'Амур базовий',price:'25 000 грн',delta:'Ручне керування з пульта. Бункер 3 л.'},gd:{name:'Амур GPS + глибиномір',price:'34 000 грн',delta:'GPS і глибиномір: +9 000 грн до базового.'},ge:{name:'Амур GPS + ехолот',price:'52 000 грн',delta:'Ехолот замість глибиноміра: +18 000 грн.'},md:{name:'Амур-М GPS + глибиномір',price:'39 950 грн',delta:'Водяне охолодження: +5 950 грн до Амура GPS.'},me:{name:'Амур-М GPS + ехолот TF-520',price:'57 950 грн',delta:'Водяне охолодження й ехолот TOSLON TF-520.'}};
 const names={yellow:'Жовтий',orange:'Помаранчевий',red:'Червоний'};
 const homeKeys=['base','gd','ge'],homeColours={base:'yellow',gd:'yellow',ge:'yellow'},homeComparison=new Set();
