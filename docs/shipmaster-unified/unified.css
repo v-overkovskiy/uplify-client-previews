@@ -415,3 +415,64 @@ body[data-page=cat] .hdr>.top,body[data-page=cat] .u-utility>.u-wrap{width:min(1
 
 /* Keep the product concept bar within the page at every text size. */
 #pdp .sw-bar{margin-inline:0}
+
+/* Taller navigation with the established readable type scale. */
+html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8px)}
+.hdr>.top{padding-block:28px;gap:24px}
+.hdr .top .logo{font-size:26.9px}
+.hdr .top .nav{gap:24px}
+.hdr .top .nav a{font-size:19px}
+.hdr .u-phone{font-size:22.4px}
+.hdr .cartbtn,.hdr .u-menu{min-height:52px;font-size:16.8px;padding:12px 16px;align-items:center;justify-content:center}
+.hdr .u-header-catalog{min-height:52px;font-size:19px;padding:12px 20px}
+.hdr .u-header-catalog svg{width:21px;height:21px}
+@media(max-width:1280px){.hdr .top .nav{display:none}.hdr .u-menu{display:inline-flex}}
+@media(max-width:1000px){.hdr .cartbtn{display:none}.hdr .top .logo{font-size:23.5px}}
+@media(max-width:700px){
+ .hdr>.top{grid-template-columns:1fr auto;gap:12px;padding-block:20px}
+ .hdr>.top>.tools{display:contents}
+ .hdr>.top>.logo{grid-column:1;grid-row:1;font-size:20.2px}
+ .hdr .u-menu{grid-column:2;grid-row:1;justify-self:end;min-height:48px;padding:10px 14px;font-size:16.8px}
+ .hdr .u-phone{grid-column:1;grid-row:2;font-size:15.7px}
+ .hdr>.top>.u-header-catalog{grid-column:2;grid-row:2;min-height:48px;padding:10px 12px;font-size:17.9px}
+}
+/* A native button group keeps the incumbent hero available for comparison. */
+#top .u-hero-switcher{display:flex;justify-content:flex-end;padding-top:16px}
+.u-layout-options{display:inline-flex;gap:4px;padding:4px;border:1px solid #435363;border-radius:10px;background:#202c38}
+#top .u-layout-options button{min-height:44px;padding:10px 18px;border:0;border-radius:6px;background:transparent;color:#d5e0e8;font:700 16.8px/1.4 var(--body);cursor:pointer}
+#top .u-layout-options button[aria-pressed=true]{background:#ffc21a;color:#141820}
+#top .u-layout-options button:hover{filter:brightness(1.08)}
+#top .u-hero-grid{min-height:calc(100svh - var(--u-header-height) - 70px)}
+#choose.u-section,#compare>.u-section{min-height:calc(100svh - var(--u-header-height))}
+@media(min-width:1201px){#choose>.u-wrap{min-height:calc(100svh - var(--u-header-height) - 56px)}}
+/* Variant two: a narrow vertical benefit rail beside the text and fleet. */
+@media(min-width:1101px){
+ #top[data-hero-layout="2"] .u-hero-grid{grid-template-columns:minmax(0,1fr) 260px;grid-template-rows:auto minmax(330px,1fr);column-gap:36px;row-gap:24px;padding-block:28px 40px;align-items:start}
+ #top[data-hero-layout="2"] .u-hero-copy{grid-column:1;grid-row:1;display:grid;grid-template-columns:1.1fr 1fr;gap:22px 32px;align-items:start}
+ #home #top[data-hero-layout="2"] .u-hero-copy h1{grid-column:1 / -1;margin:0;max-width:none}
+ #top[data-hero-layout="2"] .u-hero-copy h1 br{display:none}
+ #top[data-hero-layout="2"] .u-actions{grid-column:1;grid-row:2;flex-wrap:wrap}
+ #home #top[data-hero-layout="2"] .u-hero-help{grid-column:2;grid-row:2;margin:0}
+ #home #top[data-hero-layout="2"] .u-hero-service{grid-column:1 / -1;grid-row:3;max-width:850px;margin:0;font-size:19px}
+ #top[data-hero-layout="2"] .u-video-status{grid-column:1 / -1;grid-row:4}
+ #top[data-hero-layout="2"] .u-fleet{grid-column:1;grid-row:2;min-height:330px;max-height:420px;width:min(100%,900px);justify-self:center}
+ #top[data-hero-layout="2"] .u-fleet-art{width:90%;max-height:390px;object-fit:contain;transform:none}
+ #top[data-hero-layout="2"] .u-range-rings{width:78%;right:11%}
+ #top[data-hero-layout="2"] .u-range-mark{right:6%;top:0}
+ #home #top[data-hero-layout="2"] .u-hero-assurances{grid-column:2;grid-row:1 / span 2;grid-template-columns:1fr;gap:12px;width:260px;margin:0;align-self:start;align-content:start}
+ #top[data-hero-layout="2"] .u-hero-assurances li{padding:18px 16px;gap:12px;min-height:108px}
+ #top[data-hero-layout="2"] .u-hero-assurances strong{font-size:19px;line-height:1.4}
+ #top[data-hero-layout="2"] .u-hero-assurances span{font-size:15.7px;line-height:1.5}
+ #top[data-hero-layout="2"] .u-hero-assurances svg{width:24px;height:24px}
+ #top[data-hero-layout="2"] .u-hero-assurances li:last-child{grid-column:auto}
+}
+@media(max-width:1100px){
+ #home #top[data-hero-layout="2"] .u-hero-assurances{grid-template-columns:1fr;width:min(100%,430px);justify-self:center;gap:14px;margin:0}
+ #top[data-hero-layout="2"] .u-hero-assurances li{padding:20px;min-height:96px}
+ #top[data-hero-layout="2"] .u-hero-assurances strong{font-size:19px}
+ #top[data-hero-layout="2"] .u-hero-assurances span{font-size:15.7px}
+ #top[data-hero-layout="2"] .u-hero-assurances li:last-child{grid-column:auto}
+}
+@media(max-width:700px){#top .u-hero-switcher{justify-content:center;padding-top:14px}#top .u-layout-options button{padding-inline:18px}#top[data-hero-layout="2"] .u-hero-grid{padding-top:28px}}
+
+@media(max-width:380px){.hdr>.top>.logo{font-size:17.9px}}
