@@ -658,3 +658,9 @@ html{--u-header-height:112px;scroll-padding-top:calc(var(--u-header-height) + 8p
  #home #top[data-hero-layout="2"] .u-hero-benefits-area>.u-hero-assurances{gap:28px}
  #top[data-hero-layout="2"] .u-fleet{height:510px;padding-bottom:216px}
 }
+
+/* Supplied photo now belongs to variant 1; variant 2 keeps its plain surface. */
+#top[data-hero-layout="1"]{position:relative;isolation:isolate}
+#top[data-hero-layout="1"]:before{content:"";display:block;position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(23,31,40,.55),rgba(23,31,40,.12)),url("img/hero-fishing-background.jpg");background-size:cover;background-position:center 62%;background-repeat:no-repeat;opacity:.18}
+#top[data-hero-layout="1"]>.u-hero-grid{position:relative;z-index:1}
+@media(max-width:700px){#top[data-hero-layout="1"]:before{background-position:46% center}}
