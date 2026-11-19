@@ -4,6 +4,9 @@
 const hero=document.getElementById('top'),layoutChoices=[...document.querySelectorAll('[data-hero-layout-choice]')];
 function setHeroLayout(layout){
  hero.dataset.heroLayout=layout==='1'?'1':'2';
+ const actions=hero.querySelector('.u-actions'),copy=hero.querySelector('.u-hero-copy');
+ if(hero.dataset.heroLayout==='2')hero.querySelector('.u-fleet').append(actions);
+ else copy.insertBefore(actions,copy.querySelector('.u-video-status'));
  layoutChoices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.heroLayoutChoice===hero.dataset.heroLayout)));
 }
 try{setHeroLayout(localStorage.getItem('shipmaster-hero-layout')||'2')}catch(_){setHeroLayout('2')}
