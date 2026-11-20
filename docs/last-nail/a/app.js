@@ -79,13 +79,13 @@
       event.preventDefault();
       const note = form.querySelector("[data-form-note]");
       if (!note) return;
-      note.textContent = "Concept form only — no request was sent.";
+      note.textContent = "Concept form only. No request was sent.";
       note.classList.add("is-sent");
     });
     form.addEventListener("input", () => {
       const note = form.querySelector("[data-form-note]");
       if (!note?.classList.contains("is-sent")) return;
-      note.textContent = "Concept form — not connected.";
+      note.textContent = "Concept form. Not connected.";
       note.classList.remove("is-sent");
     });
   });
@@ -207,17 +207,13 @@
   const storyChips = [...document.querySelectorAll("[data-story-chip]")];
   const storyProgress = document.querySelector("[data-story-progress]");
   const storyStarts = storyChips.map((chip) => Number.parseFloat(chip.dataset.start || "0"));
-  const garageVideo = document.querySelector(".garage-video");
-  const garageCaptions = [...document.querySelectorAll("[data-garage-caption]")];
-  const garageChips = [...document.querySelectorAll("[data-garage-chip]")];
-  const garageStarts = garageChips.map((chip) => Number.parseFloat(chip.dataset.start || "0"));
   let storyChapterIndex = 0;
   let storyPausedManually = false;
   let storyPauseSource = "";
   let storyVisible = false;
   let storyVisibilityManaged = false;
 
-  const chipRows = [storyChips[0]?.parentElement, garageChips[0]?.parentElement].filter(Boolean);
+  const chipRows = [storyChips[0]?.parentElement].filter(Boolean);
   const updateChipRowOverflow = () => {
     chipRows.forEach((row) => {
       row.classList.remove("is-overflowing");
@@ -241,53 +237,6 @@
       behavior: reducedMotion.matches ? "auto" : "smooth"
     });
   };
-
-  let garageChapterIndex = 0;
-  const activateGarageChapter = (index) => {
-    if (index === garageChapterIndex && garageCaptions[index]?.classList.contains("is-active")) return;
-    const changed = index !== garageChapterIndex;
-    garageCaptions.forEach((caption, position) => caption.classList.toggle("is-active", position === index));
-    garageChips.forEach((chip, position) => chip.setAttribute("aria-current", String(position === index)));
-    garageChapterIndex = index;
-    if (changed) keepActiveChipVisible(garageChips, index);
-  };
-
-  const updateGarageTime = () => {
-    if (!garageVideo) return;
-    let index = 0;
-    garageStarts.forEach((start, position) => {
-      if (garageVideo.currentTime >= start) index = position;
-    });
-    activateGarageChapter(index);
-  };
-
-  if (garageVideo) {
-    const garageIsSmall = window.matchMedia("(max-width: 899px)").matches;
-    if (garageIsSmall) garageVideo.poster = "../assets/video/garage-poster-854.jpg?v=1";
-    garageVideo.src = garageIsSmall ? garageVideo.dataset.srcSmall : garageVideo.dataset.srcLarge;
-    if (reducedMotion.matches) {
-      garageVideo.autoplay = false;
-      garageVideo.removeAttribute("autoplay");
-      garageVideo.controls = true;
-      garageVideo.pause();
-    } else if ("IntersectionObserver" in window) {
-      const garageObserver = new IntersectionObserver((entries) => {
-        const visible = entries[0]?.intersectionRatio >= 0.4;
-        if (visible) garageVideo.play().catch(() => {});
-        else garageVideo.pause();
-      }, { threshold: [0, 0.4, 1] });
-      garageObserver.observe(garageVideo);
-    }
-    garageVideo.addEventListener("timeupdate", updateGarageTime);
-    garageVideo.addEventListener("loadedmetadata", updateGarageTime);
-  }
-
-  garageChips.forEach((chip) => chip.addEventListener("click", () => {
-    if (!garageVideo) return;
-    garageVideo.currentTime = Number.parseFloat(chip.dataset.start || "0");
-    updateGarageTime();
-    garageVideo.play().catch(() => {});
-  }));
 
   const activateStoryChapter = (index) => {
     if (index === storyChapterIndex && storyCaptions[index]?.classList.contains("is-active")) return;
@@ -355,6 +304,47 @@
     storyVideo.currentTime = Number.parseFloat(chip.dataset.start || "0");
     updateStoryTime();
   }));
+
+  const processSteps = [...document.querySelectorAll("[data-process-step]")];
+  const processPhotos = [...document.querySelectorAll("[data-process-photo]")];
+  let processPhotoTimer = 0;
+
+  const showProcessPhoto = (id) => {
+    processPhotos.forEach((photo) => photo.classList.toggle("is-active", photo.dataset.processPhoto === id));
+  };
+
+  const activateProcessPhotos = (ids) => {
+    window.clearInterval(processPhotoTimer);
+    processPhotoTimer = 0;
+    if (!ids.length) return;
+    let photoIndex = 0;
+    showProcessPhoto(ids[photoIndex]);
+    if (ids.length > 1 && !reducedMotion.matches) {
+      processPhotoTimer = window.setInterval(() => {
+        photoIndex = (photoIndex + 1) % ids.length;
+        showProcessPhoto(ids[photoIndex]);
+      }, 3200);
+    }
+  };
+
+  const processPhotosForStep = (stepIndex) => {
+    for (let index = stepIndex; index >= 0; index -= 1) {
+      const ids = processSteps[index]?.dataset.processImages?.split(/\s+/).filter(Boolean);
+      if (ids?.length) return ids;
+    }
+    return ["wp-1"];
+  };
+
+  if (processSteps.length && processPhotos.length && "IntersectionObserver" in window) {
+    const processObserver = new IntersectionObserver((entries) => {
+      const current = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => Math.abs(a.boundingClientRect.top - window.innerHeight * 0.42) - Math.abs(b.boundingClientRect.top - window.innerHeight * 0.42))[0];
+      if (!current) return;
+      activateProcessPhotos(processPhotosForStep(processSteps.indexOf(current.target)));
+    }, { rootMargin: "-30% 0px -50% 0px", threshold: 0 });
+    processSteps.forEach((step) => processObserver.observe(step));
+  }
 
   const filmSection = document.querySelector("[data-film-scrub]");
   const filmCanvas = filmSection?.querySelector(".film-process__canvas");
@@ -684,6 +674,46 @@
       video.src = button.dataset.videoSrc;
       video.addEventListener("play", () => {
         document.querySelectorAll(".video-strip video").forEach((other) => {
+          if (other !== video) other.pause();
+        });
+      });
+      media.replaceChildren(video);
+      video.play().catch(() => {});
+    });
+  });
+
+  const reviewContainer = document.querySelector("[data-review-videos]");
+  reviewContainer?.querySelectorAll(".review-play[data-review-src]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const media = button.closest("[data-review-media]");
+      if (!media) return;
+      reviewContainer.querySelectorAll("video").forEach((video) => video.pause());
+
+      const video = document.createElement("video");
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.autoplay = true;
+      video.muted = false;
+      video.poster = media.querySelector("img")?.getAttribute("src") || "";
+      video.width = 720;
+      video.height = 1280;
+      video.setAttribute("aria-label", button.getAttribute("aria-label")?.replace("Play customer review:", "Customer review:") || "Customer review");
+
+      const source = document.createElement("source");
+      source.src = button.dataset.reviewSrc;
+      source.type = "video/mp4";
+      video.append(source);
+
+      const track = document.createElement("track");
+      track.kind = "captions";
+      track.srclang = "en";
+      track.label = "English";
+      track.src = button.dataset.reviewTrack;
+      video.append(track);
+
+      video.addEventListener("play", () => {
+        reviewContainer.querySelectorAll("video").forEach((other) => {
           if (other !== video) other.pause();
         });
       });
