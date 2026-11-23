@@ -75,18 +75,80 @@
   });
 
   document.querySelectorAll("[data-concept-form]").forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const note = form.querySelector("[data-form-note]");
+    const note = form.querySelector("[data-form-note]");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitButtonText = submitButton?.textContent || "Send request";
+    let isSubmitting = false;
+
+    const setNote = (message, state = "") => {
       if (!note) return;
-      note.textContent = "Concept form only. No request was sent.";
-      note.classList.add("is-sent");
+      note.textContent = message;
+      note.classList.remove("is-sent", "is-error");
+      if (state) note.classList.add(state);
+    };
+
+    const restoreSubmitButton = () => {
+      if (!submitButton) return;
+      submitButton.disabled = false;
+      submitButton.textContent = submitButtonText;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (isSubmitting) return;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      isSubmitting = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+      setNote("");
+
+      const honeypot = form.elements.namedItem("company_website");
+      if (honeypot?.value) {
+        form.reset();
+        setNote("Thank you. We received your request and will call you back.", "is-sent");
+        restoreSubmitButton();
+        isSubmitting = false;
+        return;
+      }
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
+
+      try {
+        const endpoint = form.dataset.endpoint;
+        if (!endpoint) throw new Error("Missing form endpoint");
+
+        const params = new URLSearchParams();
+        new FormData(form).forEach((value, key) => params.append(key, value));
+        params.set("source", location.href);
+
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          body: params,
+          signal: controller.signal
+        });
+
+        form.reset();
+        setNote("Thank you. We received your request and will call you back.", "is-sent");
+      } catch (_error) {
+        setNote("We could not send your request. Please call (437) 377-7737.", "is-error");
+      } finally {
+        window.clearTimeout(timeout);
+        restoreSubmitButton();
+        isSubmitting = false;
+      }
     });
+
     form.addEventListener("input", () => {
-      const note = form.querySelector("[data-form-note]");
-      if (!note?.classList.contains("is-sent")) return;
-      note.textContent = "Concept form. Not connected.";
-      note.classList.remove("is-sent");
+      if (!note?.classList.contains("is-sent") && !note?.classList.contains("is-error")) return;
+      setNote("");
     });
   });
 

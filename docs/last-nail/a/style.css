@@ -91,9 +91,12 @@ h3 { font-size: clamp(24px, 2.4vw, 36px); }
 .field input, .field select, .field textarea { width: 100%; min-height: 3rem; padding: 0.7rem 0.8rem; border: 1px solid #3b3b37; border-radius: 2px; outline: none; color: var(--bone); background: #0d0d0c; font-size: 0.95rem; font-weight: 400; letter-spacing: 0; text-transform: none; transition: border-color 160ms ease; }
 .field textarea { resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--yellow); }
+.form-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .estimate-card .button { margin-top: 1rem; }
+.estimate-card .button:disabled { opacity: .72; cursor: wait; }
 .form-note { min-height: 1.2rem; margin-top: 0.65rem; color: #9c9992; font-size: 0.72rem; }
 .form-note.is-sent { color: var(--yellow); }
+.form-note.is-error { color: #ff9d92; }
 .form-consent { margin-top: .75rem; color: #aaa79f; font-size: .7rem; line-height: 1.5; }
 .form-consent a { color: var(--bone); text-decoration: underline; text-underline-offset: .18em; }
 
