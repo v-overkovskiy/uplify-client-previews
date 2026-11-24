@@ -1210,3 +1210,19 @@ html{scroll-padding-top:180px}
 @media (max-width:759px){.form__ft .btn{width:100%}.chip span{min-height:44px}.hdr .icobtn .cnt{top:-4px;right:-4px}}
 .ticket__r .fld__err{color:#B3261E}@media (max-width:759px){.gal__main img{aspect-ratio:4/3;object-fit:cover;height:auto}.gal__th button,.gal__th img{width:56px;height:56px}.pdp .crumbs{font-size:14px}}
 @media (max-width:759px){.gal__main{aspect-ratio:4/3}.gal__main img{height:100%}.gal__th{margin-top:8px}}
+/* мобільна шапка: меню | логотип | дії праворуч, однакові кнопки */
+@media (max-width:1023px){
+  .hdr__row{grid-template-columns:auto 1fr auto;gap:10px;min-height:68px;padding-top:0}
+  .hdr .logo{justify-self:start;min-width:0}
+  .hdr__act{justify-self:end;gap:8px}
+  .hdr .burger,.hdr .icobtn{width:46px;height:46px}
+  .hdr .icobtn .ico{width:23px;height:23px}
+  .hdr .icobtn .cnt{top:-5px;right:-5px}
+  .hdr .search{margin-bottom:10px}
+}
+@media (max-width:380px){.hdr .logo b{font-size:15px;letter-spacing:.5px}.hdr .logo img{width:32px;height:32px}.hdr__act{gap:6px}.hdr .burger,.hdr .icobtn{width:42px;height:42px}}
+@media (max-width:1023px){.hdr__row{padding-top:10px;min-height:70px}.hdr .search{margin-top:2px}}@media (max-width:350px){.hdr .logo{gap:6px}.hdr .logo b{font-size:13px;letter-spacing:.3px}.hdr .logo img{width:28px;height:28px}.hdr__row{gap:6px}.hdr__act{gap:4px}.hdr .burger,.hdr .icobtn{width:40px;height:40px}}
+/* мобільне меню: каталог першим, далі опт і сервісні сторінки, кнопка дзвінка внизу */
+.drawer__h{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:16px 18px 6px;margin:0}
+.drawer__call{width:100%;justify-content:center;margin-bottom:8px;color:var(--navy-dd)}
+.drawer__call .ico{width:20px;height:20px}
