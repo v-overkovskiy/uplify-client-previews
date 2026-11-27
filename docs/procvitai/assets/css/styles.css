@@ -197,3 +197,5 @@ p{max-width:var(--read)}.lead{font-size:var(--fs-lead);line-height:1.55}.micro{f
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.marquee-track{animation:none}.hero-media img{transform:none!important}.motion-ready .will-reveal,.motion-ready .photo-reveal{opacity:1!important;transform:none!important;clip-path:none!important}}
 
 @media (min-width:901px){.consult-card{align-items:center;height:clamp(20rem,26vw,25rem);min-height:20rem}.consult-copy{align-items:center;padding:2.5rem 0}}
+
+.parallax-photo{height:122%!important;margin-top:0!important;transform:translateY(calc(var(--parallax,0px) - 9.02%))!important}
